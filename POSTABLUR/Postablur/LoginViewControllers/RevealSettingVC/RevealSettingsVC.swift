@@ -10,6 +10,11 @@ import UIKit
 
 class RevealSettingsVC: UIViewController {
    
+    var image : UIImage!
+    var blurredImage : UIImage? = nil
+    @IBOutlet weak var picImageView: UIImageView!
+
+    
     @IBOutlet weak var revealSettingsTableView: UITableView!
 
     override func viewDidLoad() {
@@ -23,6 +28,10 @@ class RevealSettingsVC: UIViewController {
         
         let dollarNib = UINib(nibName: NibNamed.PBDollarLimitCell.rawValue, bundle: nil)
         self.revealSettingsTableView.register(dollarNib, forCellReuseIdentifier: CellIdentifiers.PBDollarLimitCellIdentifier.rawValue)
+        
+        self.blurredImage =  image.applyBlurWithRadius(20, tintColor: nil, saturationDeltaFactor: 1, maskImage: nil)
+        
+        self.picImageView.image = self.blurredImage
     }
 
     override func didReceiveMemoryWarning() {

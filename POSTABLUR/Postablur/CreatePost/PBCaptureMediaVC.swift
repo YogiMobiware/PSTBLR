@@ -369,14 +369,10 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
             return
         }
         
-        if navController.viewControllers.count > 1
-        {
-            navController.popToRootViewController(animated: false)
-        }
         
-//        let vc = FMSelfiePreviewVC()
-//        vc.previewImage = image
-//        navController.pushViewController(vc, animated: true)
+        let vc = RevealSettingsVC()
+        vc.image = image
+        navController.pushViewController(vc, animated: true)
     }
     
     // MARK: Private methods
