@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        Twitter.sharedInstance().start(withConsumerKey: "ifeAkthu6TFg1kTLkapF8bAAW", consumerSecret:"jFU9sRnAecICwaU9wjLf25EV9C5PFca5AiSh2UG9rOLc1I3KGt")
+        TWTRTwitter.sharedInstance().start(withConsumerKey: "ifeAkthu6TFg1kTLkapF8bAAW", consumerSecret:"jFU9sRnAecICwaU9wjLf25EV9C5PFca5AiSh2UG9rOLc1I3KGt")
 
         return true
     }
@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
         if(registrationType == 2)
         {
-            handled = Twitter.sharedInstance().application(app, open: url, options: options)
+            handled = TWTRTwitter.sharedInstance().application(app, open: url, options: options)
         }
         else if (registrationType == 3)
         {
