@@ -14,6 +14,8 @@ class RevealSettingsVC: UIViewController {
     var blurredImage : UIImage? = nil
     @IBOutlet weak var picImageView: UIImageView!
 
+    @IBOutlet weak var unblurMsgTextLbl : UILabel!
+    
     
     @IBOutlet weak var revealSettingsTableView: UITableView!
 
@@ -42,6 +44,22 @@ class RevealSettingsVC: UIViewController {
     {
         _ = self.navigationController?.popViewController(animated: true)
         
+    }
+    
+    @IBAction  func unblurPhotoTapped(_ sender: UIButton)
+    {
+        sender.isSelected = !sender.isSelected
+        
+        if sender.isSelected == true
+        {
+            self.picImageView.image = self.image
+            self.unblurMsgTextLbl.text = "TAP TO BLUR PHOTO"
+        }
+        else
+        {
+            self.picImageView.image = self.blurredImage
+            self.unblurMsgTextLbl.text = "TAP TO UNBLUR PHOTO"
+        }
     }
 }
 // MARK: Tableview Datasource and Delegate

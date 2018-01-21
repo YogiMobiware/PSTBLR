@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="ArialRoundedMTBold.ttf">
+            <string>ArialRoundedMTBold</string>
+        </array>
         <array key="Avenir.ttc">
             <string>Avenir-Black</string>
             <string>Avenir-Book</string>
@@ -20,6 +23,7 @@
             <connections>
                 <outlet property="picImageView" destination="bPS-ei-l6P" id="Wwj-b2-lQW"/>
                 <outlet property="revealSettingsTableView" destination="IKz-7G-RlW" id="GDE-yb-dih"/>
+                <outlet property="unblurMsgTextLbl" destination="jAD-77-mOD" id="qFS-JO-glr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -53,14 +57,19 @@
                                 <action selector="backBtnAction:" destination="-1" eventType="touchUpInside" id="fDJ-Xa-7CU"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconWhitePostablurApp" translatesAutoresizingMaskIntoConstraints="NO" id="QSb-St-62D">
+                            <rect key="frame" x="357" y="46.5" width="36" height="35"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Nck-n6-6ID" firstAttribute="top" secondItem="F1Y-YL-wU6" secondAttribute="top" constant="43" id="GwD-7H-Rha"/>
                         <constraint firstItem="RT9-Nk-L1b" firstAttribute="height" secondItem="F1Y-YL-wU6" secondAttribute="height" multiplier="27:103" id="Xwv-WJ-f9n"/>
                         <constraint firstItem="RT9-Nk-L1b" firstAttribute="centerX" secondItem="F1Y-YL-wU6" secondAttribute="centerX" constant="8" id="daJ-Oq-yG9"/>
+                        <constraint firstItem="QSb-St-62D" firstAttribute="centerY" secondItem="Nck-n6-6ID" secondAttribute="centerY" id="jVu-QD-b1s"/>
                         <constraint firstItem="Nck-n6-6ID" firstAttribute="leading" secondItem="F1Y-YL-wU6" secondAttribute="leading" constant="17" id="lPL-rQ-JBp"/>
                         <constraint firstItem="RT9-Nk-L1b" firstAttribute="centerY" secondItem="Nck-n6-6ID" secondAttribute="centerY" id="oll-fx-2Of"/>
+                        <constraint firstAttribute="trailing" secondItem="QSb-St-62D" secondAttribute="trailing" constant="21" id="vjR-eK-yNB"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IKz-7G-RlW">
@@ -82,14 +91,30 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlurPicEnlarged" translatesAutoresizingMaskIntoConstraints="NO" id="bPS-ei-l6P">
                     <rect key="frame" x="0.0" y="102" width="414" height="369"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVa-co-g0M" userLabel="RemoveBlurButton">
+                    <rect key="frame" x="16" y="419" width="44" height="44"/>
+                    <state key="normal" image="removeBlur"/>
+                    <connections>
+                        <action selector="unblurPhotoTapped:" destination="-1" eventType="touchUpInside" id="MX9-j0-T8M"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP TO UNBLUR PHOTO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAD-77-mOD">
+                    <rect key="frame" x="76" y="435" width="120" height="12"/>
+                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="10"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="heF-Ek-01F" firstAttribute="top" secondItem="IKz-7G-RlW" secondAttribute="bottom" id="0NK-RO-5Cv"/>
                 <constraint firstItem="IKz-7G-RlW" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="202:736" id="1xy-hT-PSQ"/>
+                <constraint firstItem="bPS-ei-l6P" firstAttribute="bottom" secondItem="JVa-co-g0M" secondAttribute="bottom" constant="8" id="46a-0H-CQv"/>
+                <constraint firstItem="JVa-co-g0M" firstAttribute="leading" secondItem="bPS-ei-l6P" secondAttribute="leading" constant="16" id="6b4-wI-9BO"/>
                 <constraint firstItem="bPS-ei-l6P" firstAttribute="top" secondItem="F1Y-YL-wU6" secondAttribute="bottom" constant="-1" id="7Tm-q1-lEn"/>
                 <constraint firstItem="bPS-ei-l6P" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HRX-gH-hY3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="F1Y-YL-wU6" secondAttribute="top" constant="20" id="LSQ-al-yRJ"/>
+                <constraint firstItem="jAD-77-mOD" firstAttribute="centerY" secondItem="JVa-co-g0M" secondAttribute="centerY" id="LZM-xF-XZN"/>
                 <constraint firstItem="IKz-7G-RlW" firstAttribute="top" secondItem="bPS-ei-l6P" secondAttribute="bottom" id="Ne0-h1-Ept"/>
                 <constraint firstItem="F1Y-YL-wU6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OM4-w4-x86"/>
                 <constraint firstItem="F1Y-YL-wU6" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="103:736" id="SIl-sR-ZtE"/>
@@ -98,6 +123,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bPS-ei-l6P" secondAttribute="trailing" id="U65-N6-ESd"/>
                 <constraint firstItem="heF-Ek-01F" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="62:736" id="Y5g-RU-v5t"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="heF-Ek-01F" secondAttribute="trailing" id="Ytc-0g-tsW"/>
+                <constraint firstItem="jAD-77-mOD" firstAttribute="leading" secondItem="JVa-co-g0M" secondAttribute="trailing" constant="16" id="cSV-n4-Zl4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="F1Y-YL-wU6" secondAttribute="trailing" id="csq-Vu-j0N"/>
                 <constraint firstItem="IKz-7G-RlW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="h8u-BG-z5Q"/>
                 <constraint firstItem="heF-Ek-01F" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pXC-V0-ixb"/>
@@ -108,6 +134,8 @@
     </objects>
     <resources>
         <image name="BlurPicEnlarged" width="414" height="369"/>
+        <image name="iconWhitePostablurApp" width="36" height="35"/>
         <image name="keyboardBackspace" width="24" height="24"/>
+        <image name="removeBlur" width="44" height="44"/>
     </resources>
 </document>

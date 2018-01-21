@@ -24,6 +24,8 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
     
     let captureSession = AVCaptureSession()
     let stillImageOutput = AVCaptureStillImageOutput()
+//    let stillImageOutput = AVCapturePhotoOutput()
+
     var captureOutput: AVCaptureOutput?
     var previewLayer: AVCaptureVideoPreviewLayer?
     var captureDevice: AVCaptureDevice?
@@ -82,7 +84,7 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         
         if let previewLayer = self.previewLayer
         {
-            previewLayer.frame = self.cameraOverlayView.layer.frame
+            previewLayer.frame = self.cameraOverlayView.layer.bounds
         }
         
         self.xButton.layer.cornerRadius = self.xButton.frame.size.width / 2
@@ -238,7 +240,7 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         {
             guard let captureDevice = self.captureDevice else
             {
-                // TODO: Throw some sort of error I guess - Chris
+                // TODO: Throw some sort of error I guess
                 return
             }
             
@@ -283,7 +285,8 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         }
         
         self.cameraOverlayView.layer.addSublayer(previewLayer)
-        previewLayer.frame = self.cameraOverlayView.layer.frame
+        previewLayer.frame = self.cameraOverlayView.layer.bounds
+        previewLayer.videoGravity = .resizeAspectFill
         captureSession.startRunning()
         
         self.view.bringSubview(toFront: self.controlsOverlayView)
