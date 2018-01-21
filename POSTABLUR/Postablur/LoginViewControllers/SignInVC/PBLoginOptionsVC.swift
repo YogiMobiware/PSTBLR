@@ -414,7 +414,7 @@ extension PBLoginOptionsVC : PBSocialLoginCellDelegate
         self.appdelegate.registrationType = 2
         if appdelegate.isNetworkReachable() == true
         {
-            Twitter.sharedInstance().logIn(completion: { (session, error) in
+            TWTRTwitter.sharedInstance().logIn(completion: { (session, error) in
               if (session != nil)
               {
                 let username = session?.userName
