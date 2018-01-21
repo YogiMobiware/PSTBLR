@@ -43,6 +43,8 @@ class Constants: NSObject {
 
     static let placedHolderTextFieldColor : UIColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
 
+    static let animationDuration: TimeInterval = 0.15
+    
     static func textFieldPalceHolderColor(placeHolderText : String) ->NSAttributedString
     {
         return NSAttributedString(string:placeHolderText, attributes: [NSAttributedStringKey.foregroundColor: Constants.placedHolderTextFieldColor])

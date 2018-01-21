@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44A77C1D2014C84300E879D7 /* PBUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A77C1C2014C84300E879D7 /* PBUtility.swift */; };
 		846ED2882011D759004749ED /* PBServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846ED2872011D759004749ED /* PBServiceHelper.swift */; };
 		846ED28A2011DAB1004749ED /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846ED2892011DAB1004749ED /* Urls.swift */; };
 		846ED2942011EFEA004749ED /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 846ED2932011EFEA004749ED /* MBProgressHUD.m */; };
@@ -55,6 +56,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44A77C1C2014C84300E879D7 /* PBUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBUtility.swift; sourceTree = "<group>"; };
+		44A77C242014C95100E879D7 /* PBCaptureMediaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBCaptureMediaVC.swift; sourceTree = "<group>"; };
+		44A77C252014C95100E879D7 /* PBCaptureMediaVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBCaptureMediaVC.xib; sourceTree = "<group>"; };
 		846ED2872011D759004749ED /* PBServiceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBServiceHelper.swift; sourceTree = "<group>"; };
 		846ED2892011DAB1004749ED /* Urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
 		846ED2912011EFE8004749ED /* Postablur-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Postablur-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -129,6 +133,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		44A77C232014C95100E879D7 /* CreatePost */ = {
+			isa = PBXGroup;
+			children = (
+				44A77C242014C95100E879D7 /* PBCaptureMediaVC.swift */,
+				44A77C252014C95100E879D7 /* PBCaptureMediaVC.xib */,
+			);
+			path = CreatePost;
+			sourceTree = "<group>";
+		};
 		62F0BB0A1D89DFF54FAC2EF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +214,7 @@
 		846ED2952011F1B4004749ED /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				44A77C1C2014C84300E879D7 /* PBUtility.swift */,
 				846ED2962011F1E2004749ED /* ValidationHelper.swift */,
 			);
 			path = Helpers;
@@ -267,6 +281,7 @@
 		B0F4CA6E200F20A400F39409 /* Postablur */ = {
 			isa = PBXGroup;
 			children = (
+				44A77C232014C95100E879D7 /* CreatePost */,
 				846ED2952011F1B4004749ED /* Helpers */,
 				846ED2902011EFBC004749ED /* ThirdPartyLibraries */,
 				846ED2862011D6BE004749ED /* PBServiceClass */,
@@ -400,7 +415,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3469C9C1FBA8270DDCF99FE1 /* [CP] Embed Pods Frameworks */ = {
@@ -471,6 +486,7 @@
 				B00D05D220137BBD0031CE82 /* PBShareLimitCell.swift in Sources */,
 				B0F4CA87200F24DC00F39409 /* NavConstants.swift in Sources */,
 				B0A4368C20109F7600DDBA7C /* PBLogoCell.swift in Sources */,
+				44A77C1D2014C84300E879D7 /* PBUtility.swift in Sources */,
 				B00D05D620137BE20031CE82 /* PBDollarLimitCell.swift in Sources */,
 				846ED28A2011DAB1004749ED /* Urls.swift in Sources */,
 				B0A436A12010E40900DDBA7C /* PBSignUPVC.swift in Sources */,
@@ -612,6 +628,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T88LP7675G;
 				INFOPLIST_FILE = Postablur/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.postblur.xyz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -633,6 +650,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T88LP7675G;
 				INFOPLIST_FILE = Postablur/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.postblur.xyz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
