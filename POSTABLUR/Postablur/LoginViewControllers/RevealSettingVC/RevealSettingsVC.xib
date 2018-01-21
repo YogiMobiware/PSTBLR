@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Black</string>
+            <string>Avenir-Book</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RevealSettingsVC" customModule="Postablur" customModuleProvider="target">
+            <connections>
+                <outlet property="revealSettingsTableView" destination="IKz-7G-RlW" id="GDE-yb-dih"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1Y-YL-wU6">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REVEAL SETTINGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RT9-Nk-L1b">
+                            <rect key="frame" x="67" y="51" width="296" height="27"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="296" id="7eH-Av-Ii2"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="24"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nck-n6-6ID">
+                            <rect key="frame" x="17" y="43" width="42" height="42"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="5R5-v8-t9n"/>
+                                <constraint firstAttribute="width" constant="42" id="Sc9-Ve-2Mk"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="keyboardBackspace"/>
+                            <connections>
+                                <action selector="backBtnAction:" destination="-1" eventType="touchUpInside" id="fDJ-Xa-7CU"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Nck-n6-6ID" firstAttribute="top" secondItem="F1Y-YL-wU6" secondAttribute="top" constant="43" id="GwD-7H-Rha"/>
+                        <constraint firstItem="RT9-Nk-L1b" firstAttribute="height" secondItem="F1Y-YL-wU6" secondAttribute="height" multiplier="27:103" id="Xwv-WJ-f9n"/>
+                        <constraint firstItem="RT9-Nk-L1b" firstAttribute="centerX" secondItem="F1Y-YL-wU6" secondAttribute="centerX" constant="8" id="daJ-Oq-yG9"/>
+                        <constraint firstItem="Nck-n6-6ID" firstAttribute="leading" secondItem="F1Y-YL-wU6" secondAttribute="leading" constant="17" id="lPL-rQ-JBp"/>
+                        <constraint firstItem="RT9-Nk-L1b" firstAttribute="centerY" secondItem="Nck-n6-6ID" secondAttribute="centerY" id="oll-fx-2Of"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlurPicEnlarged" translatesAutoresizingMaskIntoConstraints="NO" id="bPS-ei-l6P">
+                    <rect key="frame" x="0.0" y="102" width="414" height="369"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IKz-7G-RlW">
+                    <rect key="frame" x="0.0" y="471" width="414" height="202"/>
+                    <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="oLf-6g-jm5"/>
+                        <outlet property="delegate" destination="-1" id="L9F-Ue-fxZ"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heF-Ek-01F">
+                    <rect key="frame" x="0.0" y="673" width="414" height="62.5"/>
+                    <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="40"/>
+                    <state key="normal" title="NEXT">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="heF-Ek-01F" firstAttribute="top" secondItem="IKz-7G-RlW" secondAttribute="bottom" id="0NK-RO-5Cv"/>
+                <constraint firstItem="IKz-7G-RlW" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="202:736" id="1xy-hT-PSQ"/>
+                <constraint firstItem="bPS-ei-l6P" firstAttribute="top" secondItem="F1Y-YL-wU6" secondAttribute="bottom" constant="-1" id="7Tm-q1-lEn"/>
+                <constraint firstItem="bPS-ei-l6P" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HRX-gH-hY3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="F1Y-YL-wU6" secondAttribute="top" constant="20" id="LSQ-al-yRJ"/>
+                <constraint firstItem="IKz-7G-RlW" firstAttribute="top" secondItem="bPS-ei-l6P" secondAttribute="bottom" id="Ne0-h1-Ept"/>
+                <constraint firstItem="F1Y-YL-wU6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OM4-w4-x86"/>
+                <constraint firstItem="F1Y-YL-wU6" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="103:736" id="SIl-sR-ZtE"/>
+                <constraint firstItem="bPS-ei-l6P" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="369:736" id="Sgc-mT-CgO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IKz-7G-RlW" secondAttribute="trailing" id="T3l-Zc-fHK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bPS-ei-l6P" secondAttribute="trailing" id="U65-N6-ESd"/>
+                <constraint firstItem="heF-Ek-01F" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="62:736" id="Y5g-RU-v5t"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="heF-Ek-01F" secondAttribute="trailing" id="Ytc-0g-tsW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="F1Y-YL-wU6" secondAttribute="trailing" id="csq-Vu-j0N"/>
+                <constraint firstItem="IKz-7G-RlW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="h8u-BG-z5Q"/>
+                <constraint firstItem="heF-Ek-01F" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pXC-V0-ixb"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="BlurPicEnlarged" width="414" height="369"/>
+        <image name="keyboardBackspace" width="24" height="24"/>
+    </resources>
+</document>

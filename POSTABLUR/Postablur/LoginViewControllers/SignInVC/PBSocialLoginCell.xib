@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Arial.ttf">
+            <string>ArialMT</string>
+        </array>
+        <array key="ArialBold.ttf">
+            <string>Arial-BoldMT</string>
+        </array>
+        <array key="Avenir.ttc">
+            <string>Avenir-Black</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PBSocialLoginCellID" id="KGk-i7-Jjw" customClass="PBSocialLoginCell" customModule="Postablur" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="149.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30c-Ql-qfZ">
+                        <rect key="frame" x="93" y="10" width="229" height="35"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="229" id="MvL-SW-4Zt"/>
+                            <constraint firstAttribute="height" constant="35" id="Yo0-Gy-Fig"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
+                        <state key="normal" title="CREATE ACCOUNT">
+                            <color key="titleColor" red="0.95882564780000001" green="0.96892756219999998" blue="0.98468595739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="createButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="S2R-66-9Ds"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCh-zX-P0k">
+                        <rect key="frame" x="93" y="55" width="229" height="35"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitterIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nAb-bj-JsS">
+                                <rect key="frame" x="8" y="8" width="23" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="23" id="I4S-bg-vIr"/>
+                                    <constraint firstAttribute="height" constant="19" id="QWy-dw-2gZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sing in with" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZ0-xX-bne">
+                                <rect key="frame" x="50" y="7" width="80" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="njz-1U-gMl"/>
+                                    <constraint firstAttribute="width" constant="80" id="xPN-qp-UFG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TWITTER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pC-Re-1LJ">
+                                <rect key="frame" x="127" y="7" width="65" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="6Uo-SB-xH0"/>
+                                    <constraint firstAttribute="height" constant="21" id="cYL-8q-9Bu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAx-9b-xQj" userLabel="TwitterBtn">
+                                <rect key="frame" x="0.0" y="0.0" width="229" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <inset key="imageEdgeInsets" minX="-18" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="twitterButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="35x-fD-aOu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.33279931550000003" green="0.67445260289999998" blue="0.9363663793" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cZ0-xX-bne" firstAttribute="centerY" secondItem="ZCh-zX-P0k" secondAttribute="centerY" id="7Tk-mm-Z7q"/>
+                            <constraint firstItem="EAx-9b-xQj" firstAttribute="top" secondItem="ZCh-zX-P0k" secondAttribute="top" id="942-e5-FxK"/>
+                            <constraint firstItem="nAb-bj-JsS" firstAttribute="leading" secondItem="ZCh-zX-P0k" secondAttribute="leading" constant="8" id="9yM-VF-j0a"/>
+                            <constraint firstItem="nAb-bj-JsS" firstAttribute="top" secondItem="ZCh-zX-P0k" secondAttribute="top" constant="8" id="Lok-hW-dbM"/>
+                            <constraint firstAttribute="trailing" secondItem="EAx-9b-xQj" secondAttribute="trailing" id="Pt1-Ui-DYg"/>
+                            <constraint firstItem="cZ0-xX-bne" firstAttribute="leading" secondItem="nAb-bj-JsS" secondAttribute="trailing" constant="19" id="c3k-Ri-Rko"/>
+                            <constraint firstItem="EAx-9b-xQj" firstAttribute="width" secondItem="ZCh-zX-P0k" secondAttribute="width" id="dMK-RG-S6x"/>
+                            <constraint firstItem="EAx-9b-xQj" firstAttribute="height" secondItem="ZCh-zX-P0k" secondAttribute="height" id="fHk-Lp-g1s"/>
+                            <constraint firstItem="EAx-9b-xQj" firstAttribute="leading" secondItem="ZCh-zX-P0k" secondAttribute="leading" id="iUr-f6-Pzr"/>
+                            <constraint firstItem="0pC-Re-1LJ" firstAttribute="leading" secondItem="cZ0-xX-bne" secondAttribute="trailing" constant="-3" id="tcf-Hf-Fcc"/>
+                            <constraint firstItem="0pC-Re-1LJ" firstAttribute="centerY" secondItem="ZCh-zX-P0k" secondAttribute="centerY" id="wDh-Z2-vKT"/>
+                        </constraints>
+                    </view>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4XB-GN-K9E">
+                        <rect key="frame" x="93" y="100" width="229" height="35"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebookIcon" translatesAutoresizingMaskIntoConstraints="NO" id="IuJ-nx-ZIe">
+                                <rect key="frame" x="8" y="5" width="11" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="11" id="Wko-sj-MSC"/>
+                                    <constraint firstAttribute="height" constant="24" id="nHg-4W-DlE"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sing in with" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmy-wm-THP">
+                                <rect key="frame" x="50" y="7" width="80" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="9Nm-TM-CSs"/>
+                                    <constraint firstAttribute="height" constant="21" id="WsP-HP-dWc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FACEBOOK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZk-0R-zxu">
+                                <rect key="frame" x="127" y="7" width="83" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="15C-c1-Kjc"/>
+                                    <constraint firstAttribute="width" constant="83" id="lX6-zr-pVt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IiS-nR-jEl" userLabel="FaceBookBtn">
+                                <rect key="frame" x="0.0" y="0.0" width="229" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <inset key="imageEdgeInsets" minX="-18" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="faceBookButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="15j-bS-KZN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.23283883929999999" green="0.34613806009999998" blue="0.60090619329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mmy-wm-THP" firstAttribute="leading" secondItem="4XB-GN-K9E" secondAttribute="leading" constant="50" id="0Ns-EI-XfU"/>
+                            <constraint firstItem="IuJ-nx-ZIe" firstAttribute="top" secondItem="4XB-GN-K9E" secondAttribute="top" constant="5" id="Zbd-lB-dLb"/>
+                            <constraint firstItem="xZk-0R-zxu" firstAttribute="leading" secondItem="mmy-wm-THP" secondAttribute="trailing" constant="-3" id="aqq-V8-tec"/>
+                            <constraint firstItem="IuJ-nx-ZIe" firstAttribute="leading" secondItem="4XB-GN-K9E" secondAttribute="leading" constant="8" id="fDs-2A-0PA"/>
+                            <constraint firstItem="xZk-0R-zxu" firstAttribute="centerY" secondItem="4XB-GN-K9E" secondAttribute="centerY" id="vcg-NV-kqn"/>
+                            <constraint firstItem="mmy-wm-THP" firstAttribute="centerY" secondItem="4XB-GN-K9E" secondAttribute="centerY" id="ygm-TC-rla"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="ZCh-zX-P0k" firstAttribute="width" secondItem="30c-Ql-qfZ" secondAttribute="width" id="1og-nK-h9W"/>
+                    <constraint firstItem="ZCh-zX-P0k" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="4OL-q4-BY9"/>
+                    <constraint firstItem="30c-Ql-qfZ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="6rV-8R-O7z"/>
+                    <constraint firstItem="4XB-GN-K9E" firstAttribute="height" secondItem="ZCh-zX-P0k" secondAttribute="height" id="9MS-Wt-Ymk"/>
+                    <constraint firstItem="4XB-GN-K9E" firstAttribute="top" secondItem="ZCh-zX-P0k" secondAttribute="bottom" constant="10" id="CjI-by-zD2"/>
+                    <constraint firstItem="ZCh-zX-P0k" firstAttribute="height" secondItem="30c-Ql-qfZ" secondAttribute="height" id="PbU-Pt-9sB"/>
+                    <constraint firstItem="4XB-GN-K9E" firstAttribute="centerX" secondItem="ZCh-zX-P0k" secondAttribute="centerX" id="TBu-oc-Lmf"/>
+                    <constraint firstItem="30c-Ql-qfZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="eSg-3L-nyB"/>
+                    <constraint firstItem="4XB-GN-K9E" firstAttribute="width" secondItem="ZCh-zX-P0k" secondAttribute="width" id="hlJ-ys-jyb"/>
+                    <constraint firstItem="ZCh-zX-P0k" firstAttribute="top" secondItem="30c-Ql-qfZ" secondAttribute="bottom" constant="10" id="p8g-jk-h5q"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="createButton" destination="30c-Ql-qfZ" id="seS-wm-U3n"/>
+                <outlet property="twitterButton" destination="EAx-9b-xQj" id="NcF-hO-fUI"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="facebookIcon" width="15" height="30"/>
+        <image name="twitterIcon" width="30" height="25"/>
+    </resources>
+</document>

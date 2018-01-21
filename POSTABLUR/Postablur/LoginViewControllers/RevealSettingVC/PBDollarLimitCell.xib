@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ArialBold.ttf">
+            <string>Arial-BoldMT</string>
+        </array>
+        <array key="Avenir.ttc">
+            <string>Avenir-Black</string>
+            <string>Avenir-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PBDollarLimitCellID" id="KGk-i7-Jjw" customClass="PBDollarLimitCell" customModule="Postablur" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="77"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="76.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74Y-HC-XmM">
+                        <rect key="frame" x="0.0" y="-1" width="414" height="77"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET A DOLLAR LIMIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOJ-VM-8bP">
+                                <rect key="frame" x="0.0" y="30" width="193" height="18"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="162-Nb-YJR">
+                                <rect key="frame" x="204" y="15" width="46" height="46"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="$1">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="oneShareBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5Le-xe-hew"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3Y-hL-iEo">
+                                <rect key="frame" x="275" y="15" width="46" height="46"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="$5">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fiveLikeBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rW2-RC-8M9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnI-gH-CNV">
+                                <rect key="frame" x="347" y="15" width="46" height="46"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="$10">
+                                    <color key="titleColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tenLikeBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="RuY-gs-OaA"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE AMOUNT OF LIKES NEEDED TO REVEAL YOUR POST." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7D6-IF-rXj">
+                                <rect key="frame" x="152" y="67" width="241" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="qCz-AA-hqQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="9"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GnI-gH-CNV" firstAttribute="centerY" secondItem="74Y-HC-XmM" secondAttribute="centerY" id="1mr-gH-gnd"/>
+                            <constraint firstItem="GnI-gH-CNV" firstAttribute="height" secondItem="74Y-HC-XmM" secondAttribute="height" multiplier="46:77" id="7RE-Px-yyi"/>
+                            <constraint firstItem="162-Nb-YJR" firstAttribute="width" secondItem="74Y-HC-XmM" secondAttribute="width" multiplier="46:414" id="BYF-P5-d1q"/>
+                            <constraint firstItem="IOJ-VM-8bP" firstAttribute="centerY" secondItem="74Y-HC-XmM" secondAttribute="centerY" id="CsB-Rk-CuP"/>
+                            <constraint firstItem="GnI-gH-CNV" firstAttribute="width" secondItem="74Y-HC-XmM" secondAttribute="width" multiplier="46:414" id="PFI-rQ-ReU"/>
+                            <constraint firstItem="162-Nb-YJR" firstAttribute="height" secondItem="74Y-HC-XmM" secondAttribute="height" multiplier="46:77" id="PTS-nB-MQI"/>
+                            <constraint firstItem="M3Y-hL-iEo" firstAttribute="leading" secondItem="162-Nb-YJR" secondAttribute="trailing" constant="25" id="TPX-xY-w27"/>
+                            <constraint firstItem="M3Y-hL-iEo" firstAttribute="centerY" secondItem="74Y-HC-XmM" secondAttribute="centerY" id="f8Z-Lg-y4b"/>
+                            <constraint firstItem="7D6-IF-rXj" firstAttribute="top" secondItem="GnI-gH-CNV" secondAttribute="bottom" constant="6" id="irC-Kb-fqf"/>
+                            <constraint firstItem="162-Nb-YJR" firstAttribute="centerY" secondItem="74Y-HC-XmM" secondAttribute="centerY" id="lBm-cd-sSH"/>
+                            <constraint firstItem="IOJ-VM-8bP" firstAttribute="leading" secondItem="74Y-HC-XmM" secondAttribute="leading" id="oeC-uu-yUb"/>
+                            <constraint firstItem="7D6-IF-rXj" firstAttribute="trailing" secondItem="GnI-gH-CNV" secondAttribute="trailing" id="q33-Hl-h5b"/>
+                            <constraint firstItem="M3Y-hL-iEo" firstAttribute="width" secondItem="74Y-HC-XmM" secondAttribute="width" multiplier="46:414" id="rNi-Lj-Y6B"/>
+                            <constraint firstItem="162-Nb-YJR" firstAttribute="leading" secondItem="IOJ-VM-8bP" secondAttribute="trailing" constant="11" id="t3c-0F-kNW"/>
+                            <constraint firstItem="M3Y-hL-iEo" firstAttribute="height" secondItem="74Y-HC-XmM" secondAttribute="height" multiplier="46:77" id="voB-Un-VjK"/>
+                            <constraint firstItem="GnI-gH-CNV" firstAttribute="leading" secondItem="M3Y-hL-iEo" secondAttribute="trailing" constant="26" id="w2m-XI-FTs"/>
+                            <constraint firstAttribute="trailing" secondItem="GnI-gH-CNV" secondAttribute="trailing" constant="21" id="yRw-yY-tCJ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="74Y-HC-XmM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="-1" id="A9a-ig-9CY"/>
+                    <constraint firstItem="74Y-HC-XmM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gn2-Js-ZWU"/>
+                    <constraint firstAttribute="trailing" secondItem="74Y-HC-XmM" secondAttribute="trailing" id="hRG-cv-Edl"/>
+                    <constraint firstItem="74Y-HC-XmM" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="ksu-aJ-Zgi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dollarLabel" destination="IOJ-VM-8bP" id="pP6-1X-sX5"/>
+                <outlet property="fiveDollarButton" destination="M3Y-hL-iEo" id="JiV-mj-X8P"/>
+                <outlet property="oneDollarButton" destination="162-Nb-YJR" id="N2c-jE-Zcz"/>
+                <outlet property="tenDollarButton" destination="GnI-gH-CNV" id="35t-KQ-O3e"/>
+            </connections>
+            <point key="canvasLocation" x="26" y="52.5"/>
+        </tableViewCell>
+    </objects>
+</document>

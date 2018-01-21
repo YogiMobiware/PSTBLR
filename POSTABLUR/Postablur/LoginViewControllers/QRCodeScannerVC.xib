@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ArialBold.ttf">
+            <string>Arial-BoldMT</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QRCodeScannerVC" customModule="Postablur" customModuleProvider="target">
+            <connections>
+                <outlet property="nameLbl" destination="Wmj-mo-w4i" id="T2o-Bt-OaL"/>
+                <outlet property="qrCodeLbl" destination="ZvP-Jm-on6" id="WKJ-uI-3ao"/>
+                <outlet property="scannerImage" destination="OMq-u4-mo3" id="EJM-wQ-Qga"/>
+                <outlet property="scansCountLbl" destination="blf-BX-l7G" id="q8K-be-C62"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="POn-Wh-d5j">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWhiteIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Yvu-4b-I9d">
+                            <rect key="frame" x="111" y="32.5" width="209" height="58"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="Yvu-4b-I9d" firstAttribute="centerY" secondItem="POn-Wh-d5j" secondAttribute="centerY" constant="10" id="2i5-Jr-hfX"/>
+                        <constraint firstItem="Yvu-4b-I9d" firstAttribute="centerX" secondItem="POn-Wh-d5j" secondAttribute="centerX" constant="8" id="IDa-yG-5GR"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVu-bd-IDE">
+                    <rect key="frame" x="0.0" y="103" width="414" height="148"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconGreen" translatesAutoresizingMaskIntoConstraints="NO" id="ZcH-zK-lIB">
+                            <rect key="frame" x="178" y="8" width="59" height="58"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZvP-Jm-on6">
+                            <rect key="frame" x="0.0" y="60" width="414" height="68"/>
+                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="48"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@concurtakiss" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wmj-mo-w4i">
+                            <rect key="frame" x="0.0" y="128" width="414" height="26"/>
+                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                            <color key="textColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="ZcH-zK-lIB" firstAttribute="centerX" secondItem="JVu-bd-IDE" secondAttribute="centerX" id="1cE-ct-N5y"/>
+                        <constraint firstItem="ZvP-Jm-on6" firstAttribute="height" secondItem="JVu-bd-IDE" secondAttribute="height" multiplier="68:148" id="6Hc-dH-yMN"/>
+                        <constraint firstItem="Wmj-mo-w4i" firstAttribute="height" secondItem="JVu-bd-IDE" secondAttribute="height" multiplier="26:148" id="IDs-Bo-wvw"/>
+                        <constraint firstAttribute="trailing" secondItem="Wmj-mo-w4i" secondAttribute="trailing" id="LTj-CJ-afs"/>
+                        <constraint firstItem="ZcH-zK-lIB" firstAttribute="height" secondItem="JVu-bd-IDE" secondAttribute="height" multiplier="58:148" id="UvL-Zl-wTp"/>
+                        <constraint firstItem="ZvP-Jm-on6" firstAttribute="top" secondItem="ZcH-zK-lIB" secondAttribute="bottom" constant="-6" id="VKN-uR-tTp"/>
+                        <constraint firstItem="ZcH-zK-lIB" firstAttribute="width" secondItem="JVu-bd-IDE" secondAttribute="width" multiplier="59:414" id="cap-wF-7e7"/>
+                        <constraint firstItem="ZcH-zK-lIB" firstAttribute="top" secondItem="JVu-bd-IDE" secondAttribute="top" constant="8" id="fxS-NX-ceO"/>
+                        <constraint firstAttribute="trailing" secondItem="ZvP-Jm-on6" secondAttribute="trailing" id="mX0-7p-fuF"/>
+                        <constraint firstItem="ZvP-Jm-on6" firstAttribute="leading" secondItem="JVu-bd-IDE" secondAttribute="leading" id="tln-K0-38A"/>
+                        <constraint firstItem="Wmj-mo-w4i" firstAttribute="top" secondItem="ZvP-Jm-on6" secondAttribute="bottom" id="vC9-By-PxC"/>
+                        <constraint firstItem="Wmj-mo-w4i" firstAttribute="leading" secondItem="JVu-bd-IDE" secondAttribute="leading" id="zRJ-4A-EeH"/>
+                    </constraints>
+                </view>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrCode" translatesAutoresizingMaskIntoConstraints="NO" id="OMq-u4-mo3">
+                    <rect key="frame" x="37" y="265" width="341" height="341"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="777 SCANS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blf-BX-l7G">
+                    <rect key="frame" x="0.0" y="621" width="414" height="26"/>
+                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="JVu-bd-IDE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3i8-9J-blO"/>
+                <constraint firstItem="OMq-u4-mo3" firstAttribute="top" secondItem="JVu-bd-IDE" secondAttribute="bottom" constant="14" id="5Zb-8d-YaK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="POn-Wh-d5j" secondAttribute="top" constant="20" id="5t6-xK-oLY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="POn-Wh-d5j" secondAttribute="trailing" id="9LL-hJ-X8j"/>
+                <constraint firstItem="blf-BX-l7G" firstAttribute="top" secondItem="OMq-u4-mo3" secondAttribute="bottom" constant="15" id="A28-I9-y0G"/>
+                <constraint firstItem="OMq-u4-mo3" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="341:414" id="Jwi-0C-sG6"/>
+                <constraint firstItem="JVu-bd-IDE" firstAttribute="top" secondItem="POn-Wh-d5j" secondAttribute="bottom" id="KAM-7e-GfF"/>
+                <constraint firstItem="OMq-u4-mo3" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Nap-Ib-emR"/>
+                <constraint firstItem="POn-Wh-d5j" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Q4I-FH-4HV"/>
+                <constraint firstItem="POn-Wh-d5j" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="103:736" id="VLB-UP-z0X"/>
+                <constraint firstItem="OMq-u4-mo3" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="341:736" id="j9k-bc-KDL"/>
+                <constraint firstItem="blf-BX-l7G" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="26:736" id="jZi-Md-FzQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JVu-bd-IDE" secondAttribute="trailing" id="nE7-Td-CZu"/>
+                <constraint firstItem="blf-BX-l7G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="oZX-a0-l5E"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="blf-BX-l7G" secondAttribute="trailing" id="riJ-hH-2gi"/>
+                <constraint firstItem="JVu-bd-IDE" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="148:736" id="tQN-gL-T07"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="iconGreen" width="59" height="58"/>
+        <image name="logoWhiteIcon" width="209" height="58"/>
+        <image name="qrCode" width="341" height="341"/>
+    </resources>
+</document>

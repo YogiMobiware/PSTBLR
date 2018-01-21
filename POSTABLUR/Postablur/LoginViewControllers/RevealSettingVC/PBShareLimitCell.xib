@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ArialBold.ttf">
+            <string>Arial-BoldMT</string>
+        </array>
+        <array key="Avenir.ttc">
+            <string>Avenir-Black</string>
+            <string>Avenir-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PBShareLimitCellID" id="KGk-i7-Jjw" customClass="PBShareLimitCell" customModule="Postablur" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="77"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="76.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riJ-Rf-P6h">
+                        <rect key="frame" x="0.0" y="-1" width="414" height="77"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET A SHARE LIMIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qk-iA-oqT">
+                                <rect key="frame" x="0.0" y="30" width="193" height="18"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2K-oi-gyg">
+                                <rect key="frame" x="204" y="16" width="46" height="46"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="1">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="oneShareBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="yjm-YS-Oas"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b33-aq-bYC">
+                                <rect key="frame" x="275" y="16" width="46" height="46"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="5">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fiveLikeBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VY1-yl-s1n"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLt-Tk-X2Y">
+                                <rect key="frame" x="347" y="15.5" width="46" height="46"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="10">
+                                    <color key="titleColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tenLikeBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8jd-sa-cxu"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE AMOUNT OF LIKES NEEDED TO REVEAL YOUR POST." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMC-QO-Ucb">
+                                <rect key="frame" x="130" y="67" width="263" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="263" id="SYI-x6-RJg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="9"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="b2K-oi-gyg" firstAttribute="leading" secondItem="8qk-iA-oqT" secondAttribute="trailing" constant="11" id="05A-L8-uJm"/>
+                            <constraint firstItem="b2K-oi-gyg" firstAttribute="height" secondItem="riJ-Rf-P6h" secondAttribute="height" multiplier="46:77" id="2lS-ei-USU"/>
+                            <constraint firstItem="8qk-iA-oqT" firstAttribute="centerY" secondItem="riJ-Rf-P6h" secondAttribute="centerY" id="3Ls-o6-FBr"/>
+                            <constraint firstItem="uMC-QO-Ucb" firstAttribute="trailing" secondItem="iLt-Tk-X2Y" secondAttribute="trailing" id="3SY-Kt-03I"/>
+                            <constraint firstItem="b2K-oi-gyg" firstAttribute="centerY" secondItem="riJ-Rf-P6h" secondAttribute="centerY" id="7yX-zZ-If4"/>
+                            <constraint firstItem="b33-aq-bYC" firstAttribute="leading" secondItem="b2K-oi-gyg" secondAttribute="trailing" constant="25" id="DY8-ke-WaV"/>
+                            <constraint firstItem="iLt-Tk-X2Y" firstAttribute="width" secondItem="riJ-Rf-P6h" secondAttribute="width" multiplier="46:414" id="GRQ-wC-ODL"/>
+                            <constraint firstItem="8qk-iA-oqT" firstAttribute="leading" secondItem="riJ-Rf-P6h" secondAttribute="leading" id="JFF-UR-lgn"/>
+                            <constraint firstItem="b2K-oi-gyg" firstAttribute="width" secondItem="riJ-Rf-P6h" secondAttribute="width" multiplier="46:414" id="MJh-KJ-ERR"/>
+                            <constraint firstItem="iLt-Tk-X2Y" firstAttribute="centerY" secondItem="riJ-Rf-P6h" secondAttribute="centerY" id="MTg-eT-1Ix"/>
+                            <constraint firstItem="b33-aq-bYC" firstAttribute="height" secondItem="riJ-Rf-P6h" secondAttribute="height" multiplier="46:77" id="V08-AY-CXl"/>
+                            <constraint firstItem="iLt-Tk-X2Y" firstAttribute="leading" secondItem="b33-aq-bYC" secondAttribute="trailing" constant="26" id="ZvO-rY-5qb"/>
+                            <constraint firstItem="b33-aq-bYC" firstAttribute="width" secondItem="riJ-Rf-P6h" secondAttribute="width" multiplier="46:414" id="ib0-2m-TAG"/>
+                            <constraint firstItem="b33-aq-bYC" firstAttribute="centerY" secondItem="riJ-Rf-P6h" secondAttribute="centerY" id="mlA-Nq-7Pc"/>
+                            <constraint firstAttribute="trailing" secondItem="iLt-Tk-X2Y" secondAttribute="trailing" constant="21" id="s9b-sI-HJr"/>
+                            <constraint firstItem="iLt-Tk-X2Y" firstAttribute="height" secondItem="riJ-Rf-P6h" secondAttribute="height" multiplier="46:77" id="uYZ-LJ-jRR"/>
+                            <constraint firstItem="uMC-QO-Ucb" firstAttribute="top" secondItem="iLt-Tk-X2Y" secondAttribute="bottom" constant="5.5" id="vSh-rF-zx3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="riJ-Rf-P6h" secondAttribute="trailing" id="Dec-kX-aME"/>
+                <constraint firstItem="riJ-Rf-P6h" firstAttribute="height" secondItem="KGk-i7-Jjw" secondAttribute="height" id="Pyk-yH-yuk"/>
+                <constraint firstItem="riJ-Rf-P6h" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" id="Spp-lJ-fg9"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="top" secondItem="riJ-Rf-P6h" secondAttribute="top" constant="1" id="dCV-xs-LsD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="fiveShareButton" destination="b33-aq-bYC" id="9J8-2A-Cdl"/>
+                <outlet property="oneShareButton" destination="b2K-oi-gyg" id="hdF-dV-eyO"/>
+                <outlet property="shareLabel" destination="8qk-iA-oqT" id="m4g-A2-7jf"/>
+                <outlet property="tenShareButton" destination="iLt-Tk-X2Y" id="iuO-Mu-evT"/>
+            </connections>
+            <point key="canvasLocation" x="33" y="133.5"/>
+        </tableViewCell>
+    </objects>
+</document>
