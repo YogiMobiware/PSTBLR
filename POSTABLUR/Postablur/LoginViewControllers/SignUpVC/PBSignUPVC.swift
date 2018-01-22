@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+
 
 class PBSignUPVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate
 {
@@ -14,8 +16,9 @@ class PBSignUPVC: UIViewController,UIImagePickerControllerDelegate,UINavigationC
     @IBOutlet weak var signUpTableView: UITableView!
     var imageWidth : CGFloat!
     var imageHeight : CGFloat!
-    
     var appdelegate : AppDelegate!
+    var uploadImageType : String?
+    var imageCell : AddProfilePhotoCell!
     
     override func viewDidLoad()
     {
@@ -90,56 +93,56 @@ class PBSignUPVC: UIViewController,UIImagePickerControllerDelegate,UINavigationC
         dismiss(animated: true, completion: nil)
     }
     
-    
-    
     func uploadUserProfileImageToServer(selectedImage : UIImage)
     {
-        var request  = URLRequest(url: URL(string: Urls.uploadImageUrl)!)
-        request.httpMethod = "POST"
-        let boundary = "Boundary-\(UUID().uuidString)"
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.setValue(Urls.AccessToken, forHTTPHeaderField: "access_token")
-        
-        
-        request.httpBody = createBody(boundary: boundary,
-                                      data: UIImageJPEGRepresentation(selectedImage, 0.7)!,
-                                      mimeType: "image/jpg",
-                                      filename: "image.jpg")
-        
-        // Make an asynchronous call so as not to hold up other processes.
-        NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main, completionHandler: {(response, dataObject, error) in
-            if let apiError = error {
-                // aHandler?(obj: error, success: false)
-            } else {
-                // aHandler?(obj: dataObject, success: true)
+    let parameters : [String: String] = ["Mediatype"  : "1"]
+    
+    Alamofire.upload(multipartFormData: { (multipartFormData) in
+        multipartFormData.append(UIImageJPEGRepresentation(selectedImage, 0.5)!, withName: "photo_path", fileName: "PostaBlur.jpeg", mimeType: "image/jpeg")
+            for (key, value) in parameters {
+                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+            }
+        }, to:Urls.uploadImageUrl)
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                
+                upload.uploadProgress(closure: { (Progress) in
+                    print("Upload Progress: \(Progress.fractionCompleted)")
+                    self.appdelegate.showActivityIndictor(titleString: "Uploading...", subTitleString: "")
+
+                })
+                
+                upload.responseJSON { response in
+                    self.appdelegate.hideActivityIndicator()
+                    self.imageCell.selectedImageViewType(image: selectedImage, imageType: self.uploadImageType!)
+                    if let JSON = response.result.value {
+                        print("JSON: \(JSON)")
+                        if let responseDict = JSON as? [String : AnyObject]
+                        {
+                            if let returnUrl = responseDict["RetrurnUrl"] as! String!
+                            {
+                                 UserDefaults.standard.setValue(returnUrl, forKey: Constants.kUserProfilePicURL)
+                                UserDefaults.standard.synchronize()
+                            }
+                        }
+                        else
+                        {
+                            let responseDict = JSON as? [String : AnyObject]
+                            self.appdelegate.alert(vc: self, message: responseDict!["StatusMsg"] as! String!, title: "Error Uploading")
+
+                        }
+                    }
+                }
+                
+            case .failure(let encodingError):
+                //self.delegate?.showFailAlert()
+                print(encodingError)
+                self.appdelegate.hideActivityIndicator()
+
             }
             
-        })
-        
-    }
-    func createBody(boundary: String,
-                    data: Data,
-                    mimeType: String,
-                    filename: String) -> Data {
-        let body = NSMutableData()
-        
-        let boundaryPrefix = "--\(boundary)\r\n"
-        
-        body.appendString(boundaryPrefix)
-        body.appendString("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n")
-        body.appendString("Content-Type: \(mimeType)\r\n\r\n")
-        body.appendString("imageData : \(data)")
-        body.appendString("\r\n")
-        body.appendString("--".appending(boundary.appending("--")))
-        
-        return body as Data
-    }
-    
-}
-extension NSMutableData {
-    func appendString(_ string: String) {
-        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
-        append(data!)
+        }
     }
 }
 
@@ -199,6 +202,8 @@ extension PBSignUPVC : UITableViewDataSource, UITableViewDelegate
             
         case 1:
             let cell : AddProfilePhotoCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.AddProfilePhotoCellIdentifier.rawValue, for: indexPath) as! AddProfilePhotoCell
+            //Taking reference to pass parameter to Cell Class
+            imageCell = cell
             cell.delegate = self
             return cell
             
@@ -240,6 +245,7 @@ extension PBSignUPVC : AddProfilePhotoCellDelegate
 {
     func pbCaptureAPhotoImageDidTap(capturedPhotoWidth: CGFloat,capturedPhotoHeight: CGFloat)
     {
+        self.uploadImageType = UploadedImageType.CapturedPhotoFromCamera.rawValue
         self.imageWidth = capturedPhotoWidth
         self.imageHeight = capturedPhotoHeight
         let pbImagePickerController = UIImagePickerController()
@@ -251,6 +257,7 @@ extension PBSignUPVC : AddProfilePhotoCellDelegate
     
     func pbUploadAPhotoImageDidTap(uploadPhotoWidth: CGFloat, uploadPhotoHeight: CGFloat)
     {
+        self.uploadImageType = UploadedImageType.UploadedPhotoFromLibrary.rawValue
         self.imageWidth = uploadPhotoWidth
         self.imageHeight = uploadPhotoHeight
         let pbImagePickerController = UIImagePickerController()

@@ -50,6 +50,16 @@
 		B0A436A62010E61100DDBA7C /* PBLoginOptionsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A436A42010E61100DDBA7C /* PBLoginOptionsVC.xib */; };
 		B0ECE20C20135D7B004EE062 /* QRCodeScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECE20A20135D7B004EE062 /* QRCodeScannerVC.swift */; };
 		B0ECE20D20135D7B004EE062 /* QRCodeScannerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0ECE20B20135D7B004EE062 /* QRCodeScannerVC.xib */; };
+		B0F1D6B82015F2FC0010567F /* CreateNewPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1D6B62015F2FC0010567F /* CreateNewPostVC.swift */; };
+		B0F1D6B92015F2FC0010567F /* CreateNewPostVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F1D6B72015F2FC0010567F /* CreateNewPostVC.xib */; };
+		B0F1D6BC2015F31C0010567F /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1D6BA2015F31C0010567F /* TitleCell.swift */; };
+		B0F1D6BD2015F31C0010567F /* TitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F1D6BB2015F31C0010567F /* TitleCell.xib */; };
+		B0F1D6C02015F3300010567F /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1D6BE2015F3300010567F /* LocationCell.swift */; };
+		B0F1D6C12015F3300010567F /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F1D6BF2015F3300010567F /* LocationCell.xib */; };
+		B0F1D6C42015F3480010567F /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1D6C22015F3480010567F /* DescriptionCell.swift */; };
+		B0F1D6C52015F3480010567F /* DescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F1D6C32015F3480010567F /* DescriptionCell.xib */; };
+		B0F1D6C82015F5330010567F /* ShareYourPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1D6C62015F5330010567F /* ShareYourPost.swift */; };
+		B0F1D6C92015F5330010567F /* ShareYourPost.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F1D6C72015F5330010567F /* ShareYourPost.xib */; };
 		B0F4CA70200F20A400F39409 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F4CA6F200F20A400F39409 /* AppDelegate.swift */; };
 		B0F4CA77200F20A400F39409 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0F4CA76200F20A400F39409 /* Assets.xcassets */; };
 		B0F4CA7A200F20A400F39409 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0F4CA78200F20A400F39409 /* LaunchScreen.storyboard */; };
@@ -104,6 +114,16 @@
 		B0A436A42010E61100DDBA7C /* PBLoginOptionsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBLoginOptionsVC.xib; sourceTree = "<group>"; };
 		B0ECE20A20135D7B004EE062 /* QRCodeScannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerVC.swift; sourceTree = "<group>"; };
 		B0ECE20B20135D7B004EE062 /* QRCodeScannerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeScannerVC.xib; sourceTree = "<group>"; };
+		B0F1D6B62015F2FC0010567F /* CreateNewPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPostVC.swift; sourceTree = "<group>"; };
+		B0F1D6B72015F2FC0010567F /* CreateNewPostVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateNewPostVC.xib; sourceTree = "<group>"; };
+		B0F1D6BA2015F31C0010567F /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
+		B0F1D6BB2015F31C0010567F /* TitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleCell.xib; sourceTree = "<group>"; };
+		B0F1D6BE2015F3300010567F /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		B0F1D6BF2015F3300010567F /* LocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
+		B0F1D6C22015F3480010567F /* DescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
+		B0F1D6C32015F3480010567F /* DescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionCell.xib; sourceTree = "<group>"; };
+		B0F1D6C62015F5330010567F /* ShareYourPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareYourPost.swift; sourceTree = "<group>"; };
+		B0F1D6C72015F5330010567F /* ShareYourPost.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareYourPost.xib; sourceTree = "<group>"; };
 		B0F4CA6C200F20A400F39409 /* Postablur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Postablur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F4CA6F200F20A400F39409 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0F4CA76200F20A400F39409 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -264,6 +284,23 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		B0F1D6B52015F2CF0010567F /* CreateNewPost */ = {
+			isa = PBXGroup;
+			children = (
+				B0F1D6B62015F2FC0010567F /* CreateNewPostVC.swift */,
+				B0F1D6B72015F2FC0010567F /* CreateNewPostVC.xib */,
+				B0F1D6BA2015F31C0010567F /* TitleCell.swift */,
+				B0F1D6BB2015F31C0010567F /* TitleCell.xib */,
+				B0F1D6BE2015F3300010567F /* LocationCell.swift */,
+				B0F1D6BF2015F3300010567F /* LocationCell.xib */,
+				B0F1D6C22015F3480010567F /* DescriptionCell.swift */,
+				B0F1D6C32015F3480010567F /* DescriptionCell.xib */,
+				B0F1D6C62015F5330010567F /* ShareYourPost.swift */,
+				B0F1D6C72015F5330010567F /* ShareYourPost.xib */,
+			);
+			path = CreateNewPost;
+			sourceTree = "<group>";
+		};
 		B0F4CA63200F20A400F39409 = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +339,7 @@
 		B0F4CA81200F20B500F39409 /* LoginViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B0F1D6B52015F2CF0010567F /* CreateNewPost */,
 				B0983B7820148AAD003AB028 /* PostDescription */,
 				B00D05CB20137B750031CE82 /* RevealSettingVC */,
 				846ED28D2011E009004749ED /* SignInVC */,
@@ -386,17 +424,22 @@
 				B0A4368D20109F7600DDBA7C /* PBLogoCell.xib in Resources */,
 				B0983B7C20148AD7003AB028 /* PostDescriptionVC.xib in Resources */,
 				B0A436962010BF6900DDBA7C /* AddProfilePhotoCell.xib in Resources */,
+				B0F1D6B92015F2FC0010567F /* CreateNewPostVC.xib in Resources */,
 				B0A436922010BD5200DDBA7C /* PBHeaderCell.xib in Resources */,
+				B0F1D6C12015F3300010567F /* LocationCell.xib in Resources */,
 				B0F4CA7A200F20A400F39409 /* LaunchScreen.storyboard in Resources */,
 				B00D05CA201371D40031CE82 /* RevealSettingsVC.xib in Resources */,
 				B0A436A22010E40900DDBA7C /* PBSignUPVC.xib in Resources */,
 				B0F4CA77200F20A400F39409 /* Assets.xcassets in Resources */,
 				B00D05D320137BBD0031CE82 /* PBShareLimitCell.xib in Resources */,
+				B0F1D6C92015F5330010567F /* ShareYourPost.xib in Resources */,
 				B0A436A62010E61100DDBA7C /* PBLoginOptionsVC.xib in Resources */,
 				B00D05CF20137BA30031CE82 /* PBLikeLimitCell.xib in Resources */,
+				B0F1D6C52015F3480010567F /* DescriptionCell.xib in Resources */,
 				B0ECE20D20135D7B004EE062 /* QRCodeScannerVC.xib in Resources */,
 				B0A0204C2011DEE600D3837B /* PBAccountTypeVC.xib in Resources */,
 				44A77C272014CEF600E879D7 /* PBCaptureMediaVC.xib in Resources */,
+				B0F1D6BD2015F31C0010567F /* TitleCell.xib in Resources */,
 				B0A436822010867000DDBA7C /* PBEmailAndPasswrdCell.xib in Resources */,
 				B0A0204E2011DEE600D3837B /* PBFreeAccountCell.xib in Resources */,
 				B0A020502011DEE600D3837B /* PBPaidAccoutCell.xib in Resources */,
@@ -483,12 +526,14 @@
 				B0A0204D2011DEE600D3837B /* PBFreeAccountCell.swift in Sources */,
 				B0A436952010BF6900DDBA7C /* AddProfilePhotoCell.swift in Sources */,
 				B00D05C9201371D40031CE82 /* RevealSettingsVC.swift in Sources */,
+				B0F1D6B82015F2FC0010567F /* CreateNewPostVC.swift in Sources */,
 				B0A436992010D2EF00DDBA7C /* RegistrationCell.swift in Sources */,
 				B0A436912010BD5200DDBA7C /* PBHeaderCell.swift in Sources */,
 				B0A0204B2011DEE600D3837B /* PBAccountTypeVC.swift in Sources */,
 				846ED2942011EFEA004749ED /* MBProgressHUD.m in Sources */,
 				B0F4CA70200F20A400F39409 /* AppDelegate.swift in Sources */,
 				B0983B7B20148AD7003AB028 /* PostDescriptionVC.swift in Sources */,
+				B0F1D6BC2015F31C0010567F /* TitleCell.swift in Sources */,
 				B0A436A52010E61100DDBA7C /* PBLoginOptionsVC.swift in Sources */,
 				846ED2972011F1E2004749ED /* ValidationHelper.swift in Sources */,
 				B0A436812010867000DDBA7C /* PBEmailAndPasswrdCell.swift in Sources */,
@@ -496,8 +541,10 @@
 				B00D05D220137BBD0031CE82 /* PBShareLimitCell.swift in Sources */,
 				B0F4CA87200F24DC00F39409 /* NavConstants.swift in Sources */,
 				B0A4368C20109F7600DDBA7C /* PBLogoCell.swift in Sources */,
+				B0F1D6C42015F3480010567F /* DescriptionCell.swift in Sources */,
 				44A77C1D2014C84300E879D7 /* PBUtility.swift in Sources */,
 				B00D05D620137BE20031CE82 /* PBDollarLimitCell.swift in Sources */,
+				B0F1D6C02015F3300010567F /* LocationCell.swift in Sources */,
 				447A5A09201537C40010E5DB /* UIImageEffects.swift in Sources */,
 				846ED28A2011DAB1004749ED /* Urls.swift in Sources */,
 				44A77C262014CEE900E879D7 /* PBCaptureMediaVC.swift in Sources */,
@@ -506,6 +553,7 @@
 				B0ECE20C20135D7B004EE062 /* QRCodeScannerVC.swift in Sources */,
 				B0A43685201086A500DDBA7C /* PBSocialLoginCell.swift in Sources */,
 				846ED29B2012335A004749ED /* UIImage+ResizeImage.swift in Sources */,
+				B0F1D6C82015F5330010567F /* ShareYourPost.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

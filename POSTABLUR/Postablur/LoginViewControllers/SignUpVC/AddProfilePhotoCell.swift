@@ -33,6 +33,8 @@ class AddProfilePhotoCell: UITableViewCell
         let uploadTapRecogniser: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddProfilePhotoCell.UploadImageAction))
         self.uploadImageView.addGestureRecognizer(uploadTapRecogniser)
         
+
+
     }
 
     @objc func captureImageAction()
@@ -40,7 +42,6 @@ class AddProfilePhotoCell: UITableViewCell
         if let delegate = self.delegate
         {
             delegate.pbCaptureAPhotoImageDidTap(capturedPhotoWidth: captureImageView.frame.width, capturedPhotoHeight: captureImageView.frame.height)
-            
         }
     }
     @objc func UploadImageAction()
@@ -48,6 +49,7 @@ class AddProfilePhotoCell: UITableViewCell
         if let delegate = self.delegate
         {
             delegate.pbUploadAPhotoImageDidTap(uploadPhotoWidth: uploadImageView.frame.width, uploadPhotoHeight: uploadImageView.frame.height)
+
         }
     }
     override func setSelected(_ selected: Bool, animated: Bool)
@@ -57,4 +59,25 @@ class AddProfilePhotoCell: UITableViewCell
         // Configure the view for the selected state
     }
     
+    func selectedImageViewType(image : UIImage ,imageType : String)
+    {
+        
+        if imageType == UploadedImageType.CapturedPhotoFromCamera.rawValue
+        {
+//            self.captureImageView?.layer.cornerRadius = self.captureImageView!.frame.size.height / 2
+//            self.captureImageView?.clipsToBounds = true
+//            self.captureImageView?.layer.masksToBounds = true
+            captureImageView.image = image
+
+        }
+        else
+        {
+//            self.uploadImageView?.clipsToBounds = true
+//            self.uploadImageView?.layer.cornerRadius = self.uploadImageView!.frame.size.height / 2
+//            self.uploadImageView?.layer.masksToBounds = true
+            uploadImageView.image = image
+            
+        }
+    }
 }
+

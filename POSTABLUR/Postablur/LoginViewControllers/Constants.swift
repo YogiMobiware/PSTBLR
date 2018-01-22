@@ -18,6 +18,11 @@ enum PlaceHolderText: String
 
 }
 
+enum UploadedImageType : String{
+    
+    case CapturedPhotoFromCamera = "CapturedPhotoFromCamera"
+    case UploadedPhotoFromLibrary = "UploadedPhotoFromLibrary"
+}
 enum CellIdentifiers: String{
     
     case LogoHeaderReuseIdentifier = "PBLogoCellID"
@@ -40,6 +45,8 @@ enum FontName : String {
 }
 
 class Constants: NSObject {
+
+    static let kUserProfilePicURL = "UserProfilePicUplaodedURL"
 
     static let placedHolderTextFieldColor : UIColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
 
