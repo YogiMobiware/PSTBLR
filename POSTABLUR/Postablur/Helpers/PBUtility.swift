@@ -33,5 +33,24 @@ class PBUtility : NSObject
         
         return flippedImage
     }
+    
+    class func blurEffect(image : UIImage) -> UIImage {
+        
+        let context = CIContext()
+        let currentFilter = CIFilter(name: "CIGaussianBlur")
+        let beginImage = CIImage(image: image)
+        currentFilter!.setValue(beginImage, forKey: kCIInputImageKey)
+        currentFilter!.setValue(50, forKey: kCIInputRadiusKey)
+        
+        let cropFilter = CIFilter(name: "CICrop")
+        cropFilter!.setValue(currentFilter!.outputImage, forKey: kCIInputImageKey)
+        cropFilter!.setValue(CIVector(cgRect: beginImage!.extent), forKey: "inputRectangle")
+        
+        let output = cropFilter!.outputImage
+        let cgimg = context.createCGImage(output!, from: output!.extent)
+        let processedImage = UIImage.init(cgImage: cgimg!, scale: image.scale, orientation: image.imageOrientation)
+        
+        return processedImage
+    }
 }
 
