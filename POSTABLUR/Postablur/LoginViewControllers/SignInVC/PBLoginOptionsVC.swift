@@ -21,7 +21,7 @@ class PBLoginOptionsVC: UIViewController
     var socialEmail : String!
     var socialRegistrationType : String!
     var socialProvider : String!
-    var socialAccessToken : AnyObject!
+    var socialAccessToken : String!
     
     override func viewDidLoad()
     {
@@ -98,7 +98,7 @@ class PBLoginOptionsVC: UIViewController
                         self.socialEmail = email
                         self.socialRegistrationType = "3"
                         self.socialProvider = "Facebook"
-                        self.socialAccessToken = FBSDKAccessToken.current()
+                        self.socialAccessToken = FBSDKAccessToken.current().tokenString
                         
                         
                         let profileImageUrl = "https://graph.facebook.com/\(fbId)/picture";
@@ -121,6 +121,8 @@ class PBLoginOptionsVC: UIViewController
                                         {
                                             let result = resultArray.first!
                                             
+                                            print("FB Details \(result)")
+                                            
                                             let statusCode = result["StatusCode"] as! String
                                             let statusMessage = result["StatusMsg"] as! String
                                             
@@ -129,34 +131,41 @@ class PBLoginOptionsVC: UIViewController
                                                 let qrCodeScannerVC = QRCodeScannerVC()
                                                 self.navigationController?.pushViewController(qrCodeScannerVC, animated: true)
 
-                                                //self.appdelegate.alert(vc: self, message: statusMessage, title: "Facebook SignIn")
                                                 return
                                             }
-                                            else
+                                            else if statusCode == "1"
+                                            {
+                                                self.appdelegate.alert(vc: self, message: statusMessage, title: "Error")
+                                                return
+                                            }
+                                            else if statusCode == "2"
+                                            {
+                                                self.appdelegate.alert(vc: self, message: statusMessage, title: "Error")
+                                                return
+                                            }
+                                            else if statusCode == "3"
                                             {
                                                 self.alreadyRegistrationCall()
-                                                
-                                                //self.appdelegate.alert(vc: self, message: statusMessage, title: "Facebook SignIn")
                                                 return
                                             }
                                         }
                                     }
                                     if let responseStr = responseObject as? String
                                     {
-                                        self.appdelegate.alert(vc: self, message: responseStr, title: "Facebook SignIn")
+                                        self.appdelegate.alert(vc: self, message: responseStr, title: "Error")
                                         return
                                     }
                                     
                                 }
                                 else
                                 {
-                                    self.appdelegate.alert(vc: self, message: "Something went wrong", title: "Facebook SignIn")
+                                    self.appdelegate.alert(vc: self, message: "Something went wrong", title: "Error")
                                     return
                                 }
                             }
                             else
                             {
-                                self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Facebook SignIn")
+                                self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
                                 return
                             }
                         }
@@ -192,6 +201,8 @@ class PBLoginOptionsVC: UIViewController
                         {
                             let result = resultArray.first!
                             
+                            print("Twitter Details \(result)")
+                            
                             let statusCode = result["StatusCode"] as! String
                             let statusMessage = result["StatusMsg"] as! String
                             
@@ -200,34 +211,42 @@ class PBLoginOptionsVC: UIViewController
                                 let qrCodeScannerVC = QRCodeScannerVC()
                                 self.navigationController?.pushViewController(qrCodeScannerVC, animated: true)
 
-                                //self.appdelegate.alert(vc: self, message: statusMessage, title: "Twitter SignIn")
                                 return
                             }
-                            else
+                            else if statusCode == "1"
+                            {
+                                self.appdelegate.alert(vc: self, message: statusMessage, title: "Error")
+                                return
+                            }
+                            else if statusCode == "2"
                             {
                                 self.alreadyRegistrationCall()
-                                
-                                //self.appdelegate.alert(vc: self, message: statusMessage, title: "Twitter SignIn")
+                        
+                                return
+                            }
+                            else if statusCode == "3"
+                            {
+                                self.appdelegate.alert(vc: self, message: statusMessage, title: "Error")
                                 return
                             }
                         }
                     }
                     if let responseStr = responseObject as? String
                     {
-                        self.appdelegate.alert(vc: self, message: responseStr, title: "Twitter SignIn")
+                        self.appdelegate.alert(vc: self, message: responseStr, title: "Error")
                         return
                     }
                     
                 }
                 else
                 {
-                    self.appdelegate.alert(vc: self, message: "Something went wrong", title: "Twitter SignIn")
+                    self.appdelegate.alert(vc: self, message: "Something went wrong", title: "Error")
                     return
                 }
             }
             else
             {
-                self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Twitter SignIn")
+                self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: " SignIn")
                 return
             }
         }
@@ -260,6 +279,8 @@ class PBLoginOptionsVC: UIViewController
                         if let resultArray = responseDict["Results"] as! [NSDictionary]!
                         {
                             let result = resultArray.first!
+                            
+                            print("External Login Details \(result)")
                             
                             let statusCode = result["StatusCode"] as! String
                             let statusMessage = result["StatusMsg"] as! String
@@ -453,7 +474,7 @@ extension PBLoginOptionsVC : PBEmailAndPasswrdCellDelegate
                             }
                             else
                             {
-                                self.appdelegate.alert(vc: self, message: statusMessage, title: "SignIn")
+                                self.appdelegate.alert(vc: self, message: statusMessage, title: "Error")
                                 return
                             }
                             
@@ -461,20 +482,20 @@ extension PBLoginOptionsVC : PBEmailAndPasswrdCellDelegate
                     }
                     if let responseStr = responseObject as? String
                     {
-                        self.appdelegate.alert(vc: self, message: responseStr, title: "SignIn")
+                        self.appdelegate.alert(vc: self, message: responseStr, title: "Error")
                         return
                     }
 
                 }
                 else
                 {
-                    self.appdelegate.alert(vc: self, message: "Something went wrong", title: "SignIn")
+                    self.appdelegate.alert(vc: self, message: "Something went wrong", title: "Error")
                     return
                 }
             }
             else
             {
-                self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "SignIn")
+                self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
                 return
             }
         }
