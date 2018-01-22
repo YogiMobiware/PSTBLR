@@ -31,11 +31,11 @@ class RevealSettingsVC: UIViewController {
         let dollarNib = UINib(nibName: NibNamed.PBDollarLimitCell.rawValue, bundle: nil)
         self.revealSettingsTableView.register(dollarNib, forCellReuseIdentifier: CellIdentifiers.PBDollarLimitCellIdentifier.rawValue)
         
-        self.blurredImage =  image.applyBlurWithRadius(20, tintColor: nil, saturationDeltaFactor: 1, maskImage: nil)
+        self.blurredImage =  PBUtility.blurEffect(image: image)
         
         self.picImageView.image = self.blurredImage
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

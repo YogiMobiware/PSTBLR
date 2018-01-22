@@ -11,6 +11,40 @@ import UIKit
 import AVFoundation
 import Foundation
 
+extension AVCaptureVideoOrientation {
+    var uiInterfaceOrientation: UIInterfaceOrientation {
+        get {
+            switch self {
+            case .landscapeLeft:        return .landscapeLeft
+            case .landscapeRight:       return .landscapeRight
+            case .portrait:             return .portrait
+            case .portraitUpsideDown:   return .portraitUpsideDown
+            }
+        }
+    }
+    
+    init(ui:UIInterfaceOrientation) {
+        switch ui {
+        case .landscapeRight:       self = .landscapeRight
+        case .landscapeLeft:        self = .landscapeLeft
+        case .portrait:             self = .portrait
+        case .portraitUpsideDown:   self = .portraitUpsideDown
+        default:                    self = .portrait
+        }
+    }
+    
+    init?(orientation:UIDeviceOrientation) {
+        switch orientation {
+        case .landscapeRight:       self = .landscapeLeft
+        case .landscapeLeft:        self = .landscapeRight
+        case .portrait:             self = .portrait
+        case .portraitUpsideDown:   self = .portraitUpsideDown
+        default:
+            return nil
+        }
+    }
+}
+
 protocol PBCaptureMediaVCDelegate {
     
     func pbCaptureMediaVCDidTapDismiss(captureVC: PBCaptureMediaVC)
@@ -248,7 +282,9 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
             if #available(iOS 10, *)
             {
                 let photoOutput = AVCapturePhotoOutput()
+                photoOutput.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecType.jpeg])], completionHandler: nil)
                 captureOutput = photoOutput
+                
             }
             else
             {
@@ -328,6 +364,11 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
             
             if let photoOutput = self.captureOutput as? AVCapturePhotoOutput
             {
+                if let photoOutputConnection = photoOutput.connection(with: AVMediaType.video)
+                {
+                    photoOutputConnection.videoOrientation = AVCaptureVideoOrientation(orientation : UIDevice.current.orientation)!
+                }
+                
                 photoOutput.capturePhoto(with: settingsForMonitoring, delegate: self)
             }
         }
@@ -335,6 +376,13 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         {
             if let videoConnection = stillImageOutput.connection(with: AVMediaType.video)
             {
+                if videoConnection.isVideoOrientationSupported == true
+                {
+                    let orientation = AVCaptureVideoOrientation(orientation: UIDevice.current.orientation)
+                    videoConnection.videoOrientation = orientation!
+                }
+                
+                
                 stillImageOutput.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (CMSampleBuffer, Error) in
                     
                     if Error != nil
@@ -356,13 +404,69 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
                             {
                                 cameraImage = PBUtility.flipImage(image: cameraImage)
                             }
-                            
-                            self.goToPreviewScene(withImage: cameraImage)
+                             self.goToPreviewScene(withImage: cameraImage)
                         }
                     }
                 })
             }
         }
+    }
+    
+    func fixOrientationOfImage(image: UIImage) -> UIImage? {
+        if image.imageOrientation == .up {
+            return image
+        }
+        
+        // We need to calculate the proper transformation to make the image upright.
+        // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
+        var transform = CGAffineTransform.identity
+        
+        switch image.imageOrientation {
+        case .down, .downMirrored:
+            transform = transform.translatedBy(x: image.size.width, y: image.size.height)
+            transform = transform.rotated(by: CGFloat(Double.pi))
+        case .left, .leftMirrored:
+            transform = transform.translatedBy(x: image.size.width, y: 0)
+            transform = transform.rotated(by:  CGFloat(Double.pi / 2))
+        case .right, .rightMirrored:
+            transform = transform.translatedBy(x: 0, y: image.size.height)
+            transform = transform.rotated(by:  -CGFloat(Double.pi / 2))
+        default:
+            break
+        }
+        
+        switch image.imageOrientation {
+        case .upMirrored, .downMirrored:
+            transform = transform.translatedBy(x: image.size.width, y: 0)
+            transform = transform.scaledBy(x: -1, y: 1)
+        case .leftMirrored, .rightMirrored:
+            transform = transform.translatedBy(x: image.size.height, y: 0)
+            transform = transform.scaledBy(x: -1, y: 1)
+        default:
+            break
+        }
+        
+        // Now we draw the underlying CGImage into a new context, applying the transform
+        // calculated above.
+        guard let context = CGContext(data: nil, width: Int(image.size.width), height: Int(image.size.height), bitsPerComponent: image.cgImage!.bitsPerComponent, bytesPerRow: 0, space: image.cgImage!.colorSpace!, bitmapInfo: image.cgImage!.bitmapInfo.rawValue) else {
+            return nil
+        }
+        
+        context.concatenate(transform)
+        
+        switch image.imageOrientation {
+        case .left, .leftMirrored, .right, .rightMirrored:
+            context.draw(image.cgImage!, in: CGRect(x: 0, y: 0, width: image.size.height, height: image.size.width))
+        default:
+            context.draw(image.cgImage!, in: CGRect(origin: .zero, size: image.size))
+        }
+        
+        // And now we just create a new UIImage from the drawing context
+        guard let CGImage = context.makeImage() else {
+            return nil
+        }
+        
+        return UIImage(cgImage: CGImage)
     }
     
     func goToPreviewScene(withImage image: UIImage)
@@ -406,14 +510,27 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
             {
                 if var cameraImage = UIImage(data: imageData)
                 {
-                    let currentInput = self.captureSession.inputs.first as? AVCaptureDeviceInput
                     
-                    if currentInput?.device.position == .front
-                    {
-                        cameraImage = PBUtility.flipImage(image: cameraImage)
+                    let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
+                    
+                    let imgPath = URL(fileURLWithPath: documentDirectoryPath.appendingPathComponent("1.jpg"))// Change extension if you want to save as PNG
+                    
+                    do{
+                        try UIImageJPEGRepresentation(cameraImage, 1.0)?.write(to: imgPath, options: .atomic)//Use UIImagePNGRepresentation if you want to save as PNG
+                    }catch let error{
+                        print(error.localizedDescription)
                     }
                     
+                    cameraImage = UIImage(contentsOfFile: imgPath.path)!
+                    
+//                    let currentInput = self.captureSession.inputs.first as? AVCaptureDeviceInput
+//
+//                    if currentInput?.device.position == .front
+//                    {
+//                        cameraImage = PBUtility.flipImage(image: cameraImage)
+//                    }
                     self.goToPreviewScene(withImage: cameraImage)
+                    
                 }
             }
         }
