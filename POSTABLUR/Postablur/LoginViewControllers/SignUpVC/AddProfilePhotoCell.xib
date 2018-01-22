@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -45,7 +44,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mk5-hX-OBW" userLabel="CaptureBtnView">
                                         <rect key="frame" x="0.0" y="22" width="106" height="99"/>
                                         <subviews>
-                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="createGreyIconPostablurApp" translatesAutoresizingMaskIntoConstraints="NO" id="Xvn-q2-iMc">
+                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="createGreyIconPostablurApp" translatesAutoresizingMaskIntoConstraints="NO" id="Xvn-q2-iMc">
                                                 <rect key="frame" x="10" y="0.0" width="87" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Xvn-q2-iMc" secondAttribute="height" multiplier="87:70" id="w1O-yr-8Ep"/>
@@ -95,7 +94,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddj-oO-mdW" userLabel="UploadBtnView">
                                         <rect key="frame" x="164" y="16" width="106" height="105"/>
                                         <subviews>
-                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userGreyUploadPhotoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="NW6-ca-hcd">
+                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userGreyUploadPhotoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="NW6-ca-hcd">
                                                 <rect key="frame" x="14" y="3" width="78" height="79"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="NW6-ca-hcd" secondAttribute="height" multiplier="78:79" id="w7N-ka-aMm"/>
