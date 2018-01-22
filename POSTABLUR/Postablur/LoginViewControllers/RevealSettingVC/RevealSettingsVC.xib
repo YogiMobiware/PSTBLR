@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,6 +23,7 @@
             <connections>
                 <outlet property="picImageView" destination="bPS-ei-l6P" id="Wwj-b2-lQW"/>
                 <outlet property="revealSettingsTableView" destination="IKz-7G-RlW" id="GDE-yb-dih"/>
+                <outlet property="revealTitleLabel" destination="RT9-Nk-L1b" id="qXO-Ph-3i8"/>
                 <outlet property="unblurMsgTextLbl" destination="jAD-77-mOD" id="qFS-JO-glr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,16 +37,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REVEAL SETTINGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RT9-Nk-L1b">
-                            <rect key="frame" x="67" y="51" width="296" height="27"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="296" id="7eH-Av-Ii2"/>
-                            </constraints>
+                            <rect key="frame" x="74" y="39" width="258" height="27"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="24"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nck-n6-6ID">
-                            <rect key="frame" x="17" y="43" width="42" height="42"/>
+                            <rect key="frame" x="0.0" y="30.5" width="42" height="42"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="5R5-v8-t9n"/>
@@ -58,17 +56,18 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconWhitePostablurApp" translatesAutoresizingMaskIntoConstraints="NO" id="QSb-St-62D">
-                            <rect key="frame" x="357" y="46.5" width="36" height="35"/>
+                            <rect key="frame" x="357" y="34" width="36" height="35"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="Nck-n6-6ID" firstAttribute="top" secondItem="F1Y-YL-wU6" secondAttribute="top" constant="43" id="GwD-7H-Rha"/>
                         <constraint firstItem="RT9-Nk-L1b" firstAttribute="height" secondItem="F1Y-YL-wU6" secondAttribute="height" multiplier="27:103" id="Xwv-WJ-f9n"/>
-                        <constraint firstItem="RT9-Nk-L1b" firstAttribute="centerX" secondItem="F1Y-YL-wU6" secondAttribute="centerX" constant="8" id="daJ-Oq-yG9"/>
+                        <constraint firstItem="RT9-Nk-L1b" firstAttribute="centerX" secondItem="F1Y-YL-wU6" secondAttribute="centerX" constant="-4" id="daJ-Oq-yG9"/>
                         <constraint firstItem="QSb-St-62D" firstAttribute="centerY" secondItem="Nck-n6-6ID" secondAttribute="centerY" id="jVu-QD-b1s"/>
-                        <constraint firstItem="Nck-n6-6ID" firstAttribute="leading" secondItem="F1Y-YL-wU6" secondAttribute="leading" constant="17" id="lPL-rQ-JBp"/>
-                        <constraint firstItem="RT9-Nk-L1b" firstAttribute="centerY" secondItem="Nck-n6-6ID" secondAttribute="centerY" id="oll-fx-2Of"/>
+                        <constraint firstItem="Nck-n6-6ID" firstAttribute="centerY" secondItem="F1Y-YL-wU6" secondAttribute="centerY" id="kLk-pn-O4B"/>
+                        <constraint firstItem="Nck-n6-6ID" firstAttribute="leading" secondItem="F1Y-YL-wU6" secondAttribute="leading" id="lPL-rQ-JBp"/>
+                        <constraint firstItem="RT9-Nk-L1b" firstAttribute="leading" secondItem="Nck-n6-6ID" secondAttribute="trailing" constant="32" id="ld7-vr-K4U"/>
+                        <constraint firstItem="RT9-Nk-L1b" firstAttribute="centerY" secondItem="Nck-n6-6ID" secondAttribute="centerY" constant="1" id="oll-fx-2Of"/>
                         <constraint firstAttribute="trailing" secondItem="QSb-St-62D" secondAttribute="trailing" constant="21" id="vjR-eK-yNB"/>
                     </constraints>
                 </view>
@@ -87,6 +86,9 @@
                     <state key="normal" title="NEXT">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="nextBtnAction:" destination="-1" eventType="touchUpInside" id="0Ng-w3-XVN"/>
+                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlurPicEnlarged" translatesAutoresizingMaskIntoConstraints="NO" id="bPS-ei-l6P">
                     <rect key="frame" x="0.0" y="102" width="414" height="369"/>

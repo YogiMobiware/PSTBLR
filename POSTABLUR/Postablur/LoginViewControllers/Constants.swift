@@ -36,6 +36,11 @@ enum CellIdentifiers: String{
     case PBLikeLimitCellIdentifier = "PBLikeLimitCellID"
     case PBShareLimitCellIdentifier = "PBShareLimitCellID"
     case PBDollarLimitCellIdentifier = "PBDollarLimitCellID"
+    case TitleCellIdentifier = "TitleCellID"
+    case LocationCellIdentifier = "LocationCellID"
+    case ShareYourPostCellIdentifier = "ShareYourPostCellID"
+    case DescriptionCellIdentifier = "DescriptionCellID"
+
 
 }
 
