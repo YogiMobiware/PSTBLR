@@ -377,7 +377,10 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
             {
                 if let photoOutputConnection = photoOutput.connection(with: AVMediaType.video)
                 {
-                    photoOutputConnection.videoOrientation = AVCaptureVideoOrientation(orientation : UIDevice.current.orientation)!
+                    if let videoOrienation = AVCaptureVideoOrientation(orientation : UIDevice.current.orientation)
+                    {
+                        photoOutputConnection.videoOrientation = videoOrienation
+                    }
                 }
                 
                 photoOutput.capturePhoto(with: settingsForMonitoring, delegate: self)
