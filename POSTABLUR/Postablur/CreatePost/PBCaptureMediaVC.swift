@@ -77,7 +77,8 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
 
     @IBOutlet weak var slidingBarLeftConstraint: NSLayoutConstraint!
 
-    
+    @IBOutlet weak var createTitleLabel : UILabel!
+
     
     var delegate: PBCaptureMediaVCDelegate? = nil
     
@@ -109,7 +110,20 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         self.xButton.layer.borderColor = UIColor.white.cgColor
         self.xButton.layer.borderWidth = CGFloat(1)
         
+        self.flashButton.isEnabled = false
+        if let image = flashButton.imageView?.image
+        {
+            let templateImage = image.withRenderingMode(.alwaysTemplate)
+//            flashButton.setImage(templateImage, for: .normal)
+            flashButton.setImage(templateImage, for: .selected)
+        }
+        
         self.getCameraPermission()
+        
+        let shareLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 24
+        let roundedBoldfontSize = floor(shareLabelfontSize)
+        self.createTitleLabel.font = self.createTitleLabel.font.withSize(roundedBoldfontSize)
+
     }
     
     override func viewDidLayoutSubviews()
@@ -148,23 +162,45 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
             return
         }
         
+        
+        if newVideoInput.device.position == .front
+        {
+            self.flashButton.isEnabled = false
+        }
+        else
+        {
+            self.flashButton.isEnabled = true
+        }
         captureSession.addInput(newVideoInput)
         captureSession.commitConfiguration()
     }
     
     @IBAction func actionFlashCamera(_ sender: UIButton)
     {
+        let revealSettingsVC = RevealSettingsVC()
+        self.navigationController?.pushViewController(revealSettingsVC, animated: true);
+
+       //COMMENTED AS OF NOW NEED TO REMOVE
         sender.isSelected = !sender.isSelected
-        
         if sender.isSelected == true
         {
             ///turn on flash
-            
+            sender.tintColor = UIColor.green
         }
         else
         {
             ///turn off flash
+            sender.tintColor =  nil
         }
+    }
+    
+    @IBAction func actionChoosePicFromLibrary(_ sender: UIButton)
+    {
+        let pbImagePickerController = UIImagePickerController()
+        pbImagePickerController.delegate = self
+        pbImagePickerController.allowsEditing = true
+        pbImagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        present(pbImagePickerController, animated: true, completion: nil)
     }
     
     @IBAction func pickMediaTypeButtonTapped(_ sender : UIButton)
@@ -362,19 +398,37 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
             let settingsForMonitoring = AVCapturePhotoSettings()
             settingsForMonitoring.isHighResolutionPhotoEnabled = false
 
-            if self.flashButton.isSelected == true
-            {
-                settingsForMonitoring.flashMode = .on
-                settingsForMonitoring.isAutoStillImageStabilizationEnabled = false
-
-            }
-            else
-            {
-                settingsForMonitoring.flashMode = .off
-                settingsForMonitoring.isAutoStillImageStabilizationEnabled = true
-            }
             if let photoOutput = self.captureOutput as? AVCapturePhotoOutput
             {
+                if self.flashButton.isEnabled == true
+                {
+                    if self.flashButton.isSelected == true
+                    {
+                        
+                        settingsForMonitoring.flashMode = .on
+                        if photoOutput.isStillImageStabilizationSupported == true
+                        {
+                            settingsForMonitoring.isAutoStillImageStabilizationEnabled = false
+                        }
+                        
+                    }
+                    else
+                    {
+                        settingsForMonitoring.flashMode = .off
+                        if photoOutput.isStillImageStabilizationSupported == true
+                        {
+                            settingsForMonitoring.isAutoStillImageStabilizationEnabled = true
+                        }
+                    }
+                }
+                else
+                {
+                    if photoOutput.isStillImageStabilizationSupported == true
+                    {
+                        settingsForMonitoring.isAutoStillImageStabilizationEnabled = true
+                    }
+                }
+                
                 if let photoOutputConnection = photoOutput.connection(with: AVMediaType.video)
                 {
                     if let videoOrienation = AVCaptureVideoOrientation(orientation : UIDevice.current.orientation)
@@ -524,32 +578,44 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
             {
                 if var cameraImage = UIImage(data: imageData)
                 {
-                    
-                    let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
-                    
-                    let imgPath = URL(fileURLWithPath: documentDirectoryPath.appendingPathComponent("1.jpg"))// Change extension if you want to save as PNG
-                    
-                    do{
-                        try UIImageJPEGRepresentation(cameraImage, 1.0)?.write(to: imgPath, options: .atomic)//Use UIImagePNGRepresentation if you want to save as PNG
-                    }catch let error{
-                        print(error.localizedDescription)
-                    }
-                    
-                    cameraImage = UIImage(contentsOfFile: imgPath.path)!
-                    
-//                    let currentInput = self.captureSession.inputs.first as? AVCaptureDeviceInput
-//
-//                    if currentInput?.device.position == .front
-//                    {
-//                        cameraImage = PBUtility.flipImage(image: cameraImage)
-//                    }
-                    self.goToPreviewScene(withImage: cameraImage)
-                    
+                    self.saveImageAndGoToRevealSettings(image: cameraImage)
                 }
             }
+        }
+    }
+    
+    private func saveImageAndGoToRevealSettings(image : UIImage)
+    {
+        let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
+     let imgPath = URL(fileURLWithPath: documentDirectoryPath.appendingPathComponent("1.jpg"))
+        
+        do{
+            try UIImageJPEGRepresentation(image, 1.0)?.write(to: imgPath, options: .atomic)
+            self.goToPreviewScene(withImage: image)
+            }
+        catch
+        {
+            
         }
     }
 
 }
 
-
+extension PBCaptureMediaVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate
+{
+    // MARK: Image picker delegate
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any])
+    {
+        if let  chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        {
+            self.dismiss(animated: true, completion: {
+                self.saveImageAndGoToRevealSettings(image: chosenImage)
+            })
+        }
+    }
+}

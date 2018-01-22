@@ -9,10 +9,15 @@
 import UIKit
 
 class LocationCell: UITableViewCell {
+    @IBOutlet weak var locationLabel : UILabel!
+    @IBOutlet weak var currentLocationLabel : UILabel!
+    @IBOutlet weak var locationTF : UITextField!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        let locationLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 20
+        let roundedBoldfontSize = floor(locationLabelfontSize)
+        self.locationLabel.font = self.locationLabel.font.withSize(roundedBoldfontSize)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
