@@ -171,7 +171,7 @@ class PBLoginOptionsVC: UIViewController
         self.socialEmail = email
         self.socialRegistrationType = "2"
         self.socialProvider = "Twitter"
-        self.socialAccessToken = access_token
+        self.socialAccessToken = access_token as AnyObject
         
         let urlString = String(format: "%@/UserRegistration", arguments: [Urls.mainUrl]);
         
@@ -518,7 +518,7 @@ extension PBLoginOptionsVC : PBSocialLoginCellDelegate
                     }
                     else
                     {
-                        self.appdelegate.alert(vc: self, message: error?.localizedDescription, title: "Error")
+                        self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
                         //print(error!)
                     }
                 }
@@ -526,7 +526,7 @@ extension PBLoginOptionsVC : PBSocialLoginCellDelegate
               }
               else
               {
-                self.appdelegate.alert(vc: self, message: error?.localizedDescription, title: "Error")
+                self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
                 //print("error: \(String(describing: error?.localizedDescription))");
               }
            })
@@ -573,7 +573,7 @@ extension PBLoginOptionsVC : PBSocialLoginCellDelegate
                     {
                         if let error = error
                         {
-                            self.appdelegate.alert(vc: self, message: error?.localizedDescription, title: "Error")
+                            self.appdelegate.alert(vc: self, message: error.localizedDescription, title: "Error")
                             //print("error is \(String(describing: error))")
                         }
                         
