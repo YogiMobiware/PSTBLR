@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		447A5A09201537C40010E5DB /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A5A08201537C40010E5DB /* UIImageEffects.swift */; };
 		44A77C1D2014C84300E879D7 /* PBUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A77C1C2014C84300E879D7 /* PBUtility.swift */; };
+		44A77C262014CEE900E879D7 /* PBCaptureMediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A77C242014C95100E879D7 /* PBCaptureMediaVC.swift */; };
+		44A77C272014CEF600E879D7 /* PBCaptureMediaVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A77C252014C95100E879D7 /* PBCaptureMediaVC.xib */; };
 		846ED2882011D759004749ED /* PBServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846ED2872011D759004749ED /* PBServiceHelper.swift */; };
 		846ED28A2011DAB1004749ED /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846ED2892011DAB1004749ED /* Urls.swift */; };
 		846ED2942011EFEA004749ED /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 846ED2932011EFEA004749ED /* MBProgressHUD.m */; };
@@ -56,6 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		447A5A08201537C40010E5DB /* UIImageEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
 		44A77C1C2014C84300E879D7 /* PBUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBUtility.swift; sourceTree = "<group>"; };
 		44A77C242014C95100E879D7 /* PBCaptureMediaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBCaptureMediaVC.swift; sourceTree = "<group>"; };
 		44A77C252014C95100E879D7 /* PBCaptureMediaVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBCaptureMediaVC.xib; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 		846ED2952011F1B4004749ED /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				447A5A08201537C40010E5DB /* UIImageEffects.swift */,
 				44A77C1C2014C84300E879D7 /* PBUtility.swift */,
 				846ED2962011F1E2004749ED /* ValidationHelper.swift */,
 			);
@@ -391,6 +396,7 @@
 				B00D05CF20137BA30031CE82 /* PBLikeLimitCell.xib in Resources */,
 				B0ECE20D20135D7B004EE062 /* QRCodeScannerVC.xib in Resources */,
 				B0A0204C2011DEE600D3837B /* PBAccountTypeVC.xib in Resources */,
+				44A77C272014CEF600E879D7 /* PBCaptureMediaVC.xib in Resources */,
 				B0A436822010867000DDBA7C /* PBEmailAndPasswrdCell.xib in Resources */,
 				B0A0204E2011DEE600D3837B /* PBFreeAccountCell.xib in Resources */,
 				B0A020502011DEE600D3837B /* PBPaidAccoutCell.xib in Resources */,
@@ -492,7 +498,9 @@
 				B0A4368C20109F7600DDBA7C /* PBLogoCell.swift in Sources */,
 				44A77C1D2014C84300E879D7 /* PBUtility.swift in Sources */,
 				B00D05D620137BE20031CE82 /* PBDollarLimitCell.swift in Sources */,
+				447A5A09201537C40010E5DB /* UIImageEffects.swift in Sources */,
 				846ED28A2011DAB1004749ED /* Urls.swift in Sources */,
+				44A77C262014CEE900E879D7 /* PBCaptureMediaVC.swift in Sources */,
 				B0A436A12010E40900DDBA7C /* PBSignUPVC.swift in Sources */,
 				B00D05CE20137BA30031CE82 /* PBLikeLimitCell.swift in Sources */,
 				B0ECE20C20135D7B004EE062 /* QRCodeScannerVC.swift in Sources */,

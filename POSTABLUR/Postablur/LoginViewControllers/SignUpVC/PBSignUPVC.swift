@@ -81,23 +81,66 @@ class PBSignUPVC: UIViewController,UIImagePickerControllerDelegate,UINavigationC
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any])
     {
-        if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        if let  chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
-            let profileCell = AddProfilePhotoCell()
-            
-            /*let resizedImage = chosenImage.resizeImage(image: chosenImage, newWidth: self.imageWidth)!
-            self.uploadprofileImageToServer(selectedImage: resizedImage)*/
+            let resizedImage = chosenImage.resizeImage(image: chosenImage, newWidth: 70)!
+            self.uploadUserProfileImageToServer(selectedImage: resizedImage)
         }
         
         dismiss(animated: true, completion: nil)
     }
     
-    func uploadprofileImageToServer(selectedImage : UIImage)
+    
+    
+    func uploadUserProfileImageToServer(selectedImage : UIImage)
     {
-        /*let urlString = Urls.uploadImageUrl
-        let requestDict = ["UploadContent":"","Mediatype":"1"]*/
+        var request  = URLRequest(url: URL(string: Urls.uploadImageUrl)!)
+        request.httpMethod = "POST"
+        let boundary = "Boundary-\(UUID().uuidString)"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.setValue(Urls.AccessToken, forHTTPHeaderField: "access_token")
+        
+        
+        request.httpBody = createBody(boundary: boundary,
+                                      data: UIImageJPEGRepresentation(selectedImage, 0.7)!,
+                                      mimeType: "image/jpg",
+                                      filename: "image.jpg")
+        
+        // Make an asynchronous call so as not to hold up other processes.
+        NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main, completionHandler: {(response, dataObject, error) in
+            if let apiError = error {
+                // aHandler?(obj: error, success: false)
+            } else {
+                // aHandler?(obj: dataObject, success: true)
+            }
+            
+        })
+        
     }
- 
+    func createBody(boundary: String,
+                    data: Data,
+                    mimeType: String,
+                    filename: String) -> Data {
+        let body = NSMutableData()
+        
+        let boundaryPrefix = "--\(boundary)\r\n"
+        
+        body.appendString(boundaryPrefix)
+        body.appendString("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n")
+        body.appendString("Content-Type: \(mimeType)\r\n\r\n")
+        body.appendString("imageData : \(data)")
+        body.appendString("\r\n")
+        body.appendString("--".appending(boundary.appending("--")))
+        
+        return body as Data
+    }
+    
+}
+extension NSMutableData {
+    func appendString(_ string: String) {
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
+        append(data!)
+    }
 }
 
 extension PBSignUPVC : UITextFieldDelegate

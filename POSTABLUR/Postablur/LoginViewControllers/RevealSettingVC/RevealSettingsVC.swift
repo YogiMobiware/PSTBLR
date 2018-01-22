@@ -10,6 +10,13 @@ import UIKit
 
 class RevealSettingsVC: UIViewController {
    
+    var image : UIImage!
+    var blurredImage : UIImage? = nil
+    @IBOutlet weak var picImageView: UIImageView!
+
+    @IBOutlet weak var unblurMsgTextLbl : UILabel!
+    
+    
     @IBOutlet weak var revealSettingsTableView: UITableView!
 
     override func viewDidLoad() {
@@ -23,6 +30,10 @@ class RevealSettingsVC: UIViewController {
         
         let dollarNib = UINib(nibName: NibNamed.PBDollarLimitCell.rawValue, bundle: nil)
         self.revealSettingsTableView.register(dollarNib, forCellReuseIdentifier: CellIdentifiers.PBDollarLimitCellIdentifier.rawValue)
+        
+        self.blurredImage =  image.applyBlurWithRadius(20, tintColor: nil, saturationDeltaFactor: 1, maskImage: nil)
+        
+        self.picImageView.image = self.blurredImage
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +44,22 @@ class RevealSettingsVC: UIViewController {
     {
         _ = self.navigationController?.popViewController(animated: true)
         
+    }
+    
+    @IBAction  func unblurPhotoTapped(_ sender: UIButton)
+    {
+        sender.isSelected = !sender.isSelected
+        
+        if sender.isSelected == true
+        {
+            self.picImageView.image = self.image
+            self.unblurMsgTextLbl.text = "TAP TO BLUR PHOTO"
+        }
+        else
+        {
+            self.picImageView.image = self.blurredImage
+            self.unblurMsgTextLbl.text = "TAP TO UNBLUR PHOTO"
+        }
     }
 }
 // MARK: Tableview Datasource and Delegate

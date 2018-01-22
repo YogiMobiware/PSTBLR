@@ -24,9 +24,9 @@ class QRCodeScannerVC: UIViewController {
 
     @objc internal func tapGestureRecognized()
     {
-
-        let revealSettingsVC = RevealSettingsVC()
-        self.navigationController?.pushViewController(revealSettingsVC, animated: true)
+        let captureMediaVC = PBCaptureMediaVC()
+        //let revealSettingsVC = RevealSettingsVC()
+        self.navigationController?.pushViewController(captureMediaVC, animated: true)
 
         
     }
