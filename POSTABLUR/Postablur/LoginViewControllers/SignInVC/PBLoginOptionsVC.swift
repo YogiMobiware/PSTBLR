@@ -180,7 +180,7 @@ class PBLoginOptionsVC: UIViewController
         self.socialEmail = email
         self.socialRegistrationType = "2"
         self.socialProvider = "Twitter"
-        self.socialAccessToken = access_token as AnyObject
+        self.socialAccessToken = access_token 
         
         let urlString = String(format: "%@/UserRegistration", arguments: [Urls.mainUrl]);
         
