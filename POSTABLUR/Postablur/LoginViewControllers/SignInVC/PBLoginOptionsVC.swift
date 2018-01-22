@@ -134,9 +134,9 @@ class PBLoginOptionsVC: UIViewController
                                             }
                                             else
                                             {
-                                                //self.alreadyRegistrationCall()
+                                                self.alreadyRegistrationCall()
                                                 
-                                                self.appdelegate.alert(vc: self, message: statusMessage, title: "Facebook SignIn")
+                                                //self.appdelegate.alert(vc: self, message: statusMessage, title: "Facebook SignIn")
                                                 return
                                             }
                                         }
@@ -166,8 +166,13 @@ class PBLoginOptionsVC: UIViewController
     }
     
     
-    func getTwitterUserData(username: String, email: String)
+    func getTwitterUserData(username: String, email: String, access_token: String)
     {
+        self.socialEmail = email
+        self.socialRegistrationType = "2"
+        self.socialProvider = "Twitter"
+        self.socialAccessToken = access_token
+        
         let urlString = String(format: "%@/UserRegistration", arguments: [Urls.mainUrl]);
         
         let requestDict = ["UserName": username,"Email": email,"Password": "","DOB":"","DBAPin":"","Profileurl": "","ProfileAd":"","Accounttype":"1","PhoneNumber":"","CountryCode":"+91","Registrationtype":"2","DeviceId":"123456","DeviceType":"1"] as [String : Any]
@@ -200,7 +205,9 @@ class PBLoginOptionsVC: UIViewController
                             }
                             else
                             {
-                                self.appdelegate.alert(vc: self, message: statusMessage, title: "Twitter SignIn")
+                                self.alreadyRegistrationCall()
+                                
+                                //self.appdelegate.alert(vc: self, message: statusMessage, title: "Twitter SignIn")
                                 return
                             }
                         }
@@ -226,7 +233,87 @@ class PBLoginOptionsVC: UIViewController
         }
     }
     
-  
+    func alreadyRegistrationCall()
+    {
+        let urlString = String(format: "%@/Externalloginprofiledetails", arguments: [Urls.mainUrl]);
+        let requestDict = ["Email": self.socialEmail,"Registrationtype": self.socialRegistrationType,"Provider": self.socialProvider,"ExternalAccessToken": self.socialAccessToken] as [String : Any]
+        
+        if self.socialRegistrationType == "2"
+        {
+            self.appdelegate.showActivityIndictor(titleString: "Twitter SignIn", subTitleString: "")
+        }
+        else if self.socialRegistrationType == "3"
+        {
+            self.appdelegate.showActivityIndictor(titleString: "Facebook SignIn", subTitleString: "")
+        }
+        
+        PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
+            
+            self.appdelegate.hideActivityIndicator()
+            
+            if error == nil
+            {
+                if responseObject != nil
+                {
+                    if let responseDict = responseObject as? [String : AnyObject]
+                    {
+                        if let resultArray = responseDict["Results"] as! [NSDictionary]!
+                        {
+                            let result = resultArray.first!
+                            
+                            let statusCode = result["StatusCode"] as! String
+                            let statusMessage = result["StatusMsg"] as! String
+                            
+                            if statusCode == "0"
+                            {
+                                let qrCodeScannerVC = QRCodeScannerVC()
+                                self.navigationController?.pushViewController(qrCodeScannerVC, animated: true)
+                                
+                                return
+                            }
+                            else
+                            {
+                                if self.socialRegistrationType == "2"
+                                {
+                                    self.appdelegate.alert(vc: self, message: statusMessage, title: "Twitter SignIn")
+                                }
+                                else if self.socialRegistrationType == "3"
+                                {
+                                    self.appdelegate.alert(vc: self, message: statusMessage, title: "Facebook SignIn")
+                                }
+                                return
+                            }
+                            
+                        }
+                    }
+                }
+                else
+                {
+                    if self.socialRegistrationType == "2"
+                    {
+                        self.appdelegate.alert(vc: self, message: "Something went wrong", title: "Twitter SignIn")
+                    }
+                    else if self.socialRegistrationType == "3"
+                    {
+                        self.appdelegate.alert(vc: self, message: "Something went wrong", title: "Facebook SignIn")
+                    }
+                    return
+                }
+            }
+            else
+            {
+                if self.socialRegistrationType == "2"
+                {
+                    self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Twitter SignIn")
+                }
+                else if self.socialRegistrationType == "3"
+                {
+                    self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Facebook SignIn")
+                }
+                return
+            }
+        }
+    }
 }
 
 extension PBLoginOptionsVC : UITextFieldDelegate
@@ -414,11 +501,12 @@ extension PBLoginOptionsVC : PBSocialLoginCellDelegate
         self.appdelegate.registrationType = 2
         if appdelegate.isNetworkReachable() == true
         {
-            Twitter.sharedInstance().logIn(completion: { (session, error) in
+            TWTRTwitter.sharedInstance().logIn(completion: { (session, error) in
               if (session != nil)
               {
                 let username = session?.userName
-                print (username!)
+                
+                let access_token = session?.authToken
                 
                 let client = TWTRAPIClient.withCurrentUser()
                 
@@ -426,20 +514,20 @@ extension PBLoginOptionsVC : PBSocialLoginCellDelegate
                     
                     if (email != nil)
                     {
-                        print(email!)
-                        
-                        self.getTwitterUserData(username: username!, email: email!)
+                        self.getTwitterUserData(username: username!, email: email!, access_token: access_token!)
                     }
                     else
                     {
-                        print(error!)
+                        self.appdelegate.alert(vc: self, message: error?.localizedDescription, title: "Error")
+                        //print(error!)
                     }
                 }
                 
               }
               else
               {
-                print("error: \(String(describing: error?.localizedDescription))");
+                self.appdelegate.alert(vc: self, message: error?.localizedDescription, title: "Error")
+                //print("error: \(String(describing: error?.localizedDescription))");
               }
            })
         }
@@ -485,7 +573,8 @@ extension PBLoginOptionsVC : PBSocialLoginCellDelegate
                     {
                         if let error = error
                         {
-                            print("error is \(String(describing: error))")
+                            self.appdelegate.alert(vc: self, message: error?.localizedDescription, title: "Error")
+                            //print("error is \(String(describing: error))")
                         }
                         
                     }
