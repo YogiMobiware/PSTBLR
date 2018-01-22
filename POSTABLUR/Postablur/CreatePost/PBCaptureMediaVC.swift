@@ -159,6 +159,7 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         if sender.isSelected == true
         {
             ///turn on flash
+            
         }
         else
         {
@@ -359,9 +360,19 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         if #available(iOS 10, *)
         {
             let settingsForMonitoring = AVCapturePhotoSettings()
-            settingsForMonitoring.isAutoStillImageStabilizationEnabled = true
             settingsForMonitoring.isHighResolutionPhotoEnabled = false
-            
+
+            if self.flashButton.isSelected == true
+            {
+                settingsForMonitoring.flashMode = .on
+                settingsForMonitoring.isAutoStillImageStabilizationEnabled = false
+
+            }
+            else
+            {
+                settingsForMonitoring.flashMode = .off
+                settingsForMonitoring.isAutoStillImageStabilizationEnabled = true
+            }
             if let photoOutput = self.captureOutput as? AVCapturePhotoOutput
             {
                 if let photoOutputConnection = photoOutput.connection(with: AVMediaType.video)
