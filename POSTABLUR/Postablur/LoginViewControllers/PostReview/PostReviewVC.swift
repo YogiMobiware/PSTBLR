@@ -41,6 +41,8 @@ class PostReviewVC: UIViewController
     //BottomView
     @IBOutlet var bottomView: UIView!
     
+    var bluredImage : UIImage!
+    
     var appdelegate : AppDelegate!
     @IBOutlet weak var postTile_Label : UILabel!
 

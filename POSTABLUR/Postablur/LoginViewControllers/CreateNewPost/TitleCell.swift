@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class TitleCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel : UILabel!
@@ -20,8 +22,9 @@ class TitleCell: UITableViewCell {
         let titleLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 20
         let roundedBoldfontSize = floor(titleLabelfontSize)
         self.titleLabel.font = self.titleLabel.font.withSize(roundedBoldfontSize)
-
     }
+    
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

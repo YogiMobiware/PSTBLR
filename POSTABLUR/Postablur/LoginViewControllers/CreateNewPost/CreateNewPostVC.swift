@@ -12,7 +12,13 @@ class CreateNewPostVC: UIViewController {
    
     @IBOutlet weak var createPostTableView: UITableView!
     @IBOutlet weak var postTitleLabel : UILabel!
-
+    var descriptionTextView : UITextView!
+    var titleLabelText : String!
+    var locationText : String!
+    var postTosocialNetwork : String!
+    var donateToCharity : String!
+    var whoGetsToReveal : String!
+    var blurImage : UIImage!
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -49,7 +55,16 @@ class CreateNewPostVC: UIViewController {
 
     @IBAction func doneBtnAction(_ sender: UIButton)
     {
-        let postReviewVC = PostReviewVC()
+  
+        let postReviewVC = PostReviewVC(nibName: "PostReviewVC", bundle: nil)
+        _ = postReviewVC.view
+        postReviewVC.bluredImage = blurImage
+        postReviewVC.titleTxtLabel.text = self.titleLabelText as String
+        postReviewVC.descTxtLabel.text = self.descriptionTextView.text! as String
+        postReviewVC.locationTxtLabel.text = self.locationText
+        postReviewVC.revealedTxtLabel.text = self.whoGetsToReveal
+        postReviewVC.sharedOnTxtLabel.text = self.postTosocialNetwork
+        postReviewVC.donateToTxtLabel.text = self.donateToCharity
         self.navigationController?.pushViewController(postReviewVC, animated: true);
         
     }
@@ -95,19 +110,17 @@ extension CreateNewPostVC : UITableViewDataSource, UITableViewDelegate
         case 0:
             let cell : TitleCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.TitleCellIdentifier.rawValue, for: indexPath) as! TitleCell
             cell.titleTF.delegate = self
-
             return cell
             
         case 1:
             let cell : LocationCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.LocationCellIdentifier.rawValue, for: indexPath) as! LocationCell
             cell.locationTF.delegate = self
-
             return cell
             
         case 2:
             let cell : DescriptionCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.DescriptionCellIdentifier.rawValue, for: indexPath) as! DescriptionCell
             cell.descriptionTV.delegate = self
-
+            cell.descriptionDelegate = self
             return cell
         case 3:
             let cell : ShareYourPost = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.ShareYourPostCellIdentifier.rawValue, for: indexPath) as! ShareYourPost
@@ -120,44 +133,91 @@ extension CreateNewPostVC : UITableViewDataSource, UITableViewDelegate
         }
     }
 }
-
 extension CreateNewPostVC : UITextFieldDelegate
 {
-    
     // MARK: Textfield Delegate methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         textField.resignFirstResponder()
         return true
     }
+    func textFieldDidEndEditing(_ textField: UITextField)
+    {
+        if textField.placeholder == "Title"
+        {
+            self.titleLabelText = textField.text
+        }
+        else
+        {
+            self.locationText = textField.text
+        }
+    }
     
 }
 extension CreateNewPostVC : UITextViewDelegate
 {
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         
+        self.descriptionTextView = textView
+        
     }
-    
+   
 }
 extension CreateNewPostVC : ShareYourPostDelegate
 {
     func pbPublicOrPrivateDidTap(privateOrPublicButton:UIButton)
     {
-        
+        // SET BUTTON TAG 201 MEANS PUBLIC IN XIB
+        if privateOrPublicButton.tag == 201
+        {
+          self.whoGetsToReveal = "Public"
+        }
+        else
+        {
+            self.whoGetsToReveal = "Private"
+        }
     }
     func pbTwitterBtnDidTap()
     {
-        
+      self.postTosocialNetwork = "Twitter"
     }
     func pbFaceBookBtnDidTap()
     {
-        
+        self.postTosocialNetwork = "Facebook"
+
     }
     func pbDonateBtnDidTap(selectedDonatedButton : UIButton)
     {
-        
-        
-        
+        switch selectedDonatedButton.tag {
+            case 101:
+            self.donateToCharity = "United Way"
+                break
+            case 102:
+                self.donateToCharity = "American cancer society"
+                break
+            case 103:
+                self.donateToCharity = "American red cross"
+                break
+            case 104:
+                self.donateToCharity = "American heart association"
+                break
+        default:
+            self.donateToCharity = "Boys and girls club of america"
+            break
+
+        }
+    }
+}
+
+extension CreateNewPostVC : PBDescriptionCellDelegate
+{
+    func doneButtonDidTapOnDescriptionView(_ textView: UITextView)
+    {
+        self.descriptionTextView.resignFirstResponder()
+        if textView.text != nil
+        {
+        self.descriptionTextView.text = textView.text
+        }
+
     }
 }
