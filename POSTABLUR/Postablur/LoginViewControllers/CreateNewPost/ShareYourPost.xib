@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -44,6 +44,7 @@
                                     <constraint firstAttribute="height" constant="44" id="tit-Mf-II5"/>
                                     <constraint firstAttribute="width" constant="44" id="ync-Ld-FYu"/>
                                 </constraints>
+                                <color key="tintColor" red="0.0" green="0.68627450980392157" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="twitterIconBlack"/>
                                 <connections>
                                     <action selector="twitterBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UHx-8O-u2v"/>
@@ -55,6 +56,7 @@
                                     <constraint firstAttribute="height" constant="35" id="4mq-sb-IJe"/>
                                     <constraint firstAttribute="width" constant="34" id="vZB-6F-vJX"/>
                                 </constraints>
+                                <color key="tintColor" red="0.0" green="0.68627450980000004" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="facebookIconGrey"/>
                                 <connections>
                                     <action selector="faceBookBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6gG-Da-k8q"/>
@@ -88,6 +90,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="sXL-t6-i4K" secondAttribute="height" multiplier="31:13" id="D4n-8v-vaS"/>
                                 </constraints>
+                                <color key="tintColor" red="0.0" green="0.68627450980000004" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="unitedWay"/>
                                 <connections>
                                     <action selector="donateBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HkG-fs-qAq"/>
@@ -98,6 +101,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ech-hk-cEJ" secondAttribute="height" multiplier="43:26" id="iHx-p7-WV9"/>
                                 </constraints>
+                                <color key="tintColor" red="0.0" green="0.68627450980000004" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="americanCancerSociety"/>
                                 <connections>
                                     <action selector="donateBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="O7j-gi-eT5"/>
@@ -108,6 +112,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bql-m9-SOL" secondAttribute="height" multiplier="19:8" id="Ekf-Hc-a1b"/>
                                 </constraints>
+                                <color key="tintColor" red="0.0" green="0.68627450980000004" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="americanRedCross"/>
                                 <connections>
                                     <action selector="donateBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Qfa-xz-7hQ"/>
@@ -118,6 +123,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kIt-wB-moY" secondAttribute="height" multiplier="19:8" id="Awe-L1-o3g"/>
                                 </constraints>
+                                <color key="tintColor" red="0.0" green="0.68627450980000004" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="americanHeartAssociation"/>
                                 <connections>
                                     <action selector="donateBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kEY-Fp-eK3"/>
@@ -128,6 +134,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4ob-Av-w0T" secondAttribute="height" multiplier="12:5" id="pFZ-Mh-Ycb"/>
                                 </constraints>
+                                <color key="tintColor" red="0.0" green="0.68627450980000004" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="boysAndGirlsClubOfAmerica"/>
                                 <connections>
                                     <action selector="donateBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6bL-Wl-bY0"/>
@@ -173,6 +180,7 @@
                                     <constraint firstAttribute="height" constant="41" id="Oo2-EB-Z2C"/>
                                     <constraint firstAttribute="width" constant="39" id="h2n-q3-Rzu"/>
                                 </constraints>
+                                <color key="tintColor" red="0.0" green="0.68627450980000004" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="publicBlackIcon"/>
                                 <connections>
                                     <action selector="whoGetsRevealBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iT0-eg-rZN"/>
@@ -183,6 +191,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="Thg-oQ-MPW"/>
                                 </constraints>
+                                <color key="tintColor" red="0.0" green="0.68627450980000004" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="producerGreyIcon_1"/>
                                 <connections>
                                     <action selector="whoGetsRevealBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="QWt-z1-Yop"/>
@@ -224,8 +233,17 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="americanCancerBtn" destination="ech-hk-cEJ" id="IBQ-3r-qr6"/>
+                <outlet property="americanHeartAssocBtn" destination="kIt-wB-moY" id="LJa-Xs-ur3"/>
+                <outlet property="americanRedCrossBtn" destination="bql-m9-SOL" id="jgx-8l-Wsu"/>
+                <outlet property="boysAndGirlsBtn" destination="4ob-Av-w0T" id="B04-Mg-f69"/>
                 <outlet property="donateCharityLabel" destination="JW5-S9-sNC" id="94i-qa-6hu"/>
+                <outlet property="facebookBtn" destination="mzU-Og-L1J" id="tKC-gw-HY3"/>
+                <outlet property="privateAccessBtn" destination="Q8c-dz-jbR" id="yRk-gy-EKi"/>
+                <outlet property="publicAccessBtn" destination="fV9-nM-QuJ" id="RSv-5k-hUk"/>
                 <outlet property="shareTitleLabel" destination="5Tv-jc-BW3" id="y5f-5A-0Wc"/>
+                <outlet property="twitterBtn" destination="WT2-MJ-QTo" id="bIV-T9-dOo"/>
+                <outlet property="unitedWayBtn" destination="sXL-t6-i4K" id="9GA-tE-xeY"/>
                 <outlet property="whoGetsTitleLabel" destination="XVO-Vg-uWQ" id="biH-Kl-UKT"/>
             </connections>
         </tableViewCell>
