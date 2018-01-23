@@ -168,7 +168,6 @@
                                         <constraint firstAttribute="height" constant="40" id="p1n-wp-Vwf"/>
                                     </constraints>
                                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <state key="normal" image="CartButton"/>
                                     <connections>
                                         <action selector="profileTapped:" destination="-1" eventType="touchUpInside" id="l82-lH-Pjq"/>
                                     </connections>
@@ -229,7 +228,6 @@
         </view>
     </objects>
     <resources>
-        <image name="CartButton" width="16" height="16"/>
         <image name="HBMenu" width="16" height="16"/>
         <image name="QRtabIcon" width="64" height="34"/>
         <image name="createPostTabIcon" width="38" height="30"/>
