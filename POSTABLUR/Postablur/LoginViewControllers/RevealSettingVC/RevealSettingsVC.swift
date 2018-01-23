@@ -31,8 +31,8 @@ class RevealSettingsVC: UIViewController {
         
         let dollarNib = UINib(nibName: NibNamed.PBDollarLimitCell.rawValue, bundle: nil)
         self.revealSettingsTableView.register(dollarNib, forCellReuseIdentifier: CellIdentifiers.PBDollarLimitCellIdentifier.rawValue)
-       //COMMENTED AS OF NOW NEED TO REMOVE
-       // self.blurredImage =  PBUtility.blurEffect(image: image)
+       
+        self.blurredImage =  PBUtility.blurEffect(image: image)
         
         self.picImageView.image = self.blurredImage
         let shareLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 24

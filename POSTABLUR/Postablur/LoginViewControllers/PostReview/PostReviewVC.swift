@@ -42,7 +42,8 @@ class PostReviewVC: UIViewController
     @IBOutlet var bottomView: UIView!
     
     var appdelegate : AppDelegate!
-    
+    @IBOutlet weak var postTile_Label : UILabel!
+
     //ViewDidLoad
     override func viewDidLoad()
     {
@@ -62,6 +63,10 @@ class PostReviewVC: UIViewController
         let attrString1 = NSAttributedString(string: "Title: ", attributes: attributes1)
         let attrString2 = NSAttributedString(string: "FRONT STAGE MELE: ", attributes: attributes2)*/
         
+        let shareLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 24
+        let roundedBoldfontSize = floor(shareLabelfontSize)
+        self.postTile_Label.font = self.postTile_Label.font.withSize(roundedBoldfontSize)
+
         
     }
     
