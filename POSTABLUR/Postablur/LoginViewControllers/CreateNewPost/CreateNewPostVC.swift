@@ -39,7 +39,6 @@ class CreateNewPostVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
    
-    
     }
     
     @IBAction func backBtnAction(_ sender: UIButton)
@@ -50,8 +49,8 @@ class CreateNewPostVC: UIViewController {
 
     @IBAction func doneBtnAction(_ sender: UIButton)
     {
-        let createNewPostVC = CreateNewPostVC()
-        self.navigationController?.pushViewController(createNewPostVC, animated: true);
+        let postReviewVC = PostReviewVC()
+        self.navigationController?.pushViewController(postReviewVC, animated: true);
         
     }
     

@@ -177,10 +177,7 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
     
     @IBAction func actionFlashCamera(_ sender: UIButton)
     {
-        let revealSettingsVC = RevealSettingsVC()
-        self.navigationController?.pushViewController(revealSettingsVC, animated: true);
 
-       //COMMENTED AS OF NOW NEED TO REMOVE
         sender.isSelected = !sender.isSelected
         if sender.isSelected == true
         {
