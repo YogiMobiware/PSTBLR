@@ -33,18 +33,83 @@ class AccountsVC: UIViewController
     @IBOutlet var buttonsView: UIView!
     
     @IBOutlet var dataView: UIView!
+    @IBOutlet var accountsFeedsCollectionView: UICollectionView!
+    
+    
+    @IBOutlet var activity: UIActivityIndicatorView!
+    
+    private let reuseIdentifier = "accountsCollectionCell"
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view
+        
+        accountsFeedsCollectionView.delegate = self
+        accountsFeedsCollectionView.dataSource = self
+        let nib = UINib(nibName: NibNamed.AccountsCollectionCell.rawValue, bundle: nil)
+        self.accountsFeedsCollectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         
         let username = ""
         var _ = "@ \(username)"
         
         self.fontSet()
+        
+        //self.loadMyPostsDetails()
     
+    }
+    
+    func loadMyPostsDetails()
+    {
+        let urlString = String(format: "%@/MyPostsDetails", arguments: [Urls.mainUrl]);
+        guard let userId = UserDefaults.standard.string(forKey: "UserId") else
+        {
+            return
+        }
+        let requestDict = ["UserId": userId,"StartValue": "1","Endvalue": "20"] as [String : Any]
+        
+        self.activity.startAnimating()
+        self.activity.isHidden = false
+        PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
+            
+            self.activity.stopAnimating()
+            
+            if error == nil
+            {
+                if responseObject != nil
+                {
+                    if let responseDict = responseObject as? [String : AnyObject]
+                    {
+                        if let error = responseDict["Error"] as? String
+                        {
+                            self.appDelegate.alert(vc: self, message: error , title: "Error")
+                            return
+                        }
+                        else
+                        {
+                            return
+                        }
+                        
+                    }
+                    if let responseStr = responseObject as? String
+                    {
+                        self.appDelegate.alert(vc: self, message: responseStr, title: "Error")
+                        return
+                    }
+                    
+                }
+                else
+                {
+                    self.appDelegate.alert(vc: self, message: "Something went wrong", title: "Error")
+                    return
+                }
+            }
+            else
+            {
+                self.appDelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
+                return
+            }
+        }
     }
     
     func fontSet()
@@ -71,6 +136,24 @@ class AccountsVC: UIViewController
     
     @IBAction func connectBtnAction(_ sender: UIButton)
     {
+        
+    }
+}
+
+extension AccountsVC : UICollectionViewDelegate, UICollectionViewDataSource
+{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! AccountsCollectionCell
+       
+        
+        return cell
         
     }
 }
