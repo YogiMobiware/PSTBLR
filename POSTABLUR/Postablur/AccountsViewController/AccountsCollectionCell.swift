@@ -11,7 +11,8 @@ import UIKit
 class AccountsCollectionCell: UICollectionViewCell
 {
 
-    @IBOutlet var accountsImage: UIImageView!
+   
+    @IBOutlet var accoutsImageView: UIImageView!
     
     override func awakeFromNib()
     {

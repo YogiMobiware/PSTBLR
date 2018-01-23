@@ -33,7 +33,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="92" height="84"/>
             <connections>
-                <outlet property="accountsImage" destination="q0K-t6-gj4" id="m7Z-gb-wV4"/>
+                <outlet property="accoutsImageView" destination="q0K-t6-gj4" id="d4a-r6-3Xx"/>
             </connections>
             <point key="canvasLocation" x="66" y="77"/>
         </collectionViewCell>
