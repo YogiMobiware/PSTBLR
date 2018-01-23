@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PostReviewVC: UIViewController
 {
@@ -41,7 +42,6 @@ class PostReviewVC: UIViewController
     //BottomView
     @IBOutlet var bottomView: UIView!
     
-    var bluredImage : UIImage!
     
     var appdelegate : AppDelegate!
     @IBOutlet weak var postTile_Label : UILabel!
@@ -60,14 +60,22 @@ class PostReviewVC: UIViewController
         let roundedBoldfontSize = floor(shareLabelfontSize)
         self.postTile_Label.font = self.postTile_Label.font.withSize(roundedBoldfontSize)
 
-        //let descString = "Desc: The calm"
+        let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
+        let imgPath = URL(fileURLWithPath: documentDirectoryPath.appendingPathComponent("1.jpg"))
+        let blurredImage    = UIImage(contentsOfFile: imgPath.path)
+
+        selectedImageView.image =  PBUtility.blurEffect(image: blurredImage!)
+
+      /*  let despStr = "Desc:"
+        let despText : UILabel!  = descTxtLabel
         
-        /*var myMutableString = NSMutableAttributedString()
+        let descString = "\(despStr)\(String(describing: despText.text!) )"
+
+        var myMutableString = NSMutableAttributedString()
         myMutableString = NSMutableAttributedString(string: descString as String, attributes: [NSAttributedStringKey.font:UIFont(name: "Arial", size: 16.0)!])
         myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.darkGray, range: NSRange(location:0,length:4))
-        myMutableString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Arial-Bold", size: 16.0)!, range: NSRange(location:6,length:8))
-        
-        descTxtLabel.attributedText = myMutableString*/
+        myMutableString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Arial-Bold", size: 16.0)!, range: NSRange(location:6,length:descString.count))
+        */
         
         let allLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 16
         let fontSize = floor(allLabelfontSize)
@@ -91,34 +99,118 @@ class PostReviewVC: UIViewController
         
         let urlString = String(format: "%@/AddUserPost", arguments: [Urls.mainUrl]);
         
-        let requestDict = ["PostTitle": titleTxtLabel.text!,"Location": locationTxtLabel.text!,"Description": descTxtLabel.text!,"DonatetoCharity":donateToTxtLabel.text!,"ShareYourPost":sharedOnTxtLabel.text!,"WhoRevealsPostThisPost": revealedTxtLabel.text!,"LikeLimit":"2147483647","ShareLimit":"2147483647","DonationLimit":"2147483647","UserId":""] as [String : Any]
+        let requestDict = ["PostTitle": titleTxtLabel.text!,"Location": locationTxtLabel.text!,"Description": descTxtLabel.text!,"DonatetoCharity":"1","ShareYourPost":"10","WhoRevealsPostThisPost": "Public","LikeLimit":"2147","ShareLimit":"2147","DonationLimit":"2147","UserId":"1278dccf-c984-46e9-8b64-49e705613fac"] as [String : Any]
         
-        self.appdelegate.showActivityIndictor(titleString: "Facebook SignIn", subTitleString: "")
-        
+        self.appdelegate.showActivityIndictor(titleString: "Postablur", subTitleString: "Posting...")
+
         PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
-            
-            self.appdelegate.hideActivityIndicator()
             
             if error == nil
             {
                 if responseObject != nil
                 {
                    
+                    if let responseDict = responseObject as? [String : AnyObject]
+                    {
+                        if let resultArray = responseDict["Results"] as! [NSDictionary]!
+                        {
+                        
+                            let result = resultArray.first!
+                            
+                            let statusCode = result["StatusCode"] as! String
+                            let postID = result["PostId"] as! String
+                            if statusCode == "0"
+                            {
+                            self.appdelegate.hideActivityIndicator()
+
+                            self.uploadBlurredImageToServer(postID: postID)
+
+                            }
+                        
+                        }
+                    }
+                    
                 }
                 else
                 {
-                    self.appdelegate.alert(vc: self, message: "Something went wrong", title: "Error")
+                    PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Error", andMessage: "Something went wrong")
+                    self.appdelegate.hideActivityIndicator()
+
                     return
                 }
             }
             else
             {
-                self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
+                PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Error", andMessage: (error?.localizedDescription)!)
+                self.appdelegate.hideActivityIndicator()
+
                 return
             }
         }
         
     }
+    
+    func uploadBlurredImageToServer(postID : String)
+    {
+        let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
+        let imgPath = URL(fileURLWithPath: documentDirectoryPath.appendingPathComponent("1.jpg"))
+
+        let image    = UIImage(contentsOfFile: imgPath.path)
+
+        let resizedImage = image?.resizeImage(image: image!, newWidth: (image?.size.width)!*0.5)!
+
+        let parameters : [String: String] = ["Mediatype":"1","postID":postID]
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(UIImageJPEGRepresentation(resizedImage!, 1.0)!, withName: "UploadPhoto", fileName: "UploadImage.jpeg", mimeType: "image/jpeg")
+            for (key, value) in parameters {
+                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+            }
+        }, to:Urls.uploadPostMediaUrl)
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                
+                self.appdelegate.showActivityIndictor(titleString: "Uploading...", subTitleString: "")
+
+                upload.uploadProgress(closure: { (Progress) in
+                    print("Upload Progress: \(Progress.fractionCompleted)")
+                    
+                })
+                
+                upload.responseJSON { response in
+                    if let JSON = response.result.value {
+                        print("JSON: \(JSON)")
+
+                        if let responseDict = JSON as? [String : AnyObject]
+                        {
+                            if let returnUrl = responseDict["RetrurnUrl"] as! String!
+                            {
+                                PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Postablur", andMessage: "Uploaded Successfully")
+                                self.appdelegate.hideActivityIndicator()
+
+                            }
+                        }
+                        else
+                        {
+                            let responseDict = JSON as? [String : AnyObject]
+                            self.appdelegate.alert(vc: self, message: responseDict!["StatusMsg"] as! String!, title: "Error Uploading")
+                            self.appdelegate.hideActivityIndicator()
+
+                        }
+                    }
+                }
+                
+            case .failure(let encodingError):
+                //self.delegate?.showFailAlert()
+                print(encodingError)
+                self.appdelegate.hideActivityIndicator()
+                
+            }
+            
+        }
+    }
+    
     
     @IBAction func backBtnAction(_ sender: UIButton)
     {

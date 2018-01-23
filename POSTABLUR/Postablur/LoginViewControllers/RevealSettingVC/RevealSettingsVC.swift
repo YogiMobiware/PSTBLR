@@ -53,7 +53,6 @@ class RevealSettingsVC: UIViewController {
     @IBAction func nextBtnAction(_ sender: UIButton)
     {
         let createNewPostVC = CreateNewPostVC()
-        createNewPostVC.blurImage = image
         self.navigationController?.pushViewController(createNewPostVC, animated: true);
 
     }
