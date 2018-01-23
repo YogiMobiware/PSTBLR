@@ -40,10 +40,14 @@ class AccountsVC: UIViewController
     
     private let reuseIdentifier = "accountsCollectionCell"
     
+    var appdelegate : AppDelegate!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view
+        
+        self.appdelegate = UIApplication.shared.delegate as! AppDelegate
         
         accountsFeedsCollectionView.delegate = self
         accountsFeedsCollectionView.dataSource = self
@@ -74,41 +78,7 @@ class AccountsVC: UIViewController
             
             self.activity.stopAnimating()
             
-            if error == nil
-            {
-                if responseObject != nil
-                {
-                    if let responseDict = responseObject as? [String : AnyObject]
-                    {
-                        if let error = responseDict["Error"] as? String
-                        {
-                            self.appDelegate.alert(vc: self, message: error , title: "Error")
-                            return
-                        }
-                        else
-                        {
-                            return
-                        }
-                        
-                    }
-                    if let responseStr = responseObject as? String
-                    {
-                        self.appDelegate.alert(vc: self, message: responseStr, title: "Error")
-                        return
-                    }
-                    
-                }
-                else
-                {
-                    self.appDelegate.alert(vc: self, message: "Something went wrong", title: "Error")
-                    return
-                }
-            }
-            else
-            {
-                self.appDelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
-                return
-            }
+           
         }
     }
     
