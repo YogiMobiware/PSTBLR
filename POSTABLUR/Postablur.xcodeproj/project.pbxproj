@@ -25,6 +25,8 @@
 		846ED29B2012335A004749ED /* UIImage+ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846ED29A2012335A004749ED /* UIImage+ResizeImage.swift */; };
 		8474E9492015FCDE00D85E4F /* PostReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474E9472015FCDE00D85E4F /* PostReviewVC.swift */; };
 		8474E94A2015FCDE00D85E4F /* PostReviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8474E9482015FCDE00D85E4F /* PostReviewVC.xib */; };
+		B003D42D201744640025DF6C /* AccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003D42B201744640025DF6C /* AccountsVC.swift */; };
+		B003D42E201744650025DF6C /* AccountsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B003D42C201744640025DF6C /* AccountsVC.xib */; };
 		B00D05C9201371D40031CE82 /* RevealSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D05C7201371D40031CE82 /* RevealSettingsVC.swift */; };
 		B00D05CA201371D40031CE82 /* RevealSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D05C8201371D40031CE82 /* RevealSettingsVC.xib */; };
 		B00D05CE20137BA30031CE82 /* PBLikeLimitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D05CC20137BA30031CE82 /* PBLikeLimitCell.swift */; };
@@ -98,6 +100,8 @@
 		846ED29A2012335A004749ED /* UIImage+ResizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ResizeImage.swift"; sourceTree = "<group>"; };
 		8474E9472015FCDE00D85E4F /* PostReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReviewVC.swift; sourceTree = "<group>"; };
 		8474E9482015FCDE00D85E4F /* PostReviewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostReviewVC.xib; sourceTree = "<group>"; };
+		B003D42B201744640025DF6C /* AccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVC.swift; sourceTree = "<group>"; };
+		B003D42C201744640025DF6C /* AccountsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountsVC.xib; sourceTree = "<group>"; };
 		B00D05C7201371D40031CE82 /* RevealSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealSettingsVC.swift; sourceTree = "<group>"; };
 		B00D05C8201371D40031CE82 /* RevealSettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RevealSettingsVC.xib; sourceTree = "<group>"; };
 		B00D05CC20137BA30031CE82 /* PBLikeLimitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBLikeLimitCell.swift; sourceTree = "<group>"; };
@@ -308,6 +312,15 @@
 			path = PostReview;
 			sourceTree = "<group>";
 		};
+		B003D42A2017443F0025DF6C /* AccountsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B003D42B201744640025DF6C /* AccountsVC.swift */,
+				B003D42C201744640025DF6C /* AccountsVC.xib */,
+			);
+			path = AccountsViewController;
+			sourceTree = "<group>";
+		};
 		B00D05CB20137B750031CE82 /* RevealSettingVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +391,7 @@
 		B0F4CA6E200F20A400F39409 /* Postablur */ = {
 			isa = PBXGroup;
 			children = (
+				B003D42A2017443F0025DF6C /* AccountsViewController */,
 				444E46C62017275100C3FA10 /* Model */,
 				44217FB2201605C50022F09C /* TabsContainer */,
 				44217FAA2016047D0022F09C /* Feeds */,
@@ -479,6 +493,7 @@
 			files = (
 				B0A4369A2010D2EF00DDBA7C /* RegistrationCell.xib in Resources */,
 				B00D05D720137BE20031CE82 /* PBDollarLimitCell.xib in Resources */,
+				B003D42E201744650025DF6C /* AccountsVC.xib in Resources */,
 				44217FB6201605FD0022F09C /* PBTabsContainerVC.xib in Resources */,
 				44217FAE201604AA0022F09C /* PBFeedsVC.xib in Resources */,
 				B0A43686201086A500DDBA7C /* PBSocialLoginCell.xib in Resources */,
@@ -527,7 +542,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3469C9C1FBA8270DDCF99FE1 /* [CP] Embed Pods Frameworks */ = {
@@ -592,6 +607,7 @@
 				B0A436952010BF6900DDBA7C /* AddProfilePhotoCell.swift in Sources */,
 				B00D05C9201371D40031CE82 /* RevealSettingsVC.swift in Sources */,
 				B0F1D6B82015F2FC0010567F /* CreateNewPostVC.swift in Sources */,
+				B003D42D201744640025DF6C /* AccountsVC.swift in Sources */,
 				44217FB1201605B90022F09C /* PBTabsContainerVC.swift in Sources */,
 				B0A436992010D2EF00DDBA7C /* RegistrationCell.swift in Sources */,
 				B0A436912010BD5200DDBA7C /* PBHeaderCell.swift in Sources */,

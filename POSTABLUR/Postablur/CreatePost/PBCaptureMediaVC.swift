@@ -114,7 +114,6 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         if let image = flashButton.imageView?.image
         {
             let templateImage = image.withRenderingMode(.alwaysTemplate)
-//            flashButton.setImage(templateImage, for: .normal)
             flashButton.setImage(templateImage, for: .selected)
         }
         
