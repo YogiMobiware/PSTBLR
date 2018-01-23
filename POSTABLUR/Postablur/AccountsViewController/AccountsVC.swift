@@ -184,6 +184,9 @@ class AccountsVC: UIViewController
     @IBAction func settingsBtnAction(_ sender: UIButton)
     {
         
+        let accountSettingsVC = AccountSettingsVC(nibName: "AccountSettingsVC", bundle: nil)
+        self.navigationController?.pushViewController(accountSettingsVC, animated: true)
+
     }
     
     @IBAction func connectBtnAction(_ sender: UIButton)

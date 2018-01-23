@@ -40,7 +40,7 @@ enum CellIdentifiers: String{
     case LocationCellIdentifier = "LocationCellID"
     case ShareYourPostCellIdentifier = "ShareYourPostCellID"
     case DescriptionCellIdentifier = "DescriptionCellID"
-
+    case AccountsSettingsCellIdentifier = "AccountsSettingsCellID"
 
 }
 

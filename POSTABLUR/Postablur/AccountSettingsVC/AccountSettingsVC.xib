@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountSettingsVC" customModule="Postablur" customModuleProvider="target">
+            <connections>
+                <outlet property="accountsTableView" destination="L6S-Ye-EnT" id="9TB-B0-lHa"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcW-pg-dI1" userLabel="HeaderView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="102"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agt-PN-Pxo">
+                            <rect key="frame" x="10" y="30" width="42" height="42"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="Eyq-tS-dmK"/>
+                                <constraint firstAttribute="width" constant="42" id="Jcr-QC-dut"/>
+                            </constraints>
+                            <color key="tintColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" image="keyboardBackspace">
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWhiteIcon" translatesAutoresizingMaskIntoConstraints="NO" id="gIX-L9-5Df">
+                            <rect key="frame" x="102.5" y="22" width="209" height="58"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="209" id="Mah-lx-brN"/>
+                                <constraint firstAttribute="height" constant="58" id="jMg-lb-z9A"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0DS-d8-wps">
+                            <rect key="frame" x="374" y="36" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="Ch8-bt-JSU"/>
+                                <constraint firstAttribute="height" constant="30" id="mdR-EH-BG8"/>
+                            </constraints>
+                            <state key="normal" image="iconWhitePostablurApp"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="0DS-d8-wps" firstAttribute="centerY" secondItem="fcW-pg-dI1" secondAttribute="centerY" id="2nz-Mg-88H"/>
+                        <constraint firstItem="gIX-L9-5Df" firstAttribute="centerY" secondItem="fcW-pg-dI1" secondAttribute="centerY" id="DfJ-Rc-afj"/>
+                        <constraint firstItem="Agt-PN-Pxo" firstAttribute="leading" secondItem="fcW-pg-dI1" secondAttribute="leading" constant="10" id="Gf2-ek-uPX"/>
+                        <constraint firstItem="gIX-L9-5Df" firstAttribute="centerX" secondItem="fcW-pg-dI1" secondAttribute="centerX" id="hEb-mr-21k"/>
+                        <constraint firstAttribute="trailing" secondItem="0DS-d8-wps" secondAttribute="trailing" constant="10" id="hIC-dW-WT0"/>
+                        <constraint firstItem="Agt-PN-Pxo" firstAttribute="centerY" secondItem="fcW-pg-dI1" secondAttribute="centerY" id="vp4-V8-QtI"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L6S-Ye-EnT">
+                    <rect key="frame" x="0.0" y="101" width="414" height="635"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="b45-AZ-VDl"/>
+                        <outlet property="delegate" destination="-1" id="46v-B5-QFC"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="L6S-Ye-EnT" secondAttribute="bottom" id="2us-Ib-4Am"/>
+                <constraint firstItem="fcW-pg-dI1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4un-Or-r36"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="L6S-Ye-EnT" secondAttribute="trailing" id="Cq5-Nf-ur7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fcW-pg-dI1" secondAttribute="trailing" id="PaN-K1-Orm"/>
+                <constraint firstItem="L6S-Ye-EnT" firstAttribute="top" secondItem="fcW-pg-dI1" secondAttribute="bottom" constant="-1" id="kub-N1-eZj"/>
+                <constraint firstItem="L6S-Ye-EnT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="q3j-eq-uQq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="fcW-pg-dI1" secondAttribute="top" constant="20" id="rIO-6E-34Z"/>
+                <constraint firstItem="fcW-pg-dI1" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="102:736" id="s7c-0X-ait"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="iconWhitePostablurApp" width="36" height="35"/>
+        <image name="keyboardBackspace" width="24" height="24"/>
+        <image name="logoWhiteIcon" width="209" height="58"/>
+    </resources>
+</document>
