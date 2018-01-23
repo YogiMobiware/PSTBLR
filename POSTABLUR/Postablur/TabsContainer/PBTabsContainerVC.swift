@@ -40,6 +40,13 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
+        if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl")
+        {
+            let userProfileUrl = URL(string: userProfileUrlStr as! String)!
+            self.profileButton.kf.setImage(with: userProfileUrl, for: .normal)
+        }
+        
         ////////////////
         
         self.disableButtons([self.feedButton])

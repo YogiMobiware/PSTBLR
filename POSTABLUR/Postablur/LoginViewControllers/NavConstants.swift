@@ -28,6 +28,8 @@ enum NibNamed: String
     case PBCaptureMediaVC
     case PBFeedsVC
     case PBFeedsCollectionCell
+    case PBFeedsTableCell
+    case PBFeedsInteractionVC
     case TitleCell
     case LocationCell
     case ShareYourPost

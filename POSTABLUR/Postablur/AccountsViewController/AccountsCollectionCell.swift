@@ -1,20 +1,22 @@
 //
-//  PBFeedsCollectionCell.swift
+//  AccountsCollectionCell.swift
 //  Postablur
 //
-//  Created by Yogi on 22/01/18.
+//  Created by Saraschandra on 23/01/18.
 //  Copyright © 2018 MobiwareInc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class PBFeedsCollectionCell : UICollectionViewCell
+class AccountsCollectionCell: UICollectionViewCell
 {
-    @IBOutlet var feedImageView : UIImageView!
+
+    @IBOutlet var accountsImage: UIImageView!
     
     override func awakeFromNib()
     {
         super.awakeFromNib()
         // Initialization code
     }
+
 }

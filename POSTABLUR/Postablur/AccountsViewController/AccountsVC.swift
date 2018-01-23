@@ -33,18 +33,53 @@ class AccountsVC: UIViewController
     @IBOutlet var buttonsView: UIView!
     
     @IBOutlet var dataView: UIView!
+    @IBOutlet var accountsFeedsCollectionView: UICollectionView!
+    
+    
+    @IBOutlet var activity: UIActivityIndicatorView!
+    
+    private let reuseIdentifier = "accountsCollectionCell"
+    
+    var appdelegate : AppDelegate!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view
+        
+        self.appdelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        accountsFeedsCollectionView.delegate = self
+        accountsFeedsCollectionView.dataSource = self
+        let nib = UINib(nibName: NibNamed.AccountsCollectionCell.rawValue, bundle: nil)
+        self.accountsFeedsCollectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         
         let username = ""
         var _ = "@ \(username)"
         
         self.fontSet()
+        
+        //self.loadMyPostsDetails()
     
+    }
+    
+    func loadMyPostsDetails()
+    {
+        let urlString = String(format: "%@/MyPostsDetails", arguments: [Urls.mainUrl]);
+        guard let userId = UserDefaults.standard.string(forKey: "UserId") else
+        {
+            return
+        }
+        let requestDict = ["UserId": userId,"StartValue": "1","Endvalue": "20"] as [String : Any]
+        
+        self.activity.startAnimating()
+        self.activity.isHidden = false
+        PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
+            
+            self.activity.stopAnimating()
+            
+           
+        }
     }
     
     func fontSet()
@@ -71,6 +106,24 @@ class AccountsVC: UIViewController
     
     @IBAction func connectBtnAction(_ sender: UIButton)
     {
+        
+    }
+}
+
+extension AccountsVC : UICollectionViewDelegate, UICollectionViewDataSource
+{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! AccountsCollectionCell
+       
+        
+        return cell
         
     }
 }

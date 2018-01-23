@@ -19,7 +19,7 @@ class PBFeedsVC : UIViewController
 
     @IBOutlet var activity : UIActivityIndicatorView!
 
-    private let reuseIdentifier = "feedsCollectionCell"
+    let reuseIdentifier = "feedsCollectionCell"
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
