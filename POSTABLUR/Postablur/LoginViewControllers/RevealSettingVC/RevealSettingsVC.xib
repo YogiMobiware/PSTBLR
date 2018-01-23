@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -80,7 +81,7 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heF-Ek-01F">
-                    <rect key="frame" x="0.0" y="673" width="414" height="62.5"/>
+                    <rect key="frame" x="0.0" y="673" width="414" height="64"/>
                     <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="40"/>
                     <state key="normal" title="NEXT">
@@ -123,7 +124,7 @@
                 <constraint firstItem="bPS-ei-l6P" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="369:736" id="Sgc-mT-CgO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IKz-7G-RlW" secondAttribute="trailing" id="T3l-Zc-fHK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bPS-ei-l6P" secondAttribute="trailing" id="U65-N6-ESd"/>
-                <constraint firstItem="heF-Ek-01F" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="62:736" id="Y5g-RU-v5t"/>
+                <constraint firstItem="heF-Ek-01F" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="64:736" id="Y5g-RU-v5t"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="heF-Ek-01F" secondAttribute="trailing" id="Ytc-0g-tsW"/>
                 <constraint firstItem="jAD-77-mOD" firstAttribute="leading" secondItem="JVa-co-g0M" secondAttribute="trailing" constant="16" id="cSV-n4-Zl4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="F1Y-YL-wU6" secondAttribute="trailing" id="csq-Vu-j0N"/>

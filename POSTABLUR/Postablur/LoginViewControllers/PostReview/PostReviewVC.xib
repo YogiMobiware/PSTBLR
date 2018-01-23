@@ -355,7 +355,7 @@
                 <constraint firstItem="Py4-bi-svZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ya9-Nk-SEy"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="26" y="51"/>
+            <point key="canvasLocation" x="-156" y="33"/>
         </view>
     </objects>
     <resources>

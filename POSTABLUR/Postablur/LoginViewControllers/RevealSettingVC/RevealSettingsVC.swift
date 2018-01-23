@@ -32,7 +32,7 @@ class RevealSettingsVC: UIViewController {
         let dollarNib = UINib(nibName: NibNamed.PBDollarLimitCell.rawValue, bundle: nil)
         self.revealSettingsTableView.register(dollarNib, forCellReuseIdentifier: CellIdentifiers.PBDollarLimitCellIdentifier.rawValue)
        
-        self.blurredImage =  PBUtility.blurEffect(image: image)
+       self.blurredImage =  PBUtility.blurEffect(image: image)
         
         self.picImageView.image = self.blurredImage
         let shareLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 24
@@ -53,6 +53,7 @@ class RevealSettingsVC: UIViewController {
     @IBAction func nextBtnAction(_ sender: UIButton)
     {
         let createNewPostVC = CreateNewPostVC()
+        createNewPostVC.blurImage = image
         self.navigationController?.pushViewController(createNewPostVC, animated: true);
 
     }

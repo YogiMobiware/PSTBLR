@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocationCell: UITableViewCell {
+class LocationCell: UITableViewCell,UITextFieldDelegate {
     @IBOutlet weak var locationLabel : UILabel!
     @IBOutlet weak var currentLocationLabel : UILabel!
     @IBOutlet weak var locationTF : UITextField!
@@ -18,8 +18,11 @@ class LocationCell: UITableViewCell {
         let locationLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 20
         let roundedBoldfontSize = floor(locationLabelfontSize)
         self.locationLabel.font = self.locationLabel.font.withSize(roundedBoldfontSize)
+        self.locationTF.delegate = self
+
     }
 
+   
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

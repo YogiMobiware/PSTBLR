@@ -43,47 +43,52 @@ class ShareYourPost: UITableViewCell {
     }
     @IBAction func twitterBtnAction(_ sender: UIButton)
     {
+        sender.backgroundColor = .clear
+        sender.layer.cornerRadius = 5
+        sender.layer.borderWidth = 1
+        sender.layer.borderColor = Constants.navBarTintColor.cgColor
+
         if let shareYourPostDelegate = self.shareYourPostDelegate
         {
-        
             shareYourPostDelegate.pbTwitterBtnDidTap()
-        
         }
-    
-    
     }
     @IBAction func faceBookBtnAction(_ sender: UIButton)
     {
-        
+        sender.backgroundColor = .clear
+        sender.layer.cornerRadius = 5
+        sender.layer.borderWidth = 1
+        sender.layer.borderColor = Constants.navBarTintColor.cgColor
         if let shareYourPostDelegate = self.shareYourPostDelegate
         {
-            
             shareYourPostDelegate.pbFaceBookBtnDidTap()
-            
         }
         
     }
     @IBAction func donateBtnAction(_ sender: UIButton)
     {
-        
+        sender.backgroundColor = .clear
+        sender.layer.cornerRadius = 5
+        sender.layer.borderWidth = 1
+        sender.layer.borderColor = Constants.navBarTintColor.cgColor
+
         if let shareYourPostDelegate = self.shareYourPostDelegate
         {
-            
             shareYourPostDelegate.pbDonateBtnDidTap(selectedDonatedButton: sender)
-            
         }
         
     }
     @IBAction func whoGetsRevealBtnAction(_ sender: UIButton)
     {
+        sender.backgroundColor = .clear
+        sender.layer.cornerRadius = 5
+        sender.layer.borderWidth = 1
+        sender.layer.borderColor = Constants.navBarTintColor.cgColor
+
         if let shareYourPostDelegate = self.shareYourPostDelegate
         {
-            
             shareYourPostDelegate.pbPublicOrPrivateDidTap(privateOrPublicButton: sender)
-            
         }
-        
-        
     }
     
 }
