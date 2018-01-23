@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,6 +26,7 @@
                 <outlet property="cameraOverlayView" destination="YZf-Dz-exi" id="gtf-9i-Gbd"/>
                 <outlet property="captureButton" destination="Q8h-R6-all" id="OgW-4c-afp"/>
                 <outlet property="controlsOverlayView" destination="Zzs-l9-9eM" id="N63-vL-3c8"/>
+                <outlet property="createTitleLabel" destination="4g2-fk-nKC" id="gfm-uV-BuP"/>
                 <outlet property="flashButton" destination="uaa-Ae-7EV" id="h5F-Mq-JYo"/>
                 <outlet property="flipCameraButton" destination="HjO-ne-ubB" id="7aT-SZ-rv9"/>
                 <outlet property="pickPhotoButton" destination="lLT-0Z-UgW" id="M5e-JE-gvP"/>
@@ -46,16 +47,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREATE A POST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4g2-fk-nKC">
-                            <rect key="frame" x="67" y="51" width="296" height="27"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="296" id="ZMU-XJ-kqj"/>
-                            </constraints>
+                            <rect key="frame" x="125.66666666666669" y="37" width="179" height="27"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="24"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UN8-Lu-MqP">
-                            <rect key="frame" x="17" y="43" width="42" height="42"/>
+                            <rect key="frame" x="17" y="29" width="42" height="42"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="0SL-PH-Ifi"/>
@@ -68,7 +66,7 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconWhitePostablurApp" translatesAutoresizingMaskIntoConstraints="NO" id="Quq-SV-pM3">
-                            <rect key="frame" x="357" y="46.666666666666671" width="36" height="35.000000000000014"/>
+                            <rect key="frame" x="357" y="32.666666666666664" width="36" height="34.999999999999993"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -76,7 +74,7 @@
                         <constraint firstItem="4g2-fk-nKC" firstAttribute="height" secondItem="YPO-Bg-SRN" secondAttribute="height" multiplier="27:103" id="2hA-Dc-LeD"/>
                         <constraint firstItem="4g2-fk-nKC" firstAttribute="centerY" secondItem="UN8-Lu-MqP" secondAttribute="centerY" id="IQE-4h-LTO"/>
                         <constraint firstAttribute="trailing" secondItem="Quq-SV-pM3" secondAttribute="trailing" constant="21" id="Mgt-Ob-2ss"/>
-                        <constraint firstItem="UN8-Lu-MqP" firstAttribute="top" secondItem="YPO-Bg-SRN" secondAttribute="top" constant="43" id="V1X-Lu-hln"/>
+                        <constraint firstItem="UN8-Lu-MqP" firstAttribute="top" secondItem="YPO-Bg-SRN" secondAttribute="top" constant="29" id="V1X-Lu-hln"/>
                         <constraint firstItem="Quq-SV-pM3" firstAttribute="centerY" secondItem="UN8-Lu-MqP" secondAttribute="centerY" id="d6D-b5-4DU"/>
                         <constraint firstItem="4g2-fk-nKC" firstAttribute="centerX" secondItem="YPO-Bg-SRN" secondAttribute="centerX" constant="8" id="gQ2-lo-NfE"/>
                         <constraint firstItem="UN8-Lu-MqP" firstAttribute="leading" secondItem="YPO-Bg-SRN" secondAttribute="leading" constant="17" id="wKW-Wx-RNi"/>
@@ -97,7 +95,7 @@
                             </connections>
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUQ-Lb-96M" userLabel="CloseButton">
-                            <rect key="frame" x="16.333333333333332" y="20" width="29.999999999999996" height="29.999999999999986"/>
+                            <rect key="frame" x="16.333333333333332" y="20" width="29.999999999999996" height="30"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="xUQ-Lb-96M" secondAttribute="height" multiplier="1:1" id="NVp-Gf-9r1"/>
@@ -130,7 +128,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thq-gk-jeB" userLabel="BtnHolder">
-                            <rect key="frame" x="0.0" y="581" width="414.33333333333337" height="52"/>
+                            <rect key="frame" x="0.0" y="581" width="414.33333333333331" height="52"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEp-PT-XrB" userLabel="photo">
                                     <rect key="frame" x="0.0" y="0.0" width="136.66666666666666" height="49"/>
@@ -145,7 +143,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mx-bB-whF" userLabel="audio">
-                                    <rect key="frame" x="136.66666666666666" y="0.0" width="136.33333333333334" height="49"/>
+                                    <rect key="frame" x="136.66666666666663" y="0.0" width="136.33333333333337" height="49"/>
                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="29"/>
                                     <state key="normal" title="AUDIO">
                                         <color key="titleColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -193,7 +191,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP ANYWHERE ON SCREEN TO CAPTURE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lky-GT-lWe">
-                            <rect key="frame" x="101.66666666666666" y="8" width="211.33333333333334" height="11.666666666666657"/>
+                            <rect key="frame" x="101.66666666666667" y="7.9999999999999991" width="211.33333333333331" height="11.666666666666664"/>
                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="10"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>

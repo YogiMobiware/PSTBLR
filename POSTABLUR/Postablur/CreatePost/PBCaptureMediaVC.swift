@@ -77,7 +77,8 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
 
     @IBOutlet weak var slidingBarLeftConstraint: NSLayoutConstraint!
 
-    
+    @IBOutlet weak var createTitleLabel : UILabel!
+
     
     var delegate: PBCaptureMediaVCDelegate? = nil
     
@@ -118,6 +119,11 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         }
         
         self.getCameraPermission()
+        
+        let shareLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 24
+        let roundedBoldfontSize = floor(shareLabelfontSize)
+        self.createTitleLabel.font = self.createTitleLabel.font.withSize(roundedBoldfontSize)
+
     }
     
     override func viewDidLayoutSubviews()
@@ -171,6 +177,7 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
     
     @IBAction func actionFlashCamera(_ sender: UIButton)
     {
+
         sender.isSelected = !sender.isSelected
         if sender.isSelected == true
         {

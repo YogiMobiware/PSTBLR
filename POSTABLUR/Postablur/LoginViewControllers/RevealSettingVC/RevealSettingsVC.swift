@@ -18,6 +18,7 @@ class RevealSettingsVC: UIViewController {
     
     
     @IBOutlet weak var revealSettingsTableView: UITableView!
+    @IBOutlet weak var revealTitleLabel : UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,22 +31,32 @@ class RevealSettingsVC: UIViewController {
         
         let dollarNib = UINib(nibName: NibNamed.PBDollarLimitCell.rawValue, bundle: nil)
         self.revealSettingsTableView.register(dollarNib, forCellReuseIdentifier: CellIdentifiers.PBDollarLimitCellIdentifier.rawValue)
-        
-        self.blurredImage =  PBUtility.blurEffect(image: image)
+       
+       self.blurredImage =  PBUtility.blurEffect(image: image)
         
         self.picImageView.image = self.blurredImage
+        let shareLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 24
+        let roundedBoldfontSize = floor(shareLabelfontSize)
+        self.revealTitleLabel.font = self.revealTitleLabel.font.withSize(roundedBoldfontSize)
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-@IBAction func backBtnAction(_ sender: UIButton)
+    @IBAction func backBtnAction(_ sender: UIButton)
     {
         _ = self.navigationController?.popViewController(animated: true)
         
     }
-    
+    @IBAction func nextBtnAction(_ sender: UIButton)
+    {
+        let createNewPostVC = CreateNewPostVC()
+        createNewPostVC.blurImage = image
+        self.navigationController?.pushViewController(createNewPostVC, animated: true);
+
+    }
     @IBAction  func unblurPhotoTapped(_ sender: UIButton)
     {
         sender.isSelected = !sender.isSelected

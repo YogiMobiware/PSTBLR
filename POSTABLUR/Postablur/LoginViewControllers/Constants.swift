@@ -36,6 +36,11 @@ enum CellIdentifiers: String{
     case PBLikeLimitCellIdentifier = "PBLikeLimitCellID"
     case PBShareLimitCellIdentifier = "PBShareLimitCellID"
     case PBDollarLimitCellIdentifier = "PBDollarLimitCellID"
+    case TitleCellIdentifier = "TitleCellID"
+    case LocationCellIdentifier = "LocationCellID"
+    case ShareYourPostCellIdentifier = "ShareYourPostCellID"
+    case DescriptionCellIdentifier = "DescriptionCellID"
+
 
 }
 
@@ -57,6 +62,21 @@ class Constants: NSObject {
         return NSAttributedString(string:placeHolderText, attributes: [NSAttributedStringKey.foregroundColor: Constants.placedHolderTextFieldColor])
     }
     
+    // MARK: Colors
+    static let navBarTintColor : UIColor = UIColor(red: 0/255, green: 175/255, blue: 0/255, alpha: 1)
+
+    static func getDoneToolbar(dismissBtn: UIBarButtonItem) -> UIToolbar
+    {
+        let doneToolbar = UIToolbar()
+        
+        doneToolbar.sizeToFit()
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = dismissBtn
+        doneToolbar.setItems([spaceButton, doneButton], animated: false)
+        doneToolbar.isUserInteractionEnabled = true
+        
+        return doneToolbar
+    }
    static func calculateDynamicTableviewCellHeight(cellHeight : CGFloat) -> CGFloat
     {
         let cellDefaultHeight : CGFloat = cellHeight

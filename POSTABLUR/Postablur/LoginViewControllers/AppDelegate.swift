@@ -28,8 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        TWTRTwitter.sharedInstance().start(withConsumerKey: "ifeAkthu6TFg1kTLkapF8bAAW", consumerSecret:"jFU9sRnAecICwaU9wjLf25EV9C5PFca5AiSh2UG9rOLc1I3KGt")
-
+        //TWTRTwitter.sharedInstance().start(withConsumerKey: "ifeAkthu6TFg1kTLkapF8bAAW", consumerSecret:"jFU9sRnAecICwaU9wjLf25EV9C5PFca5AiSh2UG9rOLc1I3KGt")
+        
+        TWTRTwitter.sharedInstance().start(withConsumerKey: "jVv0gvUWOo8n77DgVnJMXeJ10", consumerSecret:"YctRZLALuHOg357pyqeYEJxdMcPCTawJmsFcIAxHriZqQFVdDi")
+        
         return true
     }
     

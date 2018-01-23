@@ -68,7 +68,7 @@ class AddProfilePhotoCell: UITableViewCell
 //            self.captureImageView?.clipsToBounds = true
 //            self.captureImageView?.layer.masksToBounds = true
             captureImageView.image = image
-
+            uploadImageView.image = nil
         }
         else
         {
@@ -76,6 +76,8 @@ class AddProfilePhotoCell: UITableViewCell
 //            self.uploadImageView?.layer.cornerRadius = self.uploadImageView!.frame.size.height / 2
 //            self.uploadImageView?.layer.masksToBounds = true
             uploadImageView.image = image
+            captureImageView.image = nil
+
             
         }
     }
