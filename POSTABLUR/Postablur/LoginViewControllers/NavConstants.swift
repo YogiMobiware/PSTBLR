@@ -23,10 +23,9 @@ enum NibNamed: String
     case PBLikeLimitCell
     case PBShareLimitCell
     case PBDollarLimitCell
+    case PBTabsContainerVC
     case PBCaptureMediaVC
-    case TitleCell
-    case LocationCell
-    case ShareYourPost
-    case DescriptionCell
+    case PBFeedsVC
+    case PBFeedsCollectionCell
 
 }
