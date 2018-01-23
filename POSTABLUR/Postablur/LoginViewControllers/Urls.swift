@@ -14,4 +14,5 @@ struct Urls
     
     static let mainUrl = "http://65.19.149.190/Dev.Postablur/PostablurApi.svc"
     static let uploadImageUrl = "http://65.19.149.190/Dev.Postablur/ProfilePhoto.ashx"
+    static let uploadPostMediaUrl = "http://65.19.149.190/Dev.Postablur/PostMediaUpload.ashx"
 }

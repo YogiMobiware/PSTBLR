@@ -1,14 +1,14 @@
 //
-//  PBFeedsCollectionCell.swift
+//  PBFeedTableCell.swift
 //  Postablur
 //
-//  Created by Yogi on 22/01/18.
+//  Created by Yogi on 23/01/18.
 //  Copyright © 2018 MobiwareInc. All rights reserved.
 //
 
 import Foundation
 
-class PBFeedsCollectionCell : UICollectionViewCell
+class PBFeedTableCell : UITableViewCell
 {
     @IBOutlet var feedImageView : UIImageView!
     

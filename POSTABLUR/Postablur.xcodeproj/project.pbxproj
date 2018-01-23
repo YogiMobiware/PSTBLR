@@ -17,6 +17,8 @@
 		444E46CA2017525F00C3FA10 /* PBFeedMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444E46C92017525F00C3FA10 /* PBFeedMedia.swift */; };
 		444E46CC2017638F00C3FA10 /* PBFeedsInteractionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444E46CB2017638E00C3FA10 /* PBFeedsInteractionVC.swift */; };
 		444E46CE201763BF00C3FA10 /* PBFeedsInteractionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444E46CD201763BF00C3FA10 /* PBFeedsInteractionVC.xib */; };
+		444E46D020177AB800C3FA10 /* PBFeedTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444E46CF20177AB800C3FA10 /* PBFeedTableCell.xib */; };
+		444E46D220177B0000C3FA10 /* PBFeedTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444E46D120177B0000C3FA10 /* PBFeedTableCell.swift */; };
 		447A5A09201537C40010E5DB /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A5A08201537C40010E5DB /* UIImageEffects.swift */; };
 		44A77C1D2014C84300E879D7 /* PBUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A77C1C2014C84300E879D7 /* PBUtility.swift */; };
 		44A77C262014CEE900E879D7 /* PBCaptureMediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A77C242014C95100E879D7 /* PBCaptureMediaVC.swift */; };
@@ -95,6 +97,8 @@
 		444E46C92017525F00C3FA10 /* PBFeedMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBFeedMedia.swift; sourceTree = "<group>"; };
 		444E46CB2017638E00C3FA10 /* PBFeedsInteractionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBFeedsInteractionVC.swift; sourceTree = "<group>"; };
 		444E46CD201763BF00C3FA10 /* PBFeedsInteractionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBFeedsInteractionVC.xib; sourceTree = "<group>"; };
+		444E46CF20177AB800C3FA10 /* PBFeedTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBFeedTableCell.xib; sourceTree = "<group>"; };
+		444E46D120177B0000C3FA10 /* PBFeedTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBFeedTableCell.swift; sourceTree = "<group>"; };
 		447A5A08201537C40010E5DB /* UIImageEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
 		44A77C1C2014C84300E879D7 /* PBUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBUtility.swift; sourceTree = "<group>"; };
 		44A77C242014C95100E879D7 /* PBCaptureMediaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBCaptureMediaVC.swift; sourceTree = "<group>"; };
@@ -198,6 +202,8 @@
 				44217FB9201625800022F09C /* PBFeedsCollectionCell.swift */,
 				444E46CB2017638E00C3FA10 /* PBFeedsInteractionVC.swift */,
 				444E46CD201763BF00C3FA10 /* PBFeedsInteractionVC.xib */,
+				444E46CF20177AB800C3FA10 /* PBFeedTableCell.xib */,
+				444E46D120177B0000C3FA10 /* PBFeedTableCell.swift */,
 			);
 			path = Feeds;
 			sourceTree = "<group>";
@@ -524,6 +530,7 @@
 				B0F4CA77200F20A400F39409 /* Assets.xcassets in Resources */,
 				B00D05D320137BBD0031CE82 /* PBShareLimitCell.xib in Resources */,
 				B0F1D6C92015F5330010567F /* ShareYourPost.xib in Resources */,
+				444E46D020177AB800C3FA10 /* PBFeedTableCell.xib in Resources */,
 				B0A436A62010E61100DDBA7C /* PBLoginOptionsVC.xib in Resources */,
 				B00D05CF20137BA30031CE82 /* PBLikeLimitCell.xib in Resources */,
 				B0F1D6C52015F3480010567F /* DescriptionCell.xib in Resources */,
@@ -620,6 +627,7 @@
 			files = (
 				B0A0204F2011DEE600D3837B /* PBPaidAccoutCell.swift in Sources */,
 				B0F4CA8F200F8DCE00F39409 /* Constants.swift in Sources */,
+				444E46D220177B0000C3FA10 /* PBFeedTableCell.swift in Sources */,
 				B0A0204D2011DEE600D3837B /* PBFreeAccountCell.swift in Sources */,
 				B0A436952010BF6900DDBA7C /* AddProfilePhotoCell.swift in Sources */,
 				B00D05C9201371D40031CE82 /* RevealSettingsVC.swift in Sources */,

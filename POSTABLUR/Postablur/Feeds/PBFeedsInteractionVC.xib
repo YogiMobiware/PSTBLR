@@ -20,6 +20,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PBFeedsInteractionVC">
             <connections>
+                <outlet property="activity" destination="14E-J7-WkM" id="UlB-Uq-OWw"/>
+                <outlet property="feedsTableView" destination="esd-Kz-fEa" id="BFv-wp-ZYJ"/>
+                <outlet property="userImageView" destination="5X7-nH-CFm" id="KBC-c9-cSg"/>
+                <outlet property="userNameLbl" destination="Hfv-EF-8Cr" id="lxU-ai-aLq"/>
                 <outlet property="view" destination="iN0-l3-epB" id="MML-kK-CNi"/>
             </connections>
         </placeholder>
@@ -79,6 +83,9 @@
                             </constraints>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" image="refresh-ic"/>
+                            <connections>
+                                <action selector="refreshTapped:" destination="-1" eventType="touchUpInside" id="zdc-Zs-VHl"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -102,9 +109,14 @@
                     <rect key="frame" x="0.0" y="113" width="414" height="623"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="14E-J7-WkM">
+                    <rect key="frame" x="188" y="406" width="37" height="37"/>
+                    <color key="color" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="14E-J7-WkM" firstAttribute="centerX" secondItem="esd-Kz-fEa" secondAttribute="centerX" id="4Uh-Nc-uhc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="esd-Kz-fEa" secondAttribute="trailing" id="8GU-N9-9Fe"/>
                 <constraint firstItem="esd-Kz-fEa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="QEp-2F-Lhp"/>
                 <constraint firstItem="3jb-nb-T7D" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="XuN-3t-g5j"/>
@@ -112,6 +124,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="esd-Kz-fEa" secondAttribute="bottom" id="jYn-1e-aID"/>
                 <constraint firstItem="esd-Kz-fEa" firstAttribute="top" secondItem="3jb-nb-T7D" secondAttribute="bottom" id="nGr-Ca-O8J"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="3jb-nb-T7D" secondAttribute="top" constant="20" id="vrD-wd-RBR"/>
+                <constraint firstItem="14E-J7-WkM" firstAttribute="centerY" secondItem="esd-Kz-fEa" secondAttribute="centerY" id="xjl-A3-r7Q"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
