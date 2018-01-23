@@ -59,18 +59,18 @@ class ShareYourPost: UITableViewCell
         {
             shareYourPostDelegate.pbTwitterBtnDidTap()
 
-            if sender.isSelected
+            if sender.isSelected == false
             {
                 if let image = twitterBtn.imageView?.image
                 {
                     let templateImage = image.withRenderingMode(.alwaysTemplate)
                     twitterBtn.setImage(templateImage, for: .selected)
                 }
-                sender.isSelected = false
+                sender.isSelected = true
             }
             else
             {
-                sender.isSelected = true
+                sender.isSelected = false
 
             }
         }
@@ -82,18 +82,18 @@ class ShareYourPost: UITableViewCell
         {
             shareYourPostDelegate.pbFaceBookBtnDidTap()
             
-            if sender.isSelected
+            if sender.isSelected == false
             {
                 if let image = facebookBtn.imageView?.image
                 {
                     let templateImage = image.withRenderingMode(.alwaysTemplate)
                     facebookBtn.setImage(templateImage, for: .selected)
                 }
-                sender.isSelected = false
+                sender.isSelected = true
             }
             else
             {
-                sender.isSelected = true
+                sender.isSelected = false
                 
             }
         }
@@ -102,25 +102,9 @@ class ShareYourPost: UITableViewCell
     @IBAction func donateBtnAction(_ sender: UIButton)
     {
 
-
         if let shareYourPostDelegate = self.shareYourPostDelegate
         {
             shareYourPostDelegate.pbDonateBtnDidTap(selectedDonatedButton: sender)
-            
-            if sender.isSelected
-            {
-                if let image = unitedWayBtn.imageView?.image
-                {
-                    let templateImage = image.withRenderingMode(.alwaysTemplate)
-                    unitedWayBtn.setImage(templateImage, for: .selected)
-                }
-                sender.isSelected = false
-            }
-            else
-            {
-                sender.isSelected = true
-                
-            }
         }
         
     }
@@ -130,27 +114,7 @@ class ShareYourPost: UITableViewCell
         if let shareYourPostDelegate = self.shareYourPostDelegate
         {
             shareYourPostDelegate.pbPublicOrPrivateDidTap(privateOrPublicButton: sender)
-            
-            if sender.isSelected
-            {
-                if let image = unitedWayBtn.imageView?.image
-                {
-                    let templateImage = image.withRenderingMode(.alwaysTemplate)
-                    unitedWayBtn.setImage(templateImage, for: .selected)
-                }
-                sender.isSelected = false
-            }
-            else
-            {
-                sender.isSelected = true
-                
-            }
         }
     }
-    
-    func changTintColor(selectedBtn : UIButton!)
-    {
-        
-    }
-    
+   
 }

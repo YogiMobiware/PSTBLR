@@ -13,13 +13,13 @@ class CreateNewPostVC: UIViewController
    
     @IBOutlet weak var createPostTableView: UITableView!
     @IBOutlet weak var postTitleLabel : UILabel!
-    var descriptionTextView : UITextView!
-    var titleLabelText : String!
-    var locationText : String!
-    var postTosocialNetwork : String!
-    var donateToCharity : String!
-    var whoGetsToReveal : String!
-    var blurImage : UIImage!
+    var descriptionTextView : String? = nil
+    var titleLabelText : String? = nil
+    var locationText : String? = nil
+    var postTosocialNetwork : String? = nil
+    var donateToCharity : String? = nil
+    var whoGetsToReveal : String? = nil
+
     override func viewDidLoad()
     {
         
@@ -58,19 +58,41 @@ class CreateNewPostVC: UIViewController
 
     @IBAction func doneBtnAction(_ sender: UIButton)
     {
+        guard let _ = self.titleLabelText, !(self.titleLabelText?.isEmpty)! else {
+            PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Postablur", andMessage: "Please enter post title")
+            return
+        }
+        guard let _ = self.locationText, !(self.locationText?.isEmpty)! else {
+            PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Postablur", andMessage: "Location should not be empty")
+            return
+        }
+        guard let _ = self.descriptionTextView, !(self.descriptionTextView?.isEmpty)! else {
+            PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Postablur", andMessage: "Please enter post description")
+            return
+        }
+        guard let _ = self.postTosocialNetwork, !(self.postTosocialNetwork?.isEmpty)! else {
+            PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Postablur", andMessage: "Please select any one social network to post")
+            return
+        }
+        guard let _ = self.donateToCharity, !(self.donateToCharity?.isEmpty)! else {
+            PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Postablur", andMessage: "Please select any one charity to donate")
+            return
+        }
+        guard let _ = self.whoGetsToReveal, !(self.whoGetsToReveal?.isEmpty)! else {
+            PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Postablur", andMessage: "Who should reveal your post? PRIVATE OR PUBLIC.")
+            return
+        }
         
-  
-        /*let postReviewVC = PostReviewVC(nibName: "PostReviewVC", bundle: nil)
+        let postReviewVC = PostReviewVC(nibName: "PostReviewVC", bundle: nil)
         _ = postReviewVC.view
-        postReviewVC.bluredImage = blurImage
-        postReviewVC.titleTxtLabel.text = self.titleLabelText as String
-        postReviewVC.descTxtLabel.text = self.descriptionTextView.text! as String
+        postReviewVC.titleTxtLabel.text = self.titleLabelText
+        postReviewVC.descTxtLabel.text = self.descriptionTextView
         postReviewVC.locationTxtLabel.text = self.locationText
         postReviewVC.revealedTxtLabel.text = self.whoGetsToReveal
         postReviewVC.sharedOnTxtLabel.text = self.postTosocialNetwork
         postReviewVC.donateToTxtLabel.text = self.donateToCharity
-        self.navigationController?.pushViewController(postReviewVC, animated: true);*/
-        
+        self.navigationController?.pushViewController(postReviewVC, animated: true)
+      
     }
     
 }
@@ -163,7 +185,7 @@ extension CreateNewPostVC : UITextViewDelegate
     func textViewDidBeginEditing(_ textView: UITextView)
     {
         
-        self.descriptionTextView = textView
+        self.descriptionTextView = textView.text
         
     }
    
@@ -218,10 +240,10 @@ extension CreateNewPostVC : PBDescriptionCellDelegate
 {
     func doneButtonDidTapOnDescriptionView(_ textView: UITextView)
     {
-        self.descriptionTextView.resignFirstResponder()
+        textView.resignFirstResponder()
         if textView.text != nil
         {
-        self.descriptionTextView.text = textView.text
+        self.descriptionTextView = textView.text
         }
 
     }
