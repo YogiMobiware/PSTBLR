@@ -54,20 +54,33 @@ class PostReviewVC: UIViewController
         
         self.appdelegate = UIApplication.shared.delegate as! AppDelegate
         
-        /* attributes1 = [NSAttributedStringKey.font: UIFont(name: "Arial", size: 16)!,
-                          NSAttributedStringKey.foregroundColor: UIColor.darkGray]
-        
-        let attributes2 = [NSAttributedStringKey.font: UIFont(name: "Arial", size: 16)!,
-                           NSAttributedStringKey.foregroundColor: UIColor.darkGray]
-        
-        let attrString1 = NSAttributedString(string: "Title: ", attributes: attributes1)
-        let attrString2 = NSAttributedString(string: "FRONT STAGE MELE: ", attributes: attributes2)*/
-        
         let shareLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 24
         let roundedBoldfontSize = floor(shareLabelfontSize)
         self.postTile_Label.font = self.postTile_Label.font.withSize(roundedBoldfontSize)
 
+        //let descString = "Desc: The calm"
         
+        /*var myMutableString = NSMutableAttributedString()
+        myMutableString = NSMutableAttributedString(string: descString as String, attributes: [NSAttributedStringKey.font:UIFont(name: "Arial", size: 16.0)!])
+        myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.darkGray, range: NSRange(location:0,length:4))
+        myMutableString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Arial-Bold", size: 16.0)!, range: NSRange(location:6,length:8))
+        
+        descTxtLabel.attributedText = myMutableString*/
+        
+        let allLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 16
+        let fontSize = floor(allLabelfontSize)
+        self.titlePHLabel.font = self.titlePHLabel.font.withSize(fontSize)
+        self.titleTxtLabel.font = self.titleTxtLabel.font.withSize(fontSize)
+        self.locationPHLabel.font = self.locationPHLabel.font.withSize(fontSize)
+        self.locationTxtLabel.font = self.locationTxtLabel.font.withSize(fontSize)
+        self.descTxtLabel.font = self.descTxtLabel.font.withSize(fontSize)
+        self.sharedOnPHLabel.font = self.sharedOnPHLabel.font.withSize(fontSize)
+        self.sharedOnTxtLabel.font = self.sharedOnTxtLabel.font.withSize(fontSize)
+        self.donatePHLabel.font = self.donatePHLabel.font.withSize(fontSize)
+        self.donateToTxtLabel.font = self.donateToTxtLabel.font.withSize(fontSize)
+        self.revealedPHLabel.font = self.revealedPHLabel.font.withSize(fontSize)
+        self.revealedTxtLabel.font = self.revealedTxtLabel.font.withSize(fontSize)
+       
     }
     
     @objc internal func tapGestureRecognized()

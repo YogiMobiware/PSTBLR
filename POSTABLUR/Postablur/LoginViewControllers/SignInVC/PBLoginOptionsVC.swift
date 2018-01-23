@@ -175,7 +175,7 @@ class PBLoginOptionsVC: UIViewController
     }
     
     
-    func getTwitterUserData(username: String, email: String, access_token: String)
+    func getTwitterUserData(username: String, email: String, profileImage: String, access_token: String)
     {
         self.socialEmail = email
         self.socialRegistrationType = "2"
@@ -184,7 +184,7 @@ class PBLoginOptionsVC: UIViewController
         
         let urlString = String(format: "%@/UserRegistration", arguments: [Urls.mainUrl]);
         
-        let requestDict = ["UserName": username,"Email": email,"Password": "","DOB":"","DBAPin":"","Profileurl": "","ProfileAd":"","Accounttype":"1","PhoneNumber":"","CountryCode":"+91","Registrationtype":"2","DeviceId":"123456","DeviceType":"1"] as [String : Any]
+        let requestDict = ["UserName": username,"Email": email,"Password": "","DOB":"","DBAPin":"","Profileurl": profileImage,"ProfileAd":"","Accounttype":"1","PhoneNumber":"","CountryCode":"+91","Registrationtype":"2","DeviceId":"123456","DeviceType":"1"] as [String : Any]
         
         self.appdelegate.showActivityIndictor(titleString: "Twitter SignIn", subTitleString: "")
         
@@ -535,7 +535,19 @@ extension PBLoginOptionsVC : PBSocialLoginCellDelegate
                     
                     if (email != nil)
                     {
-                        self.getTwitterUserData(username: username!, email: email!, access_token: access_token!)
+                        let twitterClient = TWTRAPIClient(userID: session?.userID)
+                        twitterClient.loadUser(withID: (session?.userID)!, completion: { (user, error) in
+                            
+                            if (user != nil)
+                            {
+                                //print(user!.profileImageURL)
+                                self.getTwitterUserData(username: username!, email: email!,profileImage:(user?.profileImageURL)!, access_token: access_token!)
+                            }
+                            else
+                            {
+                                self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
+                            }
+                        })
                     }
                     else
                     {
