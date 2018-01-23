@@ -57,6 +57,8 @@ class Constants: NSObject {
 
     static let animationDuration: TimeInterval = 0.15
     
+    static let maxBlurRadius : Int = 50
+    
     static func textFieldPalceHolderColor(placeHolderText : String) ->NSAttributedString
     {
         return NSAttributedString(string:placeHolderText, attributes: [NSAttributedStringKey.foregroundColor: Constants.placedHolderTextFieldColor])

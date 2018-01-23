@@ -14,6 +14,9 @@
 		44217FB8201624A00022F09C /* PBFeedsCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44217FB7201624A00022F09C /* PBFeedsCollectionCell.xib */; };
 		44217FBA201625800022F09C /* PBFeedsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44217FB9201625800022F09C /* PBFeedsCollectionCell.swift */; };
 		444E46C82017277E00C3FA10 /* PBFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444E46C72017277E00C3FA10 /* PBFeedItem.swift */; };
+		444E46CA2017525F00C3FA10 /* PBFeedMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444E46C92017525F00C3FA10 /* PBFeedMedia.swift */; };
+		444E46CC2017638F00C3FA10 /* PBFeedsInteractionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444E46CB2017638E00C3FA10 /* PBFeedsInteractionVC.swift */; };
+		444E46CE201763BF00C3FA10 /* PBFeedsInteractionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444E46CD201763BF00C3FA10 /* PBFeedsInteractionVC.xib */; };
 		447A5A09201537C40010E5DB /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A5A08201537C40010E5DB /* UIImageEffects.swift */; };
 		44A77C1D2014C84300E879D7 /* PBUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A77C1C2014C84300E879D7 /* PBUtility.swift */; };
 		44A77C262014CEE900E879D7 /* PBCaptureMediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A77C242014C95100E879D7 /* PBCaptureMediaVC.swift */; };
@@ -87,6 +90,9 @@
 		44217FB7201624A00022F09C /* PBFeedsCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBFeedsCollectionCell.xib; sourceTree = "<group>"; };
 		44217FB9201625800022F09C /* PBFeedsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBFeedsCollectionCell.swift; sourceTree = "<group>"; };
 		444E46C72017277E00C3FA10 /* PBFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBFeedItem.swift; sourceTree = "<group>"; };
+		444E46C92017525F00C3FA10 /* PBFeedMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBFeedMedia.swift; sourceTree = "<group>"; };
+		444E46CB2017638E00C3FA10 /* PBFeedsInteractionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBFeedsInteractionVC.swift; sourceTree = "<group>"; };
+		444E46CD201763BF00C3FA10 /* PBFeedsInteractionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBFeedsInteractionVC.xib; sourceTree = "<group>"; };
 		447A5A08201537C40010E5DB /* UIImageEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
 		44A77C1C2014C84300E879D7 /* PBUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBUtility.swift; sourceTree = "<group>"; };
 		44A77C242014C95100E879D7 /* PBCaptureMediaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBCaptureMediaVC.swift; sourceTree = "<group>"; };
@@ -186,6 +192,8 @@
 				44217FAD201604AA0022F09C /* PBFeedsVC.xib */,
 				44217FB7201624A00022F09C /* PBFeedsCollectionCell.xib */,
 				44217FB9201625800022F09C /* PBFeedsCollectionCell.swift */,
+				444E46CB2017638E00C3FA10 /* PBFeedsInteractionVC.swift */,
+				444E46CD201763BF00C3FA10 /* PBFeedsInteractionVC.xib */,
 			);
 			path = Feeds;
 			sourceTree = "<group>";
@@ -203,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				444E46C72017277E00C3FA10 /* PBFeedItem.swift */,
+				444E46C92017525F00C3FA10 /* PBFeedMedia.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -519,6 +528,7 @@
 				8474E94A2015FCDE00D85E4F /* PostReviewVC.xib in Resources */,
 				B0A436822010867000DDBA7C /* PBEmailAndPasswrdCell.xib in Resources */,
 				B0A0204E2011DEE600D3837B /* PBFreeAccountCell.xib in Resources */,
+				444E46CE201763BF00C3FA10 /* PBFeedsInteractionVC.xib in Resources */,
 				B0A020502011DEE600D3837B /* PBPaidAccoutCell.xib in Resources */,
 				44217FB8201624A00022F09C /* PBFeedsCollectionCell.xib in Resources */,
 			);
@@ -542,7 +552,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3469C9C1FBA8270DDCF99FE1 /* [CP] Embed Pods Frameworks */ = {
@@ -617,6 +627,7 @@
 				B0983B7B20148AD7003AB028 /* PostDescriptionVC.swift in Sources */,
 				8474E9492015FCDE00D85E4F /* PostReviewVC.swift in Sources */,
 				B0F1D6BC2015F31C0010567F /* TitleCell.swift in Sources */,
+				444E46CC2017638F00C3FA10 /* PBFeedsInteractionVC.swift in Sources */,
 				B0A436A52010E61100DDBA7C /* PBLoginOptionsVC.swift in Sources */,
 				846ED2972011F1E2004749ED /* ValidationHelper.swift in Sources */,
 				B0A436812010867000DDBA7C /* PBEmailAndPasswrdCell.swift in Sources */,
@@ -630,6 +641,7 @@
 				444E46C82017277E00C3FA10 /* PBFeedItem.swift in Sources */,
 				B00D05D620137BE20031CE82 /* PBDollarLimitCell.swift in Sources */,
 				B0F1D6C02015F3300010567F /* LocationCell.swift in Sources */,
+				444E46CA2017525F00C3FA10 /* PBFeedMedia.swift in Sources */,
 				447A5A09201537C40010E5DB /* UIImageEffects.swift in Sources */,
 				846ED28A2011DAB1004749ED /* Urls.swift in Sources */,
 				44A77C262014CEE900E879D7 /* PBCaptureMediaVC.swift in Sources */,

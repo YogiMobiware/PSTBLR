@@ -51,7 +51,7 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
         self.homeNavigationController = UINavigationController(rootViewController: feedVC)
         self.homeNavigationController?.isNavigationBarHidden = true
         self.homeNavigationController!.delegate = self
-        feedVC.homeContainerVC = self
+        feedVC.tabContainerVC = self
 
         self.presentHomeNavigationController();
 
@@ -179,7 +179,7 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
         }
         self.disableButtons(nil)
         let feedVC = PBFeedsVC()
-        feedVC.homeContainerVC = self
+        feedVC.tabContainerVC = self
         self.homeNavigationController?.pushViewController(feedVC, animated: false)
 
     }
@@ -202,25 +202,34 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
     @IBAction func qrTapped(_ sender : UIButton)
     {
 
+        guard self.selectedButton != self.qrButton else
+        {
+            return
+        }
         self.disableButtons(nil)
+        let qrVC = QRCodeScannerVC()
+        qrVC.tabContainerVC = self
+        self.homeNavigationController?.pushViewController(qrVC, animated: false)
 
     }
     
     @IBAction func statsTapped(_ sender : UIButton)
     {
-        self.disableButtons(nil)
+        
     }
     
     @IBAction func profileTapped(_ sender : UIButton)
     {
-        self.disableButtons(nil)
+        
     }
-    
-    
     
     // MARK : - UINavigationController Delegate
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.hideActivityIndicator()
+        
         
         self.enableButtons(nil)
         if viewController.isKind(of: PBFeedsVC.self)
@@ -233,10 +242,10 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
             self.disableButtons([self.newPostButton])
             self.selectedButton = self.newPostButton
         }
-        else if viewController.isKind(of: PBFeedsVC.self)
+        else if viewController.isKind(of: QRCodeScannerVC.self)
         {
-            self.disableButtons([self.statsButton])
-            self.selectedButton = self.statsButton
+            self.disableButtons([self.qrButton])
+            self.selectedButton = self.qrButton
             
         }
         else if viewController.isKind(of: PBFeedsVC.self)

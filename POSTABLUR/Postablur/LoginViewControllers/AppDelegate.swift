@@ -88,6 +88,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         {
             hud = MBProgressHUD.showAdded(to: window, animated: true)
             hud.mode = MBProgressHUDMode.indeterminate
+            hud.isUserInteractionEnabled = true
+            hud.label.text = titleString as String
+            hud.detailsLabel.text = subTitleString as String
+        }
+    }
+    
+    func showActivityIndictorNonBlocking(titleString:NSString, subTitleString:NSString)
+    {
+        if let window = self.window
+        {
+            hud = MBProgressHUD.showAdded(to: window, animated: true)
+            hud.mode = MBProgressHUDMode.indeterminate
+            hud.isUserInteractionEnabled = false
             hud.label.text = titleString as String
             hud.detailsLabel.text = subTitleString as String
         }
