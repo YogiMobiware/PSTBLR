@@ -63,6 +63,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         self.window!.makeKeyAndVisible()
     }
     
+    func loadTabsContainer()
+    {
+        let tabsContainer = PBTabsContainerVC()
+        self.navigationController?.popToRootViewController(animated: false)
+        self.window?.rootViewController = tabsContainer
+    }
+    
     // MARK: Connectivity
     func isNetworkReachable() -> Bool
     {

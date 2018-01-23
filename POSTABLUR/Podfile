@@ -7,11 +7,12 @@ target 'Postablur' do
   pod 'Alamofire'
   pod 'FBSDKLoginKit'
   pod 'TwitterKit'
-
+  pod 'Kingfisher'
 
   # Pods for Postablur
   pod 'Alamofire'
   pod 'FBSDKLoginKit'
   pod 'TwitterKit'
+  pod 'Kingfisher'
 
 end
