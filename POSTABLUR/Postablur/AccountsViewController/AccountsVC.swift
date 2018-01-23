@@ -50,6 +50,8 @@ class AccountsVC: UIViewController
         super.viewDidLoad()
         // Do any additional setup after loading the view
         
+        self.activity.isHidden = true
+        
         if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl")
         {
             let userProfileUrl = URL(string: userProfileUrlStr as! String)!
@@ -84,27 +86,23 @@ class AccountsVC: UIViewController
         self.activity.startAnimating()
         self.activity.isHidden = false
         PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
-            
-            self.activity.startAnimating()
-            self.activity.isHidden = false
-            PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
                 
-                self.activity.stopAnimating()
+            self.activity.stopAnimating()
                 
-                if error == nil
+            if error == nil
+            {
+                if responseObject != nil
                 {
-                    if responseObject != nil
+                    if let responseDict = responseObject as? [String : AnyObject]
                     {
-                        if let responseDict = responseObject as? [String : AnyObject]
-                        {
                             
-                            if let error = responseDict["Error"] as? String
-                            {
-                                self.appDelegate.alert(vc: self, message: error , title: "Error")
-                                return
-                            }
-                            else
-                            {
+                        if let error = responseDict["Error"] as? String
+                        {
+                            self.appDelegate.alert(vc: self, message: error , title: "Error")
+                            return
+                        }
+                        else
+                        {
                                 let count = responseDict["Count"] as! Int
                                 self.totalFeedCount = count
                                 
@@ -142,27 +140,26 @@ class AccountsVC: UIViewController
                                     
                                     self.accountsFeedsCollectionView.reloadData()
                                 }
-                            }
+                        }
                             
-                        }
-                        if let responseStr = responseObject as? String
-                        {
-                            self.appDelegate.alert(vc: self, message: responseStr, title: "Error")
-                            return
-                        }
-                        
                     }
-                    else
+                    if let responseStr = responseObject as? String
                     {
-                        self.appDelegate.alert(vc: self, message: "Something went wrong", title: "Error")
+                        self.appDelegate.alert(vc: self, message: responseStr, title: "Error")
                         return
                     }
+                        
                 }
                 else
                 {
-                    self.appDelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
-                    return
+                    self.appDelegate.alert(vc: self, message: "Something went wrong", title: "Error")
+                        return
                 }
+            }
+            else
+            {
+                self.appDelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
+                    return
             }
         }
     }

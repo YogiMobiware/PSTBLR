@@ -337,7 +337,7 @@
                         <constraint firstItem="4dn-xC-TRI" firstAttribute="top" secondItem="tI8-md-CFH" secondAttribute="top" id="bLw-eA-Jhw"/>
                     </constraints>
                 </view>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="yzJ-sh-cni">
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="yzJ-sh-cni">
                     <rect key="frame" x="197" y="597" width="20" height="20"/>
                     <color key="color" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </activityIndicatorView>
