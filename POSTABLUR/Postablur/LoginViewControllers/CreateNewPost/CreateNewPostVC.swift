@@ -8,7 +8,8 @@
 
 import UIKit
 
-class CreateNewPostVC: UIViewController {
+class CreateNewPostVC: UIViewController
+{
    
     @IBOutlet weak var createPostTableView: UITableView!
     @IBOutlet weak var postTitleLabel : UILabel!
@@ -19,7 +20,8 @@ class CreateNewPostVC: UIViewController {
     var donateToCharity : String!
     var whoGetsToReveal : String!
     var blurImage : UIImage!
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         
         super.viewDidLoad()
 
@@ -42,7 +44,8 @@ class CreateNewPostVC: UIViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
    
     }
@@ -55,8 +58,9 @@ class CreateNewPostVC: UIViewController {
 
     @IBAction func doneBtnAction(_ sender: UIButton)
     {
+        
   
-        let postReviewVC = PostReviewVC(nibName: "PostReviewVC", bundle: nil)
+        /*let postReviewVC = PostReviewVC(nibName: "PostReviewVC", bundle: nil)
         _ = postReviewVC.view
         postReviewVC.bluredImage = blurImage
         postReviewVC.titleTxtLabel.text = self.titleLabelText as String
@@ -65,7 +69,7 @@ class CreateNewPostVC: UIViewController {
         postReviewVC.revealedTxtLabel.text = self.whoGetsToReveal
         postReviewVC.sharedOnTxtLabel.text = self.postTosocialNetwork
         postReviewVC.donateToTxtLabel.text = self.donateToCharity
-        self.navigationController?.pushViewController(postReviewVC, animated: true);
+        self.navigationController?.pushViewController(postReviewVC, animated: true);*/
         
     }
     
@@ -156,7 +160,8 @@ extension CreateNewPostVC : UITextFieldDelegate
 }
 extension CreateNewPostVC : UITextViewDelegate
 {
-    func textViewDidBeginEditing(_ textView: UITextView) {
+    func textViewDidBeginEditing(_ textView: UITextView)
+    {
         
         self.descriptionTextView = textView
         

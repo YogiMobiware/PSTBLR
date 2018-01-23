@@ -18,15 +18,26 @@ protocol ShareYourPostDelegate
 
     
 }
-class ShareYourPost: UITableViewCell {
+class ShareYourPost: UITableViewCell
+{
 
     @IBOutlet weak var shareTitleLabel : UILabel!
     @IBOutlet weak var donateCharityLabel : UILabel!
     @IBOutlet weak var whoGetsTitleLabel : UILabel!
+    @IBOutlet weak var twitterBtn : UIButton!
+    @IBOutlet weak var facebookBtn : UIButton!
+    @IBOutlet weak var publicAccessBtn : UIButton!
+    @IBOutlet weak var privateAccessBtn : UIButton!
+    @IBOutlet weak var unitedWayBtn : UIButton!
+    @IBOutlet weak var americanCancerBtn : UIButton!
+    @IBOutlet weak var americanRedCrossBtn : UIButton!
+    @IBOutlet weak var americanHeartAssocBtn : UIButton!
+    @IBOutlet weak var boysAndGirlsBtn : UIButton!
 
     var shareYourPostDelegate : ShareYourPostDelegate? = nil
 
-    override func awakeFromNib() {
+    override func awakeFromNib()
+    {
         super.awakeFromNib()
         let shareLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 20
         let roundedBoldfontSize = floor(shareLabelfontSize)
@@ -36,59 +47,110 @@ class ShareYourPost: UITableViewCell {
 
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool)
+    {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     @IBAction func twitterBtnAction(_ sender: UIButton)
     {
-        sender.backgroundColor = .clear
-        sender.layer.cornerRadius = 5
-        sender.layer.borderWidth = 1
-        sender.layer.borderColor = Constants.navBarTintColor.cgColor
-
         if let shareYourPostDelegate = self.shareYourPostDelegate
         {
             shareYourPostDelegate.pbTwitterBtnDidTap()
+
+            if sender.isSelected
+            {
+                if let image = twitterBtn.imageView?.image
+                {
+                    let templateImage = image.withRenderingMode(.alwaysTemplate)
+                    twitterBtn.setImage(templateImage, for: .selected)
+                }
+                sender.isSelected = false
+            }
+            else
+            {
+                sender.isSelected = true
+
+            }
         }
+        
     }
     @IBAction func faceBookBtnAction(_ sender: UIButton)
     {
-        sender.backgroundColor = .clear
-        sender.layer.cornerRadius = 5
-        sender.layer.borderWidth = 1
-        sender.layer.borderColor = Constants.navBarTintColor.cgColor
         if let shareYourPostDelegate = self.shareYourPostDelegate
         {
             shareYourPostDelegate.pbFaceBookBtnDidTap()
+            
+            if sender.isSelected
+            {
+                if let image = facebookBtn.imageView?.image
+                {
+                    let templateImage = image.withRenderingMode(.alwaysTemplate)
+                    facebookBtn.setImage(templateImage, for: .selected)
+                }
+                sender.isSelected = false
+            }
+            else
+            {
+                sender.isSelected = true
+                
+            }
         }
         
     }
     @IBAction func donateBtnAction(_ sender: UIButton)
     {
-        sender.backgroundColor = .clear
-        sender.layer.cornerRadius = 5
-        sender.layer.borderWidth = 1
-        sender.layer.borderColor = Constants.navBarTintColor.cgColor
+
 
         if let shareYourPostDelegate = self.shareYourPostDelegate
         {
             shareYourPostDelegate.pbDonateBtnDidTap(selectedDonatedButton: sender)
+            
+            if sender.isSelected
+            {
+                if let image = unitedWayBtn.imageView?.image
+                {
+                    let templateImage = image.withRenderingMode(.alwaysTemplate)
+                    unitedWayBtn.setImage(templateImage, for: .selected)
+                }
+                sender.isSelected = false
+            }
+            else
+            {
+                sender.isSelected = true
+                
+            }
         }
         
     }
     @IBAction func whoGetsRevealBtnAction(_ sender: UIButton)
     {
-        sender.backgroundColor = .clear
-        sender.layer.cornerRadius = 5
-        sender.layer.borderWidth = 1
-        sender.layer.borderColor = Constants.navBarTintColor.cgColor
 
         if let shareYourPostDelegate = self.shareYourPostDelegate
         {
             shareYourPostDelegate.pbPublicOrPrivateDidTap(privateOrPublicButton: sender)
+            
+            if sender.isSelected
+            {
+                if let image = unitedWayBtn.imageView?.image
+                {
+                    let templateImage = image.withRenderingMode(.alwaysTemplate)
+                    unitedWayBtn.setImage(templateImage, for: .selected)
+                }
+                sender.isSelected = false
+            }
+            else
+            {
+                sender.isSelected = true
+                
+            }
         }
+    }
+    
+    func changTintColor(selectedBtn : UIButton!)
+    {
+        
     }
     
 }
