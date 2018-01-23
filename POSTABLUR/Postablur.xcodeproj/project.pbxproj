@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44217FAC201604990022F09C /* PBFeedsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44217FAB201604990022F09C /* PBFeedsVC.swift */; };
+		44217FAE201604AA0022F09C /* PBFeedsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44217FAD201604AA0022F09C /* PBFeedsVC.xib */; };
+		44217FB1201605B90022F09C /* PBTabsContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44217FB0201605B90022F09C /* PBTabsContainerVC.swift */; };
+		44217FB6201605FD0022F09C /* PBTabsContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44217FB5201605FD0022F09C /* PBTabsContainerVC.xib */; };
+		44217FB8201624A00022F09C /* PBFeedsCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44217FB7201624A00022F09C /* PBFeedsCollectionCell.xib */; };
+		44217FBA201625800022F09C /* PBFeedsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44217FB9201625800022F09C /* PBFeedsCollectionCell.swift */; };
+		444E46C82017277E00C3FA10 /* PBFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444E46C72017277E00C3FA10 /* PBFeedItem.swift */; };
 		447A5A09201537C40010E5DB /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A5A08201537C40010E5DB /* UIImageEffects.swift */; };
 		44A77C1D2014C84300E879D7 /* PBUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A77C1C2014C84300E879D7 /* PBUtility.swift */; };
 		44A77C262014CEE900E879D7 /* PBCaptureMediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A77C242014C95100E879D7 /* PBCaptureMediaVC.swift */; };
@@ -69,6 +76,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44217FAB201604990022F09C /* PBFeedsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBFeedsVC.swift; sourceTree = "<group>"; };
+		44217FAD201604AA0022F09C /* PBFeedsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBFeedsVC.xib; sourceTree = "<group>"; };
+		44217FB0201605B90022F09C /* PBTabsContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBTabsContainerVC.swift; sourceTree = "<group>"; };
+		44217FB5201605FD0022F09C /* PBTabsContainerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBTabsContainerVC.xib; sourceTree = "<group>"; };
+		44217FB7201624A00022F09C /* PBFeedsCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBFeedsCollectionCell.xib; sourceTree = "<group>"; };
+		44217FB9201625800022F09C /* PBFeedsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBFeedsCollectionCell.swift; sourceTree = "<group>"; };
+		444E46C72017277E00C3FA10 /* PBFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBFeedItem.swift; sourceTree = "<group>"; };
 		447A5A08201537C40010E5DB /* UIImageEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
 		44A77C1C2014C84300E879D7 /* PBUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBUtility.swift; sourceTree = "<group>"; };
 		44A77C242014C95100E879D7 /* PBCaptureMediaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBCaptureMediaVC.swift; sourceTree = "<group>"; };
@@ -155,6 +169,34 @@
 				EF2BB6A0F5AEDDF6542D13C4 /* Pods-Postablur.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		44217FAA2016047D0022F09C /* Feeds */ = {
+			isa = PBXGroup;
+			children = (
+				44217FAB201604990022F09C /* PBFeedsVC.swift */,
+				44217FAD201604AA0022F09C /* PBFeedsVC.xib */,
+				44217FB7201624A00022F09C /* PBFeedsCollectionCell.xib */,
+				44217FB9201625800022F09C /* PBFeedsCollectionCell.swift */,
+			);
+			path = Feeds;
+			sourceTree = "<group>";
+		};
+		44217FB2201605C50022F09C /* TabsContainer */ = {
+			isa = PBXGroup;
+			children = (
+				44217FB0201605B90022F09C /* PBTabsContainerVC.swift */,
+				44217FB5201605FD0022F09C /* PBTabsContainerVC.xib */,
+			);
+			path = TabsContainer;
+			sourceTree = "<group>";
+		};
+		444E46C62017275100C3FA10 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				444E46C72017277E00C3FA10 /* PBFeedItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		44A77C232014C95100E879D7 /* CreatePost */ = {
@@ -323,6 +365,9 @@
 		B0F4CA6E200F20A400F39409 /* Postablur */ = {
 			isa = PBXGroup;
 			children = (
+				444E46C62017275100C3FA10 /* Model */,
+				44217FB2201605C50022F09C /* TabsContainer */,
+				44217FAA2016047D0022F09C /* Feeds */,
 				44A77C232014C95100E879D7 /* CreatePost */,
 				846ED2952011F1B4004749ED /* Helpers */,
 				846ED2902011EFBC004749ED /* ThirdPartyLibraries */,
@@ -420,6 +465,8 @@
 			files = (
 				B0A4369A2010D2EF00DDBA7C /* RegistrationCell.xib in Resources */,
 				B00D05D720137BE20031CE82 /* PBDollarLimitCell.xib in Resources */,
+				44217FB6201605FD0022F09C /* PBTabsContainerVC.xib in Resources */,
+				44217FAE201604AA0022F09C /* PBFeedsVC.xib in Resources */,
 				B0A43686201086A500DDBA7C /* PBSocialLoginCell.xib in Resources */,
 				B0A4368D20109F7600DDBA7C /* PBLogoCell.xib in Resources */,
 				B0983B7C20148AD7003AB028 /* PostDescriptionVC.xib in Resources */,
@@ -443,6 +490,7 @@
 				B0A436822010867000DDBA7C /* PBEmailAndPasswrdCell.xib in Resources */,
 				B0A0204E2011DEE600D3837B /* PBFreeAccountCell.xib in Resources */,
 				B0A020502011DEE600D3837B /* PBPaidAccoutCell.xib in Resources */,
+				44217FB8201624A00022F09C /* PBFeedsCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +575,7 @@
 				B0A436952010BF6900DDBA7C /* AddProfilePhotoCell.swift in Sources */,
 				B00D05C9201371D40031CE82 /* RevealSettingsVC.swift in Sources */,
 				B0F1D6B82015F2FC0010567F /* CreateNewPostVC.swift in Sources */,
+				44217FB1201605B90022F09C /* PBTabsContainerVC.swift in Sources */,
 				B0A436992010D2EF00DDBA7C /* RegistrationCell.swift in Sources */,
 				B0A436912010BD5200DDBA7C /* PBHeaderCell.swift in Sources */,
 				B0A0204B2011DEE600D3837B /* PBAccountTypeVC.swift in Sources */,
@@ -539,10 +588,12 @@
 				B0A436812010867000DDBA7C /* PBEmailAndPasswrdCell.swift in Sources */,
 				846ED2882011D759004749ED /* PBServiceHelper.swift in Sources */,
 				B00D05D220137BBD0031CE82 /* PBShareLimitCell.swift in Sources */,
+				44217FBA201625800022F09C /* PBFeedsCollectionCell.swift in Sources */,
 				B0F4CA87200F24DC00F39409 /* NavConstants.swift in Sources */,
 				B0A4368C20109F7600DDBA7C /* PBLogoCell.swift in Sources */,
 				B0F1D6C42015F3480010567F /* DescriptionCell.swift in Sources */,
 				44A77C1D2014C84300E879D7 /* PBUtility.swift in Sources */,
+				444E46C82017277E00C3FA10 /* PBFeedItem.swift in Sources */,
 				B00D05D620137BE20031CE82 /* PBDollarLimitCell.swift in Sources */,
 				B0F1D6C02015F3300010567F /* LocationCell.swift in Sources */,
 				447A5A09201537C40010E5DB /* UIImageEffects.swift in Sources */,
@@ -551,6 +602,7 @@
 				B0A436A12010E40900DDBA7C /* PBSignUPVC.swift in Sources */,
 				B00D05CE20137BA30031CE82 /* PBLikeLimitCell.swift in Sources */,
 				B0ECE20C20135D7B004EE062 /* QRCodeScannerVC.swift in Sources */,
+				44217FAC201604990022F09C /* PBFeedsVC.swift in Sources */,
 				B0A43685201086A500DDBA7C /* PBSocialLoginCell.swift in Sources */,
 				846ED29B2012335A004749ED /* UIImage+ResizeImage.swift in Sources */,
 				B0F1D6C82015F5330010567F /* ShareYourPost.swift in Sources */,

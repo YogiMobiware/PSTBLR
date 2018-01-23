@@ -140,7 +140,7 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
     
     @IBAction func actionDismiss(_ sender: UIButton)
     {
-        self.dismissSelfieVC()
+        self.dismissNewPostVC()
     }
     
     @IBAction func actionRotateCamera(_ sender: UIButton)
@@ -541,7 +541,7 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
     }
     
     // MARK: Private methods
-    private func dismissSelfieVC()
+    private func dismissNewPostVC()
     {
         if let delgate = self.delegate
         {

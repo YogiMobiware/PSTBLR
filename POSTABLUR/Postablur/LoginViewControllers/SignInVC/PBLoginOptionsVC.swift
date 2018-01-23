@@ -128,8 +128,7 @@ class PBLoginOptionsVC: UIViewController
                                             
                                             if statusCode == "0"
                                             {
-                                                let qrCodeScannerVC = QRCodeScannerVC()
-                                                self.navigationController?.pushViewController(qrCodeScannerVC, animated: true)
+                                                self.appdelegate.loadTabsContainer()
 
                                                 return
                                             }
@@ -180,7 +179,7 @@ class PBLoginOptionsVC: UIViewController
         self.socialEmail = email
         self.socialRegistrationType = "2"
         self.socialProvider = "Twitter"
-        self.socialAccessToken = access_token as AnyObject
+        self.socialAccessToken = access_token
         
         let urlString = String(format: "%@/UserRegistration", arguments: [Urls.mainUrl]);
         
@@ -208,8 +207,7 @@ class PBLoginOptionsVC: UIViewController
                             
                             if statusCode == "0"
                             {
-                                let qrCodeScannerVC = QRCodeScannerVC()
-                                self.navigationController?.pushViewController(qrCodeScannerVC, animated: true)
+                                self.appdelegate.loadTabsContainer()
 
                                 return
                             }
@@ -287,8 +285,7 @@ class PBLoginOptionsVC: UIViewController
                             
                             if statusCode == "0"
                             {
-                                let qrCodeScannerVC = QRCodeScannerVC()
-                                self.navigationController?.pushViewController(qrCodeScannerVC, animated: true)
+                                self.appdelegate.loadTabsContainer()
                                 
                                 return
                             }
@@ -465,11 +462,7 @@ extension PBLoginOptionsVC : PBEmailAndPasswrdCellDelegate
                             
                             if statusCode == "0"
                             {
-                                
-                                let qrCodeScannerVC = QRCodeScannerVC()
-                                self.navigationController?.pushViewController(qrCodeScannerVC, animated: true)
-
-                                //self.appdelegate.alert(vc: self, message: statusMessage, title: "SignIn")
+                                self.appdelegate.loadTabsContainer()
                                 return
                             }
                             else
