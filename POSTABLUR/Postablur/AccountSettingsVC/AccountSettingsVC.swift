@@ -54,15 +54,9 @@ extension AccountSettingsVC : UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        switch indexPath.section
-        {
-        case 0:
-            return headersInfoArray.count
-        case 1:
-            return connectionInfoArray.count
-        default:
-            return legalnfoArray.count
-        }
+        
+        return legalnfoArray.count
+       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
