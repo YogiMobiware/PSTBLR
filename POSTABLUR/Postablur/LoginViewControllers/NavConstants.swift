@@ -27,5 +27,9 @@ enum NibNamed: String
     case PBCaptureMediaVC
     case PBFeedsVC
     case PBFeedsCollectionCell
+    case TitleCell
+    case LocationCell
+    case DescriptionCell
+    case ShareYourPost
 
 }

@@ -182,27 +182,14 @@
                                 <constraint firstItem="4I3-Fy-UCw" firstAttribute="leading" secondItem="y2t-jy-Uuj" secondAttribute="trailing" constant="2" id="ysz-FI-UZl"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqj-CP-Qxo" userLabel="DescriptionView">
-                            <rect key="frame" x="35" y="55.666666666666686" width="344" height="65"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desc: The calm before the storm of great fans. I love these ppl so much" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3Z-Ue-L5m">
-                                    <rect key="frame" x="0.0" y="0.0" width="344" height="65"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstItem="k3Z-Ue-L5m" firstAttribute="top" secondItem="eqj-CP-Qxo" secondAttribute="top" id="QJP-pb-tg9"/>
-                                <constraint firstAttribute="height" constant="65" id="QUC-cY-xeo"/>
-                                <constraint firstAttribute="bottom" secondItem="k3Z-Ue-L5m" secondAttribute="bottom" id="ed6-La-QRM"/>
-                                <constraint firstItem="k3Z-Ue-L5m" firstAttribute="leading" secondItem="eqj-CP-Qxo" secondAttribute="leading" id="g9X-iR-mTF"/>
-                                <constraint firstAttribute="trailing" secondItem="k3Z-Ue-L5m" secondAttribute="trailing" id="vwj-Pc-IEn"/>
-                            </constraints>
-                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desc: The calm before the storm of great fans. I love these ppl so much" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3Z-Ue-L5m">
+                            <rect key="frame" x="35" y="57.666666666666686" width="344" height="38.333333333333343"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Max-Yd-PPb" userLabel="SharedView">
-                            <rect key="frame" x="35" y="120.66666666666664" width="344" height="20.666666666666671"/>
+                            <rect key="frame" x="35" y="98" width="344" height="20.666666666666671"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shared on:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fzy-ZE-Acw">
                                     <rect key="frame" x="0.0" y="0.0" width="84" height="20.666666666666668"/>
@@ -232,7 +219,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2KR-m3-EgT" userLabel="DonateView">
-                            <rect key="frame" x="35" y="141.33333333333337" width="344" height="20"/>
+                            <rect key="frame" x="35" y="118.66666666666663" width="344" height="20"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donate to:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ue1-bW-r3m">
                                     <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="20"/>
@@ -262,7 +249,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7eF-Kq-oJZ" userLabel="RevealedView">
-                            <rect key="frame" x="35" y="161.33333333333337" width="344" height="20.666666666666657"/>
+                            <rect key="frame" x="35" y="138.66666666666663" width="344" height="20.666666666666657"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Revealed by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dmw-QO-mYy">
                                     <rect key="frame" x="0.0" y="0.0" width="97.666666666666671" height="20.666666666666668"/>
@@ -296,12 +283,11 @@
                     <constraints>
                         <constraint firstItem="BU3-d8-BmY" firstAttribute="top" secondItem="FA3-4U-vQ9" secondAttribute="bottom" id="0ye-Ds-K3b"/>
                         <constraint firstItem="FA3-4U-vQ9" firstAttribute="height" secondItem="2Pw-Dl-uyf" secondAttribute="height" multiplier="20:247" id="1XS-ON-Wlo"/>
-                        <constraint firstItem="Max-Yd-PPb" firstAttribute="top" secondItem="eqj-CP-Qxo" secondAttribute="bottom" id="2KB-3U-UNi"/>
+                        <constraint firstItem="k3Z-Ue-L5m" firstAttribute="top" secondItem="BU3-d8-BmY" secondAttribute="bottom" constant="2" id="2Nb-B7-ycn"/>
                         <constraint firstItem="Max-Yd-PPb" firstAttribute="height" secondItem="BU3-d8-BmY" secondAttribute="height" id="2QW-cY-EZE"/>
-                        <constraint firstItem="eqj-CP-Qxo" firstAttribute="top" secondItem="BU3-d8-BmY" secondAttribute="bottom" id="3RI-pP-S3M"/>
-                        <constraint firstItem="eqj-CP-Qxo" firstAttribute="leading" secondItem="BU3-d8-BmY" secondAttribute="leading" id="8oK-xp-7Fn"/>
                         <constraint firstItem="Max-Yd-PPb" firstAttribute="trailing" secondItem="BU3-d8-BmY" secondAttribute="trailing" id="99D-ri-gur"/>
                         <constraint firstItem="2KR-m3-EgT" firstAttribute="height" secondItem="Max-Yd-PPb" secondAttribute="height" id="CR7-tI-CcB"/>
+                        <constraint firstItem="k3Z-Ue-L5m" firstAttribute="trailing" secondItem="FA3-4U-vQ9" secondAttribute="trailing" id="CXT-Y9-h4Q"/>
                         <constraint firstAttribute="trailing" secondItem="FA3-4U-vQ9" secondAttribute="trailing" constant="35" id="HT6-bF-TqA"/>
                         <constraint firstItem="7eF-Kq-oJZ" firstAttribute="top" secondItem="2KR-m3-EgT" secondAttribute="bottom" id="Mh1-b4-eRu"/>
                         <constraint firstItem="7eF-Kq-oJZ" firstAttribute="trailing" secondItem="2KR-m3-EgT" secondAttribute="trailing" id="MyT-gZ-qPF"/>
@@ -309,11 +295,12 @@
                         <constraint firstItem="2KR-m3-EgT" firstAttribute="leading" secondItem="Max-Yd-PPb" secondAttribute="leading" id="Ns5-bm-rMp"/>
                         <constraint firstItem="2KR-m3-EgT" firstAttribute="top" secondItem="Max-Yd-PPb" secondAttribute="bottom" id="OsN-Rl-fuS"/>
                         <constraint firstItem="2KR-m3-EgT" firstAttribute="trailing" secondItem="Max-Yd-PPb" secondAttribute="trailing" id="Vy4-sM-rdw"/>
+                        <constraint firstItem="k3Z-Ue-L5m" firstAttribute="leading" secondItem="FA3-4U-vQ9" secondAttribute="leading" id="XbW-sZ-Fd6"/>
                         <constraint firstItem="BU3-d8-BmY" firstAttribute="leading" secondItem="FA3-4U-vQ9" secondAttribute="leading" id="ZLZ-wC-bab"/>
                         <constraint firstItem="BU3-d8-BmY" firstAttribute="trailing" secondItem="FA3-4U-vQ9" secondAttribute="trailing" id="b7n-hB-wme"/>
+                        <constraint firstItem="Max-Yd-PPb" firstAttribute="top" secondItem="k3Z-Ue-L5m" secondAttribute="bottom" constant="2" id="cnz-gb-oMh"/>
                         <constraint firstItem="7eF-Kq-oJZ" firstAttribute="height" secondItem="2KR-m3-EgT" secondAttribute="height" id="fMx-2v-ylS"/>
                         <constraint firstItem="FA3-4U-vQ9" firstAttribute="top" secondItem="2Pw-Dl-uyf" secondAttribute="top" constant="16" id="gOo-P8-1hN"/>
-                        <constraint firstItem="eqj-CP-Qxo" firstAttribute="trailing" secondItem="BU3-d8-BmY" secondAttribute="trailing" id="gPC-np-bcU"/>
                         <constraint firstItem="FA3-4U-vQ9" firstAttribute="leading" secondItem="2Pw-Dl-uyf" secondAttribute="leading" constant="35" id="tM7-wS-AyC"/>
                         <constraint firstItem="Max-Yd-PPb" firstAttribute="leading" secondItem="BU3-d8-BmY" secondAttribute="leading" id="vYe-V6-miB"/>
                         <constraint firstItem="7eF-Kq-oJZ" firstAttribute="leading" secondItem="2KR-m3-EgT" secondAttribute="leading" id="yb5-MG-Qdk"/>
