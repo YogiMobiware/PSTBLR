@@ -462,6 +462,29 @@ extension PBLoginOptionsVC : PBEmailAndPasswrdCellDelegate
                             
                             if statusCode == "0"
                             {
+                                if let userId = result["UserId"] as? String
+                                {
+                                    UserDefaults.standard.removeObject(forKey: "UserId")
+                                    UserDefaults.standard.set(userId, forKey: "UserId")
+                                }
+                                if let email = result["Email"] as? String
+                                {
+                                    UserDefaults.standard.removeObject(forKey: "Email")
+                                    UserDefaults.standard.set(email, forKey: "Email")
+                                }
+                                if let profileUrl = result["Profileurl"] as? String
+                                {
+                                    UserDefaults.standard.removeObject(forKey: "Profileurl")
+                                    UserDefaults.standard.set(profileUrl, forKey: "Profileurl")
+                                }
+                                if let username = result["UserName"] as? String
+                                {
+                                    UserDefaults.standard.removeObject(forKey: "UserName")
+                                    UserDefaults.standard.set(username, forKey: "UserName")
+                                }
+                                
+                                UserDefaults.standard.synchronize()
+
                                 self.appdelegate.loadTabsContainer()
                                 return
                             }
