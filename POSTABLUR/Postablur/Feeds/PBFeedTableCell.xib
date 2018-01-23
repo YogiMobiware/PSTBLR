@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedsTableCell" rowHeight="515" id="0gU-4m-vr0" customClass="PBFeedTableCell" customModule="Postablur" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="385" height="515"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0gU-4m-vr0" id="Shc-2b-3S9">
+                <rect key="frame" x="0.0" y="0.0" width="385" height="514.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwa-Kt-uRk" userLabel="PostStatsContainerView">
+                        <rect key="frame" x="0.0" y="0.0" width="385" height="55"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="55" id="rxq-Pw-OsL"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wls-wD-08o" userLabel="FeedImageView">
+                        <rect key="frame" x="0.0" y="55" width="385" height="316"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="316" id="Eee-kH-uZh"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gku-Qr-f1Z" userLabel="PostDescriptionContainer">
+                        <rect key="frame" x="0.0" y="371" width="385" height="40"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="WPV-Kg-xlj"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRV-7F-KQW" userLabel="PostInteractionContainer">
+                        <rect key="frame" x="0.0" y="411" width="385" height="80"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="aMN-Uz-RdB"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFQ-N6-fjK" userLabel="CommentsTapView">
+                        <rect key="frame" x="0.0" y="491" width="385" height="24"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="nqw-Ar-bvG"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Wls-wD-08o" firstAttribute="top" secondItem="dwa-Kt-uRk" secondAttribute="bottom" id="0y6-Nk-Rbq"/>
+                    <constraint firstItem="nRV-7F-KQW" firstAttribute="trailing" secondItem="gku-Qr-f1Z" secondAttribute="trailing" id="9js-lA-XIf"/>
+                    <constraint firstItem="gku-Qr-f1Z" firstAttribute="trailing" secondItem="Wls-wD-08o" secondAttribute="trailing" id="CTv-Yh-JUF"/>
+                    <constraint firstItem="nRV-7F-KQW" firstAttribute="leading" secondItem="gku-Qr-f1Z" secondAttribute="leading" id="Ggb-Ux-YOb"/>
+                    <constraint firstItem="nRV-7F-KQW" firstAttribute="top" secondItem="gku-Qr-f1Z" secondAttribute="bottom" id="Hcd-jZ-JIK"/>
+                    <constraint firstItem="dwa-Kt-uRk" firstAttribute="leading" secondItem="Shc-2b-3S9" secondAttribute="leading" id="Lvs-7v-tpL"/>
+                    <constraint firstAttribute="trailing" secondItem="dwa-Kt-uRk" secondAttribute="trailing" id="Mpb-ie-iFc"/>
+                    <constraint firstItem="gFQ-N6-fjK" firstAttribute="top" secondItem="nRV-7F-KQW" secondAttribute="bottom" id="N2a-BJ-jWE"/>
+                    <constraint firstItem="gku-Qr-f1Z" firstAttribute="top" secondItem="Wls-wD-08o" secondAttribute="bottom" id="PNt-z9-bos"/>
+                    <constraint firstItem="gFQ-N6-fjK" firstAttribute="trailing" secondItem="nRV-7F-KQW" secondAttribute="trailing" id="ZLJ-Ta-5Pc"/>
+                    <constraint firstItem="dwa-Kt-uRk" firstAttribute="top" secondItem="Shc-2b-3S9" secondAttribute="top" id="e5Y-ms-CFw"/>
+                    <constraint firstItem="gFQ-N6-fjK" firstAttribute="leading" secondItem="nRV-7F-KQW" secondAttribute="leading" id="fUe-du-IsD"/>
+                    <constraint firstItem="gku-Qr-f1Z" firstAttribute="leading" secondItem="Wls-wD-08o" secondAttribute="leading" id="qJ1-A5-7YV"/>
+                    <constraint firstItem="Wls-wD-08o" firstAttribute="leading" secondItem="Shc-2b-3S9" secondAttribute="leading" id="uE4-M4-tC1"/>
+                    <constraint firstAttribute="trailing" secondItem="Wls-wD-08o" secondAttribute="trailing" id="xqH-ka-Axu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="22.5" y="-139.5"/>
+        </tableViewCell>
+    </objects>
+</document>
