@@ -28,6 +28,7 @@ class PostReviewVC: UIViewController
     @IBOutlet var locationPHLabel: UILabel!
     @IBOutlet var locationTxtLabel: UILabel!
     
+    @IBOutlet var descPHLabel: UILabel!
     @IBOutlet var descTxtLabel: UILabel!
     
     @IBOutlet var sharedOnPHLabel: UILabel!
@@ -83,6 +84,7 @@ class PostReviewVC: UIViewController
         self.titleTxtLabel.font = self.titleTxtLabel.font.withSize(fontSize)
         self.locationPHLabel.font = self.locationPHLabel.font.withSize(fontSize)
         self.locationTxtLabel.font = self.locationTxtLabel.font.withSize(fontSize)
+        self.descPHLabel.font = self.descPHLabel.font.withSize(fontSize)
         self.descTxtLabel.font = self.descTxtLabel.font.withSize(fontSize)
         self.sharedOnPHLabel.font = self.sharedOnPHLabel.font.withSize(fontSize)
         self.sharedOnTxtLabel.font = self.sharedOnTxtLabel.font.withSize(fontSize)

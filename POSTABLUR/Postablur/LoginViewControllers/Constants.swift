@@ -73,6 +73,7 @@ class Constants: NSObject {
     static let headerTileColor : UIColor = UIColor(red: 232/255, green: 232/255, blue: 232/255, alpha: 1)
 
     static let greyTintColor : UIColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 1)
+    static let whiteTextColor : UIColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
 
     
     static func getDoneToolbar(dismissBtn: UIBarButtonItem) -> UIToolbar

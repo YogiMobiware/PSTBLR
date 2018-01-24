@@ -225,6 +225,14 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
     @IBAction func statsTapped(_ sender : UIButton)
     {
         
+        let alertView = UIAlertController(title: "Postablur", message: "Stats coming soon...", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default, handler: { (alert) in
+            
+        })
+        alertView.addAction(action)
+        self.present(alertView, animated: true, completion: nil)
+        
+        
     }
     
     @IBAction func profileTapped(_ sender : UIButton)
