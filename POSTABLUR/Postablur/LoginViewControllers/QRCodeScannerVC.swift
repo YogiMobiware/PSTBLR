@@ -29,20 +29,11 @@ class QRCodeScannerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapRecogniser: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(QRCodeScannerVC.tapGestureRecognized))
-        self.scannerImage.addGestureRecognizer(tapRecogniser)
-
+        
         
     }
 
-    @objc internal func tapGestureRecognized()
-    {
-        let captureMediaVC = PBCaptureMediaVC()
-        //let revealSettingsVC = RevealSettingsVC()
-        self.navigationController?.pushViewController(captureMediaVC, animated: true)
-
-        
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
