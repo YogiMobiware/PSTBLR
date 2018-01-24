@@ -48,14 +48,6 @@ class QRCodeScannerVC: UIViewController
             self.nameLbl.text = username
         }
         
-    }
-
-    @objc internal func tapGestureRecognized()
-    {
-        let captureMediaVC = PBCaptureMediaVC()
-        //let revealSettingsVC = RevealSettingsVC()
-        self.navigationController?.pushViewController(captureMediaVC, animated: true)
-
         
     }
     override func didReceiveMemoryWarning()
