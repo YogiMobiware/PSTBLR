@@ -12,7 +12,6 @@ class AccountsVC: UIViewController
 {
     
     @IBOutlet var headerView: UIView!
-    @IBOutlet var backBtn: UIButton!
     @IBOutlet var settingsBtn: UIButton!
     
     
@@ -20,7 +19,7 @@ class AccountsVC: UIViewController
     @IBOutlet var userProfileImage: UIImageView!
     @IBOutlet var connectBtn: UIButton!
     @IBOutlet var usernameLabel: UILabel!
-    @IBOutlet var userDescLabel: UILabel!
+    @IBOutlet var userDescTextView: UILabel!
     @IBOutlet var connectsView: UIView!
     @IBOutlet var connectsLabel: UILabel!
     @IBOutlet var sponcersView: UIView!
@@ -197,7 +196,7 @@ class AccountsVC: UIViewController
             let fontSize = 9
             self.connectBtn.titleLabel?.font = self.connectBtn.titleLabel?.font.withSize(CGFloat(fontSize))
             self.usernameLabel.font = self.usernameLabel.font.withSize(11)
-            self.userDescLabel.font = self.userDescLabel.font.withSize(CGFloat(fontSize))
+            self.userDescTextView.font = self.userDescTextView.font.withSize(CGFloat(fontSize))
             self.connectsLabel.font = self.connectsLabel.font.withSize(CGFloat(fontSize))
             self.sponcersLabel.font = self.sponcersLabel.font.withSize(CGFloat(fontSize))
             self.donorsLabel.font = self.donorsLabel.font.withSize(CGFloat(fontSize))
@@ -205,10 +204,7 @@ class AccountsVC: UIViewController
         
     }
     
-    @IBAction func backBtnAction(_ sender: UIButton)
-    {
-         _ = self.navigationController?.popViewController(animated: true)
-    }
+   
     
     @IBAction func settingsBtnAction(_ sender: UIButton)
     {
