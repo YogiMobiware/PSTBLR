@@ -59,6 +59,9 @@ class Constants: NSObject {
     
     static let maxBlurRadius : Int = 50
     
+    static let feedPageSize  = 12
+    static let loadMoreFeedPageSize : Int = 12
+    
     static func textFieldPalceHolderColor(placeHolderText : String) ->NSAttributedString
     {
         return NSAttributedString(string:placeHolderText, attributes: [NSAttributedStringKey.foregroundColor: Constants.placedHolderTextFieldColor])

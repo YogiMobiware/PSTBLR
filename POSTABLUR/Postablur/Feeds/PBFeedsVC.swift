@@ -27,6 +27,8 @@ class PBFeedsVC : UIViewController
     var feeds = [PBFeedItem]()
     var totalFeedCount = 0
     
+    var isLoadingFeeds = false
+    
     // MARK: Inits
     init()
     {
@@ -81,13 +83,19 @@ class PBFeedsVC : UIViewController
         {
             return
         }
-        let requestDict = ["UserId": userId,"StartValue": "1","Endvalue": "20"] as [String : Any]
+        
+        let startIndex = "1"
+        let endIndex  =  String(Constants.feedPageSize)
+        
+        let requestDict = ["UserId": userId,"StartValue": startIndex,"Endvalue": endIndex] as [String : Any]
 
         self.activity.startAnimating()
         self.activity.isHidden = false
+        
+        self.isLoadingFeeds = true
         PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
 
-            self.activity.stopAnimating()
+            self.isLoadingFeeds = false
 
             if error == nil
             {
@@ -98,14 +106,12 @@ class PBFeedsVC : UIViewController
                         
                         if let error = responseDict["Error"] as? String
                         {
+                            self.activity.stopAnimating()
                             self.appDelegate.alert(vc: self, message: error , title: "Error")
                             return
                         }
                         else
                         {
-                            let count = responseDict["Count"] as! Int
-                            self.totalFeedCount = count
-                            
                             self.feeds.removeAll()
                             if let resultArray = responseDict["Results"] as! [NSDictionary]!
                             {
@@ -135,12 +141,22 @@ class PBFeedsVC : UIViewController
                                         feedItem.mediaList.append(mediaItem)
                                     }
                                     
+                                    let count = result["TotalCount"] as! Int
+                                    self.totalFeedCount = count
+                                    
                                     self.feeds.append(feedItem)
                                 }
                                 
                                 if self.feeds.count <= 0
                                 {
+                                    self.activity.stopAnimating()
                                     self.noFeedsLbl.isHidden = false
+                                    self.feedsCollectionView.isHidden = true
+                                }
+                                else
+                                {
+                                    self.noFeedsLbl.isHidden = true
+                                    self.feedsCollectionView.isHidden = false
                                 }
                                 
                                 self.feedsCollectionView.reloadData()
@@ -150,6 +166,7 @@ class PBFeedsVC : UIViewController
                     }
                     if let responseStr = responseObject as? String
                     {
+                        self.activity.stopAnimating()
                         self.appDelegate.alert(vc: self, message: responseStr, title: "Error")
                         return
                     }
@@ -157,12 +174,125 @@ class PBFeedsVC : UIViewController
                 }
                 else
                 {
+                    self.activity.stopAnimating()
                     self.appDelegate.alert(vc: self, message: "Something went wrong", title: "Error")
                     return
                 }
             }
             else
             {
+                self.activity.stopAnimating()
+                self.appDelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
+                return
+            }
+        }
+    }
+    
+    func loadFeedsMore()
+    {
+        let urlString = String(format: "%@/OthersPostsDetails", arguments: [Urls.mainUrl]);
+        guard let userId = UserDefaults.standard.string(forKey: "UserId") else
+        {
+            return
+        }
+        
+        let startIndex = String(self.feeds.count + 1)
+        let endIndex  =  String(self.feeds.count + Constants.loadMoreFeedPageSize)
+        
+        let requestDict = ["UserId": userId,"StartValue": startIndex,"Endvalue": endIndex] as [String : Any]
+        
+        self.activity.startAnimating()
+        self.activity.isHidden = false
+        
+        self.isLoadingFeeds = true
+        PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
+            
+            self.isLoadingFeeds = false
+            
+            if error == nil
+            {
+                if responseObject != nil
+                {
+                    if let responseDict = responseObject as? [String : AnyObject]
+                    {
+                        
+                        if let error = responseDict["Error"] as? String
+                        {
+                            self.activity.stopAnimating()
+                            self.appDelegate.alert(vc: self, message: error , title: "Error")
+                            return
+                        }
+                        else
+                        {
+                           
+                            if let resultArray = responseDict["Results"] as! [NSDictionary]!
+                            {
+                                for result in resultArray
+                                {
+                                    let feedItem = PBFeedItem()
+                                    feedItem.PostId = result["PostId"] as? String
+                                    feedItem.UserLikeStatus = result["UserLikeStatus"] as? Int == 1 ? true : false
+                                    feedItem.UserDisLikeStatus = result["UserDisLikeStatus"] as? Int == 1 ? true : false
+                                    feedItem.UserName = result["UserName"] as? String
+                                    feedItem.Location = result["UserName"] as? String
+                                    feedItem.PostTitle = result["PostTitle"] as? String
+                                    feedItem.Email = result["Email"] as? String
+                                    feedItem.Description = result["Description"] as? String
+                                    feedItem.CurrentLikesCount = result["CurrentLikesCount"] as? Int
+                                    feedItem.CurrentDisLikesCount = result["CurrentDisLikesCount"] as? Int
+                                    feedItem.Profileurl = result["Profileurl"] as? String
+                                    
+                                    let mediaArray = result["PostMediaData"] as! [NSDictionary]!
+                                    for media in mediaArray!
+                                    {
+                                        let mediaItem = PBFeedMedia()
+                                        mediaItem.PostId = media["PostId"] as? String
+                                        mediaItem.PostUrl = media["PostUrl"] as? String
+                                        mediaItem.PostThumbUrl = media["PostThumbUrl"] as? String
+                                        mediaItem.MediaType = media["MediaType"] as? String
+                                        feedItem.mediaList.append(mediaItem)
+                                    }
+                                    
+                                    let count = result["TotalCount"] as! Int
+                                    self.totalFeedCount = count
+                                    self.feeds.append(feedItem)
+                                }
+                                
+                                if self.feeds.count <= 0
+                                {
+                                    self.activity.stopAnimating()
+                                    self.noFeedsLbl.isHidden = false
+                                    self.feedsCollectionView.isHidden = true
+                                }
+                                else
+                                {
+                                    self.noFeedsLbl.isHidden = true
+                                    self.feedsCollectionView.isHidden = false
+                                }
+                                
+                                self.feedsCollectionView.reloadData()
+                            }
+                        }
+                        
+                    }
+                    if let responseStr = responseObject as? String
+                    {
+                        self.activity.stopAnimating()
+                        self.appDelegate.alert(vc: self, message: responseStr, title: "Error")
+                        return
+                    }
+                    
+                }
+                else
+                {
+                    self.activity.stopAnimating()
+                    self.appDelegate.alert(vc: self, message: "Something went wrong", title: "Error")
+                    return
+                }
+            }
+            else
+            {
+                self.activity.stopAnimating()
                 self.appDelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
                 return
             }
@@ -193,35 +323,52 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
             let firstMedia = mediaList.first!
             if let thumburlString = firstMedia.PostThumbUrl
             {
-                let thumbUrl = URL(string: thumburlString)!
-
-                cell.feedImageView.kf.setImage(with: thumbUrl, completionHandler: { (image, error, cacheType, imageUrl) in
-                   
-                    guard let img = image else
-                    {
-                        return
-                    }
-                    
-                    cell.feedImageView.kf.setImage(with: nil)
-                    
-                    DispatchQueue.global(qos: .userInitiated).async {
-                         let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
+                if let thumbUrl = URL(string: thumburlString)
+                {
+                    cell.feedImageView.kf.setImage(with: thumbUrl, completionHandler: { (image, error, cacheType, imageUrl) in
                         
-                        DispatchQueue.main.async {
-                           
-                            cell.feedImageView.image = im
-                            
-                            UIView.animate(withDuration: 0.3, animations: {
-                                cell.feedImageView.alpha = 1
-                            })
+                        guard let img = image else
+                        {
+                            cell.feedImageView.kf.setImage(with: nil)
+                            self.activity.stopAnimating()
+                            return
                         }
-                    }
-                    
-                   
-                })
+                        
+                        DispatchQueue.global(qos: .userInitiated).async {
+                            let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
+                            
+                            DispatchQueue.main.async {
+                                
+                                self.activity.stopAnimating()
+                                cell.feedImageView.image = im
+                                
+                                UIView.animate(withDuration: 0.3, animations: {
+                                    cell.feedImageView.alpha = 1
+                                })
+                            }
+                        }
+                        
+                        
+                    })
+                }
+                else
+                {
+                    cell.feedImageView.kf.setImage(with: nil)
+
+                }
+            }
+            else
+            {
+                cell.feedImageView.kf.setImage(with: nil)
+
             }
         }
-        
+        else
+        {
+            cell.feedImageView.kf.setImage(with: nil)
+
+        }
+
         return cell
         
     }
@@ -233,9 +380,28 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
         let interactionVC = PBFeedsInteractionVC()
         interactionVC.feeds = self.feeds
         interactionVC.selectedFeedID = selectedFeed.PostId
+        interactionVC.totalFeedCount = self.totalFeedCount
         interactionVC.scrollToIndexPath = indexPath
         
         self.navigationController?.pushViewController(interactionVC, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        self.activity.stopAnimating()
+
+        
+        if indexPath.row == self.feeds.count - 1
+        {
+            guard self.totalFeedCount > self.feeds.count else
+            {
+                return
+            }
+            if self.isLoadingFeeds == false
+            {
+                self.loadFeedsMore()
+            }
+        }
     }
 }
 
