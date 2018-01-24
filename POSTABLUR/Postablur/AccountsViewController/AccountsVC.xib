@@ -11,6 +11,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Arial.ttf">
+            <string>ArialMT</string>
+        </array>
         <array key="ArialBold.ttf">
             <string>Arial-BoldMT</string>
         </array>
@@ -30,6 +33,7 @@
                 <outlet property="donorsLabel" destination="nrD-yN-4gd" id="NGM-CH-vQi"/>
                 <outlet property="donorsView" destination="9Oi-ZN-EaC" id="g3e-vw-uwI"/>
                 <outlet property="headerView" destination="IXv-xH-X2G" id="3et-b5-vQY"/>
+                <outlet property="postsNotAvailLabel" destination="7ed-At-qAQ" id="UwS-a8-8aw"/>
                 <outlet property="settingsBtn" destination="fgX-wL-qeU" id="a8i-gM-IOJ"/>
                 <outlet property="sponcersLabel" destination="vH4-hE-o8S" id="UnE-Va-nAY"/>
                 <outlet property="sponcersView" destination="83a-TZ-dt2" id="MsM-tt-GWU"/>
@@ -48,12 +52,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXv-xH-X2G" userLabel="HeaderView">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qx-kB-yXr">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qx-kB-yXr">
                             <rect key="frame" x="10" y="30.666666666666671" width="42" height="42"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="42" id="RVZ-z4-C5O"/>
                                 <constraint firstAttribute="height" constant="42" id="Zja-RP-ZMm"/>
                             </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" image="keyboardBackspace"/>
                             <connections>
                                 <action selector="backBtnAction:" destination="-1" eventType="touchUpInside" id="aXn-RG-QzF"/>
@@ -97,7 +103,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SlR-Bk-PBn" userLabel="ConnectsView">
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="19"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONNECTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVi-J2-hTX">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1B CONNECTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVi-J2-hTX">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="19.333333333333332"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -115,7 +121,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83a-TZ-dt2" userLabel="SponcersView">
                                     <rect key="frame" x="120" y="0.0" width="120" height="19"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPONCERS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vH4-hE-o8S">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1B SPONCERS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vH4-hE-o8S">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="19.333333333333332"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -133,7 +139,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Oi-ZN-EaC" userLabel="DonersView">
                                     <rect key="frame" x="240" y="0.0" width="120" height="19"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DONORS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrD-yN-4gd">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1B DONORS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrD-yN-4gd">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="19.333333333333332"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -189,14 +195,14 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="14" id="I2c-UV-4mw"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="12"/>
+                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbh-ty-oI0">
                             <rect key="frame" x="133.66666666666663" y="44.000000000000007" width="255.33333333333337" height="93.666666666666686"/>
                             <string key="text">The best is yet to come and the best people are usually unique visitors to my website www.postablure.com or email me curtis@postablur.com #postablur #nike</string>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -250,12 +256,12 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GB0-FM-gMs" userLabel="PView">
                             <rect key="frame" x="0.0" y="0.0" width="136.66666666666666" height="44.333333333333336"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faX-bK-PhS">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faX-bK-PhS">
                                     <rect key="frame" x="0.0" y="0.0" width="136.66666666666666" height="44.333333333333336"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="group">
-                                        <color key="titleColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
+                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
+                                    <color key="tintColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title=" P" image="photoMediaTypeIcon"/>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -269,10 +275,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3YR-Cg-6CO" userLabel="AView">
                             <rect key="frame" x="136.66666666666663" y="0.0" width="136.33333333333337" height="44.333333333333336"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMv-eX-RoI">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMv-eX-RoI">
                                     <rect key="frame" x="0.0" y="0.0" width="136.33333333333334" height="44.333333333333336"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="audioMediaTypeIcon"/>
+                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
+                                    <color key="tintColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title=" A" image="audioMediaTypeIcon">
+                                        <color key="titleColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -286,10 +296,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eO1-RM-ERe" userLabel="VView">
                             <rect key="frame" x="273" y="0.0" width="136.66666666666663" height="44.333333333333336"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiB-p0-uJi">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiB-p0-uJi">
                                     <rect key="frame" x="0.0" y="0.0" width="136.66666666666666" height="44.333333333333336"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="videoMediaTypeIcon"/>
+                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
+                                    <color key="tintColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title=" V" image="videoMediaTypeIcon">
+                                        <color key="titleColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -323,18 +337,30 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="257.66666666666669"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qfA-4V-TN6">
-                                <size key="itemSize" width="50" height="50"/>
+                                <size key="itemSize" width="115" height="115"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posts not available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ed-At-qAQ">
+                            <rect key="frame" x="107" y="114" width="200" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="IBY-8u-UNZ"/>
+                                <constraint firstAttribute="height" constant="30" id="zJt-Un-jSr"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.68627450980000004" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="7ed-At-qAQ" firstAttribute="centerX" secondItem="tI8-md-CFH" secondAttribute="centerX" id="81U-w2-RZu"/>
                         <constraint firstItem="4dn-xC-TRI" firstAttribute="leading" secondItem="tI8-md-CFH" secondAttribute="leading" id="8o0-OY-6gq"/>
                         <constraint firstAttribute="bottom" secondItem="4dn-xC-TRI" secondAttribute="bottom" id="Apc-CW-vQt"/>
                         <constraint firstAttribute="trailing" secondItem="4dn-xC-TRI" secondAttribute="trailing" id="TeO-sA-MdN"/>
                         <constraint firstItem="4dn-xC-TRI" firstAttribute="top" secondItem="tI8-md-CFH" secondAttribute="top" id="bLw-eA-Jhw"/>
+                        <constraint firstItem="7ed-At-qAQ" firstAttribute="centerY" secondItem="tI8-md-CFH" secondAttribute="centerY" id="yhs-mV-bcP"/>
                     </constraints>
                 </view>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="yzJ-sh-cni">
@@ -373,10 +399,10 @@
     </objects>
     <resources>
         <image name="audioMediaTypeIcon" width="19" height="25"/>
-        <image name="group" width="54" height="24"/>
         <image name="keyboardBackspace" width="24" height="24"/>
         <image name="laEtHcGuardiansGalaxy2Teaser20161019Snap" width="414" height="152"/>
         <image name="logoWhiteIcon" width="209" height="58"/>
+        <image name="photoMediaTypeIcon" width="29" height="24"/>
         <image name="setting" width="27" height="27"/>
         <image name="videoMediaTypeIcon" width="28" height="20"/>
         <image name="videoWhiteIconPostablurApp" width="44" height="32"/>
