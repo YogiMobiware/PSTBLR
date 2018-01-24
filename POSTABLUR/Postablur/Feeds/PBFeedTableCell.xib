@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="385" height="515"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0gU-4m-vr0" id="Shc-2b-3S9">
-                <rect key="frame" x="0.0" y="0.0" width="385" height="514.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="385" height="515"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwa-Kt-uRk" userLabel="PostStatsContainerView">
@@ -47,7 +47,7 @@
                                 <color key="textColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 views" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBp-c6-QS4" userLabel="postViewsLbl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="2 views" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBp-c6-QS4" userLabel="postViewsLbl">
                                 <rect key="frame" x="275" y="10.5" width="40" height="16.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -75,6 +75,7 @@
                             <constraint firstItem="x4r-uC-e55" firstAttribute="centerX" secondItem="dwa-Kt-uRk" secondAttribute="centerX" id="Wv7-0H-fHJ"/>
                             <constraint firstItem="aBp-c6-QS4" firstAttribute="bottom" secondItem="x4r-uC-e55" secondAttribute="top" id="eoZ-h1-nDx"/>
                             <constraint firstItem="K4q-J8-WcE" firstAttribute="top" secondItem="x4r-uC-e55" secondAttribute="bottom" id="iRt-kf-61n"/>
+                            <constraint firstItem="aBp-c6-QS4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DTq-S1-xNA" secondAttribute="trailing" constant="8" id="k7W-om-c87"/>
                             <constraint firstItem="K4q-J8-WcE" firstAttribute="trailing" secondItem="aBp-c6-QS4" secondAttribute="trailing" id="o0U-if-J3X"/>
                             <constraint firstAttribute="height" constant="55" id="rxq-Pw-OsL"/>
                             <constraint firstItem="x4r-uC-e55" firstAttribute="width" secondItem="dwa-Kt-uRk" secondAttribute="width" id="wf2-eh-Oce"/>

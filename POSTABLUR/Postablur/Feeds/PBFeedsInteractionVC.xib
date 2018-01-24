@@ -57,7 +57,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@chalynbrazi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfv-EF-8Cr" userLabel="usernameLbl">
-                            <rect key="frame" x="129" y="29" width="116.66666666666666" height="21"/>
+                            <rect key="frame" x="129" y="29" width="165" height="21"/>
                             <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -100,6 +100,7 @@
                         <constraint firstAttribute="trailing" secondItem="jDk-8Y-AGw" secondAttribute="trailing" constant="20" id="4ur-XP-9wX"/>
                         <constraint firstItem="5X7-nH-CFm" firstAttribute="leading" secondItem="97P-bx-Ufg" secondAttribute="trailing" constant="8" id="7dv-qA-Dhl"/>
                         <constraint firstItem="jDk-8Y-AGw" firstAttribute="leading" secondItem="D3p-R3-WYc" secondAttribute="trailing" constant="8" id="I0e-he-fLL"/>
+                        <constraint firstItem="D3p-R3-WYc" firstAttribute="leading" secondItem="Hfv-EF-8Cr" secondAttribute="trailing" constant="8" id="Ify-oo-dCo"/>
                         <constraint firstItem="97P-bx-Ufg" firstAttribute="centerY" secondItem="3jb-nb-T7D" secondAttribute="centerY" id="JxP-W2-udT"/>
                         <constraint firstItem="lrq-ia-M6W" firstAttribute="top" secondItem="Hfv-EF-8Cr" secondAttribute="bottom" constant="6" id="cXc-Mp-hoY"/>
                         <constraint firstItem="D3p-R3-WYc" firstAttribute="centerY" secondItem="jDk-8Y-AGw" secondAttribute="centerY" id="f6B-XH-YNS"/>
