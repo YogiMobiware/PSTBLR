@@ -27,12 +27,16 @@ class AccountSettingsVC: UIViewController {
         let headerNib = UINib(nibName: NibNamed.AccountsSettingsCell.rawValue, bundle: nil)
         self.accountsTableView.register(headerNib, forCellReuseIdentifier: CellIdentifiers.AccountsSettingsCellIdentifier.rawValue)
         
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+   @IBAction func backBtnAction()
+    {
+        _ = self.navigationController?.popViewController(animated: true)
+        
     }
     
 }
@@ -47,15 +51,36 @@ extension AccountSettingsVC : UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-       
-        return 44.0
-       
+        return 45.0
     }
     
+    private func tableView (_ tableView:UITableView , heightForHeaderInSection section:Int)->Float
+    {
+        return 20.0
+    }
+    
+    func tableView (_ tableView:UITableView,  viewForHeaderInSection section:Int)->UIView?
+    {
+        let rect = CGRect(origin: CGPoint(x: 20,y :5), size: CGSize(width: self.accountsTableView.frame.size.width, height: 20.0))
+        let headerView:UIView! = UIView (frame:rect)
+        headerView.backgroundColor = Constants.headerTileColor
+        let label = UILabel()
+        label.frame = headerView.frame
+        label.text = headersInfoArray[section]
+        label.textColor = UIColor.lightGray
+        headerView.addSubview(label)
+        return headerView
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        
-        return legalnfoArray.count
+        switch section {
+        case 0:
+            return connectionInfoArray.count
+        case 1:
+            return accInfoArray.count
+        default:
+            return legalnfoArray.count
+        }
        
     }
     
@@ -65,22 +90,39 @@ extension AccountSettingsVC : UITableViewDataSource, UITableViewDelegate
         switch indexPath.section
         {
         case 0:
-            cell.textLabel?.text =  connectionInfoArray[indexPath.row]
+            cell.accountsLabel?.text =  connectionInfoArray[indexPath.row]
             break
         case 1:
-            cell.textLabel?.text =  accInfoArray[indexPath.row]
+            cell.accountsLabel?.text =  accInfoArray[indexPath.row]
             break
         default:
-            cell.textLabel?.text =  legalnfoArray[indexPath.row]
+            cell.accountsLabel?.text =  legalnfoArray[indexPath.row]
             break
         }
+        cell.backgroundColor = UIColor.clear
             return cell
-       
     }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
+    {
+        let cell : AccountsSettingsCell = tableView.cellForRow(at: indexPath) as! AccountsSettingsCell
+        cell.accountsLabel.textColor = UIColor.black
+
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        
+        let cell : AccountsSettingsCell = tableView.cellForRow(at: indexPath) as! AccountsSettingsCell
+        cell.accountsLabel.textColor = Constants.navBarTintColor
+
+        if indexPath.section == 2
+        {
+            if indexPath.row == 4
+            {
+                print("add logout logic here")
+            }
+        }
     }
+    
     
 }

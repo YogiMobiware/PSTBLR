@@ -65,10 +65,9 @@ class Constants: NSObject {
     }
     
     
-
     // MARK: Colors
     static let navBarTintColor : UIColor = UIColor(red: 0/255, green: 175/255, blue: 0/255, alpha: 1)
-    static let normalBarTintColor : UIColor = UIColor(red: 255/255, green: 175/255, blue: 165/255, alpha: 1)
+    static let headerTileColor : UIColor = UIColor(red: 232/255, green: 232/255, blue: 232/255, alpha: 1)
 
     static func getDoneToolbar(dismissBtn: UIBarButtonItem) -> UIToolbar
     {
