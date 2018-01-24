@@ -70,7 +70,8 @@ class CreateNewPostVC: UIViewController
             PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Postablur", andMessage: "Please enter post description")
             return
         }
-        guard let _ = self.postTosocialNetwork, !(self.postTosocialNetwork?.isEmpty)! else {
+        //COMMENTED INITIALLY AS SOCIAL NETWROKD AND DONATE A CHARITY IS KEPT STATIC
+       /* guard let _ = self.postTosocialNetwork, !(self.postTosocialNetwork?.isEmpty)! else {
             PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Postablur", andMessage: "Please select any one social network to post")
             return
         }
@@ -81,16 +82,13 @@ class CreateNewPostVC: UIViewController
         guard let _ = self.whoGetsToReveal, !(self.whoGetsToReveal?.isEmpty)! else {
             PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Postablur", andMessage: "Who should reveal your post? PRIVATE OR PUBLIC.")
             return
-        }
+        }*/
         
         let postReviewVC = PostReviewVC(nibName: "PostReviewVC", bundle: nil)
         _ = postReviewVC.view
         postReviewVC.titleTxtLabel.text = self.titleLabelText
         postReviewVC.descTxtLabel.text = self.descriptionTextView
         postReviewVC.locationTxtLabel.text = self.locationText
-        postReviewVC.revealedTxtLabel.text = self.whoGetsToReveal
-        postReviewVC.sharedOnTxtLabel.text = self.postTosocialNetwork
-        postReviewVC.donateToTxtLabel.text = self.donateToCharity
         self.navigationController?.pushViewController(postReviewVC, animated: true)
       
     }

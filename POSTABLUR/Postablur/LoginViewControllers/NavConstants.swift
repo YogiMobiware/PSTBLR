@@ -34,5 +34,6 @@ enum NibNamed: String
     case LocationCell
     case ShareYourPost
     case DescriptionCell
-
+    case AccountsSettingsCell
+    case AccountsCollectionCell
 }

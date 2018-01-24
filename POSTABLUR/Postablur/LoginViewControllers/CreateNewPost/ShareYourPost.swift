@@ -82,7 +82,7 @@ class ShareYourPost: UITableViewCell
         {
             shareYourPostDelegate.pbFaceBookBtnDidTap()
             
-            if sender.isSelected == false
+           /* if sender.isSelected == false
             {
                 if let image = facebookBtn.imageView?.image
                 {
@@ -95,7 +95,7 @@ class ShareYourPost: UITableViewCell
             {
                 sender.isSelected = false
                 
-            }
+            }*/
         }
         
     }

@@ -30,8 +30,14 @@
 		846ED29B2012335A004749ED /* UIImage+ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846ED29A2012335A004749ED /* UIImage+ResizeImage.swift */; };
 		8474E9492015FCDE00D85E4F /* PostReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474E9472015FCDE00D85E4F /* PostReviewVC.swift */; };
 		8474E94A2015FCDE00D85E4F /* PostReviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8474E9482015FCDE00D85E4F /* PostReviewVC.xib */; };
+		849E3E1120177C6E00AA2037 /* AccountsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E3E0F20177C6E00AA2037 /* AccountsCollectionCell.swift */; };
+		849E3E1220177C6E00AA2037 /* AccountsCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849E3E1020177C6E00AA2037 /* AccountsCollectionCell.xib */; };
 		B003D42D201744640025DF6C /* AccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003D42B201744640025DF6C /* AccountsVC.swift */; };
 		B003D42E201744650025DF6C /* AccountsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B003D42C201744640025DF6C /* AccountsVC.xib */; };
+		B003D4322017809C0025DF6C /* AccountSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003D4302017809C0025DF6C /* AccountSettingsVC.swift */; };
+		B003D4332017809C0025DF6C /* AccountSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B003D4312017809C0025DF6C /* AccountSettingsVC.xib */; };
+		B003D436201780CF0025DF6C /* AccountsSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003D434201780CF0025DF6C /* AccountsSettingsCell.swift */; };
+		B003D437201780CF0025DF6C /* AccountsSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B003D435201780CF0025DF6C /* AccountsSettingsCell.xib */; };
 		B00D05C9201371D40031CE82 /* RevealSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D05C7201371D40031CE82 /* RevealSettingsVC.swift */; };
 		B00D05CA201371D40031CE82 /* RevealSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00D05C8201371D40031CE82 /* RevealSettingsVC.xib */; };
 		B00D05CE20137BA30031CE82 /* PBLikeLimitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D05CC20137BA30031CE82 /* PBLikeLimitCell.swift */; };
@@ -110,8 +116,14 @@
 		846ED29A2012335A004749ED /* UIImage+ResizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ResizeImage.swift"; sourceTree = "<group>"; };
 		8474E9472015FCDE00D85E4F /* PostReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReviewVC.swift; sourceTree = "<group>"; };
 		8474E9482015FCDE00D85E4F /* PostReviewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostReviewVC.xib; sourceTree = "<group>"; };
+		849E3E0F20177C6E00AA2037 /* AccountsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCollectionCell.swift; sourceTree = "<group>"; };
+		849E3E1020177C6E00AA2037 /* AccountsCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountsCollectionCell.xib; sourceTree = "<group>"; };
 		B003D42B201744640025DF6C /* AccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVC.swift; sourceTree = "<group>"; };
 		B003D42C201744640025DF6C /* AccountsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountsVC.xib; sourceTree = "<group>"; };
+		B003D4302017809C0025DF6C /* AccountSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsVC.swift; sourceTree = "<group>"; };
+		B003D4312017809C0025DF6C /* AccountSettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSettingsVC.xib; sourceTree = "<group>"; };
+		B003D434201780CF0025DF6C /* AccountsSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsSettingsCell.swift; sourceTree = "<group>"; };
+		B003D435201780CF0025DF6C /* AccountsSettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountsSettingsCell.xib; sourceTree = "<group>"; };
 		B00D05C7201371D40031CE82 /* RevealSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealSettingsVC.swift; sourceTree = "<group>"; };
 		B00D05C8201371D40031CE82 /* RevealSettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RevealSettingsVC.xib; sourceTree = "<group>"; };
 		B00D05CC20137BA30031CE82 /* PBLikeLimitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBLikeLimitCell.swift; sourceTree = "<group>"; };
@@ -332,8 +344,21 @@
 			children = (
 				B003D42B201744640025DF6C /* AccountsVC.swift */,
 				B003D42C201744640025DF6C /* AccountsVC.xib */,
+				849E3E0F20177C6E00AA2037 /* AccountsCollectionCell.swift */,
+				849E3E1020177C6E00AA2037 /* AccountsCollectionCell.xib */,
 			);
 			path = AccountsViewController;
+			sourceTree = "<group>";
+		};
+		B003D42F2017807F0025DF6C /* AccountSettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				B003D4302017809C0025DF6C /* AccountSettingsVC.swift */,
+				B003D4312017809C0025DF6C /* AccountSettingsVC.xib */,
+				B003D434201780CF0025DF6C /* AccountsSettingsCell.swift */,
+				B003D435201780CF0025DF6C /* AccountsSettingsCell.xib */,
+			);
+			path = AccountSettingsVC;
 			sourceTree = "<group>";
 		};
 		B00D05CB20137B750031CE82 /* RevealSettingVC */ = {
@@ -406,6 +431,7 @@
 		B0F4CA6E200F20A400F39409 /* Postablur */ = {
 			isa = PBXGroup;
 			children = (
+				B003D42F2017807F0025DF6C /* AccountSettingsVC */,
 				B003D42A2017443F0025DF6C /* AccountsViewController */,
 				444E46C62017275100C3FA10 /* Model */,
 				44217FB2201605C50022F09C /* TabsContainer */,
@@ -520,6 +546,7 @@
 				B0F1D6C12015F3300010567F /* LocationCell.xib in Resources */,
 				B0F4CA7A200F20A400F39409 /* LaunchScreen.storyboard in Resources */,
 				B00D05CA201371D40031CE82 /* RevealSettingsVC.xib in Resources */,
+				B003D437201780CF0025DF6C /* AccountsSettingsCell.xib in Resources */,
 				B0A436A22010E40900DDBA7C /* PBSignUPVC.xib in Resources */,
 				B0F4CA77200F20A400F39409 /* Assets.xcassets in Resources */,
 				B00D05D320137BBD0031CE82 /* PBShareLimitCell.xib in Resources */,
@@ -530,12 +557,14 @@
 				B0F1D6C52015F3480010567F /* DescriptionCell.xib in Resources */,
 				B0ECE20D20135D7B004EE062 /* QRCodeScannerVC.xib in Resources */,
 				B0A0204C2011DEE600D3837B /* PBAccountTypeVC.xib in Resources */,
+				849E3E1220177C6E00AA2037 /* AccountsCollectionCell.xib in Resources */,
 				44A77C272014CEF600E879D7 /* PBCaptureMediaVC.xib in Resources */,
 				B0F1D6BD2015F31C0010567F /* TitleCell.xib in Resources */,
 				8474E94A2015FCDE00D85E4F /* PostReviewVC.xib in Resources */,
 				B0A436822010867000DDBA7C /* PBEmailAndPasswrdCell.xib in Resources */,
 				B0A0204E2011DEE600D3837B /* PBFreeAccountCell.xib in Resources */,
 				444E46CE201763BF00C3FA10 /* PBFeedsInteractionVC.xib in Resources */,
+				B003D4332017809C0025DF6C /* AccountSettingsVC.xib in Resources */,
 				B0A020502011DEE600D3837B /* PBPaidAccoutCell.xib in Resources */,
 				44217FB8201624A00022F09C /* PBFeedsCollectionCell.xib in Resources */,
 			);
@@ -626,8 +655,10 @@
 				B00D05C9201371D40031CE82 /* RevealSettingsVC.swift in Sources */,
 				B0F1D6B82015F2FC0010567F /* CreateNewPostVC.swift in Sources */,
 				B003D42D201744640025DF6C /* AccountsVC.swift in Sources */,
+				849E3E1120177C6E00AA2037 /* AccountsCollectionCell.swift in Sources */,
 				44217FB1201605B90022F09C /* PBTabsContainerVC.swift in Sources */,
 				B0A436992010D2EF00DDBA7C /* RegistrationCell.swift in Sources */,
+				B003D436201780CF0025DF6C /* AccountsSettingsCell.swift in Sources */,
 				B0A436912010BD5200DDBA7C /* PBHeaderCell.swift in Sources */,
 				B0A0204B2011DEE600D3837B /* PBAccountTypeVC.swift in Sources */,
 				846ED2942011EFEA004749ED /* MBProgressHUD.m in Sources */,
@@ -658,6 +689,7 @@
 				B0ECE20C20135D7B004EE062 /* QRCodeScannerVC.swift in Sources */,
 				44217FAC201604990022F09C /* PBFeedsVC.swift in Sources */,
 				B0A43685201086A500DDBA7C /* PBSocialLoginCell.swift in Sources */,
+				B003D4322017809C0025DF6C /* AccountSettingsVC.swift in Sources */,
 				846ED29B2012335A004749ED /* UIImage+ResizeImage.swift in Sources */,
 				B0F1D6C82015F5330010567F /* ShareYourPost.swift in Sources */,
 			);

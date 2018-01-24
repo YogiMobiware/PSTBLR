@@ -227,6 +227,14 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
     
     @IBAction func profileTapped(_ sender : UIButton)
     {
+        guard self.selectedButton != self.profileButton else
+        {
+            return
+        }
+        self.disableButtons(nil)
+        let accountsVC = AccountsVC()
+        //accountsVC.tabContainerVC = self
+        self.homeNavigationController?.pushViewController(accountsVC, animated: false)
         
     }
     
