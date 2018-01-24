@@ -41,10 +41,12 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl")
+        if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl") as? String
         {
-            let userProfileUrl = URL(string: userProfileUrlStr as! String)!
-            self.profileButton.kf.setImage(with: userProfileUrl, for: .normal)
+            if let userProfileUrl = URL(string: userProfileUrlStr)
+            {
+                self.profileButton.kf.setImage(with: userProfileUrl, for: .normal)
+            }
         }
         
         ////////////////
@@ -233,7 +235,7 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
         }
         self.disableButtons(nil)
         let accountsVC = AccountsVC()
-        //accountsVC.tabContainerVC = self
+        accountsVC.tabContainerVC = self
         self.homeNavigationController?.pushViewController(accountsVC, animated: false)
         
     }

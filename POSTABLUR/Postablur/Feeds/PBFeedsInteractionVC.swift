@@ -41,15 +41,17 @@ class PBFeedsInteractionVC : UIViewController
     {
         super.viewDidLoad()
         
-        if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl")
+        if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl") as? String
         {
-            let userProfileUrl = URL(string: userProfileUrlStr as! String)!
-            self.userImageView.kf.setImage(with: userProfileUrl)
+            if let userProfileUrl = URL(string: userProfileUrlStr)
+            {
+                self.userImageView.kf.setImage(with: userProfileUrl)
+            }
         }
         
         if let userProfileName = UserDefaults.standard.object(forKey: "UserName")
         {
-            userNameLbl.text = userProfileName as? String
+            userNameLbl.text = "@\(userProfileName as! String)"
         }
         else
         {
@@ -245,7 +247,7 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         cell.postDescriptionLbl.text = description
         cell.postTitleLbl.text = title
         cell.postLocationLbl.text = location
-        cell.postUsernameLbl.text = "@@\(username)"
+        cell.postUsernameLbl.text = "@\(username)"
         
         if hasUserLiked == true
         {
@@ -273,6 +275,8 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         cell.postDonateBtn.tintColor = Constants.greyTintColor
 
 
+        cell.postLikeBtn.isEnabled = true
+        cell.postDislikeBtn.isEnabled = true
         
         let mediaList = feedItem.mediaList
         if mediaList.count > 0
@@ -280,33 +284,40 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
             let firstMedia = mediaList.first!
             if let urlString = firstMedia.PostUrl
             {
-                let postPicUrl = URL(string: urlString)!
-                
-                cell.feedImageView.kf.setImage(with: postPicUrl, completionHandler: { (image, error, cacheType, imageUrl) in
-                    
-                    guard let img = image else
-                    {
-                        return
-                    }
-                    
-                    cell.feedImageView.kf.setImage(with: nil)
-                    
-                    DispatchQueue.global(qos: .userInitiated).async {
-                        let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
+                if let postPicUrl = URL(string: urlString)
+                {
+                    cell.feedImageView.kf.setImage(with: postPicUrl, completionHandler: { (image, error, cacheType, imageUrl) in
                         
-                        DispatchQueue.main.async {
-                            
-                            self.activity.stopAnimating()
-                            cell.feedImageView.image = im
-                            
-                            UIView.animate(withDuration: 0.3, animations: {
-                                cell.feedImageView.alpha = 1
-                            })
+                        guard let img = image else
+                        {
+                            return
                         }
-                    }
-                    
-                    
-                })
+                        
+                        cell.feedImageView.kf.setImage(with: nil)
+                        
+                        DispatchQueue.global(qos: .userInitiated).async {
+                            let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
+                            
+                            DispatchQueue.main.async {
+                                
+                                self.activity.stopAnimating()
+                                cell.feedImageView.image = im
+                                
+                                UIView.animate(withDuration: 0.3, animations: {
+                                    cell.feedImageView.alpha = 1
+                                })
+                            }
+                        }
+                        
+                        
+                    })
+                }
+                else
+                {
+                    cell.feedImageView.kf.setImage(with: nil)
+                }
+                
+               
             }
         }
         
@@ -314,4 +325,38 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
     }
     
 }
+
+extension PBFeedsInteractionVC : PBFeedTableCellDelegate
+{
+    func pbFeedTableCell(cell: PBFeedTableCell, didSelectAction action: PBFeedAction) {
+        
+        if let indexPath = self.feedsTableView.indexPath(for: cell)
+        {
+            let feed = self.feeds[indexPath.row]
+            
+            switch action
+            {
+            case .like:
+                
+                cell.postLikeBtn.isEnabled = false
+                
+                
+                
+                
+                break
+                
+            case .dislike:
+                
+                break
+                
+            case .share:
+                break
+                
+            case .donate:
+                break
+            }
+        }
+    }
+}
+
 
