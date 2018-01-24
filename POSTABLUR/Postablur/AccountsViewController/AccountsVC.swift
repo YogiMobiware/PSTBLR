@@ -34,7 +34,7 @@ class AccountsVC: UIViewController
     
     @IBOutlet var dataView: UIView!
     @IBOutlet var accountsFeedsCollectionView: UICollectionView!
-    
+    @IBOutlet var postsNotAvailLabel: UILabel!
     
     @IBOutlet var activity: UIActivityIndicatorView!
     
@@ -51,6 +51,10 @@ class AccountsVC: UIViewController
         // Do any additional setup after loading the view
         
         self.activity.isHidden = true
+        self.postsNotAvailLabel.isHidden = true
+        self.accountsFeedsCollectionView.isHidden = false
+        
+        self.connectBtn.layer.cornerRadius = 6
         
         if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl")
         {
@@ -62,6 +66,12 @@ class AccountsVC: UIViewController
             let username = "@ \(usernameStr)"
             self.usernameLabel.text = username
         }
+        
+        /*let connectsLabelStr = "1B CONNECTS"
+        var myMutableString = NSMutableAttributedString()
+        myMutableString = NSMutableAttributedString(string: connectsLabelStr as String, attributes: [NSAttributedStringKey.font:UIFont(name: "Arial", size: 12.0)!])
+        myMutableString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "AvenirNext-Medium", size: 12.0)!, range: NSRange(location:0,length:2))
+        self.connectsLabel.attributedText = myMutableString*/
         
         accountsFeedsCollectionView.delegate = self
         accountsFeedsCollectionView.dataSource = self
@@ -88,6 +98,7 @@ class AccountsVC: UIViewController
         PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
                 
             self.activity.stopAnimating()
+            self.activity.isHidden = true
                 
             if error == nil
             {
@@ -105,40 +116,48 @@ class AccountsVC: UIViewController
                         {
                                 let count = responseDict["Count"] as! Int
                                 self.totalFeedCount = count
-                                
-                                self.feeds.removeAll()
-                                if let resultArray = responseDict["Results"] as! [NSDictionary]!
+                            
+                                if count == 0
                                 {
-                                    for result in resultArray
-                                    {
-                                        let feedItem = PBFeedItem()
-                                        feedItem.PostId = result["PostId"] as? String
-                                        feedItem.UserLikeStatus = result["UserLikeStatus"] as? Int == 1 ? true : false
-                                        feedItem.UserDisLikeStatus = result["UserDisLikeStatus"] as? Int == 1 ? true : false
-                                        feedItem.UserName = result["UserName"] as? String
-                                        feedItem.Location = result["UserName"] as? String
-                                        feedItem.PostTitle = result["PostTitle"] as? String
-                                        feedItem.Email = result["Email"] as? String
-                                        feedItem.Description = result["Description"] as? String
-                                        feedItem.CurrentLikesCount = result["CurrentLikesCount"] as? Int
-                                        feedItem.CurrentDisLikesCount = result["CurrentDisLikesCount"] as? Int
-                                        feedItem.Profileurl = result["Profileurl"] as? String
+                                    self.postsNotAvailLabel.isHidden = false
+                                    self.accountsFeedsCollectionView.isHidden = true
+                                }
+                                else
+                                {
+                                      self.feeds.removeAll()
+                                      if let resultArray = responseDict["Results"] as! [NSDictionary]!
+                                      {
+                                         for result in resultArray
+                                         {
+                                             let feedItem = PBFeedItem()
+                                             feedItem.PostId = result["PostId"] as? String
+                                             feedItem.UserLikeStatus = result["UserLikeStatus"] as? Int == 1 ? true : false
+                                             feedItem.UserDisLikeStatus = result["UserDisLikeStatus"] as? Int == 1 ? true : false
+                                             feedItem.UserName = result["UserName"] as? String
+                                             feedItem.Location = result["UserName"] as? String
+                                             feedItem.PostTitle = result["PostTitle"] as? String
+                                             feedItem.Email = result["Email"] as? String
+                                             feedItem.Description = result["Description"] as? String
+                                             feedItem.CurrentLikesCount = result["CurrentLikesCount"] as? Int
+                                             feedItem.CurrentDisLikesCount = result["CurrentDisLikesCount"] as? Int
+                                             feedItem.Profileurl = result["Profileurl"] as? String
                                         
-                                        let mediaArray = result["PostMediaData"] as! [NSDictionary]!
-                                        for media in mediaArray!
-                                        {
-                                            let mediaItem = PBFeedMedia()
-                                            mediaItem.PostId = media["PostId"] as? String
-                                            mediaItem.PostUrl = media["PostUrl"] as? String
-                                            mediaItem.PostThumbUrl = media["PostThumbUrl"] as? String
-                                            mediaItem.MediaType = media["MediaType"] as? String
-                                            feedItem.mediaList.append(mediaItem)
-                                        }
+                                             let mediaArray = result["PostMediaData"] as! [NSDictionary]!
+                                             for media in mediaArray!
+                                             {
+                                                 let mediaItem = PBFeedMedia()
+                                                 mediaItem.PostId = media["PostId"] as? String
+                                                 mediaItem.PostUrl = media["PostUrl"] as? String
+                                                 mediaItem.PostThumbUrl = media["PostThumbUrl"] as? String
+                                                 mediaItem.MediaType = media["MediaType"] as? String
+                                                 feedItem.mediaList.append(mediaItem)
+                                             }
                                         
-                                        self.feeds.append(feedItem)
-                                    }
+                                             self.feeds.append(feedItem)
+                                          }
                                     
-                                    self.accountsFeedsCollectionView.reloadData()
+                                          self.accountsFeedsCollectionView.reloadData()
+                                      }
                                 }
                         }
                             
@@ -166,14 +185,21 @@ class AccountsVC: UIViewController
     
     func fontSet()
     {
-        let allLabelsfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 12
-        let fontSize = floor(allLabelsfontSize)
-        self.connectBtn.titleLabel?.font = self.connectBtn.titleLabel?.font.withSize(fontSize)
-        self.usernameLabel.font = self.usernameLabel.font.withSize(fontSize)
-        self.userDescLabel.font = self.userDescLabel.font.withSize(fontSize)
-        self.connectsLabel.font = self.connectsLabel.font.withSize(fontSize)
-        self.sponcersLabel.font = self.sponcersLabel.font.withSize(fontSize)
-        self.donorsLabel.font = self.donorsLabel.font.withSize(fontSize)
+        /*let allLabelsfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 12
+        let fontSize = floor(allLabelsfontSize)*/
+        
+        let screenWidth = UIScreen.main.bounds.size.width
+        if screenWidth == 320
+        {
+            let fontSize = 9
+            self.connectBtn.titleLabel?.font = self.connectBtn.titleLabel?.font.withSize(CGFloat(fontSize))
+            self.usernameLabel.font = self.usernameLabel.font.withSize(11)
+            self.userDescLabel.font = self.userDescLabel.font.withSize(CGFloat(fontSize))
+            self.connectsLabel.font = self.connectsLabel.font.withSize(CGFloat(fontSize))
+            self.sponcersLabel.font = self.sponcersLabel.font.withSize(CGFloat(fontSize))
+            self.donorsLabel.font = self.donorsLabel.font.withSize(CGFloat(fontSize))
+        }
+        
     }
     
     @IBAction func backBtnAction(_ sender: UIButton)

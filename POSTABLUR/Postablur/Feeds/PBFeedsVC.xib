@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -20,6 +21,7 @@
                 <outlet property="activity" destination="Rjd-mP-4xO" id="1My-GN-bJX"/>
                 <outlet property="audioFilterButton" destination="rQa-dC-vpI" id="B1p-Ra-Rma"/>
                 <outlet property="feedsCollectionView" destination="eYf-21-UUT" id="U5U-fT-ga0"/>
+                <outlet property="noFeedsLbl" destination="FuA-oO-xNV" id="agX-yY-PlO"/>
                 <outlet property="photoFilterButton" destination="nln-LT-skD" id="VwO-WT-nAv"/>
                 <outlet property="videoFilterButton" destination="9DA-Cd-j0w" id="WZa-5B-oFC"/>
                 <outlet property="view" destination="iN0-l3-epB" id="3xo-Rl-C1b"/>
@@ -34,7 +36,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yh-8E-j7s">
-                            <rect key="frame" x="0.0" y="35" width="0.0" height="42"/>
+                            <rect key="frame" x="0.0" y="35.333333333333329" width="0.0" height="41.999999999999986"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="8pu-78-M5v"/>
@@ -44,7 +46,7 @@
                             <state key="normal" image="keyboardBackspace"/>
                         </button>
                         <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search for publishers on the network" translatesAutoresizingMaskIntoConstraints="NO" id="hxT-oi-tG0">
-                            <rect key="frame" x="16" y="28" width="382" height="56"/>
+                            <rect key="frame" x="16" y="28.333333333333329" width="382" height="56"/>
                             <textInputTraits key="textInputTraits"/>
                             <scopeButtonTitles>
                                 <string>Title</string>
@@ -60,13 +62,12 @@
                         <constraint firstItem="4yh-8E-j7s" firstAttribute="centerY" secondItem="eoR-AD-5lh" secondAttribute="centerY" id="3gr-HU-A6o"/>
                         <constraint firstAttribute="trailing" secondItem="hxT-oi-tG0" secondAttribute="trailing" constant="16" id="FOY-7B-h5v"/>
                         <constraint firstItem="4yh-8E-j7s" firstAttribute="leading" secondItem="eoR-AD-5lh" secondAttribute="leading" id="fm2-Pm-ov1"/>
-                        <constraint firstAttribute="height" constant="113" id="qqq-Yy-Q2b"/>
                         <constraint firstItem="hxT-oi-tG0" firstAttribute="leading" secondItem="4yh-8E-j7s" secondAttribute="trailing" constant="16" id="vgb-84-1tj"/>
                         <constraint firstItem="hxT-oi-tG0" firstAttribute="centerY" secondItem="4yh-8E-j7s" secondAttribute="centerY" id="xZq-uK-pAa"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbH-d7-ZeR" userLabel="FilterContainerView">
-                    <rect key="frame" x="0.0" y="111" width="414" height="50"/>
+                    <rect key="frame" x="0.0" y="113" width="414" height="50"/>
                     <subviews>
                         <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIs-2N-wq2" userLabel="SeparatorLineView">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
@@ -125,7 +126,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="eYf-21-UUT">
-                    <rect key="frame" x="0.0" y="161" width="414" height="575"/>
+                    <rect key="frame" x="0.0" y="163" width="414" height="573"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dl3-Fz-Xot">
                         <size key="itemSize" width="115" height="115"/>
@@ -135,15 +136,24 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Rjd-mP-4xO">
-                    <rect key="frame" x="189" y="430.66666666666669" width="37" height="37"/>
+                    <rect key="frame" x="189" y="431" width="37" height="37"/>
                     <color key="color" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO FEEDS AVAILABLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FuA-oO-xNV">
+                    <rect key="frame" x="98.333333333333343" y="436" width="217.66666666666666" height="27.333333333333314"/>
+                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eoR-AD-5lh" secondAttribute="trailing" id="6E7-Tz-sye"/>
+                <constraint firstItem="FuA-oO-xNV" firstAttribute="centerX" secondItem="eYf-21-UUT" secondAttribute="centerX" id="D77-h5-PLw"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="eYf-21-UUT" secondAttribute="bottom" id="GFC-jI-ube"/>
                 <constraint firstItem="eoR-AD-5lh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="NBb-mM-Muj"/>
+                <constraint firstItem="FuA-oO-xNV" firstAttribute="centerY" secondItem="eYf-21-UUT" secondAttribute="centerY" id="NlZ-hP-fLh"/>
+                <constraint firstItem="eoR-AD-5lh" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="113/736" id="Nma-zZ-6oX"/>
                 <constraint firstItem="eYf-21-UUT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="QNO-K0-dx1"/>
                 <constraint firstItem="CbH-d7-ZeR" firstAttribute="width" secondItem="eoR-AD-5lh" secondAttribute="width" id="TAK-ML-lib"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eYf-21-UUT" secondAttribute="trailing" id="XSz-8X-gm6"/>
@@ -152,7 +162,7 @@
                 <constraint firstItem="CbH-d7-ZeR" firstAttribute="centerX" secondItem="eoR-AD-5lh" secondAttribute="centerX" id="jur-Up-rqk"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="eoR-AD-5lh" secondAttribute="top" constant="20" id="rkS-Ay-lqE"/>
                 <constraint firstItem="eYf-21-UUT" firstAttribute="top" secondItem="CbH-d7-ZeR" secondAttribute="bottom" id="xzu-Hw-2Jh"/>
-                <constraint firstItem="CbH-d7-ZeR" firstAttribute="top" secondItem="eoR-AD-5lh" secondAttribute="bottom" constant="-2" id="zEg-ML-vcG"/>
+                <constraint firstItem="CbH-d7-ZeR" firstAttribute="top" secondItem="eoR-AD-5lh" secondAttribute="bottom" id="zEg-ML-vcG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>

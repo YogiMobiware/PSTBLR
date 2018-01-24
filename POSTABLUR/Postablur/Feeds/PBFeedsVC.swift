@@ -18,6 +18,7 @@ class PBFeedsVC : UIViewController
     @IBOutlet var videoFilterButton : UIButton!
 
     @IBOutlet var activity : UIActivityIndicatorView!
+    @IBOutlet var noFeedsLbl : UILabel!
 
     let reuseIdentifier = "feedsCollectionCell"
 
@@ -43,7 +44,8 @@ class PBFeedsVC : UIViewController
         super.viewDidLoad()
         
         self.activity.isHidden = true
-        
+        self.noFeedsLbl.isHidden = true
+
         feedsCollectionView.delegate = self
         feedsCollectionView.dataSource = self
         let nib = UINib(nibName: NibNamed.PBFeedsCollectionCell.rawValue, bundle: nil)
@@ -136,6 +138,11 @@ class PBFeedsVC : UIViewController
                                     self.feeds.append(feedItem)
                                 }
                                 
+                                if self.feeds.count <= 0
+                                {
+                                    self.noFeedsLbl.isHidden = false
+                                }
+                                
                                 self.feedsCollectionView.reloadData()
                             }
                         }
@@ -219,7 +226,17 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
         
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedFeed = self.feeds[indexPath.row]
+        
+        let interactionVC = PBFeedsInteractionVC()
+        interactionVC.feeds = self.feeds
+        interactionVC.selectedFeedID = selectedFeed.PostId
+        interactionVC.scrollToIndexPath = indexPath
+        
+        self.navigationController?.pushViewController(interactionVC, animated: true)
+    }
 }
 
 extension PBFeedsVC : UISearchBarDelegate
