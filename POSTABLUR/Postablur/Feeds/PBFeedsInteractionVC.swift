@@ -17,6 +17,7 @@ class PBFeedsInteractionVC : UIViewController
     @IBOutlet var activity : UIActivityIndicatorView!
     private let reuseIdentifier = "feedsTableCell"
     var feeds = [PBFeedItem]()
+    var scrollToIndexPath : IndexPath? = nil
     
     var totalFeedCount = 0
     var currentFeedCount = 0
@@ -46,7 +47,7 @@ class PBFeedsInteractionVC : UIViewController
         
         if let userProfileName = UserDefaults.standard.object(forKey: "UserName")
         {
-            userNameLbl.text = userProfileName as! String
+            userNameLbl.text = userProfileName as? String
         }
         else
         {
@@ -59,16 +60,27 @@ class PBFeedsInteractionVC : UIViewController
         self.feedsTableView.delegate = self
         self.feedsTableView.dataSource = self
         
-        let nib = UINib(nibName: NibNamed.PBFeedsTableCell.rawValue, bundle: nil)
+        let nib = UINib(nibName: NibNamed.PBFeedTableCell.rawValue, bundle: nil)
         self.feedsTableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
         
         feedsTableView.reloadData()
+        self.view.setNeedsLayout()
+        
+        if let indexPathToScrollTo = self.scrollToIndexPath
+        {
+            feedsTableView.scrollToRow(at: indexPathToScrollTo, at: UITableViewScrollPosition.top, animated: false)
+        }
         
     }
     
     @IBAction func refreshTapped(_ sender : UIButton)
     {
         
+    }
+    
+    @IBAction func backTapped(_ sender : UIButton)
+    {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func loadFeedsFromStart()
@@ -83,8 +95,6 @@ class PBFeedsInteractionVC : UIViewController
         self.activity.startAnimating()
         self.activity.isHidden = false
         PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
-            
-            self.activity.stopAnimating()
             
             if error == nil
             {
@@ -170,25 +180,80 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         return feeds.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 515
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath as IndexPath)  as! PBFeedTableCell
+        
+        cell.postTitleLbl.text = nil
+        cell.postLocationLbl.text = nil
+//        cell.postViewsCountLbl.text = nil
+//        cell.postTimeElapsedLbl.text = nil
+        cell.postUsernameLbl.text = nil
+        cell.postDescriptionLbl.text = nil
+        cell.postLikesCountLbl.text = nil
+        cell.postDislikesCountLbl.text = nil
+        
+        
         
         cell.feedImageView.alpha = 0
         cell.feedImageView.kf.setImage(with : nil)
         
         
         let feedItem = self.feeds[indexPath.row]
+        
         let likeCount = feedItem.CurrentLikesCount!
+        let dislikeCount = feedItem.CurrentDisLikesCount!
+        let title = feedItem.PostTitle!
+        let description = feedItem.Description!
+        let location = feedItem.Location!
+        let username = feedItem.UserName!
+        let hasUserLiked = feedItem.UserLikeStatus
+        let hasUserDisliked = feedItem.UserDisLikeStatus
+        
+        cell.postLikesCountLbl.text = "\(likeCount) likes"
+        cell.postDislikesCountLbl.text = "\(dislikeCount) dislikes"
+        cell.postDescriptionLbl.text = description
+        cell.postTitleLbl.text = title
+        cell.postLocationLbl.text = location
+        cell.postUsernameLbl.text = "@@\(username)"
+        
+        if hasUserLiked == true
+        {
+            cell.postLikeBtn.isSelected = true
+            cell.postLikeBtn.tintColor = Constants.navBarTintColor
+        }
+        else
+        {
+            cell.postLikeBtn.isSelected = false
+            cell.postLikeBtn.tintColor = nil
+        }
+        
+        if hasUserDisliked == true
+        {
+            cell.postDislikeBtn.isSelected = true
+            cell.postDislikeBtn.tintColor = Constants.navBarTintColor
+        }
+        else
+        {
+            cell.postDislikeBtn.isSelected = false
+            cell.postDislikeBtn.tintColor = nil
+        }
+
+        
         let mediaList = feedItem.mediaList
         if mediaList.count > 0
         {
             let firstMedia = mediaList.first!
-            if let thumburlString = firstMedia.PostThumbUrl
+            if let urlString = firstMedia.PostUrl
             {
-                let thumbUrl = URL(string: thumburlString)!
+                let postPicUrl = URL(string: urlString)!
                 
-                cell.feedImageView.kf.setImage(with: thumbUrl, completionHandler: { (image, error, cacheType, imageUrl) in
+                cell.feedImageView.kf.setImage(with: postPicUrl, completionHandler: { (image, error, cacheType, imageUrl) in
                     
                     guard let img = image else
                     {
@@ -202,6 +267,7 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
                         
                         DispatchQueue.main.async {
                             
+                            self.activity.stopAnimating()
                             cell.feedImageView.image = im
                             
                             UIView.animate(withDuration: 0.3, animations: {
