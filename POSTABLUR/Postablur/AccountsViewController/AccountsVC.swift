@@ -256,30 +256,31 @@ extension AccountsVC : UICollectionViewDelegate, UICollectionViewDataSource
             let firstMedia = mediaList.first!
             if let thumburlString = firstMedia.PostThumbUrl
             {
-                let thumbUrl = URL(string: thumburlString)!
-                
-                cell.accoutsImageView.kf.setImage(with: thumbUrl, completionHandler: { (image, error, cacheType, imageUrl) in
-                    
-                    guard let img = image else
-                    {
-                        return
-                    }
-                    
-                    cell.accoutsImageView.kf.setImage(with: nil)
-                    
-                    DispatchQueue.global(qos: .userInitiated).async {
-                        let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
+                if let thumbUrl = URL(string: thumburlString)
+                {
+                    cell.accoutsImageView.kf.setImage(with: thumbUrl, completionHandler: { (image, error, cacheType, imageUrl) in
                         
-                        DispatchQueue.main.async {
-                            
-                            cell.accoutsImageView.image = im
-                            
-                            UIView.animate(withDuration: 0.3, animations: {
-                                cell.accoutsImageView.alpha = 1
-                            })
+                        guard let img = image else
+                        {
+                            return
                         }
-                    }
-                })
+                        
+                        cell.accoutsImageView.kf.setImage(with: nil)
+                        
+                        DispatchQueue.global(qos: .userInitiated).async {
+                            let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
+                            
+                            DispatchQueue.main.async {
+                                
+                                cell.accoutsImageView.image = im
+                                
+                                UIView.animate(withDuration: 0.3, animations: {
+                                    cell.accoutsImageView.alpha = 1
+                                })
+                            }
+                        }
+                    })
+                }
             }
         }
         

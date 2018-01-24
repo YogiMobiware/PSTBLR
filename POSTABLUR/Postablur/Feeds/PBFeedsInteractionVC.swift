@@ -19,6 +19,7 @@ class PBFeedsInteractionVC : UIViewController
     var feeds = [PBFeedItem]()
     var scrollToIndexPath : IndexPath? = nil
     
+    var isLoadingFeeds = false
     var selectedFeedID : String? = nil
     
     var totalFeedCount = 0
@@ -40,6 +41,8 @@ class PBFeedsInteractionVC : UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        
         
         if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl") as? String
         {
@@ -72,13 +75,13 @@ class PBFeedsInteractionVC : UIViewController
         self.feedsTableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
         
         feedsTableView.reloadData()
-        self.feedsTableView.layoutIfNeeded()
-        
-        if let indexPathToScrollTo = self.scrollToIndexPath
-        {
-            let indexPath = IndexPath(item: indexPathToScrollTo.row, section: 0)
-            self.feedsTableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
-        }
+//        self.feedsTableView.layoutIfNeeded()
+//
+//        if let indexPathToScrollTo = self.scrollToIndexPath
+//        {
+//            let indexPath = IndexPath(item: indexPathToScrollTo.row, section: 0)
+//            self.feedsTableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+//        }
         
     }
     
@@ -114,11 +117,15 @@ class PBFeedsInteractionVC : UIViewController
         {
             return
         }
-        let requestDict = ["UserId": userId,"StartValue": "1","Endvalue": "20"] as [String : Any]
+        
+        let startIndex = "1"
+        let endIndex  =  String(Constants.feedPageSize)
+        let requestDict = ["UserId": userId,"StartValue": startIndex,"Endvalue": endIndex] as [String : Any]
         
         self.activity.startAnimating()
         self.activity.isHidden = false
         PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
+            
             
             if error == nil
             {
@@ -129,14 +136,12 @@ class PBFeedsInteractionVC : UIViewController
                         
                         if let error = responseDict["Error"] as? String
                         {
+                            self.activity.stopAnimating()
                             self.appDelegate.alert(vc: self, message: error , title: "Error")
                             return
                         }
                         else
                         {
-                            let count = responseDict["Count"] as! Int
-                            self.totalFeedCount = count
-                            
                             self.feeds.removeAll()
                             if let resultArray = responseDict["Results"] as! [NSDictionary]!
                             {
@@ -166,15 +171,207 @@ class PBFeedsInteractionVC : UIViewController
                                         feedItem.mediaList.append(mediaItem)
                                     }
                                     
+                                    let count = result["TotalCount"] as! Int
+                                    self.totalFeedCount = count
                                     self.feeds.append(feedItem)
                                 }
                                 
+                                if self.feeds.count <= 0
+                                {
+                                    self.activity.stopAnimating()
+//                                    self.noFeedsLbl.isHidden = false
+                                }
                                 self.moveSelectedFeedToFirstPosition()
-                                
                                 self.feedsTableView.reloadData()
                             }
                         }
                         
+                    }
+                    if let responseStr = responseObject as? String
+                    {
+                        self.activity.stopAnimating()
+                        self.appDelegate.alert(vc: self, message: responseStr, title: "Error")
+                        return
+                    }
+                    
+                }
+                else
+                {
+                    self.activity.stopAnimating()
+                    self.appDelegate.alert(vc: self, message: "Something went wrong", title: "Error")
+                    return
+                }
+            }
+            else
+            {
+                self.activity.stopAnimating()
+                self.appDelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
+                return
+            }
+        }
+    }
+    
+    
+    func loadFeedsMore()
+    {
+        let urlString = String(format: "%@/OthersPostsDetails", arguments: [Urls.mainUrl]);
+        guard let userId = UserDefaults.standard.string(forKey: "UserId") else
+        {
+            return
+        }
+        
+        let startIndex = String(self.feeds.count + 1)
+        let endIndex  =  String(self.feeds.count + Constants.loadMoreFeedPageSize)
+        
+        let requestDict = ["UserId": userId,"StartValue": startIndex,"Endvalue": endIndex] as [String : Any]
+        
+        self.activity.startAnimating()
+        self.activity.isHidden = false
+        
+        self.isLoadingFeeds = true
+        PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
+            
+            self.isLoadingFeeds = false
+            
+            if error == nil
+            {
+                if responseObject != nil
+                {
+                    if let responseDict = responseObject as? [String : AnyObject]
+                    {
+                        
+                        if let error = responseDict["Error"] as? String
+                        {
+                            self.activity.stopAnimating()
+                            self.appDelegate.alert(vc: self, message: error , title: "Error")
+                            return
+                        }
+                        else
+                        {
+
+                            if let resultArray = responseDict["Results"] as! [NSDictionary]!
+                            {
+                                for result in resultArray
+                                {
+                                    let feedItem = PBFeedItem()
+                                    feedItem.PostId = result["PostId"] as? String
+                                    feedItem.UserLikeStatus = result["UserLikeStatus"] as? Int == 1 ? true : false
+                                    feedItem.UserDisLikeStatus = result["UserDisLikeStatus"] as? Int == 1 ? true : false
+                                    feedItem.UserName = result["UserName"] as? String
+                                    feedItem.Location = result["UserName"] as? String
+                                    feedItem.PostTitle = result["PostTitle"] as? String
+                                    feedItem.Email = result["Email"] as? String
+                                    feedItem.Description = result["Description"] as? String
+                                    feedItem.CurrentLikesCount = result["CurrentLikesCount"] as? Int
+                                    feedItem.CurrentDisLikesCount = result["CurrentDisLikesCount"] as? Int
+                                    feedItem.Profileurl = result["Profileurl"] as? String
+                                    
+                                    let mediaArray = result["PostMediaData"] as! [NSDictionary]!
+                                    for media in mediaArray!
+                                    {
+                                        let mediaItem = PBFeedMedia()
+                                        mediaItem.PostId = media["PostId"] as? String
+                                        mediaItem.PostUrl = media["PostUrl"] as? String
+                                        mediaItem.PostThumbUrl = media["PostThumbUrl"] as? String
+                                        mediaItem.MediaType = media["MediaType"] as? String
+                                        feedItem.mediaList.append(mediaItem)
+                                    }
+                                    
+                                    let count = result["TotalCount"] as! Int
+                                    self.totalFeedCount = count
+                                    self.feeds.append(feedItem)
+                                }
+                                
+                                if self.feeds.count <= 0
+                                {
+                                    self.activity.stopAnimating()
+                                }
+                                self.moveSelectedFeedToFirstPosition()
+                                self.feedsTableView.reloadData()
+                            }
+                        }
+                        
+                    }
+                    if let responseStr = responseObject as? String
+                    {
+                        self.activity.stopAnimating()
+                        self.appDelegate.alert(vc: self, message: responseStr, title: "Error")
+                        return
+                    }
+                    
+                }
+                else
+                {
+                    self.activity.stopAnimating()
+                    self.appDelegate.alert(vc: self, message: "Something went wrong", title: "Error")
+                    return
+                }
+            }
+            else
+            {
+                self.activity.stopAnimating()
+                self.appDelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
+                return
+            }
+        }
+    }
+    
+    
+    func callLikeApi(like : Bool, forFeedItem feedItem : PBFeedItem)
+    {
+        let urlString = String(format: "%@/PostLike", arguments: [Urls.mainUrl]);
+        guard let userId = UserDefaults.standard.string(forKey: "UserId") else
+        {
+            return
+        }
+        guard let postId = feedItem.PostId else
+        {
+            return
+        }
+        
+        let requestDict = ["UserId": userId,"PostId": postId, "Like" : like == true ? 1 : 0] as [String : Any]
+        
+        PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
+            
+            if error == nil
+            {
+                if responseObject != nil
+                {
+                    if let responseDict = responseObject as? [String : AnyObject]
+                    {
+                        if let error = responseDict["Error"] as? String
+                        {
+                            self.appDelegate.alert(vc: self, message: error , title: "Error")
+                            return
+                        }
+                        else
+                        {
+                            ///reloadIndexPath
+                            if let index = self.feeds.index(of: feedItem)
+                            {
+                                if let resultArray = responseDict["Results"] as! [NSDictionary]!
+                                {
+                                    if resultArray.count > 0
+                                    {
+                                        let likeResult = resultArray.first!
+                                        
+                                        if let currentTotalLikesCount = likeResult["CurrentCount"] as? Int
+                                        {
+                                            feedItem.CurrentLikesCount = currentTotalLikesCount
+                                        }
+                                        
+                                    }
+                                    
+                                    feedItem.UserLikeStatus = like
+                                    let indexPath = IndexPath(row: index, section: 0)
+                                    self.feedsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+
+                                   
+                                }
+                                
+                                
+                            }
+                        }
                     }
                     if let responseStr = responseObject as? String
                     {
@@ -197,6 +394,82 @@ class PBFeedsInteractionVC : UIViewController
         }
     }
     
+    func callDislikeApi(dislike : Bool, forFeedItem feedItem : PBFeedItem)
+    {
+        let urlString = String(format: "%@/PostDisLike", arguments: [Urls.mainUrl]);
+        guard let userId = UserDefaults.standard.string(forKey: "UserId") else
+        {
+            return
+        }
+        guard let postId = feedItem.PostId else
+        {
+            return
+        }
+        
+        let requestDict = ["UserId": userId,"PostId": postId, "DisLike" : dislike == true ? 1 : 0] as [String : Any]
+        
+        PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
+            
+            if error == nil
+            {
+                if responseObject != nil
+                {
+                    if let responseDict = responseObject as? [String : AnyObject]
+                    {
+                        if let error = responseDict["Error"] as? String
+                        {
+                            self.appDelegate.alert(vc: self, message: error , title: "Error")
+                            return
+                        }
+                        else
+                        {
+                            ///reloadIndexPath
+                            if let index = self.feeds.index(of: feedItem)
+                            {
+                                if let resultArray = responseDict["Results"] as! [NSDictionary]!
+                                {
+                                    if resultArray.count > 0
+                                    {
+                                        let dislikeResult = resultArray.first!
+                                        
+                                        if let currentTotaldisLikesCount = dislikeResult["CurrentCount"] as? Int
+                                        {
+                                            feedItem.CurrentDisLikesCount = currentTotaldisLikesCount
+                                        }
+                                        
+                                    }
+                                    feedItem.UserDisLikeStatus = dislike
+                                    
+                                    let indexPath = IndexPath(row: index, section: 0)
+                                    self.feedsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+                                    
+                                }
+                                
+                            }
+                        }
+                    }
+                    if let responseStr = responseObject as? String
+                    {
+                        self.appDelegate.alert(vc: self, message: responseStr, title: "Error")
+                        return
+                    }
+                    
+                }
+                else
+                {
+                    self.appDelegate.alert(vc: self, message: "Something went wrong", title: "Error")
+                    return
+                }
+            }
+            else
+            {
+                self.appDelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "Error")
+                return
+            }
+        }
+    }
+    
+    
 }
 
 extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
@@ -215,6 +488,8 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath as IndexPath)  as! PBFeedTableCell
         
+        cell.delegate = self
+        
         cell.selectionStyle = .none
         cell.postTitleLbl.text = nil
         cell.postLocationLbl.text = nil
@@ -228,7 +503,6 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         
         
         cell.feedImageView.alpha = 0
-        cell.feedImageView.kf.setImage(with : nil)
         
         
         let feedItem = self.feeds[indexPath.row]
@@ -290,10 +564,10 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
                         
                         guard let img = image else
                         {
+                            cell.feedImageView.kf.setImage(with: nil)
+                            self.activity.stopAnimating()
                             return
                         }
-                        
-                        cell.feedImageView.kf.setImage(with: nil)
                         
                         DispatchQueue.global(qos: .userInitiated).async {
                             let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
@@ -319,11 +593,37 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
                 
                
             }
+            else
+            {
+                cell.feedImageView.kf.setImage(with: nil)
+            }
         }
+        else
+        {
+            cell.feedImageView.kf.setImage(with: nil)
+        }
+        
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        self.activity.stopAnimating()
+        
+        
+        if indexPath.row == self.feeds.count - 1
+        {
+            guard self.totalFeedCount > self.feeds.count else
+            {
+                return
+            }
+            if self.isLoadingFeeds == false
+            {
+                self.loadFeedsMore()
+            }
+        }
+    }
 }
 
 extension PBFeedsInteractionVC : PBFeedTableCellDelegate
@@ -340,12 +640,34 @@ extension PBFeedsInteractionVC : PBFeedTableCellDelegate
                 
                 cell.postLikeBtn.isEnabled = false
                 
-                
+                if let userLikedPost = feed.UserLikeStatus as? Bool, userLikedPost == true
+                {
+                    /// need to unlike post
+                    self.callLikeApi(like: false, forFeedItem: feed)
+                }
+                else
+                {
+                    /// need to like post
+                    self.callLikeApi(like: true, forFeedItem: feed)
+                }
                 
                 
                 break
                 
             case .dislike:
+                
+                cell.postDislikeBtn.isEnabled = false
+                
+                if let userDisLikedPost = feed.UserDisLikeStatus as? Bool, userDisLikedPost == true
+                {
+                    /// need to undislike post
+                    self.callDislikeApi(dislike: false, forFeedItem: feed)
+                }
+                else
+                {
+                    /// need to dislike post
+                    self.callDislikeApi(dislike: true, forFeedItem: feed)
+                }
                 
                 break
                 
