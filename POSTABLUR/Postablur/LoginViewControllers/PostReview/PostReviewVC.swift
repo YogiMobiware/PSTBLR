@@ -98,8 +98,9 @@ class PostReviewVC: UIViewController
         print("Tapped")
         
         let urlString = String(format: "%@/AddUserPost", arguments: [Urls.mainUrl]);
-        
-        let requestDict = ["PostTitle": titleTxtLabel.text!,"Location": locationTxtLabel.text!,"Description": descTxtLabel.text!,"DonatetoCharity":"1","ShareYourPost":"10","WhoRevealsPostThisPost": "Public","LikeLimit":"2147","ShareLimit":"2147","DonationLimit":"2147","UserId":"1278dccf-c984-46e9-8b64-49e705613fac"] as [String : Any]
+        if let userID = UserDefaults.standard.string(forKey: "UserId") {
+
+        let requestDict = ["PostTitle": titleTxtLabel.text!,"Location": locationTxtLabel.text!,"Description": descTxtLabel.text!,"DonatetoCharity":"1","ShareYourPost":"10","WhoRevealsPostThisPost": "Public","LikeLimit":"2147","ShareLimit":"2147","DonationLimit":"2147","UserId":userID] as [String : Any]
         
         self.appdelegate.showActivityIndictor(titleString: "Postablur", subTitleString: "Posting...")
 
@@ -150,6 +151,7 @@ class PostReviewVC: UIViewController
         
     }
     
+    }
     func uploadBlurredImageToServer(postID : String)
     {
         let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
@@ -184,9 +186,9 @@ class PostReviewVC: UIViewController
 
                         if let responseDict = JSON as? [String : AnyObject]
                         {
-                            if let returnUrl = responseDict["RetrurnUrl"] as! String!
+                            if let _ = responseDict["RetrurnUrl"] as! String!
                             {
-                                PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Postablur", andMessage: "Uploaded Successfully")
+                               self.showUploadSuccessAlert()
                                 self.appdelegate.hideActivityIndicator()
 
                             }
@@ -205,12 +207,21 @@ class PostReviewVC: UIViewController
                 //self.delegate?.showFailAlert()
                 print(encodingError)
                 self.appdelegate.hideActivityIndicator()
-                
             }
-            
         }
     }
     
+    func showUploadSuccessAlert(){
+        
+        let alertView = UIAlertController(title: "Postablur", message: "Uploaded Successfully", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default, handler: { (alert) in
+            self.dismiss(animated: true, completion: nil)
+
+        })
+        alertView.addAction(action)
+        self.present(alertView, animated: true, completion: nil)
+
+    }
     
     @IBAction func backBtnAction(_ sender: UIButton)
     {

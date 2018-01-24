@@ -95,7 +95,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efD-6S-FgW" userLabel="ImageBackView">
                     <rect key="frame" x="0.0" y="102" width="414" height="324"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crowdPicEnlarged" translatesAutoresizingMaskIntoConstraints="NO" id="IbE-aU-nuD">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crowdPicEnlarged" translatesAutoresizingMaskIntoConstraints="NO" id="IbE-aU-nuD">
                             <rect key="frame" x="21" y="0.0" width="372" height="324"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 - Likes to Reveal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TX6-YT-FDp">

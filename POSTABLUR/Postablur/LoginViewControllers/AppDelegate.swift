@@ -24,7 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
-        self.loadLogin()
+        if let _ = UserDefaults.standard.string(forKey: "UserId") {
+            
+            self.loadTabsContainerForSavedUser()
+        }
+        else{
+            
+            self.loadLogin()
+
+        }
+
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
@@ -65,6 +74,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     func loadTabsContainer()
     {
+        let tabsContainer = PBTabsContainerVC()
+        self.navigationController?.popToRootViewController(animated: false)
+        self.window?.rootViewController = tabsContainer
+    }
+   
+    func loadTabsContainerForSavedUser()
+    {
+        self.navigationController = UINavigationController()
+        
+        let loginController : UIViewController = PBLoginOptionsVC(nibName:NibNamed.PBLoginOptionsVC.rawValue, bundle:nil)
+        self.navigationController!.pushViewController(loginController, animated: false)
+        self.navigationController?.navigationBar.isHidden = true
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window!.rootViewController = navigationController
+        self.window!.makeKeyAndVisible()
+        
         let tabsContainer = PBTabsContainerVC()
         self.navigationController?.popToRootViewController(animated: false)
         self.window?.rootViewController = tabsContainer
