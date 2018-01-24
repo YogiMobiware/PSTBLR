@@ -8,8 +8,7 @@
 
 import UIKit
 
-class QRCodeScannerVC: UIViewController
-{
+class QRCodeScannerVC: UIViewController {
     @IBOutlet weak var qrCodeLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var scansCountLbl: UILabel!
@@ -32,24 +31,21 @@ class QRCodeScannerVC: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        let tapRecogniser: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(QRCodeScannerVC.tapGestureRecognized))
-        self.scannerImage.addGestureRecognizer(tapRecogniser)
-
-        if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl") as? String
-        {
-            if let userProfileUrl = URL(string: userProfileUrlStr)
-            {
-                self.userImage.kf.setImage(with: userProfileUrl)
-            }
-        }
-        if let usernameStr = UserDefaults.standard.object(forKey: "UserName")
-        {
-            let username = "@ \(usernameStr)"
-            self.nameLbl.text = username
-        }
         
-        
+                if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl") as? String
+                {
+                    if let userProfileUrl = URL(string: userProfileUrlStr)
+                    {
+                        self.userImage.kf.setImage(with: userProfileUrl)
+                    }
+               }
+               if let usernameStr = UserDefaults.standard.object(forKey: "UserName")
+                    {
+                           let username = "@ \(usernameStr)"
+                           self.nameLbl.text = username
+                       }
     }
+
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
