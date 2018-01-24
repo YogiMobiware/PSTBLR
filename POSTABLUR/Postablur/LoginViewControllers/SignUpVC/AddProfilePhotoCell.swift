@@ -22,19 +22,19 @@ class AddProfilePhotoCell: UITableViewCell
     @IBOutlet var captureImageView: UIImageView!
     @IBOutlet var uploadImageView: UIImageView!
     var delegate : AddProfilePhotoCellDelegate? = nil
+    @IBOutlet var selectedImageFromPhoto: UIImageView!
+    @IBOutlet var capturedImagefromCamera: UIImageView!
 
     override func awakeFromNib()
     {
         super.awakeFromNib()
        
         let tapRecogniser: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddProfilePhotoCell.captureImageAction))
-        self.captureImageView.addGestureRecognizer(tapRecogniser)
+        self.capturedImagefromCamera.addGestureRecognizer(tapRecogniser)
         
         let uploadTapRecogniser: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddProfilePhotoCell.UploadImageAction))
-        self.uploadImageView.addGestureRecognizer(uploadTapRecogniser)
+        self.selectedImageFromPhoto.addGestureRecognizer(uploadTapRecogniser)
         
-
-
     }
 
     @objc func captureImageAction()
@@ -64,19 +64,19 @@ class AddProfilePhotoCell: UITableViewCell
         
         if imageType == UploadedImageType.CapturedPhotoFromCamera.rawValue
         {
-//            self.captureImageView?.layer.cornerRadius = self.captureImageView!.frame.size.height / 2
-//            self.captureImageView?.clipsToBounds = true
-//            self.captureImageView?.layer.masksToBounds = true
-            captureImageView.image = image
-            uploadImageView.image = nil
+            self.capturedImagefromCamera?.layer.cornerRadius = self.capturedImagefromCamera!.frame.size.width / 2
+            self.capturedImagefromCamera?.clipsToBounds = true
+            self.capturedImagefromCamera?.layer.masksToBounds = true
+           self.capturedImagefromCamera.image = image
+            self.captureImageView.image = nil
         }
         else
         {
-//            self.uploadImageView?.clipsToBounds = true
-//            self.uploadImageView?.layer.cornerRadius = self.uploadImageView!.frame.size.height / 2
-//            self.uploadImageView?.layer.masksToBounds = true
-            uploadImageView.image = image
-            captureImageView.image = nil
+            self.selectedImageFromPhoto?.layer.cornerRadius = self.selectedImageFromPhoto!.frame.size.width / 2
+            self.selectedImageFromPhoto?.clipsToBounds = true
+            self.selectedImageFromPhoto?.layer.masksToBounds = true
+            self.selectedImageFromPhoto.image = image
+            self.uploadImageView.image = nil
 
             
         }
