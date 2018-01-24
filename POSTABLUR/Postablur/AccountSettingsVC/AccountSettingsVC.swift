@@ -18,7 +18,8 @@ class AccountSettingsVC: UIViewController {
 
     let legalnfoArray : [String] = ["PRIVACY POLICY","TERMS AND CONDITIONS","ACCOUNT NOTIFICATIONS","ACCOUNT STATS","LOGOUT"];
 
-    
+    var appdelegate : AppDelegate!
+
     @IBOutlet weak var accountsTableView: UITableView!
 
     override func viewDidLoad() {
@@ -27,6 +28,8 @@ class AccountSettingsVC: UIViewController {
         let headerNib = UINib(nibName: NibNamed.AccountsSettingsCell.rawValue, bundle: nil)
         self.accountsTableView.register(headerNib, forCellReuseIdentifier: CellIdentifiers.AccountsSettingsCellIdentifier.rawValue)
         
+        self.appdelegate = UIApplication.shared.delegate as! AppDelegate
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -120,9 +123,13 @@ extension AccountSettingsVC : UITableViewDataSource, UITableViewDelegate
             if indexPath.row == 4
             {
                 print("add logout logic here")
+                UserDefaults.standard.removeObject(forKey: "UserId")
+                UserDefaults.standard.removeObject(forKey: "Email")
+                UserDefaults.standard.removeObject(forKey: "Profileurl")
+                UserDefaults.standard.removeObject(forKey: "UserName")
+                UserDefaults.standard.synchronize()
+                self.appdelegate.loadLogin()
             }
         }
     }
-    
-    
 }
