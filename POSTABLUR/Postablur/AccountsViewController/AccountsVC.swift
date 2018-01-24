@@ -62,6 +62,11 @@ class AccountsVC: UIViewController
             {
                 self.userProfileImage.kf.setImage(with: userProfileUrl)
             }
+            else
+            {
+                self.userProfileImage.image = UIImage.init(named: "default_avatar")
+            }
+            
         }
         if let usernameStr = UserDefaults.standard.object(forKey: "UserName")
         {
@@ -286,5 +291,20 @@ extension AccountsVC : UICollectionViewDelegate, UICollectionViewDataSource
         
         return cell
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        
+        let selectedFeed = self.feeds[indexPath.row]
+        
+        let interactionVC = PBFeedsInteractionVC()
+        interactionVC.feeds = self.feeds
+        interactionVC.selectedFeedID = selectedFeed.PostId
+        interactionVC.totalFeedCount = self.totalFeedCount
+        interactionVC.scrollToIndexPath = indexPath
+        interactionVC.fromWhichVC = "AccountsVC"
+        
+        self.navigationController?.pushViewController(interactionVC, animated: true)
     }
 }
