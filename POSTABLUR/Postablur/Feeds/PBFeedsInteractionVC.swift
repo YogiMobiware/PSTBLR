@@ -24,6 +24,8 @@ class PBFeedsInteractionVC : UIViewController
     
     var totalFeedCount = 0
     var currentFeedCount = 0
+    
+    var fromWhichVC : String!
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -112,7 +114,21 @@ class PBFeedsInteractionVC : UIViewController
     
     func loadFeedsFromStart(count : Int = 20)
     {
-        let urlString = String(format: "%@/OthersPostsDetails", arguments: [Urls.mainUrl]);
+        var urlString : String!
+        
+        if fromWhichVC == "AccountsVC"
+        {
+            urlString = String(format: "%@/OthersPostsDetails", arguments: [Urls.mainUrl]);
+        }
+        else if fromWhichVC == "PBFeedsVC"
+        {
+            urlString = String(format: "%@/MyPostsDetails", arguments: [Urls.mainUrl])
+        }
+        else
+        {
+            print("No serivce call happend")
+        }
+        
         guard let userId = UserDefaults.standard.string(forKey: "UserId") else
         {
             return
@@ -214,7 +230,22 @@ class PBFeedsInteractionVC : UIViewController
     
     func loadFeedsMore()
     {
-        let urlString = String(format: "%@/OthersPostsDetails", arguments: [Urls.mainUrl]);
+        var urlString : String!
+        
+        if fromWhichVC == "AccountsVC"
+        {
+            urlString = String(format: "%@/OthersPostsDetails", arguments: [Urls.mainUrl]);
+        }
+        else if fromWhichVC == "PBFeedsVC"
+        {
+            urlString = String(format: "%@/MyPostsDetails", arguments: [Urls.mainUrl])
+        }
+        else
+        {
+            print("No serivce call happend")
+        }
+        
+        //let urlString = String(format: "%@/OthersPostsDetails", arguments: [Urls.mainUrl]);
         guard let userId = UserDefaults.standard.string(forKey: "UserId") else
         {
             return

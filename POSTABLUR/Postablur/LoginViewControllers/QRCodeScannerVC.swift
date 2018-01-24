@@ -8,12 +8,14 @@
 
 import UIKit
 
-class QRCodeScannerVC: UIViewController {
+class QRCodeScannerVC: UIViewController
+{
     @IBOutlet weak var qrCodeLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var scansCountLbl: UILabel!
     @IBOutlet weak var scannerImage: UIImageView!
-
+    @IBOutlet var userImage: UIImageView!
+    
     weak var tabContainerVC : PBTabsContainerVC!
     
     // MARK: Inits
@@ -27,11 +29,24 @@ class QRCodeScannerVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         let tapRecogniser: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(QRCodeScannerVC.tapGestureRecognized))
         self.scannerImage.addGestureRecognizer(tapRecogniser)
 
+        if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl") as? String
+        {
+            if let userProfileUrl = URL(string: userProfileUrlStr)
+            {
+                self.userImage.kf.setImage(with: userProfileUrl)
+            }
+        }
+        if let usernameStr = UserDefaults.standard.object(forKey: "UserName")
+        {
+            let username = "@ \(usernameStr)"
+            self.nameLbl.text = username
+        }
         
     }
 
@@ -43,7 +58,8 @@ class QRCodeScannerVC: UIViewController {
 
         
     }
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
     }
     

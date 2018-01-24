@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,6 +22,7 @@
                 <outlet property="qrCodeLbl" destination="ZvP-Jm-on6" id="WKJ-uI-3ao"/>
                 <outlet property="scannerImage" destination="OMq-u4-mo3" id="EJM-wQ-Qga"/>
                 <outlet property="scansCountLbl" destination="blf-BX-l7G" id="q8K-be-C62"/>
+                <outlet property="userImage" destination="9ac-w9-N18" id="qlL-pm-Gmc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -86,6 +87,13 @@
                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ac-w9-N18">
+                    <rect key="frame" x="158" y="385" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="V70-IP-Uho"/>
+                        <constraint firstAttribute="height" constant="100" id="wBT-wB-9vI"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -99,8 +107,10 @@
                 <constraint firstItem="OMq-u4-mo3" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Nap-Ib-emR"/>
                 <constraint firstItem="POn-Wh-d5j" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Q4I-FH-4HV"/>
                 <constraint firstItem="POn-Wh-d5j" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="103:736" id="VLB-UP-z0X"/>
+                <constraint firstItem="9ac-w9-N18" firstAttribute="centerX" secondItem="OMq-u4-mo3" secondAttribute="centerX" id="dht-vU-b2G"/>
                 <constraint firstItem="OMq-u4-mo3" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="341:736" id="j9k-bc-KDL"/>
                 <constraint firstItem="blf-BX-l7G" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="26:736" id="jZi-Md-FzQ"/>
+                <constraint firstItem="9ac-w9-N18" firstAttribute="centerY" secondItem="OMq-u4-mo3" secondAttribute="centerY" id="k9c-hP-dFR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JVu-bd-IDE" secondAttribute="trailing" id="nE7-Td-CZu"/>
                 <constraint firstItem="blf-BX-l7G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="oZX-a0-l5E"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="blf-BX-l7G" secondAttribute="trailing" id="riJ-hH-2gi"/>

@@ -382,6 +382,7 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
         interactionVC.selectedFeedID = selectedFeed.PostId
         interactionVC.totalFeedCount = self.totalFeedCount
         interactionVC.scrollToIndexPath = indexPath
+        interactionVC.fromWhichVC = "PBFeedsVC"
         
         self.navigationController?.pushViewController(interactionVC, animated: true)
     }

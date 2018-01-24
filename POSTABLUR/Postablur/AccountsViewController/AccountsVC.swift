@@ -287,4 +287,19 @@ extension AccountsVC : UICollectionViewDelegate, UICollectionViewDataSource
         return cell
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        
+        let selectedFeed = self.feeds[indexPath.row]
+        
+        let interactionVC = PBFeedsInteractionVC()
+        interactionVC.feeds = self.feeds
+        interactionVC.selectedFeedID = selectedFeed.PostId
+        interactionVC.totalFeedCount = self.totalFeedCount
+        interactionVC.scrollToIndexPath = indexPath
+        interactionVC.fromWhichVC = "AccountsVC"
+        
+        self.navigationController?.pushViewController(interactionVC, animated: true)
+    }
 }
