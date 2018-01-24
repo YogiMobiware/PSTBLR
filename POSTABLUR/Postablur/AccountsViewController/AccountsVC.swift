@@ -45,6 +45,8 @@ class AccountsVC: UIViewController
     var feeds = [PBFeedItem]()
     var totalFeedCount = 0
     
+    weak var tabContainerVC : PBTabsContainerVC? = nil
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -55,11 +57,12 @@ class AccountsVC: UIViewController
         self.accountsFeedsCollectionView.isHidden = false
         
         self.connectBtn.layer.cornerRadius = 6
-        
-        if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl")
+        if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl") as? String
         {
-            let userProfileUrl = URL(string: userProfileUrlStr as! String)!
-            self.userProfileImage.kf.setImage(with: userProfileUrl)
+            if let userProfileUrl = URL(string: userProfileUrlStr)
+            {
+                self.userProfileImage.kf.setImage(with: userProfileUrl)
+            }
         }
         if let usernameStr = UserDefaults.standard.object(forKey: "UserName")
         {
