@@ -57,7 +57,6 @@ class AccountsVC: UIViewController
         self.accountsFeedsCollectionView.isHidden = false
         
         self.connectBtn.layer.cornerRadius = 6
-        
         if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl") as? String
         {
             if let userProfileUrl = URL(string: userProfileUrlStr)
