@@ -228,8 +228,11 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        let selectedFeed = self.feeds[indexPath.row]
+        
         let interactionVC = PBFeedsInteractionVC()
         interactionVC.feeds = self.feeds
+        interactionVC.selectedFeedID = selectedFeed.PostId
         interactionVC.scrollToIndexPath = indexPath
         
         self.navigationController?.pushViewController(interactionVC, animated: true)

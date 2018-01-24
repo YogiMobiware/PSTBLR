@@ -19,6 +19,8 @@ class PBFeedsInteractionVC : UIViewController
     var feeds = [PBFeedItem]()
     var scrollToIndexPath : IndexPath? = nil
     
+    var selectedFeedID : String? = nil
+    
     var totalFeedCount = 0
     var currentFeedCount = 0
 
@@ -55,6 +57,10 @@ class PBFeedsInteractionVC : UIViewController
         }
         
         
+        self.moveSelectedFeedToFirstPosition()
+        
+        
+        
         self.activity.isHidden = true
         
         self.feedsTableView.delegate = self
@@ -64,18 +70,34 @@ class PBFeedsInteractionVC : UIViewController
         self.feedsTableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
         
         feedsTableView.reloadData()
-        self.view.setNeedsLayout()
+        self.feedsTableView.layoutIfNeeded()
         
         if let indexPathToScrollTo = self.scrollToIndexPath
         {
-            feedsTableView.scrollToRow(at: indexPathToScrollTo, at: UITableViewScrollPosition.top, animated: false)
+            let indexPath = IndexPath(item: indexPathToScrollTo.row, section: 0)
+            self.feedsTableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
         }
         
     }
     
+    func moveSelectedFeedToFirstPosition()
+    {
+        let selectedFeedsArray = self.feeds.filter { (feedItem) -> Bool in
+            
+            return feedItem.PostId == self.selectedFeedID
+        }
+        
+        if(selectedFeedsArray.count > 0)
+        {
+            let selectedFeed = selectedFeedsArray.first!
+            self.feeds.remove(at: self.feeds.index(of: selectedFeed)!)
+            self.feeds.insert(selectedFeed, at: 0)
+        }
+    }
+    
     @IBAction func refreshTapped(_ sender : UIButton)
     {
-        
+        self.loadFeedsFromStart(count : self.feeds.count)
     }
     
     @IBAction func backTapped(_ sender : UIButton)
@@ -83,7 +105,7 @@ class PBFeedsInteractionVC : UIViewController
         self.navigationController?.popViewController(animated: true)
     }
     
-    func loadFeedsFromStart()
+    func loadFeedsFromStart(count : Int = 20)
     {
         let urlString = String(format: "%@/OthersPostsDetails", arguments: [Urls.mainUrl]);
         guard let userId = UserDefaults.standard.string(forKey: "UserId") else
@@ -144,6 +166,8 @@ class PBFeedsInteractionVC : UIViewController
                                     
                                     self.feeds.append(feedItem)
                                 }
+                                
+                                self.moveSelectedFeedToFirstPosition()
                                 
                                 self.feedsTableView.reloadData()
                             }
@@ -230,7 +254,7 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         else
         {
             cell.postLikeBtn.isSelected = false
-            cell.postLikeBtn.tintColor = nil
+            cell.postLikeBtn.tintColor = Constants.greyTintColor
         }
         
         if hasUserDisliked == true
@@ -241,8 +265,12 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         else
         {
             cell.postDislikeBtn.isSelected = false
-            cell.postDislikeBtn.tintColor = nil
+            cell.postDislikeBtn.tintColor = Constants.greyTintColor
         }
+        
+        cell.postShareBtn.tintColor = Constants.greyTintColor
+        cell.postDonateBtn.tintColor = Constants.greyTintColor
+
 
         
         let mediaList = feedItem.mediaList
