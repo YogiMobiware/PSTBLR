@@ -28,7 +28,7 @@ enum NibNamed: String
     case PBCaptureMediaVC
     case PBFeedsVC
     case PBFeedsCollectionCell
-    case PBFeedsTableCell
+    case PBFeedTableCell
     case PBFeedsInteractionVC
     case TitleCell
     case LocationCell
