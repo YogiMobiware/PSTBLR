@@ -38,12 +38,16 @@ class QRCodeScannerVC: UIViewController {
                     {
                         self.userImage.kf.setImage(with: userProfileUrl)
                     }
+                    else
+                    {
+                        self.userImage.image = UIImage.init(named: "default_avatar")
+                    }
                }
                if let usernameStr = UserDefaults.standard.object(forKey: "UserName")
-                    {
-                           let username = "@ \(usernameStr)"
-                           self.nameLbl.text = username
-                       }
+               {
+                    let username = "@ \(usernameStr)"
+                    self.nameLbl.text = username
+               }
     }
 
     override func didReceiveMemoryWarning()

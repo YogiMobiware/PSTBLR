@@ -47,6 +47,14 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
             {
                 self.profileButton.kf.setImage(with: userProfileUrl, for: .normal)
             }
+            else
+            {
+                if let image = UIImage(named: "default_avatar")
+                {
+                    self.profileButton.setImage(image, for: .normal)
+                }
+
+            }
         }
         
         ////////////////

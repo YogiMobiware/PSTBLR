@@ -52,6 +52,10 @@ class PBFeedsInteractionVC : UIViewController
             {
                 self.userImageView.kf.setImage(with: userProfileUrl)
             }
+            else
+            {
+                self.userImageView.image = UIImage.init(named: "default_avatar")
+            }
         }
         
         if let userProfileName = UserDefaults.standard.object(forKey: "UserName")
