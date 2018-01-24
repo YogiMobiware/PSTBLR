@@ -25,17 +25,15 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcW-pg-dI1" userLabel="HeaderView">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="102"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agt-PN-Pxo">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agt-PN-Pxo">
                             <rect key="frame" x="10" y="30" width="42" height="42"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="Eyq-tS-dmK"/>
                                 <constraint firstAttribute="width" constant="42" id="Jcr-QC-dut"/>
                             </constraints>
-                            <color key="tintColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal" image="keyboardBackspace">
-                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </state>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="keyboardBackspace"/>
                             <connections>
                                 <action selector="backBtnAction" destination="-1" eventType="touchUpInside" id="SCM-9l-O16"/>
                             </connections>
