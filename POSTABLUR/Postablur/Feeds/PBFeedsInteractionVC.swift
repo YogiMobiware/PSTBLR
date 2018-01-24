@@ -213,6 +213,7 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath as IndexPath)  as! PBFeedTableCell
         
+        cell.selectionStyle = .none
         cell.postTitleLbl.text = nil
         cell.postLocationLbl.text = nil
 //        cell.postViewsCountLbl.text = nil
