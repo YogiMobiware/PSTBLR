@@ -19,7 +19,7 @@ class AccountsVC: UIViewController
     @IBOutlet var userProfileImage: UIImageView!
     @IBOutlet var connectBtn: UIButton!
     @IBOutlet var usernameLabel: UILabel!
-    @IBOutlet var userDescTextView: UILabel!
+    @IBOutlet var userDescTextView: UITextView!
     @IBOutlet var connectsView: UIView!
     @IBOutlet var connectsLabel: UILabel!
     @IBOutlet var sponcersView: UIView!
@@ -84,6 +84,19 @@ class AccountsVC: UIViewController
         
         self.loadMyPostsDetails()
     
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        self.loadMyPostsDetails()
+    }
+    
+    override func viewDidLayoutSubviews()
+    {
+        super.viewDidLayoutSubviews()
+        self.userDescTextView.scrollRangeToVisible(NSRange(location: 0, length: 1))
     }
     
     func loadMyPostsDetails()
@@ -196,7 +209,7 @@ class AccountsVC: UIViewController
             let fontSize = 9
             self.connectBtn.titleLabel?.font = self.connectBtn.titleLabel?.font.withSize(CGFloat(fontSize))
             self.usernameLabel.font = self.usernameLabel.font.withSize(11)
-            self.userDescTextView.font = self.userDescTextView.font.withSize(CGFloat(fontSize))
+            self.userDescTextView.font = self.userDescTextView.font?.withSize(CGFloat(fontSize))
             self.connectsLabel.font = self.connectsLabel.font.withSize(CGFloat(fontSize))
             self.sponcersLabel.font = self.sponcersLabel.font.withSize(CGFloat(fontSize))
             self.donorsLabel.font = self.donorsLabel.font.withSize(CGFloat(fontSize))

@@ -265,10 +265,10 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
             self.selectedButton = self.qrButton
             
         }
-        else if viewController.isKind(of: PBFeedsVC.self)
+        else if viewController.isKind(of: AccountsVC.self)
         {
-            self.disableButtons([self.qrButton])
-            self.selectedButton = self.qrButton
+            self.disableButtons([self.profileButton])
+            self.selectedButton = self.profileButton
         }
         else if viewController.isKind(of: PBFeedsVC.self)
         {

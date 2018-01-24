@@ -39,7 +39,7 @@
                 <outlet property="settingsBtn" destination="fgX-wL-qeU" id="a8i-gM-IOJ"/>
                 <outlet property="sponcersLabel" destination="vH4-hE-o8S" id="UnE-Va-nAY"/>
                 <outlet property="sponcersView" destination="83a-TZ-dt2" id="MsM-tt-GWU"/>
-                <outlet property="userDescTextView" destination="EQC-fU-Apz" id="x6K-ec-NWo"/>
+                <outlet property="userDescTextView" destination="EQC-fU-Apz" id="4Xn-39-vVE"/>
                 <outlet property="userProfileImage" destination="XNV-2D-Qvw" id="2Cp-SB-QN3"/>
                 <outlet property="usernameLabel" destination="y1p-Sr-zxw" id="JDH-VS-fYh"/>
                 <outlet property="videoView" destination="oLM-G2-0A1" id="gYC-4O-wVL"/>
@@ -247,7 +247,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faX-bK-PhS">
                                     <rect key="frame" x="0.0" y="0.0" width="136.66666666666666" height="44.333333333333336"/>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
                                     <color key="tintColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title=" P" image="photoMediaTypeIcon"/>
@@ -266,7 +266,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMv-eX-RoI">
                                     <rect key="frame" x="0.0" y="0.0" width="136.33333333333334" height="44.333333333333336"/>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
                                     <color key="tintColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title=" A" image="audioMediaTypeIcon">
@@ -287,7 +287,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiB-p0-uJi">
                                     <rect key="frame" x="0.0" y="0.0" width="136.66666666666666" height="44.333333333333336"/>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
                                     <color key="tintColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title=" V" image="videoMediaTypeIcon">
