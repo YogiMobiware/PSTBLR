@@ -37,7 +37,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
                     <subviews>
                         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97P-bx-Ufg" userLabel="BackButton">
-                            <rect key="frame" x="16" y="35.333333333333314" width="42" height="41.999999999999986"/>
+                            <rect key="frame" x="16" y="35.333333333333329" width="42" height="41.999999999999986"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="Zn6-cF-yU1"/>
@@ -65,11 +65,11 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PHOTO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrq-ia-M6W">
                             <rect key="frame" x="137" y="56" width="36.333333333333343" height="13.666666666666671"/>
                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="10"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.4788064957" green="0.98234850169999999" blue="0.5322213173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3p-R3-WYc" userLabel="postabluric">
-                            <rect key="frame" x="302" y="35.333333333333314" width="42" height="41.999999999999986"/>
+                            <rect key="frame" x="302" y="35.333333333333329" width="42" height="41.999999999999986"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="9Ca-Y5-DT6"/>
@@ -79,7 +79,7 @@
                             <state key="normal" image="iconWhitePostablurApp"/>
                         </button>
                         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDk-8Y-AGw" userLabel="refreshButton">
-                            <rect key="frame" x="352" y="35.333333333333314" width="42" height="41.999999999999986"/>
+                            <rect key="frame" x="352" y="35.333333333333329" width="42" height="41.999999999999986"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="a0y-gM-ra1"/>
