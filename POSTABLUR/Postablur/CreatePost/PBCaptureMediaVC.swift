@@ -586,7 +586,7 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
      let imgPath = URL(fileURLWithPath: documentDirectoryPath.appendingPathComponent("1.jpg"))
         
         do{
-            try UIImageJPEGRepresentation(image, 1.0)?.write(to: imgPath, options: .atomic)
+            try UIImageJPEGRepresentation(image, 0.5)?.write(to: imgPath, options: .atomic)
             self.goToPreviewScene(withImage: image)
             }
         catch
