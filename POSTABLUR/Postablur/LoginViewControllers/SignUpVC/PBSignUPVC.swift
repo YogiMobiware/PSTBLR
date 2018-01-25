@@ -357,7 +357,6 @@ extension PBSignUPVC : RegistrationCellDelegate
         
         PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
             
-            self.appdelegate.hideActivityIndicator()
             if error == nil
             {
                 if responseObject != nil
@@ -374,7 +373,71 @@ extension PBSignUPVC : RegistrationCellDelegate
                             
                             if statusCode == "0"
                             {
+                                    self.getUserProfileDetails(userID: result["UserId"] as! String)
+                            
+                            }
+                            else
+                            {
+                                self.appdelegate.hideActivityIndicator()
+                                self.appdelegate.alert(vc: self, message: statusMessage, title: "SignUp")
 
+                                return
+                            }
+                            
+                        }
+                    }
+                    if let responseStr = responseObject as? String
+                    {
+                        self.appdelegate.hideActivityIndicator()
+                        self.appdelegate.alert(vc: self, message: responseStr, title: "SignUp")
+
+                        return
+                    }
+                    
+                }
+                else
+                {
+                    self.appdelegate.hideActivityIndicator()
+                    self.appdelegate.alert(vc: self, message: "Something went wrong", title: "SignUp")
+
+                    return
+                }
+            }
+            else
+            {
+                self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "SignUp")
+                return
+            }
+           
+        }
+    }
+    
+    func getUserProfileDetails(userID : String)
+    {
+        
+        let urlString = String(format: "%@/GetProfileDetails/%@", arguments: [Urls.mainUrl,userID]);
+
+        PBServiceHelper().get(url: urlString) { (responseObject : AnyObject?, error : Error?) in
+            
+            if error == nil
+            {
+                if responseObject != nil
+                {
+                    self.appdelegate.hideActivityIndicator()
+
+                    if let responseDict = responseObject as? [String : AnyObject]
+                    {
+                        if let resultArray = responseDict["GetProfileDetailsResult"]!["Results"] as! [NSDictionary]!
+                        {
+                            let result = resultArray.first!
+                            print("signup result \(result)")
+                            
+                            let statusCode = result["StatusCode"] as! String
+                            let statusMessage = result["StatusMsg"] as! String
+
+                            if statusCode == "0"
+                            {
+                                
                                 if let userId = result["UserId"] as? String
                                 {
                                     UserDefaults.standard.removeObject(forKey: "UserId")
@@ -404,6 +467,7 @@ extension PBSignUPVC : RegistrationCellDelegate
                             }
                             else
                             {
+
                                 self.appdelegate.alert(vc: self, message: statusMessage, title: "SignUp")
                                 return
                             }
@@ -412,6 +476,7 @@ extension PBSignUPVC : RegistrationCellDelegate
                     }
                     if let responseStr = responseObject as? String
                     {
+
                         self.appdelegate.alert(vc: self, message: responseStr, title: "SignUp")
                         return
                     }
@@ -428,11 +493,9 @@ extension PBSignUPVC : RegistrationCellDelegate
                 self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "SignUp")
                 return
             }
-           
         }
-    }
         
-
+    }
     func pbloginBtnDidTap()
     {
         _ = self.navigationController?.popViewController(animated: true)

@@ -28,6 +28,7 @@ enum URLRequestError: Error
 
 class PBServiceHelper: NSObject
 {
+    typealias PBGetCompletionHandler = (AnyObject?, Error?) -> Swift.Void
     typealias PBPostCompletionHandler = (AnyObject?, Error?) -> Swift.Void
 
     var appdelegate : AppDelegate!
@@ -124,7 +125,7 @@ class PBServiceHelper: NSObject
         task.resume()
     }
     
-    /*func get(url:String, completion: @escaping PBGetCompletionHandler)
+    func get(url:String, completion: @escaping PBGetCompletionHandler)
     {
         
         let request = NSMutableURLRequest(url: NSURL(string:url)! as URL)
@@ -138,7 +139,9 @@ class PBServiceHelper: NSObject
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             guard data != nil else
             {
-                //print("no data found: \(error)")
+                DispatchQueue.main.async(execute: { () -> Void in
+                    completion(nil, error)
+                })
                 return
             }
             
@@ -148,7 +151,7 @@ class PBServiceHelper: NSObject
                 {
                     DispatchQueue.main.async
                     {
-                        completion(true, nil, json)
+                        completion(json, nil)
                     }
                 }
                 else
@@ -157,18 +160,18 @@ class PBServiceHelper: NSObject
                     //No error thrown, but not NSDictionary
                     //print("Error could not parse JSON: \(jsonStr)")
                     //failed
-                    completion(false, jsonStr as String?, nil)
+                    completion(jsonStr, nil)
                 }
             }
             catch let parseError
             {
                 let jsonStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
                 //print("Error could not parse JSON: '\(jsonStr)'")
-                completion(false, jsonStr as String?, nil)
-                
+                completion(jsonStr, nil)
+
             }
         }
         
         task.resume()
-    }*/
+    }
 }

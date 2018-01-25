@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -203,14 +203,14 @@
                                 <rect key="frame" x="289" y="0.0" width="96" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wE3-p5-AUs">
-                                        <rect key="frame" x="28.5" y="10" width="39" height="40"/>
-                                        <state key="normal" image="donateGreenIconPostablurApp"/>
+                                        <rect key="frame" x="27.5" y="10" width="41" height="41"/>
+                                        <state key="normal" image="Report GrayIconPostablurApp"/>
                                         <connections>
                                             <action selector="donateTapped:" destination="0gU-4m-vr0" eventType="touchUpInside" id="bee-Tk-LXC"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 donors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6b-fA-POt">
-                                        <rect key="frame" x="24" y="58" width="48.5" height="16.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report Abuse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6b-fA-POt">
+                                        <rect key="frame" x="10.5" y="59" width="75.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                         <color key="textColor" red="0.49799913169999999" green="0.49806177619999997" blue="0.49797785280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -310,8 +310,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Report GrayIconPostablurApp" width="41" height="41"/>
         <image name="dislikeGreyIconPostablurApp" width="40" height="36"/>
-        <image name="donateGreenIconPostablurApp" width="39" height="40"/>
         <image name="likeGreyIconPostablurApp" width="40" height="36"/>
         <image name="shareGreyIconPostablurApp" width="40" height="40"/>
         <image name="statsTabIcon" width="36" height="27"/>
