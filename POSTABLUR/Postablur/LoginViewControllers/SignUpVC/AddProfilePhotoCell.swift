@@ -67,8 +67,10 @@ class AddProfilePhotoCell: UITableViewCell
             self.capturedImagefromCamera?.layer.cornerRadius = self.capturedImagefromCamera!.frame.size.width / 2
             self.capturedImagefromCamera?.clipsToBounds = true
             self.capturedImagefromCamera?.layer.masksToBounds = true
-           self.capturedImagefromCamera.image = image
+            self.capturedImagefromCamera.image = image
             self.captureImageView.image = nil
+            self.uploadImageView.image = UIImage.init(named: "userGreyUploadPhotoIcon")
+
         }
         else
         {
@@ -77,6 +79,7 @@ class AddProfilePhotoCell: UITableViewCell
             self.selectedImageFromPhoto?.layer.masksToBounds = true
             self.selectedImageFromPhoto.image = image
             self.uploadImageView.image = nil
+            self.captureImageView.image = UIImage.init(named: "createGreyIconPostablurApp")
 
             
         }
