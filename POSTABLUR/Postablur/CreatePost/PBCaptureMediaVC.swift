@@ -10,6 +10,7 @@
 import UIKit
 import AVFoundation
 import Foundation
+import Toast_Swift
 
 extension AVCaptureVideoOrientation {
     var uiInterfaceOrientation: UIInterfaceOrientation {
@@ -82,6 +83,10 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
     
     var delegate: PBCaptureMediaVCDelegate? = nil
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    var style = ToastStyle()
+    
     // MARK: Inits
     init()
     {
@@ -102,6 +107,8 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        self.style.messageColor = .white
         
         self.view.layoutIfNeeded()
         
@@ -225,6 +232,9 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
             self.selectPhotoTypeButton.setTitleColor(.white, for: .normal)
             self.selectVideoTypeButton.setTitleColor(.white, for: .normal)
             
+            self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+            //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
+            
         }
         else if sender == self.selectVideoTypeButton
         {
@@ -233,6 +243,9 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
             self.selectVideoTypeButton.setTitleColor(.green, for: .normal)
             self.selectAudioTypeButton.setTitleColor(.white, for: .normal)
             self.selectPhotoTypeButton.setTitleColor(.white, for: .normal)
+            
+            self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+            //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
         
         }
     }

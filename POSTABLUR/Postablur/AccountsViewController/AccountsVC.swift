@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 class AccountsVC: UIViewController
 {
@@ -31,6 +32,11 @@ class AccountsVC: UIViewController
     
     @IBOutlet var buttonsView: UIView!
     
+    @IBOutlet var photoBtn: UIButton!
+    @IBOutlet var audioBtn: UIButton!
+    @IBOutlet var videoBtn: UIButton!
+    
+    
     @IBOutlet var dataView: UIView!
     @IBOutlet var accountsFeedsCollectionView: UICollectionView!
     @IBOutlet var postsNotAvailLabel: UILabel!
@@ -46,10 +52,14 @@ class AccountsVC: UIViewController
     
     weak var tabContainerVC : PBTabsContainerVC? = nil
     
+    var style = ToastStyle()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view
+        
+        self.style.messageColor = .white
         
         self.activity.isHidden = true
         self.postsNotAvailLabel.isHidden = true
@@ -234,8 +244,28 @@ class AccountsVC: UIViewController
     
     @IBAction func connectBtnAction(_ sender: UIButton)
     {
+        self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+        //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
+    }
+    
+    @IBAction func photoBtnAction(_ sender: UIButton)
+    {
         
     }
+    
+    @IBAction func audioBtnAction(_ sender: UIButton)
+    {
+        self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+        //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
+    }
+    
+    @IBAction func videoBtnAction(_ sender: UIButton)
+    {
+        self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+        //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
+    }
+    
+    
 }
 
 extension AccountsVC : UICollectionViewDelegate, UICollectionViewDataSource
