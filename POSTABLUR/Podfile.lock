@@ -11,6 +11,7 @@ PODS:
   - FBSDKLoginKit (4.30.0):
     - FBSDKCoreKit
   - Kingfisher (4.6.1)
+  - Toast-Swift (3.0.1)
   - TwitterCore (3.1.0)
   - TwitterKit (3.3.0):
     - TwitterCore (>= 3.1.0)
@@ -19,6 +20,7 @@ DEPENDENCIES:
   - Alamofire
   - FBSDKLoginKit
   - Kingfisher
+  - Toast-Swift
   - TwitterKit
 
 SPEC CHECKSUMS:
@@ -27,9 +29,10 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 7c4bba2877781a131ab5d54c0a78c405d4307b62
   FBSDKLoginKit: fe7a7e82373dc5daad92e1623219e86224ab1fb1
   Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
+  Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
 
-PODFILE CHECKSUM: 5acf326157755bbb8b9631041bf1119f8ad6e969
+PODFILE CHECKSUM: 4e71b1021c2c7e87293343a075cb0cc982306fbe
 
 COCOAPODS: 1.2.0

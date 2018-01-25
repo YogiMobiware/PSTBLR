@@ -8,6 +8,7 @@
 
 import Foundation
 import Kingfisher
+import Toast_Swift
 
 class PBFeedsVC : UIViewController
 {
@@ -32,6 +33,8 @@ class PBFeedsVC : UIViewController
     
     var isLoadingFeeds = false
     
+    var style = ToastStyle()
+    
     // MARK: Inits
     init()
     {
@@ -47,6 +50,8 @@ class PBFeedsVC : UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        self.style.messageColor = .white
         
         self.activity.isHidden = true
         self.noFeedsLbl.isHidden = true
@@ -76,9 +81,15 @@ class PBFeedsVC : UIViewController
             break
             
         case self.audioFilterButton :
+            
+            self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+            //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
             break
             
         case self.videoFilterButton:
+            
+            self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+            //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
             break
             
         default:
