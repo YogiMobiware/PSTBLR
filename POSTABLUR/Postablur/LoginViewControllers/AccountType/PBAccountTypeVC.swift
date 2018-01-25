@@ -8,11 +8,15 @@
 
 import UIKit
 
-class PBAccountTypeVC: UIViewController {
+class PBAccountTypeVC: UIViewController
+{
 
     @IBOutlet weak var accountTypeTableView: UITableView!
+    
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         let headerNib = UINib(nibName: NibNamed.PBHeaderCell.rawValue, bundle: nil)
@@ -24,9 +28,12 @@ class PBAccountTypeVC: UIViewController {
         let paidAccountNib = UINib(nibName: NibNamed.PBPaidAccoutCell.rawValue, bundle: nil)
         self.accountTypeTableView.register(paidAccountNib, forCellReuseIdentifier: CellIdentifiers.PBPaidAccoutCellIdentifier.rawValue)
 
+        self.appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
     }
     
@@ -95,8 +102,7 @@ extension PBAccountTypeVC : PBPaidAccoutCellDelegate
 {
     func pbnextBtnDidTap()
     {
-        let qrCodeScannerVC = QRCodeScannerVC()
-        self.navigationController?.pushViewController(qrCodeScannerVC, animated: true)
+        self.appDelegate.loadTabsContainer()
 
     }
 }

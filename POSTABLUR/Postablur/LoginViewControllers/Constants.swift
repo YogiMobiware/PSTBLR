@@ -51,7 +51,7 @@ enum FontName : String {
 
 class Constants: NSObject {
 
-    static let kUserProfilePicURL = "UserProfilePicUplaodedURL"
+    static let kUserProfilePicURL = "Profileurl"
 
     static let placedHolderTextFieldColor : UIColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
 

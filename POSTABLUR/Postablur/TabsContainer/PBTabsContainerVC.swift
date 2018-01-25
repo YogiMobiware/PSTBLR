@@ -41,7 +41,7 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl") as? String
+        if let userProfileUrlStr = UserDefaults.standard.object(forKey: Constants.kUserProfilePicURL) as? String
         {
             if let userProfileUrl = URL(string: userProfileUrlStr)
             {

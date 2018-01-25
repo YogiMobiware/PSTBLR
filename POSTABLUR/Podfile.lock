@@ -6,9 +6,9 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - FBSDKCoreKit (4.29.0):
+  - FBSDKCoreKit (4.30.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.29.0):
+  - FBSDKLoginKit (4.30.0):
     - FBSDKCoreKit
   - Kingfisher (4.6.1)
   - TwitterCore (3.1.0)
@@ -24,12 +24,12 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
-  FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
+  FBSDKCoreKit: 7c4bba2877781a131ab5d54c0a78c405d4307b62
+  FBSDKLoginKit: fe7a7e82373dc5daad92e1623219e86224ab1fb1
   Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
 
 PODFILE CHECKSUM: 5acf326157755bbb8b9631041bf1119f8ad6e969
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.3.1
