@@ -102,7 +102,7 @@ class PostReviewVC: UIViewController
         let urlString = String(format: "%@/AddUserPost", arguments: [Urls.mainUrl]);
         if let userID = UserDefaults.standard.string(forKey: "UserId") {
 
-        let requestDict = ["PostTitle": titleTxtLabel.text!,"Location": locationTxtLabel.text!,"Description": descTxtLabel.text!,"DonatetoCharity":"1","ShareYourPost":"10","WhoRevealsPostThisPost": "Public","LikeLimit":"2147","ShareLimit":"2147","DonationLimit":"2147","UserId":userID] as [String : Any]
+        let requestDict = ["PostTitle": titleTxtLabel.text!,"Location": locationTxtLabel.text!,"Description": descTxtLabel.text!,"DonatetoCharity":"1","ShareYourPost":"10","WhoRevealsPostThisPost": "Public","LikeLimit":"10","ShareLimit":"10","DonationLimit":"2147","UserId":userID] as [String : Any]
         
         self.appdelegate.showActivityIndictor(titleString: "Postablur", subTitleString: "Posting...")
 

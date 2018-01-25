@@ -31,6 +31,8 @@ class PBFeedsInteractionVC : UIViewController
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
+    var reportAbuseVC : ReportAbuseVC!
+
     // MARK: Inits
     init()
     {
@@ -73,7 +75,8 @@ class PBFeedsInteractionVC : UIViewController
         self.moveSelectedFeedToFirstPosition()
         
         
-        
+        reportAbuseVC = ReportAbuseVC(nibName: "ReportAbuseVC", bundle: nil)
+
         self.activity.isHidden = true
         
         self.feedsTableView.delegate = self
@@ -91,8 +94,12 @@ class PBFeedsInteractionVC : UIViewController
 //            self.feedsTableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
 //        }
         
+      
+        
     }
     
+    
+ 
     func moveSelectedFeedToFirstPosition()
     {
         let selectedFeedsArray = self.feeds.filter { (feedItem) -> Bool in
@@ -748,6 +755,23 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
     }
 }
 
+extension PBFeedsInteractionVC : ReportAbuseVCDelegate
+{
+    
+    func pbDidTapOnCancel(){
+        
+         self.reportAbuseVC.view.removeFromSuperview()
+        
+    }
+    func reportAbuseSubmitDidTap()
+    {
+        
+        
+    }
+    
+    
+}
+
 extension PBFeedsInteractionVC : PBFeedTableCellDelegate
 {
     func pbFeedTableCell(cell: PBFeedTableCell, didSelectAction action: PBFeedAction) {
@@ -797,6 +821,15 @@ extension PBFeedsInteractionVC : PBFeedTableCellDelegate
                 break
                 
             case .donate:
+                
+                let childView = reportAbuseVC.view
+                childView?.frame =  CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+                self.addChildViewController(reportAbuseVC)
+                reportAbuseVC.didMove(toParentViewController: self)
+                reportAbuseVC.delegate = self
+                reportAbuseVC.abusePostID = feed.PostId
+                self.view.addSubview(childView!)
+                
                 break
             }
         }

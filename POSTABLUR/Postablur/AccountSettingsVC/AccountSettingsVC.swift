@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import FBSDKCoreKit
+import FBSDKLoginKit
 class AccountSettingsVC: UIViewController {
 
     let headersInfoArray : [String] = ["CONNECTION INFORMATION","ACCOUNT INFORMATION","LEGAL INFORMATION"];
@@ -123,6 +124,7 @@ extension AccountSettingsVC : UITableViewDataSource, UITableViewDelegate
             if indexPath.row == 4
             {
                 print("add logout logic here")
+                FBSDKLoginManager().logOut()
                 UserDefaults.standard.removeObject(forKey: "UserId")
                 UserDefaults.standard.removeObject(forKey: "Email")
                 UserDefaults.standard.removeObject(forKey: Constants.kUserProfilePicURL)
