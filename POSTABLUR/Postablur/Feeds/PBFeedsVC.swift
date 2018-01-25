@@ -56,9 +56,17 @@ class PBFeedsVC : UIViewController
         let nib = UINib(nibName: NibNamed.PBFeedsCollectionCell.rawValue, bundle: nil)
         self.feedsCollectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         
+        blurOperationsQueue.maxConcurrentOperationCount = 3
         
         loadFeedsFromStart()
     }
+    
+    deinit {
+        
+        blurOperationsQueue.cancelAllOperations()
+        blurOperations.removeAll()
+    }
+    
     
     @IBAction func filterButtonTapped(_ sender : UIButton)
     {
@@ -302,6 +310,32 @@ class PBFeedsVC : UIViewController
         }
     }
     
+    func saveImage(image : UIImage, withName name : String)
+    {
+        if let data = UIImageJPEGRepresentation(image, 0.7) {
+            let filename = getDocumentsDirectory().appendingPathComponent("\(name)")
+            try? data.write(to: filename)
+        }
+    }
+    
+    func getImage(withName name : String) -> UIImage?
+    {
+        let fileManager = FileManager.default
+        let imagePAth = self.getDocumentsDirectory().appendingPathComponent("\(name).jpg")
+        if fileManager.fileExists(atPath: imagePAth.path){
+            let image =  UIImage(contentsOfFile: imagePAth.path)
+            return image
+        }else{
+            return nil
+        }
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
 }
 
 extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
@@ -314,13 +348,30 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! PBFeedsCollectionCell
-        cell.feedImageView.alpha = 0
-        cell.feedImageView.kf.setImage(with : nil)
+//        cell.feedImageView.alpha = 0
+//        cell.feedImageView.kf.setImage(with : nil)
         
         
         let feedItem = self.feeds[indexPath.row]
         let likeCount = feedItem.CurrentLikesCount!
+        
+        var cachedImgFound = false
+        if let savedImg  = self.getImage(withName: "sfi\(feedItem.PostId!)_\(feedItem.CurrentLikesCount!).jpg")
+        {
+            cell.feedImageView.image =  savedImg
+            cell.feedImageView.alpha = 1
+            cachedImgFound = true
+        }
+        
+        guard cachedImgFound == false else
+        {
+            return cell
+        }
+        
+        cell.feedImageView.alpha = 0
+        
         let mediaList = feedItem.mediaList
+
         if mediaList.count > 0
         {
             let firstMedia = mediaList.first!
@@ -344,6 +395,8 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
                         blurOperation.addExecutionBlock {
                             
                             let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
+                            
+                             self.saveImage(image: im, withName : "sfi\(feedItem.PostId!)_\(feedItem.CurrentLikesCount!)")
                             
                             OperationQueue.main.addOperation {
                                 

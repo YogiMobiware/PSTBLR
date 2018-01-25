@@ -33,6 +33,7 @@ class PBFeedsInteractionVC : UIViewController
 
     var reportAbuseVC : ReportAbuseVC!
 
+   
     // MARK: Inits
     init()
     {
@@ -47,8 +48,7 @@ class PBFeedsInteractionVC : UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        
+
         
         if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl") as? String
         {
@@ -73,7 +73,8 @@ class PBFeedsInteractionVC : UIViewController
         
         
         self.moveSelectedFeedToFirstPosition()
-        
+        blurOperationsQueue.maxConcurrentOperationCount = 3
+
         
         reportAbuseVC = ReportAbuseVC(nibName: "ReportAbuseVC", bundle: nil)
 
@@ -96,6 +97,12 @@ class PBFeedsInteractionVC : UIViewController
         
       
         
+    }
+    
+    deinit {
+        
+        blurOperationsQueue.cancelAllOperations()
+        blurOperations.removeAll()
     }
     
     
@@ -528,7 +535,31 @@ class PBFeedsInteractionVC : UIViewController
         }
     }
     
+    func saveImage(image : UIImage, withName name : String)
+    {
+        if let data = UIImageJPEGRepresentation(image, 0.7) {
+            let filename = getDocumentsDirectory().appendingPathComponent("\(name).jpg")
+            try? data.write(to: filename)
+        }
+    }
     
+    func getImage(withName name : String) -> UIImage?
+    {
+        let fileManager = FileManager.default
+        let imagePAth = self.getDocumentsDirectory().appendingPathComponent("\(name).jpg")
+        if fileManager.fileExists(atPath: imagePAth.path){
+            let image =  UIImage(contentsOfFile: imagePAth.path)
+            return image
+        }else{
+            return nil
+        }
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
 }
 
 extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
@@ -559,9 +590,6 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         cell.postLikesCountLbl.text = nil
         cell.postDislikesCountLbl.text = nil
         
-        
-        
-        cell.feedImageView.alpha = 0
         
         
         let feedItem = self.feeds[indexPath.row]
@@ -629,7 +657,21 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
             cell.postUserPicImageView.kf.setImage(with: nil)
         }
         
+        var cachedImgFound = false
+        if let savedImg  = self.getImage(withName: "bfi\(feedItem.PostId!)_\(feedItem.CurrentLikesCount!)")
+        {
+            cell.feedImageView.image =  savedImg
+            cell.feedImageView.alpha = 1
+            cachedImgFound = true
+        }
         
+        guard cachedImgFound == false else
+        {
+            return cell
+        }
+        
+        cell.feedImageView.alpha = 0
+
         let mediaList = feedItem.mediaList
         if mediaList.count > 0
         {
@@ -653,6 +695,9 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
                         blurOperation.addExecutionBlock {
                             
                             let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
+                            
+                            self.saveImage(image: im, withName : "bfi\(feedItem.PostId!)_\(feedItem.CurrentLikesCount!)")
+                            
                             
                             OperationQueue.main.addOperation {
                                 
