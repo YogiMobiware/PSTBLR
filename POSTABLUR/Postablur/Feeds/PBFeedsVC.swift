@@ -432,6 +432,7 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
         let indexPaths = collectionView.indexPathsForVisibleItems
             guard indexPaths.count > 0 else
             {
+                self.blurOperations.removeAll()
                 self.blurOperationsQueue.cancelAllOperations()
                 return
             }

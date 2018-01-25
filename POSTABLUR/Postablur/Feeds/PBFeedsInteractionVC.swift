@@ -124,11 +124,11 @@ class PBFeedsInteractionVC : UIViewController
         
         if fromWhichVC == "AccountsVC"
         {
-            urlString = String(format: "%@/OthersPostsDetails", arguments: [Urls.mainUrl]);
+            urlString = String(format: "%@/MyPostsDetails", arguments: [Urls.mainUrl]);
         }
         else if fromWhichVC == "PBFeedsVC"
         {
-            urlString = String(format: "%@/MyPostsDetails", arguments: [Urls.mainUrl])
+            urlString = String(format: "%@/OthersPostsDetails", arguments: [Urls.mainUrl])
         }
         else
         {
@@ -240,11 +240,11 @@ class PBFeedsInteractionVC : UIViewController
         
         if fromWhichVC == "AccountsVC"
         {
-            urlString = String(format: "%@/OthersPostsDetails", arguments: [Urls.mainUrl]);
+            urlString = String(format: "%@/MyPostsDetails", arguments: [Urls.mainUrl]);
         }
         else if fromWhichVC == "PBFeedsVC"
         {
-            urlString = String(format: "%@/MyPostsDetails", arguments: [Urls.mainUrl])
+            urlString = String(format: "%@/OthersPostsDetails", arguments: [Urls.mainUrl])
         }
         else
         {
@@ -719,6 +719,7 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         {
             guard indexPaths.count > 0 else
             {
+                self.blurOperations.removeAll()
                 self.blurOperationsQueue.cancelAllOperations()
                 return
             }
@@ -740,6 +741,7 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         }
         else
         {
+            self.blurOperations.removeAll()
             self.blurOperationsQueue.cancelAllOperations()
         }
         
