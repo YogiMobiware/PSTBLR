@@ -62,6 +62,11 @@ class AccountsVC: UIViewController
             {
                 self.userProfileImage.kf.setImage(with: userProfileUrl)
             }
+            else
+            {
+                self.userProfileImage.image = UIImage.init(named: "default_avatar")
+            }
+            
         }
         if let usernameStr = UserDefaults.standard.object(forKey: "UserName")
         {
