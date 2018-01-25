@@ -20,6 +20,9 @@ class PBFeedsVC : UIViewController
     @IBOutlet var activity : UIActivityIndicatorView!
     @IBOutlet var noFeedsLbl : UILabel!
 
+    var blurOperations = [IndexPath : BlockOperation]()
+    let blurOperationsQueue = OperationQueue()
+    
     let reuseIdentifier = "feedsCollectionCell"
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -309,7 +312,7 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! PBFeedsCollectionCell
         cell.feedImageView.alpha = 0
         cell.feedImageView.kf.setImage(with : nil)
@@ -327,6 +330,7 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
                 {
                     cell.feedImageView.kf.setImage(with: thumbUrl, completionHandler: { (image, error, cacheType, imageUrl) in
                         
+                        
                         guard let img = image else
                         {
                             cell.feedImageView.kf.setImage(with: nil)
@@ -334,22 +338,40 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
                             return
                         }
                         
-                        DispatchQueue.global(qos: .userInitiated).async {
+                        let blurOperation = BlockOperation()
+                        weak var weakOperation = blurOperation
+                        weak var weakSelf = self
+                        blurOperation.addExecutionBlock {
+                            
                             let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
                             
-                            DispatchQueue.main.async {
+                            OperationQueue.main.addOperation {
                                 
-                                self.activity.stopAnimating()
-                                cell.feedImageView.image = im
+                                guard let operation = weakOperation else
+                                {
+                                    return
+                                }
                                 
-                                UIView.animate(withDuration: 0.3, animations: {
+                                if (operation.isCancelled == false)
+                                {
+                                    guard weakSelf != nil else
+                                    {
+                                        return
+                                    }
+                                    weakSelf!.activity.stopAnimating()
+                                    cell.feedImageView.image = im
                                     cell.feedImageView.alpha = 1
-                                })
+                                    weakSelf!.blurOperations.removeValue(forKey: indexPath)
+                                    
+                                }
                             }
+                            
                         }
                         
-                        
+                        self.blurOperations[indexPath] = blurOperation
+                        self.blurOperationsQueue.addOperation(blurOperation)
                     })
+                    
                 }
                 else
                 {
@@ -403,6 +425,33 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
                 self.loadFeedsMore()
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        let indexPaths = collectionView.indexPathsForVisibleItems
+            guard indexPaths.count > 0 else
+            {
+                self.blurOperations.removeAll()
+                self.blurOperationsQueue.cancelAllOperations()
+                return
+            }
+            let matchingVisibleIndPaths = indexPaths.filter({ (inPath) -> Bool in
+                
+                return inPath == indexPath
+            })
+        
+            if matchingVisibleIndPaths.count == 0
+            {
+                let ongoingBlurOperation = self.blurOperations[indexPath]
+                if (ongoingBlurOperation != nil)
+                {
+                    ongoingBlurOperation?.cancel()
+                    self.blurOperations.removeValue(forKey: indexPath)
+                }
+                return
+            }
+        
     }
 }
 
