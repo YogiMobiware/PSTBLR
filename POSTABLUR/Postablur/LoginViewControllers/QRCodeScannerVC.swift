@@ -32,7 +32,7 @@ class QRCodeScannerVC: UIViewController {
     {
         super.viewDidLoad()
         
-                if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl") as? String
+                if let userProfileUrlStr = UserDefaults.standard.object(forKey: Constants.kUserProfilePicURL) as? String
                 {
                     if let userProfileUrl = URL(string: userProfileUrlStr)
                     {
