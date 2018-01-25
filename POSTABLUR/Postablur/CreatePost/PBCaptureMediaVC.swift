@@ -210,27 +210,29 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         if sender == self.selectPhotoTypeButton
         {
             self.animateBarToButton(button: self.selectPhotoTypeButton)
-            self.selectPhotoTypeButton.titleLabel?.textColor = Constants.headerTileColor
-            self.selectAudioTypeButton.titleLabel?.textColor = Constants.whiteTextColor
-            self.selectVideoTypeButton.titleLabel?.textColor = Constants.whiteTextColor
-
+            
+            self.selectPhotoTypeButton.setTitleColor(.green, for: .normal)
+            self.selectAudioTypeButton.setTitleColor(.white, for: .normal)
+            self.selectVideoTypeButton.setTitleColor(.white, for: .normal)
+            
         }
         else if sender == self.selectAudioTypeButton
         {
             self.animateBarToButton(button: self.selectAudioTypeButton)
-            self.selectAudioTypeButton.titleLabel?.textColor = Constants.headerTileColor
-            self.selectPhotoTypeButton.titleLabel?.textColor = Constants.whiteTextColor
-            self.selectVideoTypeButton.titleLabel?.textColor = Constants.whiteTextColor
-
-
+            
+            self.selectAudioTypeButton.setTitleColor(.green, for: .normal)
+            self.selectPhotoTypeButton.setTitleColor(.white, for: .normal)
+            self.selectVideoTypeButton.setTitleColor(.white, for: .normal)
+            
         }
         else if sender == self.selectVideoTypeButton
         {
             self.animateBarToButton(button: self.selectVideoTypeButton)
-            self.selectVideoTypeButton.titleLabel?.textColor = Constants.headerTileColor
-            self.selectAudioTypeButton.titleLabel?.textColor = Constants.whiteTextColor
-            self.selectPhotoTypeButton.titleLabel?.textColor = Constants.whiteTextColor
-
+            
+            self.selectVideoTypeButton.setTitleColor(.green, for: .normal)
+            self.selectAudioTypeButton.setTitleColor(.white, for: .normal)
+            self.selectPhotoTypeButton.setTitleColor(.white, for: .normal)
+        
         }
     }
     
