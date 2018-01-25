@@ -140,8 +140,8 @@ class PBLoginOptionsVC: UIViewController
                                                 }
                                                 if let profileUrl = result["Profileurl"] as? String
                                                 {
-                                                    UserDefaults.standard.removeObject(forKey: "Profileurl")
-                                                    UserDefaults.standard.set(profileUrl, forKey: "Profileurl")
+                                                    UserDefaults.standard.removeObject(forKey: Constants.kUserProfilePicURL)
+                                                    UserDefaults.standard.set(profileUrl, forKey: Constants.kUserProfilePicURL)
                                                 }
                                                 if let username = result["UserName"] as? String
                                                 {
@@ -241,8 +241,8 @@ class PBLoginOptionsVC: UIViewController
                                 }
                                 if let profileUrl = result["Profileurl"] as? String
                                 {
-                                    UserDefaults.standard.removeObject(forKey: "Profileurl")
-                                    UserDefaults.standard.set(profileUrl, forKey: "Profileurl")
+                                    UserDefaults.standard.removeObject(forKey: Constants.kUserProfilePicURL)
+                                    UserDefaults.standard.set(profileUrl, forKey: Constants.kUserProfilePicURL)
                                 }
                                 if let username = result["UserName"] as? String
                                 {
@@ -342,8 +342,8 @@ class PBLoginOptionsVC: UIViewController
                                 }
                                 if let profileUrl = result["Profileurl"] as? String
                                 {
-                                    UserDefaults.standard.removeObject(forKey: "Profileurl")
-                                    UserDefaults.standard.set(profileUrl, forKey: "Profileurl")
+                                    UserDefaults.standard.removeObject(forKey: Constants.kUserProfilePicURL)
+                                    UserDefaults.standard.set(profileUrl, forKey: Constants.kUserProfilePicURL)
                                 }
                                 if let username = result["UserName"] as? String
                                 {
@@ -541,8 +541,8 @@ extension PBLoginOptionsVC : PBEmailAndPasswrdCellDelegate
                                 }
                                 if let profileUrl = result["Profileurl"] as? String
                                 {
-                                    UserDefaults.standard.removeObject(forKey: "Profileurl")
-                                    UserDefaults.standard.set(profileUrl, forKey: "Profileurl")
+                                    UserDefaults.standard.removeObject(forKey: Constants.kUserProfilePicURL)
+                                    UserDefaults.standard.set(profileUrl, forKey: Constants.kUserProfilePicURL)
                                 }
                                 if let username = result["UserName"] as? String
                                 {

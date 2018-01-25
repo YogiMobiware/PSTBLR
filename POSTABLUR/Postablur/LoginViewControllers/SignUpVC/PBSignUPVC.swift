@@ -43,6 +43,17 @@ class PBSignUPVC: UIViewController,UIImagePickerControllerDelegate,UINavigationC
 
     }
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        if let _ = UserDefaults.standard.object(forKey: Constants.kUserProfilePicURL)
+        {
+            UserDefaults.standard.removeObject(forKey: Constants.kUserProfilePicURL)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
     @objc internal func tapGestureRecognized()
     {
         UIView.animate(withDuration: 0.2, animations: {
@@ -99,7 +110,8 @@ class PBSignUPVC: UIViewController,UIImagePickerControllerDelegate,UINavigationC
     
     Alamofire.upload(multipartFormData: { (multipartFormData) in
         multipartFormData.append(UIImageJPEGRepresentation(selectedImage, 0.5)!, withName: "photo_path", fileName: "PostaBlur.jpeg", mimeType: "image/jpeg")
-            for (key, value) in parameters {
+            for (key, value) in parameters
+            {
                 multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
             }
         }, to:Urls.uploadImageUrl)
@@ -116,13 +128,15 @@ class PBSignUPVC: UIViewController,UIImagePickerControllerDelegate,UINavigationC
                 upload.responseJSON { response in
                     self.appdelegate.hideActivityIndicator()
                     self.imageCell.selectedImageViewType(image: selectedImage, imageType: self.uploadImageType!)
-                    if let JSON = response.result.value {
+                    
+                    if let JSON = response.result.value
+                    {
                         print("JSON: \(JSON)")
                         if let responseDict = JSON as? [String : AnyObject]
                         {
                             if let returnUrl = responseDict["RetrurnUrl"] as! String!
                             {
-                                 UserDefaults.standard.setValue(returnUrl, forKey: Constants.kUserProfilePicURL)
+                                UserDefaults.standard.setValue(returnUrl, forKey: Constants.kUserProfilePicURL)
                                 UserDefaults.standard.synchronize()
                             }
                         }
@@ -322,9 +336,20 @@ extension PBSignUPVC : RegistrationCellDelegate
             self.appdelegate.alert(vc: self, message: "Both passwords must same", title: "SignUp")
             return
         }
-            
+        
+        var uploadedprofileStr : String!
+        
+        if let userProfilelStr = UserDefaults.standard.object(forKey: Constants.kUserProfilePicURL) as? String
+        {
+           uploadedprofileStr = userProfilelStr
+        }
+        else
+        {
+            uploadedprofileStr = ""
+        }
+        
         let urlString = String(format: "%@/UserRegistration", arguments: [Urls.mainUrl]);
-        let requestDict = ["UserName":userNameTF.text!,"Email":emailTF.text!,"Password":passwordTF.text!,"DOB":"","DBAPin":"","Profileurl":"",
+        let requestDict = ["UserName":userNameTF.text!,"Email":emailTF.text!,"Password":passwordTF.text!,"DOB":"","DBAPin":"","Profileurl":uploadedprofileStr,
             "ProfileAd":"","Accounttype":"1","PhoneNumber":"","CountryCode":"+91","Registrationtype":"1",
             "DeviceId":"123456","DeviceType":"1"] as [String : Any]
         
@@ -332,7 +357,6 @@ extension PBSignUPVC : RegistrationCellDelegate
         
         PBServiceHelper().post(url: urlString, parameters: requestDict as NSDictionary) { (responseObject : AnyObject?, error : Error?) in
             
-            self.appdelegate.hideActivityIndicator()
             if error == nil
             {
                 if responseObject != nil
@@ -342,20 +366,108 @@ extension PBSignUPVC : RegistrationCellDelegate
                         if let resultArray = responseDict["Results"] as! [NSDictionary]!
                         {
                             let result = resultArray.first!
+                            print("signup result \(result)")
                             
                             let statusCode = result["StatusCode"] as! String
                             let statusMessage = result["StatusMsg"] as! String
                             
                             if statusCode == "0"
                             {
+                                    self.getUserProfileDetails(userID: result["UserId"] as! String)
+                            
+                            }
+                            else
+                            {
+                                self.appdelegate.hideActivityIndicator()
+                                self.appdelegate.alert(vc: self, message: statusMessage, title: "SignUp")
+
+                                return
+                            }
+                            
+                        }
+                    }
+                    if let responseStr = responseObject as? String
+                    {
+                        self.appdelegate.hideActivityIndicator()
+                        self.appdelegate.alert(vc: self, message: responseStr, title: "SignUp")
+
+                        return
+                    }
+                    
+                }
+                else
+                {
+                    self.appdelegate.hideActivityIndicator()
+                    self.appdelegate.alert(vc: self, message: "Something went wrong", title: "SignUp")
+
+                    return
+                }
+            }
+            else
+            {
+                self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "SignUp")
+                return
+            }
+           
+        }
+    }
+    
+    func getUserProfileDetails(userID : String)
+    {
+        
+        let urlString = String(format: "%@/GetProfileDetails/%@", arguments: [Urls.mainUrl,userID]);
+
+        PBServiceHelper().get(url: urlString) { (responseObject : AnyObject?, error : Error?) in
+            
+            if error == nil
+            {
+                if responseObject != nil
+                {
+                    self.appdelegate.hideActivityIndicator()
+
+                    if let responseDict = responseObject as? [String : AnyObject]
+                    {
+                        if let resultArray = responseDict["GetProfileDetailsResult"]!["Results"] as! [NSDictionary]!
+                        {
+                            let result = resultArray.first!
+                            print("signup result \(result)")
+                            
+                            let statusCode = result["StatusCode"] as! String
+                            let statusMessage = result["StatusMsg"] as! String
+
+                            if statusCode == "0"
+                            {
+                                
+                                if let userId = result["UserId"] as? String
+                                {
+                                    UserDefaults.standard.removeObject(forKey: "UserId")
+                                    UserDefaults.standard.set(userId, forKey: "UserId")
+                                }
+                                if let email = result["Email"] as? String
+                                {
+                                    UserDefaults.standard.removeObject(forKey: "Email")
+                                    UserDefaults.standard.set(email, forKey: "Email")
+                                }
+                                if let profileUrl = result["Profileurl"] as? String
+                                {
+                                    UserDefaults.standard.removeObject(forKey: Constants.kUserProfilePicURL)
+                                    UserDefaults.standard.set(profileUrl, forKey: Constants.kUserProfilePicURL)
+                                }
+                                if let username = result["UserName"] as? String
+                                {
+                                    UserDefaults.standard.removeObject(forKey: "UserName")
+                                    UserDefaults.standard.set(username, forKey: "UserName")
+                                }
+                                
+                                UserDefaults.standard.synchronize()
+                                
                                 let pbAccountTypeVC = PBAccountTypeVC()
                                 self.navigationController?.pushViewController(pbAccountTypeVC, animated: true)
-
-                                //self.appdelegate.alert(vc: self, message: statusMessage, title: "SignUp")
                                 return
                             }
                             else
                             {
+
                                 self.appdelegate.alert(vc: self, message: statusMessage, title: "SignUp")
                                 return
                             }
@@ -364,6 +476,7 @@ extension PBSignUPVC : RegistrationCellDelegate
                     }
                     if let responseStr = responseObject as? String
                     {
+
                         self.appdelegate.alert(vc: self, message: responseStr, title: "SignUp")
                         return
                     }
@@ -380,11 +493,9 @@ extension PBSignUPVC : RegistrationCellDelegate
                 self.appdelegate.alert(vc: self, message: (error?.localizedDescription)!, title: "SignUp")
                 return
             }
-           
         }
-    }
         
-
+    }
     func pbloginBtnDidTap()
     {
         _ = self.navigationController?.popViewController(animated: true)

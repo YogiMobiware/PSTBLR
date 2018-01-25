@@ -125,7 +125,7 @@ extension AccountSettingsVC : UITableViewDataSource, UITableViewDelegate
                 print("add logout logic here")
                 UserDefaults.standard.removeObject(forKey: "UserId")
                 UserDefaults.standard.removeObject(forKey: "Email")
-                UserDefaults.standard.removeObject(forKey: "Profileurl")
+                UserDefaults.standard.removeObject(forKey: Constants.kUserProfilePicURL)
                 UserDefaults.standard.removeObject(forKey: "UserName")
                 UserDefaults.standard.synchronize()
                 self.appdelegate.loadLogin()
