@@ -122,6 +122,10 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         let shareLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 24
         let roundedBoldfontSize = floor(shareLabelfontSize)
         self.createTitleLabel.font = self.createTitleLabel.font.withSize(roundedBoldfontSize)
+        self.selectPhotoTypeButton.titleLabel?.textColor = Constants.headerTileColor
+        self.selectAudioTypeButton.titleLabel?.textColor = Constants.whiteTextColor
+        self.selectVideoTypeButton.titleLabel?.textColor = Constants.whiteTextColor
+
 
     }
     

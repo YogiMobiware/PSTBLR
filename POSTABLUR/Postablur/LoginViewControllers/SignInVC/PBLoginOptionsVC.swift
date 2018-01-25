@@ -156,11 +156,13 @@ class PBLoginOptionsVC: UIViewController
                                             }
                                             else if statusCode == "1"
                                             {
+                                                FBSDKLoginManager().logOut()
                                                 self.appdelegate.alert(vc: self, message: statusMessage, title: "Error")
                                                 return
                                             }
                                             else if statusCode == "2"
                                             {
+                                                FBSDKLoginManager().logOut()
                                                 self.appdelegate.alert(vc: self, message: statusMessage, title: "Error")
                                                 return
                                             }

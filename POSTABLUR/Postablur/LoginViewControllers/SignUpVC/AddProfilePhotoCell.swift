@@ -70,6 +70,7 @@ class AddProfilePhotoCell: UITableViewCell
             self.capturedImagefromCamera.image = image
             self.captureImageView.image = nil
             self.uploadImageView.image = UIImage.init(named: "userGreyUploadPhotoIcon")
+            self.selectedImageFromPhoto.image = nil
 
         }
         else
@@ -80,8 +81,8 @@ class AddProfilePhotoCell: UITableViewCell
             self.selectedImageFromPhoto.image = image
             self.uploadImageView.image = nil
             self.captureImageView.image = UIImage.init(named: "createGreyIconPostablurApp")
+            self.capturedImagefromCamera.image = nil
 
-            
         }
     }
 }
