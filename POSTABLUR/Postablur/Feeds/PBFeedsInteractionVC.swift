@@ -18,6 +18,8 @@ class PBFeedsInteractionVC : UIViewController
     private let reuseIdentifier = "feedsTableCell"
     var feeds = [PBFeedItem]()
     var scrollToIndexPath : IndexPath? = nil
+    var blurOperations = [IndexPath : BlockOperation]()
+    let blurOperationsQueue = OperationQueue()
     
     var isLoadingFeeds = false
     var selectedFeedID : String? = nil
@@ -400,7 +402,6 @@ class PBFeedsInteractionVC : UIViewController
                                     feedItem.UserLikeStatus = like
                                     let indexPath = IndexPath(row: index, section: 0)
                                     self.feedsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
-
                                    
                                 }
                                 
@@ -475,8 +476,24 @@ class PBFeedsInteractionVC : UIViewController
                                     }
                                     feedItem.UserDisLikeStatus = dislike
                                     
-                                    let indexPath = IndexPath(row: index, section: 0)
-                                    self.feedsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+                                    if let cell = self.feedsTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? PBFeedTableCell
+                                    {
+                                        if dislike == true
+                                        {
+                                            cell.postDislikeBtn.isSelected = true
+                                            cell.postDislikeBtn.tintColor = Constants.navBarTintColor
+                                        }
+                                        else
+                                        {
+                                            cell.postDislikeBtn.isSelected = false
+                                            cell.postDislikeBtn.tintColor = Constants.greyTintColor
+                                        }
+                                        cell.postDislikeBtn.isEnabled = true
+
+                                    }
+                                    
+//                                    let indexPath = IndexPath(row: index, section: 0)
+//                                    self.feedsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
                                     
                                 }
                                 
@@ -550,6 +567,7 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         let username = feedItem.UserName!
         let hasUserLiked = feedItem.UserLikeStatus
         let hasUserDisliked = feedItem.UserDisLikeStatus
+        let byUserProfilePicUrlString = feedItem.Profileurl
         
         cell.postLikesCountLbl.text = "\(likeCount) likes"
         cell.postDislikesCountLbl.text = "\(dislikeCount) dislikes"
@@ -587,6 +605,24 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         cell.postLikeBtn.isEnabled = true
         cell.postDislikeBtn.isEnabled = true
         
+        
+        if let profileUrlStr = byUserProfilePicUrlString
+        {
+            if let profileUrl = URL(string: profileUrlStr)
+            {
+                cell.postUserPicImageView.kf.setImage(with: profileUrl)
+            }
+            else
+            {
+                cell.postUserPicImageView.kf.setImage(with: nil)
+            }
+        }
+        else
+        {
+            cell.postUserPicImageView.kf.setImage(with: nil)
+        }
+        
+        
         let mediaList = feedItem.mediaList
         if mediaList.count > 0
         {
@@ -599,24 +635,43 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
                         
                         guard let img = image else
                         {
-                            cell.feedImageView.kf.setImage(with: nil)
+//                            cell.feedImageView.kf.setImage(with: nil)
                             self.activity.stopAnimating()
                             return
                         }
                         
-                        DispatchQueue.global(qos: .userInitiated).async {
+                        let blurOperation = BlockOperation()
+                        weak var weakOperation = blurOperation
+                        weak var weakSelf = self
+                        blurOperation.addExecutionBlock {
+                            
                             let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
                             
-                            DispatchQueue.main.async {
+                            OperationQueue.main.addOperation {
                                 
-                                self.activity.stopAnimating()
-                                cell.feedImageView.image = im
+                                guard let operation = weakOperation else
+                                {
+                                    return
+                                }
                                 
-                                UIView.animate(withDuration: 0.3, animations: {
+                                if (operation.isCancelled == false)
+                                {
+                                    guard weakSelf != nil else
+                                    {
+                                        return
+                                    }
+                                    weakSelf!.activity.stopAnimating()
+                                    cell.feedImageView.image = im
                                     cell.feedImageView.alpha = 1
-                                })
+                                    weakSelf!.blurOperations.removeValue(forKey: indexPath)
+                                    
+                                }
                             }
+                            
                         }
+                        
+                        self.blurOperations[indexPath] = blurOperation
+                        self.blurOperationsQueue.addOperation(blurOperation)
                         
                         
                     })
@@ -625,8 +680,6 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
                 {
                     cell.feedImageView.kf.setImage(with: nil)
                 }
-                
-               
             }
             else
             {
@@ -658,6 +711,38 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
                 self.loadFeedsMore()
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if let indexPaths = tableView.indexPathsForVisibleRows
+        {
+            guard indexPaths.count > 0 else
+            {
+                self.blurOperationsQueue.cancelAllOperations()
+                return
+            }
+            let matchingVisibleIndPaths = indexPaths.filter({ (inPath) -> Bool in
+                
+                return inPath == indexPath
+            })
+            
+            if matchingVisibleIndPaths.count == 0
+            {
+                let ongoingBlurOperation = self.blurOperations[indexPath]
+                if (ongoingBlurOperation != nil)
+                {
+                    ongoingBlurOperation?.cancel()
+                    self.blurOperations.removeValue(forKey: indexPath)
+                }
+                return
+            }
+        }
+        else
+        {
+            self.blurOperationsQueue.cancelAllOperations()
+        }
+        
     }
 }
 

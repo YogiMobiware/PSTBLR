@@ -47,7 +47,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) uses Camera to take your photos</string>
+	<string>$(PRODUCT_NAME) lets you capture photos using your camera and attach them to posts you create</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) lets you pick photos from your library to attach to posts you create</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
