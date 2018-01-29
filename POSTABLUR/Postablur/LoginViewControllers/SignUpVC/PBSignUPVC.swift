@@ -159,7 +159,33 @@ class PBSignUPVC: UIViewController,UIImagePickerControllerDelegate,UINavigationC
         }
     }
 }
-
+extension PBSignUPVC : UITextViewDelegate
+{
+    //func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
+    {
+    
+        if (URL.absoluteString == Constants.termsAndConditionsURL)
+        {
+            let pb_webVC = PBWebVC(nibName: "PBWebVC", bundle: nil)
+            pb_webVC.urlValue = Constants.termsAndConditionsURL
+            pb_webVC.titleString = "Terms of use"
+            self.present(pb_webVC, animated: true, completion: nil)
+        }
+        else if (URL.absoluteString == Constants.privacyURL)
+        {
+            let pb_webVC = PBWebVC(nibName: "PBWebVC", bundle: nil)
+            pb_webVC.urlValue = Constants.privacyURL
+            pb_webVC.titleString = "privacy policy"
+            self.present(pb_webVC, animated: true, completion: nil)
+        }
+        
+        return false
+        
+    }
+    
+}
 extension PBSignUPVC : UITextFieldDelegate
 {
     
@@ -228,6 +254,7 @@ extension PBSignUPVC : UITableViewDataSource, UITableViewDelegate
             cell.emailTF.delegate = self
             cell.passwordTF.delegate = self
             cell.reTypePasswordTF.delegate = self
+            cell.termsTextView.delegate = self
             return cell
             
         default:
@@ -243,6 +270,8 @@ extension PBSignUPVC : UITableViewDataSource, UITableViewDelegate
     
    
 }
+
+
 
 // MARK: --  HEADER DELEGATES
 extension PBSignUPVC : PBHeaderCellDelegate
@@ -501,6 +530,12 @@ extension PBSignUPVC : RegistrationCellDelegate
         _ = self.navigationController?.popViewController(animated: true)
 
     }
+    
+    /*func moveToPBWebVC(toController : UIViewController)
+    {
+        self.present(toController, animated: true, completion: nil)
+    }*/
+    
 }
 
 
