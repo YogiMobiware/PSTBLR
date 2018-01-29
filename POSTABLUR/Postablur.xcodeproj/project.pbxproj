@@ -51,6 +51,8 @@
 		B03219982019DA3E008650FC /* ReportAbuseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03219962019DA3E008650FC /* ReportAbuseVC.swift */; };
 		B03219992019DA3E008650FC /* ReportAbuseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03219972019DA3E008650FC /* ReportAbuseVC.xib */; };
 		B032199B2019E426008650FC /* PBReportAbuseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032199A2019E426008650FC /* PBReportAbuseItem.swift */; };
+		B037E269201F63C0003DC368 /* FollowUsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037E267201F63C0003DC368 /* FollowUsCell.swift */; };
+		B037E26A201F63C0003DC368 /* FollowUsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B037E268201F63C0003DC368 /* FollowUsCell.xib */; };
 		B06615D9201F094400845EB5 /* NotificationsSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06615D7201F094400845EB5 /* NotificationsSettingsVC.swift */; };
 		B06615DA201F094400845EB5 /* NotificationsSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06615D8201F094400845EB5 /* NotificationsSettingsVC.xib */; };
 		B0983B7B20148AD7003AB028 /* PostDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0983B7920148AD7003AB028 /* PostDescriptionVC.swift */; };
@@ -144,6 +146,8 @@
 		B03219962019DA3E008650FC /* ReportAbuseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAbuseVC.swift; sourceTree = "<group>"; };
 		B03219972019DA3E008650FC /* ReportAbuseVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportAbuseVC.xib; sourceTree = "<group>"; };
 		B032199A2019E426008650FC /* PBReportAbuseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBReportAbuseItem.swift; sourceTree = "<group>"; };
+		B037E267201F63C0003DC368 /* FollowUsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUsCell.swift; sourceTree = "<group>"; };
+		B037E268201F63C0003DC368 /* FollowUsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowUsCell.xib; sourceTree = "<group>"; };
 		B06615D7201F094400845EB5 /* NotificationsSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsVC.swift; sourceTree = "<group>"; };
 		B06615D8201F094400845EB5 /* NotificationsSettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsSettingsVC.xib; sourceTree = "<group>"; };
 		B0983B7920148AD7003AB028 /* PostDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDescriptionVC.swift; sourceTree = "<group>"; };
@@ -373,6 +377,8 @@
 				B003D4312017809C0025DF6C /* AccountSettingsVC.xib */,
 				B003D434201780CF0025DF6C /* AccountsSettingsCell.swift */,
 				B003D435201780CF0025DF6C /* AccountsSettingsCell.xib */,
+				B037E267201F63C0003DC368 /* FollowUsCell.swift */,
+				B037E268201F63C0003DC368 /* FollowUsCell.xib */,
 			);
 			path = AccountSettingsVC;
 			sourceTree = "<group>";
@@ -584,6 +590,7 @@
 				B0F4CA7A200F20A400F39409 /* LaunchScreen.storyboard in Resources */,
 				B00D05CA201371D40031CE82 /* RevealSettingsVC.xib in Resources */,
 				B003D437201780CF0025DF6C /* AccountsSettingsCell.xib in Resources */,
+				B037E26A201F63C0003DC368 /* FollowUsCell.xib in Resources */,
 				B0A436A22010E40900DDBA7C /* PBSignUPVC.xib in Resources */,
 				B0F4CA77200F20A400F39409 /* Assets.xcassets in Resources */,
 				B00D05D320137BBD0031CE82 /* PBShareLimitCell.xib in Resources */,
@@ -715,6 +722,7 @@
 				B0A436812010867000DDBA7C /* PBEmailAndPasswrdCell.swift in Sources */,
 				846ED2882011D759004749ED /* PBServiceHelper.swift in Sources */,
 				B00D05D220137BBD0031CE82 /* PBShareLimitCell.swift in Sources */,
+				B037E269201F63C0003DC368 /* FollowUsCell.swift in Sources */,
 				44217FBA201625800022F09C /* PBFeedsCollectionCell.swift in Sources */,
 				B0F4CA87200F24DC00F39409 /* NavConstants.swift in Sources */,
 				B06615D9201F094400845EB5 /* NotificationsSettingsVC.swift in Sources */,

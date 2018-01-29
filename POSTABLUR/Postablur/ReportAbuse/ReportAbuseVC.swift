@@ -38,8 +38,17 @@ class ReportAbuseVC: UIViewController {
         doneToolbar = Constants.getDoneToolbar(dismissBtn: doneButton)
         
         self.descriptionTv.inputAccessoryView = doneToolbar
+        
+        
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(true)
+        self.abuseTF.text = ""
+        self.descriptionTv.text = ""
+
+    }
     @objc internal func tapGestureRecognized()
     {
         self.descriptionTv.resignFirstResponder()

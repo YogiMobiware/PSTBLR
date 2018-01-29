@@ -15,7 +15,6 @@ protocol RegistrationCellDelegate
     
     func pbloginBtnDidTap()
     
-    //func moveToPBWebVC(toController : UIViewController)
 }
 class RegistrationCell: UITableViewCell,UITextViewDelegate
 {
@@ -26,6 +25,7 @@ class RegistrationCell: UITableViewCell,UITextViewDelegate
     @IBOutlet weak var reTypePasswordTF: UITextField!
     @IBOutlet weak var loginBtn : UIButton!
     @IBOutlet var termsTextView: UITextView!
+
     @IBOutlet weak var nextBtn : UIButton!
     var registerDelegate : RegistrationCellDelegate? = nil
 
@@ -40,7 +40,6 @@ class RegistrationCell: UITableViewCell,UITextViewDelegate
         passwordTF.attributedPlaceholder = Constants.textFieldPalceHolderColor(placeHolderText: PlaceHolderText.Password.rawValue)
         
         reTypePasswordTF.attributedPlaceholder = Constants.textFieldPalceHolderColor(placeHolderText: PlaceHolderText.RetypePassword.rawValue)
-        
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
@@ -64,7 +63,7 @@ class RegistrationCell: UITableViewCell,UITextViewDelegate
         termsTextView.attributedText = attributedString
         termsTextView.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue :Constants.cell_HighlightedColor]
         termsTextView.isUserInteractionEnabled = true
-        
+ 
     }
 
     override func setSelected(_ selected: Bool, animated: Bool)

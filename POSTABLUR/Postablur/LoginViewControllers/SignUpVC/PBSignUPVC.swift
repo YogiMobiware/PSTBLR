@@ -39,7 +39,7 @@ class PBSignUPVC: UIViewController,UIImagePickerControllerDelegate,UINavigationC
         NotificationCenter.default.addObserver(self, selector: #selector(PBSignUPVC.keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         let tapRecogniser: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PBSignUPVC.tapGestureRecognized))
-        self.signUpTableView.addGestureRecognizer(tapRecogniser)
+        //self.signUpTableView.addGestureRecognizer(tapRecogniser)
 
     }
     
@@ -161,7 +161,10 @@ class PBSignUPVC: UIViewController,UIImagePickerControllerDelegate,UINavigationC
 }
 extension PBSignUPVC : UITextViewDelegate
 {
-    //func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        
+    }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
     {
@@ -249,12 +252,12 @@ extension PBSignUPVC : UITableViewDataSource, UITableViewDelegate
             
         case 2:
             let cell : RegistrationCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.RegistrationCellIdentifier.rawValue, for: indexPath) as! RegistrationCell
+            cell.termsTextView.delegate = self
             cell.registerDelegate = self
             cell.userNameTF.delegate = self
             cell.emailTF.delegate = self
             cell.passwordTF.delegate = self
             cell.reTypePasswordTF.delegate = self
-            cell.termsTextView.delegate = self
             return cell
             
         default:
@@ -268,7 +271,6 @@ extension PBSignUPVC : UITableViewDataSource, UITableViewDelegate
         
     }
     
-   
 }
 
 
