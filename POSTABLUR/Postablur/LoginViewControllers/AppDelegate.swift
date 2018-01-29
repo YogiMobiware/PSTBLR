@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     var registrationType = 1
     
+    var needToReloadFeeds = false
+    var needToJustRefreshView = false
+
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
         if let _ = UserDefaults.standard.string(forKey: "UserId") {
