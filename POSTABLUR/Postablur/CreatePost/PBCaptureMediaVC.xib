@@ -31,10 +31,7 @@
                 <outlet property="flashButton" destination="uaa-Ae-7EV" id="h5F-Mq-JYo"/>
                 <outlet property="flipCameraButton" destination="HjO-ne-ubB" id="7aT-SZ-rv9"/>
                 <outlet property="pickPhotoButton" destination="lLT-0Z-UgW" id="M5e-JE-gvP"/>
-                <outlet property="selectAudioTypeButton" destination="8mx-bB-whF" id="jLu-As-jut"/>
                 <outlet property="selectPhotoTypeButton" destination="MEp-PT-XrB" id="Cj7-ay-mrK"/>
-                <outlet property="selectVideoTypeButton" destination="Udt-56-iC0" id="M9j-U8-qH4"/>
-                <outlet property="slidingBarLeftConstraint" destination="VTP-f6-b9M" id="1dv-Y2-ewc"/>
                 <outlet property="view" destination="f7e-l4-dp9" id="yrX-pA-9Qa"/>
                 <outlet property="xButton" destination="xUQ-Lb-96M" id="ayG-zb-s3T"/>
             </connections>
@@ -132,62 +129,33 @@
                             <rect key="frame" x="0.0" y="581" width="414.33333333333331" height="52"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEp-PT-XrB" userLabel="photo">
-                                    <rect key="frame" x="0.0" y="0.0" width="136.66666666666666" height="49"/>
+                                    <rect key="frame" x="139" y="0.33333333333337123" width="136.66666666666663" height="52"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="136" id="bQP-mp-MtU"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="29"/>
                                     <state key="normal" title="PHOTO">
                                         <color key="titleColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
-                                    <connections>
-                                        <action selector="pickMediaTypeButtonTapped:" destination="-1" eventType="touchUpInside" id="P1p-o0-gNT"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mx-bB-whF" userLabel="audio">
-                                    <rect key="frame" x="136.66666666666663" y="0.0" width="136.33333333333337" height="49"/>
-                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="29"/>
-                                    <state key="normal" title="AUDIO">
-                                        <color key="titleColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="pickMediaTypeButtonTapped:" destination="-1" eventType="touchUpInside" id="LrM-Mi-WFe"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Udt-56-iC0" userLabel="video">
-                                    <rect key="frame" x="273" y="-0.66666666666662877" width="141.33333333333337" height="49"/>
-                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="29"/>
-                                    <state key="normal" title="VIDEO">
-                                        <color key="titleColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="pickMediaTypeButtonTapped:" destination="-1" eventType="touchUpInside" id="9tY-jX-iA1"/>
-                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Evv-FX-zdX">
-                                    <rect key="frame" x="0.0" y="49" width="136.66666666666666" height="3"/>
+                                    <rect key="frame" x="139" y="48" width="136.66666666666663" height="4"/>
                                     <color key="backgroundColor" red="0.0" green="0.68627450980392157" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="3" id="wgL-KD-Vvy"/>
+                                        <constraint firstAttribute="height" constant="4" id="TYy-OW-RgV"/>
                                     </constraints>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="Udt-56-iC0" firstAttribute="centerY" secondItem="MEp-PT-XrB" secondAttribute="centerY" id="5L9-DC-NaO"/>
-                                <constraint firstItem="8mx-bB-whF" firstAttribute="centerY" secondItem="MEp-PT-XrB" secondAttribute="centerY" id="A5v-w8-cmz"/>
-                                <constraint firstItem="8mx-bB-whF" firstAttribute="leading" secondItem="MEp-PT-XrB" secondAttribute="trailing" id="D5B-pR-PAY"/>
+                                <constraint firstItem="Evv-FX-zdX" firstAttribute="leading" secondItem="MEp-PT-XrB" secondAttribute="leading" id="5FS-Vm-boh"/>
                                 <constraint firstAttribute="height" constant="52" id="DeH-ea-MZM"/>
-                                <constraint firstItem="8mx-bB-whF" firstAttribute="width" secondItem="MEp-PT-XrB" secondAttribute="width" id="Ig9-Wv-jFx"/>
-                                <constraint firstItem="MEp-PT-XrB" firstAttribute="leading" secondItem="thq-gk-jeB" secondAttribute="leading" id="QEP-4M-6Am"/>
-                                <constraint firstItem="MEp-PT-XrB" firstAttribute="width" secondItem="thq-gk-jeB" secondAttribute="width" multiplier="0.33" id="RJ7-KM-GpX"/>
-                                <constraint firstItem="Udt-56-iC0" firstAttribute="leading" secondItem="8mx-bB-whF" secondAttribute="trailing" id="U6r-YO-9fc"/>
-                                <constraint firstItem="Evv-FX-zdX" firstAttribute="leading" secondItem="thq-gk-jeB" secondAttribute="leading" id="VTP-f6-b9M"/>
-                                <constraint firstItem="MEp-PT-XrB" firstAttribute="top" secondItem="thq-gk-jeB" secondAttribute="top" id="hTC-B2-SGL"/>
-                                <constraint firstItem="Evv-FX-zdX" firstAttribute="width" secondItem="MEp-PT-XrB" secondAttribute="width" id="iwf-2g-JWV"/>
-                                <constraint firstItem="Evv-FX-zdX" firstAttribute="top" secondItem="MEp-PT-XrB" secondAttribute="bottom" id="jcv-84-SK4"/>
-                                <constraint firstItem="8mx-bB-whF" firstAttribute="height" secondItem="MEp-PT-XrB" secondAttribute="height" id="jg7-mk-hnz"/>
-                                <constraint firstAttribute="bottom" secondItem="Evv-FX-zdX" secondAttribute="bottom" id="mmy-ep-agQ"/>
-                                <constraint firstAttribute="trailing" secondItem="Udt-56-iC0" secondAttribute="trailing" id="rar-X6-GVH"/>
-                                <constraint firstItem="Udt-56-iC0" firstAttribute="height" secondItem="MEp-PT-XrB" secondAttribute="height" id="rkb-Ls-VdB"/>
+                                <constraint firstItem="MEp-PT-XrB" firstAttribute="centerY" secondItem="thq-gk-jeB" secondAttribute="centerY" id="FNZ-A3-SkV"/>
+                                <constraint firstItem="MEp-PT-XrB" firstAttribute="height" secondItem="thq-gk-jeB" secondAttribute="height" id="MQ2-iY-Je5"/>
+                                <constraint firstItem="MEp-PT-XrB" firstAttribute="centerX" secondItem="thq-gk-jeB" secondAttribute="centerX" id="Vfn-Xe-rEi"/>
+                                <constraint firstItem="Evv-FX-zdX" firstAttribute="width" secondItem="MEp-PT-XrB" secondAttribute="width" id="iXa-Pz-w64"/>
+                                <constraint firstAttribute="bottom" secondItem="Evv-FX-zdX" secondAttribute="bottom" id="q2N-ec-NYJ"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP ANYWHERE ON SCREEN TO CAPTURE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lky-GT-lWe">

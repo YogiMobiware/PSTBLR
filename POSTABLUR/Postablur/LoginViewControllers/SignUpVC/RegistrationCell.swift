@@ -15,8 +15,9 @@ protocol RegistrationCellDelegate
     
     func pbloginBtnDidTap()
     
+    //func moveToPBWebVC(toController : UIViewController)
 }
-class RegistrationCell: UITableViewCell
+class RegistrationCell: UITableViewCell,UITextViewDelegate
 {
 
     @IBOutlet weak var userNameTF: UITextField!
@@ -24,6 +25,7 @@ class RegistrationCell: UITableViewCell
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var reTypePasswordTF: UITextField!
     @IBOutlet weak var loginBtn : UIButton!
+    @IBOutlet var termsTextView: UITextView!
     @IBOutlet weak var nextBtn : UIButton!
     var registerDelegate : RegistrationCellDelegate? = nil
 
@@ -39,6 +41,30 @@ class RegistrationCell: UITableViewCell
         
         reTypePasswordTF.attributedPlaceholder = Constants.textFieldPalceHolderColor(placeHolderText: PlaceHolderText.RetypePassword.rawValue)
         
+        
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        
+        let str = "signing up you agree to our Terms of Use and Privacy Policy."
+        
+        var attributedString = NSMutableAttributedString(string: str)
+        
+        attributedString = NSMutableAttributedString(string: str, attributes: [NSAttributedStringKey.font:UIFont(name: "Avenir-Roman", size: 8)!])
+        
+        attributedString = NSMutableAttributedString(string: str,attributes: [NSAttributedStringKey.paragraphStyle: paragraph])
+        
+        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location:0, length: str.count))
+        
+        let termsRange = attributedString.mutableString.range(of: "Terms of Use")
+        attributedString.addAttribute(NSAttributedStringKey.link, value: Constants.termsAndConditionsURL, range: termsRange)
+        
+        let privacyRange = attributedString.mutableString.range(of: "Privacy Policy.")
+        attributedString.addAttribute(NSAttributedStringKey.link, value: Constants.privacyURL, range: privacyRange)
+        
+        termsTextView.attributedText = attributedString
+        termsTextView.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue :Constants.cell_HighlightedColor]
+        termsTextView.isUserInteractionEnabled = true
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool)
@@ -47,6 +73,9 @@ class RegistrationCell: UITableViewCell
 
         // Configure the view for the selected state
     }
+    
+
+    
     
     @IBAction func nextBtnAction(_ sender: UIButton)
     {

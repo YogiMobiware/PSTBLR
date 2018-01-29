@@ -74,13 +74,13 @@ class PBFeedsVC : UIViewController
             
         case self.audioFilterButton :
             
-            self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+            self.view.makeToast("Audio coming soon...", duration: 3.0, position: .center, style: style)
             //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
             break
             
         case self.videoFilterButton:
             
-            self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+            self.view.makeToast("Video coming soon...", duration: 3.0, position: .center, style: style)
             //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
             break
             
