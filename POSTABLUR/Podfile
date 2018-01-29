@@ -8,11 +8,13 @@ target 'Postablur' do
   pod 'FBSDKLoginKit'
   pod 'TwitterKit'
   pod 'Kingfisher'
+  pod 'Toast-Swift'
 
   # Pods for Postablur
   pod 'Alamofire'
   pod 'FBSDKLoginKit'
   pod 'TwitterKit'
   pod 'Kingfisher'
+  pod 'Toast-Swift'
 
 end

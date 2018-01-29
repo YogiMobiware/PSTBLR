@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Toast_Swift
 
 class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
 {
@@ -21,6 +22,8 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var profileButton: UIButton!
     
     var selectedButton : UIButton!
+    
+    var style = ToastStyle()
     
     // MARK: -  Activity Indicator
     var faProgressHud : MBProgressHUD!
@@ -39,6 +42,9 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        self.style.messageColor = .white
         
         
         if let userProfileUrlStr = UserDefaults.standard.object(forKey: Constants.kUserProfilePicURL) as? String
@@ -233,12 +239,14 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
     @IBAction func statsTapped(_ sender : UIButton)
     {
         
-        let alertView = UIAlertController(title: "Postablur", message: "Stats coming soon...", preferredStyle: .alert)
+        /*let alertView = UIAlertController(title: "Postablur", message: "Stats coming soon...", preferredStyle: .alert)
         let action = UIAlertAction(title: "Okay", style: .default, handler: { (alert) in
             
         })
         alertView.addAction(action)
-        self.present(alertView, animated: true, completion: nil)
+        self.present(alertView, animated: true, completion: nil)*/
+        
+        self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
         
         
     }

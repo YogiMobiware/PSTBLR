@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,6 +26,7 @@
             <connections>
                 <outlet property="accountsFeedsCollectionView" destination="4dn-xC-TRI" id="cDz-tb-XJG"/>
                 <outlet property="activity" destination="yzJ-sh-cni" id="JYf-yI-vUV"/>
+                <outlet property="audioBtn" destination="dMv-eX-RoI" id="yn4-Bg-TSg"/>
                 <outlet property="buttonsView" destination="U7l-ur-mtS" id="Nf6-RW-pxy"/>
                 <outlet property="connectBtn" destination="9t7-vE-yWj" id="uSs-OX-FV5"/>
                 <outlet property="connectsLabel" destination="iVi-J2-hTX" id="aT6-3N-bDB"/>
@@ -35,6 +36,7 @@
                 <outlet property="donorsLabel" destination="nrD-yN-4gd" id="NGM-CH-vQi"/>
                 <outlet property="donorsView" destination="9Oi-ZN-EaC" id="g3e-vw-uwI"/>
                 <outlet property="headerView" destination="IXv-xH-X2G" id="3et-b5-vQY"/>
+                <outlet property="photoBtn" destination="faX-bK-PhS" id="C9h-a1-eaJ"/>
                 <outlet property="postsNotAvailLabel" destination="7ed-At-qAQ" id="UwS-a8-8aw"/>
                 <outlet property="settingsBtn" destination="fgX-wL-qeU" id="a8i-gM-IOJ"/>
                 <outlet property="sponcersLabel" destination="vH4-hE-o8S" id="UnE-Va-nAY"/>
@@ -42,6 +44,7 @@
                 <outlet property="userDescTextView" destination="EQC-fU-Apz" id="4Xn-39-vVE"/>
                 <outlet property="userProfileImage" destination="XNV-2D-Qvw" id="2Cp-SB-QN3"/>
                 <outlet property="usernameLabel" destination="y1p-Sr-zxw" id="JDH-VS-fYh"/>
+                <outlet property="videoBtn" destination="tiB-p0-uJi" id="acF-vK-N9u"/>
                 <outlet property="videoView" destination="oLM-G2-0A1" id="gYC-4O-wVL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -250,6 +253,9 @@
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
                                     <color key="tintColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title=" P" image="photoMediaTypeIcon"/>
+                                    <connections>
+                                        <action selector="photoBtnAction:" destination="-1" eventType="touchUpInside" id="wBm-Fe-bNR"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -271,6 +277,9 @@
                                     <state key="normal" title=" A" image="audioMediaTypeIcon">
                                         <color key="titleColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="audioBtnAction:" destination="-1" eventType="touchUpInside" id="OSq-R3-cvh"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -292,6 +301,9 @@
                                     <state key="normal" title=" V" image="videoMediaTypeIcon">
                                         <color key="titleColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="videoBtnAction:" destination="-1" eventType="touchUpInside" id="PRi-gD-wMV"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

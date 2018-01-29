@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -179,14 +179,14 @@
                                 <rect key="frame" x="193" y="0.0" width="96" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoh-cV-oct">
-                                        <rect key="frame" x="28" y="10" width="40" height="40"/>
+                                        <rect key="frame" x="28" y="8" width="40" height="40"/>
                                         <state key="normal" image="shareGreyIconPostablurApp"/>
                                         <connections>
                                             <action selector="shareTapped:" destination="0gU-4m-vr0" eventType="touchUpInside" id="SOv-ll-6C8"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 shares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egh-lA-ShZ">
-                                        <rect key="frame" x="26" y="58" width="44.5" height="16.5"/>
+                                        <rect key="frame" x="26" y="56" width="44.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                         <color key="textColor" red="0.49799913169999999" green="0.49806177619999997" blue="0.49797785280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -197,21 +197,21 @@
                                     <constraint firstItem="xoh-cV-oct" firstAttribute="centerX" secondItem="4J3-xS-QbP" secondAttribute="centerX" id="12v-hr-cOb"/>
                                     <constraint firstItem="Egh-lA-ShZ" firstAttribute="top" secondItem="xoh-cV-oct" secondAttribute="bottom" constant="8" id="FLs-Zd-MMQ"/>
                                     <constraint firstItem="Egh-lA-ShZ" firstAttribute="centerX" secondItem="xoh-cV-oct" secondAttribute="centerX" id="HLf-B8-mLq"/>
-                                    <constraint firstItem="xoh-cV-oct" firstAttribute="top" secondItem="4J3-xS-QbP" secondAttribute="top" constant="10" id="iXh-sE-nQh"/>
+                                    <constraint firstItem="xoh-cV-oct" firstAttribute="top" secondItem="4J3-xS-QbP" secondAttribute="top" constant="8" id="iXh-sE-nQh"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bh-nM-N7Y" userLabel="spacerViewDonation">
                                 <rect key="frame" x="289" y="0.0" width="96" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wE3-p5-AUs">
-                                        <rect key="frame" x="27.5" y="10" width="41" height="41"/>
+                                        <rect key="frame" x="27.5" y="6" width="41" height="41"/>
                                         <state key="normal" image="Report GrayIconPostablurApp"/>
                                         <connections>
                                             <action selector="donateTapped:" destination="0gU-4m-vr0" eventType="touchUpInside" id="bee-Tk-LXC"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report Abuse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6b-fA-POt">
-                                        <rect key="frame" x="10.5" y="59" width="75.5" height="16.5"/>
+                                        <rect key="frame" x="10.5" y="55" width="75.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                         <color key="textColor" red="0.49799913169999999" green="0.49806177619999997" blue="0.49797785280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -220,7 +220,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="wE3-p5-AUs" firstAttribute="centerX" secondItem="8Bh-nM-N7Y" secondAttribute="centerX" id="N8i-gi-R5g"/>
-                                    <constraint firstItem="wE3-p5-AUs" firstAttribute="top" secondItem="8Bh-nM-N7Y" secondAttribute="top" constant="10" id="aL8-7U-ZJQ"/>
+                                    <constraint firstItem="wE3-p5-AUs" firstAttribute="top" secondItem="8Bh-nM-N7Y" secondAttribute="top" constant="6" id="aL8-7U-ZJQ"/>
                                     <constraint firstItem="H6b-fA-POt" firstAttribute="centerX" secondItem="wE3-p5-AUs" secondAttribute="centerX" id="hbR-6W-xx7"/>
                                     <constraint firstItem="H6b-fA-POt" firstAttribute="top" secondItem="wE3-p5-AUs" secondAttribute="bottom" constant="8" id="udN-V7-B28"/>
                                 </constraints>
