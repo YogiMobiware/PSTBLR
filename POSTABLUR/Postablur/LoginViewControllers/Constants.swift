@@ -55,8 +55,8 @@ enum FontName : String
 class Constants: NSObject
 {
     
-    static let termsAndConditionsURL = "https://www.foundmi.com/terms-conditions"
-    static let privacyURL = "https://www.foundmi.com/privacy-policy"
+    static let termsAndConditionsURL = "https://www.1millioncups.com/privacy-terms"
+    static let privacyURL = "https://www.1millioncups.com/privacy-terms"
 
     static let kUserProfilePicURL = "Profileurl"
 

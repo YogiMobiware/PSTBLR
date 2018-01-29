@@ -130,7 +130,24 @@ extension AccountSettingsVC : UITableViewDataSource, UITableViewDelegate
         }
         else if indexPath.section == 2
         {
-            if indexPath.row == 2
+            if indexPath.row == 0
+            {
+                let pb_webVC = PBWebVC(nibName: "PBWebVC", bundle: nil)
+                pb_webVC.urlValue = Constants.privacyURL
+                pb_webVC.titleString = "PRIVACY POLICY"
+                self.present(pb_webVC, animated: true, completion: nil)
+
+            }
+      
+            else if indexPath.row == 1
+            {
+                let pb_webVC = PBWebVC(nibName: "PBWebVC", bundle: nil)
+                pb_webVC.urlValue = Constants.termsAndConditionsURL
+                pb_webVC.titleString = "TERMS OF USE"
+                self.present(pb_webVC, animated: true, completion: nil)
+            }
+       
+            else
             {
                 print("add logout logic here")
                 FBSDKLoginManager().logOut()

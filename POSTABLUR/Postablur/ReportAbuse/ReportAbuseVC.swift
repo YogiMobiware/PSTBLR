@@ -38,6 +38,10 @@ class ReportAbuseVC: UIViewController {
         doneToolbar = Constants.getDoneToolbar(dismissBtn: doneButton)
         
         self.descriptionTv.inputAccessoryView = doneToolbar
+        
+        self.abuseTF.text = ""
+        self.descriptionTv.text = ""
+        
     }
 
     @objc internal func tapGestureRecognized()
