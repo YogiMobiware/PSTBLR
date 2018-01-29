@@ -32,6 +32,8 @@
 		8474E94A2015FCDE00D85E4F /* PostReviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8474E9482015FCDE00D85E4F /* PostReviewVC.xib */; };
 		849E3E1120177C6E00AA2037 /* AccountsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E3E0F20177C6E00AA2037 /* AccountsCollectionCell.swift */; };
 		849E3E1220177C6E00AA2037 /* AccountsCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849E3E1020177C6E00AA2037 /* AccountsCollectionCell.xib */; };
+		84ABDA10201F1D4600275F4B /* PBWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ABDA0E201F1D4600275F4B /* PBWebVC.swift */; };
+		84ABDA11201F1D4600275F4B /* PBWebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84ABDA0F201F1D4600275F4B /* PBWebVC.xib */; };
 		B003D42D201744640025DF6C /* AccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003D42B201744640025DF6C /* AccountsVC.swift */; };
 		B003D42E201744650025DF6C /* AccountsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B003D42C201744640025DF6C /* AccountsVC.xib */; };
 		B003D4322017809C0025DF6C /* AccountSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003D4302017809C0025DF6C /* AccountSettingsVC.swift */; };
@@ -49,6 +51,8 @@
 		B03219982019DA3E008650FC /* ReportAbuseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03219962019DA3E008650FC /* ReportAbuseVC.swift */; };
 		B03219992019DA3E008650FC /* ReportAbuseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03219972019DA3E008650FC /* ReportAbuseVC.xib */; };
 		B032199B2019E426008650FC /* PBReportAbuseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032199A2019E426008650FC /* PBReportAbuseItem.swift */; };
+		B06615D9201F094400845EB5 /* NotificationsSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06615D7201F094400845EB5 /* NotificationsSettingsVC.swift */; };
+		B06615DA201F094400845EB5 /* NotificationsSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06615D8201F094400845EB5 /* NotificationsSettingsVC.xib */; };
 		B0983B7B20148AD7003AB028 /* PostDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0983B7920148AD7003AB028 /* PostDescriptionVC.swift */; };
 		B0983B7C20148AD7003AB028 /* PostDescriptionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0983B7A20148AD7003AB028 /* PostDescriptionVC.xib */; };
 		B0A0204B2011DEE600D3837B /* PBAccountTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A020452011DEE600D3837B /* PBAccountTypeVC.swift */; };
@@ -121,6 +125,8 @@
 		8474E9482015FCDE00D85E4F /* PostReviewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostReviewVC.xib; sourceTree = "<group>"; };
 		849E3E0F20177C6E00AA2037 /* AccountsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCollectionCell.swift; sourceTree = "<group>"; };
 		849E3E1020177C6E00AA2037 /* AccountsCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountsCollectionCell.xib; sourceTree = "<group>"; };
+		84ABDA0E201F1D4600275F4B /* PBWebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBWebVC.swift; sourceTree = "<group>"; };
+		84ABDA0F201F1D4600275F4B /* PBWebVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBWebVC.xib; sourceTree = "<group>"; };
 		B003D42B201744640025DF6C /* AccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVC.swift; sourceTree = "<group>"; };
 		B003D42C201744640025DF6C /* AccountsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountsVC.xib; sourceTree = "<group>"; };
 		B003D4302017809C0025DF6C /* AccountSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsVC.swift; sourceTree = "<group>"; };
@@ -138,6 +144,8 @@
 		B03219962019DA3E008650FC /* ReportAbuseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAbuseVC.swift; sourceTree = "<group>"; };
 		B03219972019DA3E008650FC /* ReportAbuseVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportAbuseVC.xib; sourceTree = "<group>"; };
 		B032199A2019E426008650FC /* PBReportAbuseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBReportAbuseItem.swift; sourceTree = "<group>"; };
+		B06615D7201F094400845EB5 /* NotificationsSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsVC.swift; sourceTree = "<group>"; };
+		B06615D8201F094400845EB5 /* NotificationsSettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsSettingsVC.xib; sourceTree = "<group>"; };
 		B0983B7920148AD7003AB028 /* PostDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDescriptionVC.swift; sourceTree = "<group>"; };
 		B0983B7A20148AD7003AB028 /* PostDescriptionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDescriptionVC.xib; sourceTree = "<group>"; };
 		B0A020452011DEE600D3837B /* PBAccountTypeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBAccountTypeVC.swift; sourceTree = "<group>"; };
@@ -283,12 +291,14 @@
 			children = (
 				B0A4369F2010E40900DDBA7C /* PBSignUPVC.swift */,
 				B0A436A02010E40900DDBA7C /* PBSignUPVC.xib */,
+				B0A4368F2010BD5200DDBA7C /* PBHeaderCell.swift */,
+				B0A436902010BD5200DDBA7C /* PBHeaderCell.xib */,
 				B0A436932010BF6900DDBA7C /* AddProfilePhotoCell.swift */,
 				B0A436942010BF6900DDBA7C /* AddProfilePhotoCell.xib */,
 				B0A436972010D2EF00DDBA7C /* RegistrationCell.swift */,
 				B0A436982010D2EF00DDBA7C /* RegistrationCell.xib */,
-				B0A4368F2010BD5200DDBA7C /* PBHeaderCell.swift */,
-				B0A436902010BD5200DDBA7C /* PBHeaderCell.xib */,
+				84ABDA0E201F1D4600275F4B /* PBWebVC.swift */,
+				84ABDA0F201F1D4600275F4B /* PBWebVC.xib */,
 			);
 			path = SignUpVC;
 			sourceTree = "<group>";
@@ -392,6 +402,15 @@
 			path = ReportAbuse;
 			sourceTree = "<group>";
 		};
+		B06615D6201F08F900845EB5 /* NotificationsSettings */ = {
+			isa = PBXGroup;
+			children = (
+				B06615D7201F094400845EB5 /* NotificationsSettingsVC.swift */,
+				B06615D8201F094400845EB5 /* NotificationsSettingsVC.xib */,
+			);
+			path = NotificationsSettings;
+			sourceTree = "<group>";
+		};
 		B0983B7820148AAD003AB028 /* PostDescription */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +466,7 @@
 		B0F4CA6E200F20A400F39409 /* Postablur */ = {
 			isa = PBXGroup;
 			children = (
+				B06615D6201F08F900845EB5 /* NotificationsSettings */,
 				B03219952019DA10008650FC /* ReportAbuse */,
 				B003D42F2017807F0025DF6C /* AccountSettingsVC */,
 				B003D42A2017443F0025DF6C /* AccountsViewController */,
@@ -581,7 +601,9 @@
 				B0A436822010867000DDBA7C /* PBEmailAndPasswrdCell.xib in Resources */,
 				B0A0204E2011DEE600D3837B /* PBFreeAccountCell.xib in Resources */,
 				B03219992019DA3E008650FC /* ReportAbuseVC.xib in Resources */,
+				84ABDA11201F1D4600275F4B /* PBWebVC.xib in Resources */,
 				444E46CE201763BF00C3FA10 /* PBFeedsInteractionVC.xib in Resources */,
+				B06615DA201F094400845EB5 /* NotificationsSettingsVC.xib in Resources */,
 				B003D4332017809C0025DF6C /* AccountSettingsVC.xib in Resources */,
 				B0A020502011DEE600D3837B /* PBPaidAccoutCell.xib in Resources */,
 				44217FB8201624A00022F09C /* PBFeedsCollectionCell.xib in Resources */,
@@ -695,11 +717,13 @@
 				B00D05D220137BBD0031CE82 /* PBShareLimitCell.swift in Sources */,
 				44217FBA201625800022F09C /* PBFeedsCollectionCell.swift in Sources */,
 				B0F4CA87200F24DC00F39409 /* NavConstants.swift in Sources */,
+				B06615D9201F094400845EB5 /* NotificationsSettingsVC.swift in Sources */,
 				B0A4368C20109F7600DDBA7C /* PBLogoCell.swift in Sources */,
 				B0F1D6C42015F3480010567F /* DescriptionCell.swift in Sources */,
 				44A77C1D2014C84300E879D7 /* PBUtility.swift in Sources */,
 				444E46C82017277E00C3FA10 /* PBFeedItem.swift in Sources */,
 				B00D05D620137BE20031CE82 /* PBDollarLimitCell.swift in Sources */,
+				84ABDA10201F1D4600275F4B /* PBWebVC.swift in Sources */,
 				B0F1D6C02015F3300010567F /* LocationCell.swift in Sources */,
 				444E46CA2017525F00C3FA10 /* PBFeedMedia.swift in Sources */,
 				447A5A09201537C40010E5DB /* UIImageEffects.swift in Sources */,

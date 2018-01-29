@@ -18,12 +18,14 @@ enum PlaceHolderText: String
 
 }
 
-enum UploadedImageType : String{
+enum UploadedImageType : String
+{
     
     case CapturedPhotoFromCamera = "CapturedPhotoFromCamera"
     case UploadedPhotoFromLibrary = "UploadedPhotoFromLibrary"
 }
-enum CellIdentifiers: String{
+enum CellIdentifiers: String
+{
     
     case LogoHeaderReuseIdentifier = "PBLogoCellID"
     case EmailAndPasswrdReuseIdentifier = "PBEmailAndPasswrdCellID"
@@ -44,12 +46,17 @@ enum CellIdentifiers: String{
 
 }
 
-enum FontName : String {
+enum FontName : String
+{
     
     case AvenirBlack = "Avenir-Black"
 }
 
-class Constants: NSObject {
+class Constants: NSObject
+{
+    
+    static let termsAndConditionsURL = "https://www.foundmi.com/terms-conditions"
+    static let privacyURL = "https://www.foundmi.com/privacy-policy"
 
     static let kUserProfilePicURL = "Profileurl"
 
@@ -75,6 +82,7 @@ class Constants: NSObject {
     static let greyTintColor : UIColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 1)
     static let whiteTextColor : UIColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
 
+    static let cell_HighlightedColor : UIColor = UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 1)
     
     static func getDoneToolbar(dismissBtn: UIBarButtonItem) -> UIToolbar
     {

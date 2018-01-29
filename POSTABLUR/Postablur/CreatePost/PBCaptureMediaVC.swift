@@ -73,10 +73,10 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
     @IBOutlet weak var pickPhotoButton: UIButton!
 
     @IBOutlet weak var selectPhotoTypeButton: UIButton!
-    @IBOutlet weak var selectAudioTypeButton: UIButton!
-    @IBOutlet weak var selectVideoTypeButton: UIButton!
+    //@IBOutlet weak var selectAudioTypeButton: UIButton!
+    //@IBOutlet weak var selectVideoTypeButton: UIButton!
 
-    @IBOutlet weak var slidingBarLeftConstraint: NSLayoutConstraint!
+    //@IBOutlet weak var slidingBarLeftConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var createTitleLabel : UILabel!
 
@@ -132,8 +132,8 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         
         
         self.selectPhotoTypeButton.setTitleColor(.green, for: .normal)
-        self.selectAudioTypeButton.setTitleColor(.white, for: .normal)
-        self.selectVideoTypeButton.setTitleColor(.white, for: .normal)
+        //self.selectAudioTypeButton.setTitleColor(.white, for: .normal)
+        //self.selectVideoTypeButton.setTitleColor(.white, for: .normal)
 
     }
     
@@ -213,15 +213,15 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         present(pbImagePickerController, animated: true, completion: nil)
     }
     
-    @IBAction func pickMediaTypeButtonTapped(_ sender : UIButton)
+    /*@IBAction func pickMediaTypeButtonTapped(_ sender : UIButton)
     {
         if sender == self.selectPhotoTypeButton
         {
             self.animateBarToButton(button: self.selectPhotoTypeButton)
             
             self.selectPhotoTypeButton.setTitleColor(.green, for: .normal)
-            self.selectAudioTypeButton.setTitleColor(.white, for: .normal)
-            self.selectVideoTypeButton.setTitleColor(.white, for: .normal)
+            //self.selectAudioTypeButton.setTitleColor(.white, for: .normal)
+            //self.selectVideoTypeButton.setTitleColor(.white, for: .normal)
             
         }
         else if sender == self.selectAudioTypeButton
@@ -229,10 +229,10 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
             self.animateBarToButton(button: self.selectAudioTypeButton)
             
             self.selectAudioTypeButton.setTitleColor(.green, for: .normal)
-            self.selectPhotoTypeButton.setTitleColor(.white, for: .normal)
-            self.selectVideoTypeButton.setTitleColor(.white, for: .normal)
+            //self.selectPhotoTypeButton.setTitleColor(.white, for: .normal)
+            //self.selectVideoTypeButton.setTitleColor(.white, for: .normal)
             
-            self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+            self.view.makeToast("Audio coming soon...", duration: 3.0, position: .center, style: style)
             //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
             
         }
@@ -241,14 +241,14 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
             self.animateBarToButton(button: self.selectVideoTypeButton)
             
             self.selectVideoTypeButton.setTitleColor(.green, for: .normal)
-            self.selectAudioTypeButton.setTitleColor(.white, for: .normal)
-            self.selectPhotoTypeButton.setTitleColor(.white, for: .normal)
+            //self.selectAudioTypeButton.setTitleColor(.white, for: .normal)
+            //self.selectPhotoTypeButton.setTitleColor(.white, for: .normal)
             
-            self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+            self.view.makeToast("Video coming soon...", duration: 3.0, position: .center, style: style)
             //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
         
         }
-    }
+    }*/
     
     // MARK: Public Methods
     func getCameraPermission()
@@ -590,13 +590,13 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         }
     }
     
-    private func animateBarToButton(button : UIButton)
+    /*private func animateBarToButton(button : UIButton)
     {
         UIView.animate(withDuration: Constants.animationDuration) {
             self.slidingBarLeftConstraint.constant = button.frame.origin.x
             self.view.layoutIfNeeded()
         }
-    }
+    }*/
     
     
     // MARK: AVCapturePhotoCapture Delegate

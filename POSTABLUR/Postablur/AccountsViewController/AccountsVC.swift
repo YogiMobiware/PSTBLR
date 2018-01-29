@@ -84,6 +84,18 @@ class AccountsVC: UIViewController
             self.usernameLabel.text = username
         }
         
+        /*let value1 = "Hai "
+        let attribute1 = NSMutableAttributedString(string: value1 as String, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 12)])
+        let value2 = "CONNECTS"
+        let attribute2 = NSMutableAttributedString(string: value2 as String, attributes: [NSAttributedStringKey.font : UIFont(name: "Arial", size: 12.0)!])
+        
+        let combination = NSMutableAttributedString()
+        
+        combination.append(attribute1)
+        combination.append(attribute2)
+        
+        self.connectsLabel.attributedText = combination*/
+        
         /*let connectsLabelStr = "1B CONNECTS"
         var myMutableString = NSMutableAttributedString()
         myMutableString = NSMutableAttributedString(string: connectsLabelStr as String, attributes: [NSAttributedStringKey.font:UIFont(name: "Arial", size: 12.0)!])
@@ -244,7 +256,7 @@ class AccountsVC: UIViewController
     
     @IBAction func connectBtnAction(_ sender: UIButton)
     {
-        self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+        self.view.makeToast("coming soon...", duration: 3.0, position: .center, style: style)
         //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
     }
     
@@ -255,13 +267,13 @@ class AccountsVC: UIViewController
     
     @IBAction func audioBtnAction(_ sender: UIButton)
     {
-        self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+        self.view.makeToast("Audio coming soon...", duration: 3.0, position: .center, style: style)
         //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
     }
     
     @IBAction func videoBtnAction(_ sender: UIButton)
     {
-        self.view.makeToast("Stats coming soon...", duration: 3.0, position: .center, style: style)
+        self.view.makeToast("Video coming soon...", duration: 3.0, position: .center, style: style)
         //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
     }
     
