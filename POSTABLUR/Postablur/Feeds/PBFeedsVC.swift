@@ -35,6 +35,9 @@ class PBFeedsVC : UIViewController
     
     var style = ToastStyle()
     
+    let numberOfCellsPerRow: CGFloat = 3
+    
+    
     // MARK: Inits
     init()
     {
@@ -61,15 +64,43 @@ class PBFeedsVC : UIViewController
         let nib = UINib(nibName: NibNamed.PBFeedsCollectionCell.rawValue, bundle: nil)
         self.feedsCollectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         
-        blurOperationsQueue.maxConcurrentOperationCount = 3
+//        blurOperationsQueue.maxConcurrentOperationCount = 3
+        self.view.layoutIfNeeded()
         
         loadFeedsFromStart()
+
     }
     
     deinit {
         
         blurOperationsQueue.cancelAllOperations()
         blurOperations.removeAll()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let flowLayout = feedsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
+            let cellWidth = (view.frame.width - max(0, numberOfCellsPerRow - 1)*horizontalSpacing)/numberOfCellsPerRow
+            flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
+        }
+        
+        if appDelegate.needToReloadFeeds == true
+        {
+            appDelegate.needToReloadFeeds = false
+            loadFeedsFromStart()
+        }
+        else if appDelegate.needToJustRefreshView == true
+        {
+            appDelegate.needToJustRefreshView = false
+            self.feedsCollectionView.reloadData()
+        }
     }
     
     
@@ -347,6 +378,28 @@ class PBFeedsVC : UIViewController
         return documentsDirectory
     }
     
+    func isIndexPathVisibile(indexPath : IndexPath) -> Bool
+    {
+        let indexPaths = self.feedsCollectionView.indexPathsForVisibleItems
+        guard indexPaths.count > 0 else
+        {
+            return false
+        }
+        let matchingVisibleIndPaths = indexPaths.filter({ (inPath) -> Bool in
+            
+            return inPath == indexPath
+        })
+        
+        if matchingVisibleIndPaths.count == 0
+        {
+            return false
+        }
+        else
+        {
+            return true
+        }
+    }
+    
 }
 
 extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
@@ -390,12 +443,13 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
             {
                 if let thumbUrl = URL(string: thumburlString)
                 {
-                    cell.feedImageView.kf.setImage(with: thumbUrl, completionHandler: { (image, error, cacheType, imageUrl) in
+                    let resource = ImageResource(downloadURL: thumbUrl, cacheKey: thumburlString)
+                    cell.feedImageView.kf.setImage(with: resource, completionHandler: { (image, error, cacheType, imageUrl) in
                         
                         
+                        cell.feedImageView.kf.setImage(with: nil)
                         guard let img = image else
                         {
-                            cell.feedImageView.kf.setImage(with: nil)
                             self.activity.stopAnimating()
                             return
                         }
@@ -403,9 +457,21 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
                         let blurOperation = BlockOperation()
                         weak var weakOperation = blurOperation
                         weak var weakSelf = self
+                        weak var weakCell = cell
+                        weak var weakImg = img
+                        weak var weakFeedItem = feedItem
                         blurOperation.addExecutionBlock {
                             
+                            guard let img = weakImg else
+                            {
+                                return
+                            }
                             let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
+                            
+                            guard let feedItem = weakFeedItem else
+                            {
+                                return
+                            }
                             
                              self.saveImage(image: im, withName : "sfi\(feedItem.PostId!)_\(feedItem.CurrentLikesCount!)")
                             
@@ -422,16 +488,17 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
                                     {
                                         return
                                     }
-                                    weakSelf!.activity.stopAnimating()
-                                    cell.feedImageView.image = im
-                                    cell.feedImageView.alpha = 1
-                                    weakSelf!.blurOperations.removeValue(forKey: indexPath)
+                                    weakSelf?.activity.stopAnimating()
+                                    
+                                    weakCell?.feedImageView.image = im
+                                    weakCell?.feedImageView.alpha = 1
+                                    weakSelf?.blurOperations.removeValue(forKey: indexPath)
                                     
                                 }
                             }
-                            
                         }
                         
+                        cell.feedImageView.alpha = 0
                         self.blurOperations[indexPath] = blurOperation
                         self.blurOperationsQueue.addOperation(blurOperation)
                     })
@@ -492,6 +559,12 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        guard let cell = cell as? PBFeedsCollectionCell else
+        {
+            return
+        }
+        cell.feedImageView.kf.cancelDownloadTask()
         
         let indexPaths = collectionView.indexPathsForVisibleItems
             guard indexPaths.count > 0 else
