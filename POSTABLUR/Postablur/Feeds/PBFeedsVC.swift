@@ -175,7 +175,7 @@ class PBFeedsVC : UIViewController
                                     feedItem.UserLikeStatus = result["UserLikeStatus"] as? Int == 1 ? true : false
                                     feedItem.UserDisLikeStatus = result["UserDisLikeStatus"] as? Int == 1 ? true : false
                                     feedItem.UserName = result["UserName"] as? String
-                                    feedItem.Location = result["UserName"] as? String
+                                    feedItem.Location = result["Location"] as? String
                                     feedItem.PostTitle = result["PostTitle"] as? String
                                     feedItem.Email = result["Email"] as? String
                                     feedItem.Description = result["Description"] as? String
@@ -287,7 +287,7 @@ class PBFeedsVC : UIViewController
                                     feedItem.UserLikeStatus = result["UserLikeStatus"] as? Int == 1 ? true : false
                                     feedItem.UserDisLikeStatus = result["UserDisLikeStatus"] as? Int == 1 ? true : false
                                     feedItem.UserName = result["UserName"] as? String
-                                    feedItem.Location = result["UserName"] as? String
+                                    feedItem.Location = result["Location"] as? String
                                     feedItem.PostTitle = result["PostTitle"] as? String
                                     feedItem.Email = result["Email"] as? String
                                     feedItem.Description = result["Description"] as? String

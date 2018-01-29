@@ -117,7 +117,7 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         self.xButton.layer.borderColor = UIColor.white.cgColor
         self.xButton.layer.borderWidth = CGFloat(1)
         
-        self.flashButton.isEnabled = false
+        self.flashButton.isEnabled = true
         if let image = flashButton.imageView?.image
         {
             let templateImage = image.withRenderingMode(.alwaysTemplate)
@@ -305,7 +305,7 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         
         for device in devices
         {
-            if ((device as AnyObject).hasMediaType(AVMediaType.video) && (device as AnyObject).position == AVCaptureDevice.Position.front)
+            if ((device as AnyObject).hasMediaType(AVMediaType.video) && (device as AnyObject).position == AVCaptureDevice.Position.back)
             {
                 if let currentDevice = device as? AVCaptureDevice
                 {
