@@ -122,8 +122,11 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         let shareLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 24
         let roundedBoldfontSize = floor(shareLabelfontSize)
         self.createTitleLabel.font = self.createTitleLabel.font.withSize(roundedBoldfontSize)
-       
-
+        
+        
+        self.selectPhotoTypeButton.setTitleColor(.green, for: .normal)
+        self.selectAudioTypeButton.setTitleColor(.white, for: .normal)
+        self.selectVideoTypeButton.setTitleColor(.white, for: .normal)
 
     }
     
@@ -137,10 +140,8 @@ class PBCaptureMediaVC: UIViewController,AVCapturePhotoCaptureDelegate
         }
         
         self.xButton.layer.cornerRadius = self.xButton.frame.size.width / 2
-        self.selectPhotoTypeButton.titleLabel?.textColor = Constants.headerTileColor
-        self.selectAudioTypeButton.titleLabel?.textColor = Constants.whiteTextColor
-        self.selectVideoTypeButton.titleLabel?.textColor = Constants.whiteTextColor
 
+        
     }
     
     // MARK: Actions
