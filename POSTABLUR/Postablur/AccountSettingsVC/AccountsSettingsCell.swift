@@ -11,6 +11,7 @@ import UIKit
 class AccountsSettingsCell: UITableViewCell {
 
     @IBOutlet weak var accountsLabel : UILabel!
+    @IBOutlet weak var arrowImage : UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

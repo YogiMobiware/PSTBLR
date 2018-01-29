@@ -217,6 +217,9 @@ class PostReviewVC: UIViewController
         
         let alertView = UIAlertController(title: "Postablur", message: "Uploaded Successfully", preferredStyle: .alert)
         let action = UIAlertAction(title: "Okay", style: .default, handler: { (alert) in
+            
+            self.appdelegate.needToReloadFeeds = true
+            
             self.dismiss(animated: true, completion: nil)
 
         })

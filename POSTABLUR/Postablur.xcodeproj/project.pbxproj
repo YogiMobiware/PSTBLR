@@ -51,6 +51,8 @@
 		B03219982019DA3E008650FC /* ReportAbuseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03219962019DA3E008650FC /* ReportAbuseVC.swift */; };
 		B03219992019DA3E008650FC /* ReportAbuseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03219972019DA3E008650FC /* ReportAbuseVC.xib */; };
 		B032199B2019E426008650FC /* PBReportAbuseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032199A2019E426008650FC /* PBReportAbuseItem.swift */; };
+		B06615D9201F094400845EB5 /* NotificationsSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06615D7201F094400845EB5 /* NotificationsSettingsVC.swift */; };
+		B06615DA201F094400845EB5 /* NotificationsSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06615D8201F094400845EB5 /* NotificationsSettingsVC.xib */; };
 		B0983B7B20148AD7003AB028 /* PostDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0983B7920148AD7003AB028 /* PostDescriptionVC.swift */; };
 		B0983B7C20148AD7003AB028 /* PostDescriptionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0983B7A20148AD7003AB028 /* PostDescriptionVC.xib */; };
 		B0A0204B2011DEE600D3837B /* PBAccountTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A020452011DEE600D3837B /* PBAccountTypeVC.swift */; };
@@ -142,6 +144,8 @@
 		B03219962019DA3E008650FC /* ReportAbuseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAbuseVC.swift; sourceTree = "<group>"; };
 		B03219972019DA3E008650FC /* ReportAbuseVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportAbuseVC.xib; sourceTree = "<group>"; };
 		B032199A2019E426008650FC /* PBReportAbuseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBReportAbuseItem.swift; sourceTree = "<group>"; };
+		B06615D7201F094400845EB5 /* NotificationsSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsVC.swift; sourceTree = "<group>"; };
+		B06615D8201F094400845EB5 /* NotificationsSettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsSettingsVC.xib; sourceTree = "<group>"; };
 		B0983B7920148AD7003AB028 /* PostDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDescriptionVC.swift; sourceTree = "<group>"; };
 		B0983B7A20148AD7003AB028 /* PostDescriptionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDescriptionVC.xib; sourceTree = "<group>"; };
 		B0A020452011DEE600D3837B /* PBAccountTypeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBAccountTypeVC.swift; sourceTree = "<group>"; };
@@ -398,6 +402,15 @@
 			path = ReportAbuse;
 			sourceTree = "<group>";
 		};
+		B06615D6201F08F900845EB5 /* NotificationsSettings */ = {
+			isa = PBXGroup;
+			children = (
+				B06615D7201F094400845EB5 /* NotificationsSettingsVC.swift */,
+				B06615D8201F094400845EB5 /* NotificationsSettingsVC.xib */,
+			);
+			path = NotificationsSettings;
+			sourceTree = "<group>";
+		};
 		B0983B7820148AAD003AB028 /* PostDescription */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +466,7 @@
 		B0F4CA6E200F20A400F39409 /* Postablur */ = {
 			isa = PBXGroup;
 			children = (
+				B06615D6201F08F900845EB5 /* NotificationsSettings */,
 				B03219952019DA10008650FC /* ReportAbuse */,
 				B003D42F2017807F0025DF6C /* AccountSettingsVC */,
 				B003D42A2017443F0025DF6C /* AccountsViewController */,
@@ -589,6 +603,7 @@
 				B03219992019DA3E008650FC /* ReportAbuseVC.xib in Resources */,
 				84ABDA11201F1D4600275F4B /* PBWebVC.xib in Resources */,
 				444E46CE201763BF00C3FA10 /* PBFeedsInteractionVC.xib in Resources */,
+				B06615DA201F094400845EB5 /* NotificationsSettingsVC.xib in Resources */,
 				B003D4332017809C0025DF6C /* AccountSettingsVC.xib in Resources */,
 				B0A020502011DEE600D3837B /* PBPaidAccoutCell.xib in Resources */,
 				44217FB8201624A00022F09C /* PBFeedsCollectionCell.xib in Resources */,
@@ -613,7 +628,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3469C9C1FBA8270DDCF99FE1 /* [CP] Embed Pods Frameworks */ = {
@@ -702,6 +717,7 @@
 				B00D05D220137BBD0031CE82 /* PBShareLimitCell.swift in Sources */,
 				44217FBA201625800022F09C /* PBFeedsCollectionCell.swift in Sources */,
 				B0F4CA87200F24DC00F39409 /* NavConstants.swift in Sources */,
+				B06615D9201F094400845EB5 /* NotificationsSettingsVC.swift in Sources */,
 				B0A4368C20109F7600DDBA7C /* PBLogoCell.swift in Sources */,
 				B0F1D6C42015F3480010567F /* DescriptionCell.swift in Sources */,
 				44A77C1D2014C84300E879D7 /* PBUtility.swift in Sources */,
