@@ -11,13 +11,13 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 class AccountSettingsVC: UIViewController {
 
-    let headersInfoArray : [String] = ["CONNECTION INFORMATION","ACCOUNT INFORMATION","LEGAL INFORMATION"];
+    let headersInfoArray : [String] = ["CONNECTION INFORMATION","ACCOUNT INFORMATION","LEGAL INFORMATION"]
    
-    let connectionInfoArray : [String] = ["FIND CONTACTS","INVITE CONTACTS"]
+    let connectionInfoArray : [String] = ["INVITE CONTACTS"]
                                     
-    let accInfoArray : [String] = ["EDIT ACCOUNT","CHANGE PASSWORD","ACCOUNT NOTIFICATIONS","ACCOUNT STATS"];
+    let accInfoArray : [String] = ["EDIT ACCOUNT","NOTIFICATIONS","STATS"]
 
-    let legalnfoArray : [String] = ["PRIVACY POLICY","TERMS AND CONDITIONS","ACCOUNT NOTIFICATIONS","ACCOUNT STATS","LOGOUT"];
+    let legalnfoArray : [String] = ["PRIVACY POLICY","TERMS AND CONDITIONS","LOGOUT"]
 
     var appdelegate : AppDelegate!
 
@@ -119,9 +119,18 @@ extension AccountSettingsVC : UITableViewDataSource, UITableViewDelegate
         let cell : AccountsSettingsCell = tableView.cellForRow(at: indexPath) as! AccountsSettingsCell
         cell.accountsLabel.textColor = Constants.navBarTintColor
 
-        if indexPath.section == 2
+        if indexPath.section == 1
         {
-            if indexPath.row == 4
+            if indexPath.row == 1
+            {
+                let notifVC = NotificationsSettingsVC()
+                self.navigationController?.pushViewController(notifVC, animated: true);
+
+            }
+        }
+        else if indexPath.section == 2
+        {
+            if indexPath.row == 2
             {
                 print("add logout logic here")
                 FBSDKLoginManager().logOut()
@@ -132,6 +141,10 @@ extension AccountSettingsVC : UITableViewDataSource, UITableViewDelegate
                 UserDefaults.standard.synchronize()
                 self.appdelegate.loadLogin()
             }
+        }
+        else
+        {
+            
         }
     }
 }
