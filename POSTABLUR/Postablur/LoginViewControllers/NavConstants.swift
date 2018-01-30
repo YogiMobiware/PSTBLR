@@ -35,4 +35,5 @@ enum NibNamed: String
     case ShareYourPost
     case DescriptionCell
     case AccountsSettingsCell
+    case BlurImageCell
 }
