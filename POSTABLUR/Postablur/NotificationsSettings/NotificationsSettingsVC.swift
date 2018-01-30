@@ -73,7 +73,7 @@ extension NotificationsSettingsVC : UITableViewDataSource, UITableViewDelegate
         let label = UILabel()
         label.frame = headerView.frame
         label.text = notifHeadersInfoArray[section]
-        label.textColor = UIColor.lightGray
+        label.textColor = UIColor.black
         headerView.addSubview(label)
         return headerView
     }

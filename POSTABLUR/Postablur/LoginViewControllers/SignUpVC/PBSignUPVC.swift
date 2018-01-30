@@ -163,19 +163,11 @@ extension PBSignUPVC : UITextViewDelegate
 {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
     {
-    
         if (URL.absoluteString == Constants.termsAndConditionsURL)
         {
             let pb_webVC = PBWebVC(nibName: "PBWebVC", bundle: nil)
-            pb_webVC.urlValue = Constants.termsAndConditionsURL
-            pb_webVC.titleString = "TERMS & PRIVACY POLICY"
-            self.present(pb_webVC, animated: true, completion: nil)
-        }
-        else 
-        {
-            let pb_webVC = PBWebVC(nibName: "PBWebVC", bundle: nil)
-            pb_webVC.urlValue = Constants.privacyURL
-            pb_webVC.titleString = "TERMS & PRIVACY POLICY"
+            pb_webVC.info = Constants.termsText
+            pb_webVC.titleString = "TERMS FOR USE"
             self.present(pb_webVC, animated: true, completion: nil)
         }
         
