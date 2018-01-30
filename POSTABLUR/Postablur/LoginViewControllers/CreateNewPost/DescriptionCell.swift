@@ -20,12 +20,28 @@ class DescriptionCell: UITableViewCell
     var doneToolbar = UIToolbar()
     var descriptionDelegate : PBDescriptionCellDelegate? = nil
 
+    var placeholderLabel : UILabel!
+    
     override func awakeFromNib()
     {
         super.awakeFromNib()
         /*let descriptionLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 20
         let roundedBoldfontSize = floor(descriptionLabelfontSize)
         self.descriptionLabel.font = self.descriptionLabel.font.withSize(roundedBoldfontSize)*/
+        
+        /*let attributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.black,
+            NSAttributedStringKey.font : UIFont(name: "Avenir-Black", size: 17)!]
+        
+        descriptionTV.attributedPlaceholder = NSAttributedString(string: "Location", attributes:attributes)*/
+        
+        placeholderLabel = UILabel()
+        placeholderLabel.text = "Description"
+        placeholderLabel.font = UIFont(name: "Avenir-Black", size: 17)!
+        placeholderLabel.sizeToFit()
+        descriptionTV.addSubview(placeholderLabel)
+        placeholderLabel.textColor = UIColor.black
+        placeholderLabel.isHidden = !descriptionTV.text.isEmpty
         
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.tapGestureRecognized))
         doneToolbar = Constants.getDoneToolbar(dismissBtn: doneButton)

@@ -22,6 +22,12 @@ class TitleCell: UITableViewCell
         //let titleLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 20
         //let roundedBoldfontSize = floor(titleLabelfontSize)
         //self.titleLabel.font = self.titleLabel.font.withSize(roundedBoldfontSize)
+        
+        let attributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.black,
+            NSAttributedStringKey.font : UIFont(name: "Avenir-Black", size: 17)!]
+        
+        titleTF.attributedPlaceholder = NSAttributedString(string: "Title", attributes:attributes)
     }
     
     

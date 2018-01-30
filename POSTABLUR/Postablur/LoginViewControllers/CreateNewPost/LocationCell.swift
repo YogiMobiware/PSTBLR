@@ -21,6 +21,12 @@ class LocationCell: UITableViewCell,UITextFieldDelegate
         let roundedBoldfontSize = floor(locationLabelfontSize)
         self.locationLabel.font = self.locationLabel.font.withSize(roundedBoldfontSize)*/
         //self.locationTF.delegate = self
+        
+        let attributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.black,
+            NSAttributedStringKey.font : UIFont(name: "Avenir-Black", size: 17)!]
+        
+        locationTF.attributedPlaceholder = NSAttributedString(string: "Location", attributes:attributes)
 
     }
 
