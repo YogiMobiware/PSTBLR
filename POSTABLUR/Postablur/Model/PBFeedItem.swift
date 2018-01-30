@@ -20,6 +20,7 @@ class PBFeedItem : NSObject
     var Description : String?
     var CurrentDisLikesCount : Int?
     var CurrentLikesCount : Int?
+    var likesGoal : Int?
     var Profileurl : String?
     var mediaList : [PBFeedMedia] = [PBFeedMedia]()
 }
