@@ -9,7 +9,6 @@
 import UIKit
 protocol PBLikeLimitCellDelegate
 {
-    func oneLikeDidTap()
     func fiveLikeDidTap()
     func tenLikeDidTap()
 
@@ -17,7 +16,6 @@ protocol PBLikeLimitCellDelegate
 
 class PBLikeLimitCell: UITableViewCell {
    
-    @IBOutlet weak var oneLikeButton : UIButton!
     @IBOutlet weak var fiveLikeButton : UIButton!
     @IBOutlet weak var tenLikeButton : UIButton!
     @IBOutlet weak var likeLabel : UILabel!
@@ -33,7 +31,6 @@ class PBLikeLimitCell: UITableViewCell {
 
         let buttonfonSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 20
         let roundedButtonfontSize = floor(buttonfonSize)
-        self.oneLikeButton.titleLabel?.font = UIFont(name: FontName.AvenirBlack.rawValue, size: roundedButtonfontSize)
         self.fiveLikeButton.titleLabel?.font = UIFont(name: FontName.AvenirBlack.rawValue, size: roundedButtonfontSize)
         self.tenLikeButton.titleLabel?.font = UIFont(name: FontName.AvenirBlack.rawValue, size: roundedButtonfontSize)
 
@@ -45,16 +42,11 @@ class PBLikeLimitCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBAction func oneLikeBtnAction(_ sender: UIButton)
-    {
-        if let likeLimitDelegate = self.likeLimitDelegate
-        {
-            likeLimitDelegate.oneLikeDidTap()
-        }
-    
-    }
+  
     @IBAction func fiveLikeBtnAction(_ sender: UIButton)
     {
+        fiveLikeButton.setTitleColor(Constants.navBarTintColor, for: .normal)
+        tenLikeButton.setTitleColor(UIColor.black, for: .normal)
         if let likeLimitDelegate = self.likeLimitDelegate
         {
             likeLimitDelegate.fiveLikeDidTap()
@@ -62,6 +54,9 @@ class PBLikeLimitCell: UITableViewCell {
     }
     @IBAction func tenLikeBtnAction(_ sender: UIButton)
     {
+        fiveLikeButton.setTitleColor(UIColor.black, for: .normal)
+        tenLikeButton.setTitleColor(Constants.navBarTintColor, for: .normal)
+
         if let likeLimitDelegate = self.likeLimitDelegate
         {
             likeLimitDelegate.tenLikeDidTap()

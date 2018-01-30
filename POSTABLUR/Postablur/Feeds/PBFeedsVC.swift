@@ -24,6 +24,7 @@ class PBFeedsVC : UIViewController
     @IBOutlet var activity : UIActivityIndicatorView!
     @IBOutlet var noFeedsLbl : UILabel!
 
+    @IBOutlet var searchBar: UISearchBar!
     var blurOperations = [IndexPath : BlockOperation]()
     let blurOperationsQueue = OperationQueue()
     
@@ -111,7 +112,14 @@ class PBFeedsVC : UIViewController
        
     }
     
-    
+    override func viewDidLayoutSubviews()
+    {
+       super.viewDidLayoutSubviews()
+        
+       let textFieldInsideSearchBar = self.searchBar.value(forKey: "searchField") as! UITextField
+       textFieldInsideSearchBar.font = UIFont.systemFont(ofSize: 12)
+        
+    }
     @IBAction func filterButtonTapped(_ sender : UIButton)
     {
         switch sender

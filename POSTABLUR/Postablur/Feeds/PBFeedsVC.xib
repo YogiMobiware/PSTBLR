@@ -23,6 +23,7 @@
                 <outlet property="noFeedsLbl" destination="FuA-oO-xNV" id="agX-yY-PlO"/>
                 <outlet property="photoFilterButton" destination="nln-LT-skD" id="VwO-WT-nAv"/>
                 <outlet property="refreshBtn" destination="qRe-3y-IYe" id="hp0-Qc-JPl"/>
+                <outlet property="searchBar" destination="hxT-oi-tG0" id="4f8-jP-foo"/>
                 <outlet property="view" destination="iN0-l3-epB" id="3xo-Rl-C1b"/>
             </connections>
         </placeholder>

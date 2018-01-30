@@ -16,7 +16,7 @@ protocol RegistrationCellDelegate
     func pbloginBtnDidTap()
     
 }
-class RegistrationCell: UITableViewCell,UITextViewDelegate
+class RegistrationCell: UITableViewCell
 {
 
     @IBOutlet weak var userNameTF: UITextField!
@@ -24,8 +24,8 @@ class RegistrationCell: UITableViewCell,UITextViewDelegate
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var reTypePasswordTF: UITextField!
     @IBOutlet weak var loginBtn : UIButton!
-    @IBOutlet var termsTextView: UITextView!
-
+    
+    @IBOutlet var termsAndPrivacyTextView : UITextView!
     @IBOutlet weak var nextBtn : UIButton!
     var registerDelegate : RegistrationCellDelegate? = nil
 
@@ -60,9 +60,8 @@ class RegistrationCell: UITableViewCell,UITextViewDelegate
         let privacyRange = attributedString.mutableString.range(of: "Privacy Policy.")
         attributedString.addAttribute(NSAttributedStringKey.link, value: Constants.privacyURL, range: privacyRange)
         
-        termsTextView.attributedText = attributedString
-        termsTextView.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue :Constants.cell_HighlightedColor]
-        termsTextView.isUserInteractionEnabled = true
+        termsAndPrivacyTextView.attributedText = attributedString
+        termsAndPrivacyTextView.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue :Constants.cell_HighlightedColor]
  
     }
 
@@ -86,14 +85,13 @@ class RegistrationCell: UITableViewCell,UITextViewDelegate
         
     }
 
-    @IBAction func loginBtnAction(_ sender: UIButton)
+    @IBAction func aleradyHaveLoginBtnAction(_ sender : UIButton)
     {
         if let registerDelegate = self.registerDelegate
         {
             registerDelegate.pbloginBtnDidTap()
         }
-        
     }
-
+   
     
 }

@@ -11,10 +11,10 @@ import UIKit
 protocol ShareYourPostDelegate
 {
     
-    func pbPublicOrPrivateDidTap(privateOrPublicButton:UIButton)
+    //func pbPublicOrPrivateDidTap(privateOrPublicButton:UIButton)
     func pbTwitterBtnDidTap()
     func pbFaceBookBtnDidTap()
-    func pbDonateBtnDidTap(selectedDonatedButton : UIButton)
+    //func pbDonateBtnDidTap(selectedDonatedButton : UIButton)
 
     
 }
@@ -22,17 +22,17 @@ class ShareYourPost: UITableViewCell
 {
 
     @IBOutlet weak var shareTitleLabel : UILabel!
-    @IBOutlet weak var donateCharityLabel : UILabel!
-    @IBOutlet weak var whoGetsTitleLabel : UILabel!
+    //@IBOutlet weak var donateCharityLabel : UILabel!
+    //@IBOutlet weak var whoGetsTitleLabel : UILabel!
     @IBOutlet weak var twitterBtn : UIButton!
     @IBOutlet weak var facebookBtn : UIButton!
-    @IBOutlet weak var publicAccessBtn : UIButton!
-    @IBOutlet weak var privateAccessBtn : UIButton!
-    @IBOutlet weak var unitedWayBtn : UIButton!
-    @IBOutlet weak var americanCancerBtn : UIButton!
-    @IBOutlet weak var americanRedCrossBtn : UIButton!
-    @IBOutlet weak var americanHeartAssocBtn : UIButton!
-    @IBOutlet weak var boysAndGirlsBtn : UIButton!
+    //@IBOutlet weak var publicAccessBtn : UIButton!
+    //@IBOutlet weak var privateAccessBtn : UIButton!
+    //@IBOutlet weak var unitedWayBtn : UIButton!
+    //@IBOutlet weak var americanCancerBtn : UIButton!
+    //@IBOutlet weak var americanRedCrossBtn : UIButton!
+    //@IBOutlet weak var americanHeartAssocBtn : UIButton!
+    //@IBOutlet weak var boysAndGirlsBtn : UIButton!
 
     var shareYourPostDelegate : ShareYourPostDelegate? = nil
 
@@ -42,8 +42,8 @@ class ShareYourPost: UITableViewCell
         let shareLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 20
         let roundedBoldfontSize = floor(shareLabelfontSize)
         self.shareTitleLabel.font = self.shareTitleLabel.font.withSize(roundedBoldfontSize)
-        self.donateCharityLabel.font = self.donateCharityLabel.font.withSize(roundedBoldfontSize)
-        self.whoGetsTitleLabel.font = self.whoGetsTitleLabel.font.withSize(roundedBoldfontSize)
+        //self.donateCharityLabel.font = self.donateCharityLabel.font.withSize(roundedBoldfontSize)
+        //self.whoGetsTitleLabel.font = self.whoGetsTitleLabel.font.withSize(roundedBoldfontSize)
 
     }
 
@@ -82,7 +82,7 @@ class ShareYourPost: UITableViewCell
         {
             shareYourPostDelegate.pbFaceBookBtnDidTap()
             
-           /* if sender.isSelected == false
+            if sender.isSelected == false
             {
                 if let image = facebookBtn.imageView?.image
                 {
@@ -95,11 +95,11 @@ class ShareYourPost: UITableViewCell
             {
                 sender.isSelected = false
                 
-            }*/
+            }
         }
         
     }
-    @IBAction func donateBtnAction(_ sender: UIButton)
+    /*@IBAction func donateBtnAction(_ sender: UIButton)
     {
 
         if let shareYourPostDelegate = self.shareYourPostDelegate
@@ -115,6 +115,6 @@ class ShareYourPost: UITableViewCell
         {
             shareYourPostDelegate.pbPublicOrPrivateDidTap(privateOrPublicButton: sender)
         }
-    }
+    }*/
    
 }

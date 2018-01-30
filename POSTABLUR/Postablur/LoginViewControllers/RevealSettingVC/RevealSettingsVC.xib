@@ -75,6 +75,7 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IKz-7G-RlW">
                     <rect key="frame" x="0.0" y="471" width="414" height="202"/>
                     <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="oLf-6g-jm5"/>
                         <outlet property="delegate" destination="-1" id="L9F-Ue-fxZ"/>
@@ -108,7 +109,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="heF-Ek-01F" firstAttribute="top" secondItem="IKz-7G-RlW" secondAttribute="bottom" id="0NK-RO-5Cv"/>
                 <constraint firstItem="IKz-7G-RlW" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="202:736" id="1xy-hT-PSQ"/>
