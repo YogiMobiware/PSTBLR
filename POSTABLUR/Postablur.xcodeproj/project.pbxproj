@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		441BB90B20209C1A002648F0 /* BlurImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846480D42020541F00B1F839 /* BlurImageCell.xib */; };
 		44217FAC201604990022F09C /* PBFeedsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44217FAB201604990022F09C /* PBFeedsVC.swift */; };
 		44217FAE201604AA0022F09C /* PBFeedsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44217FAD201604AA0022F09C /* PBFeedsVC.xib */; };
 		44217FB1201605B90022F09C /* PBTabsContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44217FB0201605B90022F09C /* PBTabsContainerVC.swift */; };
@@ -24,7 +25,6 @@
 		44A77C262014CEE900E879D7 /* PBCaptureMediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A77C242014C95100E879D7 /* PBCaptureMediaVC.swift */; };
 		44A77C272014CEF600E879D7 /* PBCaptureMediaVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A77C252014C95100E879D7 /* PBCaptureMediaVC.xib */; };
 		846480D52020541F00B1F839 /* BlurImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846480D32020541F00B1F839 /* BlurImageCell.swift */; };
-		846480D62020541F00B1F839 /* BlurImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846480D42020541F00B1F839 /* BlurImageCell.xib */; };
 		846ED2882011D759004749ED /* PBServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846ED2872011D759004749ED /* PBServiceHelper.swift */; };
 		846ED28A2011DAB1004749ED /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846ED2892011DAB1004749ED /* Urls.swift */; };
 		846ED2942011EFEA004749ED /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 846ED2932011EFEA004749ED /* MBProgressHUD.m */; };
@@ -590,6 +590,7 @@
 				B0F4CA7A200F20A400F39409 /* LaunchScreen.storyboard in Resources */,
 				B00D05CA201371D40031CE82 /* RevealSettingsVC.xib in Resources */,
 				B003D437201780CF0025DF6C /* AccountsSettingsCell.xib in Resources */,
+				441BB90B20209C1A002648F0 /* BlurImageCell.xib in Resources */,
 				B037E26A201F63C0003DC368 /* FollowUsCell.xib in Resources */,
 				B0A436A22010E40900DDBA7C /* PBSignUPVC.xib in Resources */,
 				B0F4CA77200F20A400F39409 /* Assets.xcassets in Resources */,

@@ -157,7 +157,7 @@ func uploadBlurredImageToServer(postID : String)
     let parameters : [String: String] = ["Mediatype":"1","postID":postID]
     
     Alamofire.upload(multipartFormData: { (multipartFormData) in
-        multipartFormData.append(UIImageJPEGRepresentation(resizedImage!, 1.0)!, withName: "UploadPhoto", fileName: "UploadImage.jpeg", mimeType: "image/jpeg")
+        multipartFormData.append(UIImageJPEGRepresentation(resizedImage!, 0.5)!, withName: "UploadPhoto", fileName: "UploadImage.jpeg", mimeType: "image/jpeg")
         for (key, value) in parameters {
             multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
         }
