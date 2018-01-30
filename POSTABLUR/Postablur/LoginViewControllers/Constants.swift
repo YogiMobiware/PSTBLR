@@ -43,6 +43,7 @@ enum CellIdentifiers: String
     case ShareYourPostCellIdentifier = "ShareYourPostCellID"
     case DescriptionCellIdentifier = "DescriptionCellID"
     case AccountsSettingsCellIdentifier = "AccountsSettingsCellID"
+    case BlurImageCellIdentifier = "BlurImageCellID"
 
 }
 
