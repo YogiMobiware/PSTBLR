@@ -23,6 +23,8 @@
 		44A77C1D2014C84300E879D7 /* PBUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A77C1C2014C84300E879D7 /* PBUtility.swift */; };
 		44A77C262014CEE900E879D7 /* PBCaptureMediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A77C242014C95100E879D7 /* PBCaptureMediaVC.swift */; };
 		44A77C272014CEF600E879D7 /* PBCaptureMediaVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A77C252014C95100E879D7 /* PBCaptureMediaVC.xib */; };
+		846480D52020541F00B1F839 /* BlurImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846480D32020541F00B1F839 /* BlurImageCell.swift */; };
+		846480D62020541F00B1F839 /* BlurImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846480D42020541F00B1F839 /* BlurImageCell.xib */; };
 		846ED2882011D759004749ED /* PBServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846ED2872011D759004749ED /* PBServiceHelper.swift */; };
 		846ED28A2011DAB1004749ED /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846ED2892011DAB1004749ED /* Urls.swift */; };
 		846ED2942011EFEA004749ED /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 846ED2932011EFEA004749ED /* MBProgressHUD.m */; };
@@ -116,6 +118,8 @@
 		44A77C1C2014C84300E879D7 /* PBUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBUtility.swift; sourceTree = "<group>"; };
 		44A77C242014C95100E879D7 /* PBCaptureMediaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBCaptureMediaVC.swift; sourceTree = "<group>"; };
 		44A77C252014C95100E879D7 /* PBCaptureMediaVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBCaptureMediaVC.xib; sourceTree = "<group>"; };
+		846480D32020541F00B1F839 /* BlurImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurImageCell.swift; sourceTree = "<group>"; };
+		846480D42020541F00B1F839 /* BlurImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlurImageCell.xib; sourceTree = "<group>"; };
 		846ED2872011D759004749ED /* PBServiceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBServiceHelper.swift; sourceTree = "<group>"; };
 		846ED2892011DAB1004749ED /* Urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
 		846ED2912011EFE8004749ED /* Postablur-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Postablur-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -446,6 +450,8 @@
 				B0F1D6C32015F3480010567F /* DescriptionCell.xib */,
 				B0F1D6C62015F5330010567F /* ShareYourPost.swift */,
 				B0F1D6C72015F5330010567F /* ShareYourPost.xib */,
+				846480D32020541F00B1F839 /* BlurImageCell.swift */,
+				846480D42020541F00B1F839 /* BlurImageCell.xib */,
 			);
 			path = CreateNewPost;
 			sourceTree = "<group>";
@@ -601,6 +607,7 @@
 				B0F1D6C52015F3480010567F /* DescriptionCell.xib in Resources */,
 				B0ECE20D20135D7B004EE062 /* QRCodeScannerVC.xib in Resources */,
 				B0A0204C2011DEE600D3837B /* PBAccountTypeVC.xib in Resources */,
+				846480D62020541F00B1F839 /* BlurImageCell.xib in Resources */,
 				849E3E1220177C6E00AA2037 /* AccountsCollectionCell.xib in Resources */,
 				44A77C272014CEF600E879D7 /* PBCaptureMediaVC.xib in Resources */,
 				B0F1D6BD2015F31C0010567F /* TitleCell.xib in Resources */,
@@ -717,6 +724,7 @@
 				8474E9492015FCDE00D85E4F /* PostReviewVC.swift in Sources */,
 				B0F1D6BC2015F31C0010567F /* TitleCell.swift in Sources */,
 				444E46CC2017638F00C3FA10 /* PBFeedsInteractionVC.swift in Sources */,
+				846480D52020541F00B1F839 /* BlurImageCell.swift in Sources */,
 				B0A436A52010E61100DDBA7C /* PBLoginOptionsVC.swift in Sources */,
 				846ED2972011F1E2004749ED /* ValidationHelper.swift in Sources */,
 				B0A436812010867000DDBA7C /* PBEmailAndPasswrdCell.swift in Sources */,

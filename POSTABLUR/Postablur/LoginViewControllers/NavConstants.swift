@@ -36,4 +36,6 @@ enum NibNamed: String
     case DescriptionCell
     case AccountsSettingsCell
     case AccountsCollectionCell
+    case BlurImageCell
+
 }

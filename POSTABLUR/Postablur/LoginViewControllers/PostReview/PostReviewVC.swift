@@ -67,16 +67,6 @@ class PostReviewVC: UIViewController
 
         selectedImageView.image =  PBUtility.blurEffect(image: blurredImage!)
 
-      /*  let despStr = "Desc:"
-        let despText : UILabel!  = descTxtLabel
-        
-        let descString = "\(despStr)\(String(describing: despText.text!) )"
-
-        var myMutableString = NSMutableAttributedString()
-        myMutableString = NSMutableAttributedString(string: descString as String, attributes: [NSAttributedStringKey.font:UIFont(name: "Arial", size: 16.0)!])
-        myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.darkGray, range: NSRange(location:0,length:4))
-        myMutableString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Arial-Bold", size: 16.0)!, range: NSRange(location:6,length:descString.count))
-        */
         
         let allLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 16
         let fontSize = floor(allLabelfontSize)
