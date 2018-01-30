@@ -19,6 +19,7 @@ class CreateNewPostVC: UIViewController
     var postTosocialNetwork : String? = nil
     var donateToCharity : String? = nil
     var whoGetsToReveal : String? = nil
+    var selectedLikeLimitCount : String? = nil
 
     override func viewDidLoad()
     {
