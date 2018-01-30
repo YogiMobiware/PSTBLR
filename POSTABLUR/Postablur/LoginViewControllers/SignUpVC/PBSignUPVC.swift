@@ -161,8 +161,6 @@ class PBSignUPVC: UIViewController,UIImagePickerControllerDelegate,UINavigationC
 }
 extension PBSignUPVC : UITextViewDelegate
 {
-    
-    
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
     {
     
@@ -170,14 +168,14 @@ extension PBSignUPVC : UITextViewDelegate
         {
             let pb_webVC = PBWebVC(nibName: "PBWebVC", bundle: nil)
             pb_webVC.urlValue = Constants.termsAndConditionsURL
-            pb_webVC.titleString = "TERMS OF USE"
+            pb_webVC.titleString = "TERMS & PRIVACY POLICY"
             self.present(pb_webVC, animated: true, completion: nil)
         }
         else 
         {
             let pb_webVC = PBWebVC(nibName: "PBWebVC", bundle: nil)
             pb_webVC.urlValue = Constants.privacyURL
-            pb_webVC.titleString = "PRIVACY POLICY"
+            pb_webVC.titleString = "TERMS & PRIVACY POLICY"
             self.present(pb_webVC, animated: true, completion: nil)
         }
         

@@ -55,7 +55,7 @@ class RevealSettingsVC: UIViewController {
     {
         
         guard let _ = self.setLikeLimitText, !(self.setLikeLimitText?.isEmpty)! else {
-            PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Postablur", andMessage: "Please select like limit count")
+            PBUtility.showSimpleAlertForVC(vc: self, withTitle: "Postablur", andMessage: "Please select like limit")
             return
         }
         let createNewPostVC = CreateNewPostVC()
