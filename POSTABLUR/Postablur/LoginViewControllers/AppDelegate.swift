@@ -28,14 +28,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
-        if let _ = UserDefaults.standard.string(forKey: "UserId") {
-            
+        
+        if self.window == nil
+        {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window!.makeKeyAndVisible()
+        }
+        
+        if let _ = UserDefaults.standard.string(forKey: "UserId")
+        {
             self.loadTabsContainerForSavedUser()
         }
-        else{
-            
+        else
+        {
             self.loadLogin()
-
         }
 
         
@@ -66,14 +72,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     func loadLogin()
     {
-        self.navigationController = UINavigationController()
-        
         let loginController : UIViewController = PBLoginOptionsVC(nibName:NibNamed.PBLoginOptionsVC.rawValue, bundle:nil)
-        self.navigationController!.pushViewController(loginController, animated: false)
+
+        self.navigationController = UINavigationController(rootViewController : loginController)
+        
+        //self.navigationController!.pushViewController(loginController, animated: false)
         self.navigationController?.navigationBar.isHidden = true
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
         self.window!.rootViewController = navigationController
-        self.window!.makeKeyAndVisible()
     }
     
     func loadTabsContainer()
@@ -85,14 +91,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate
    
     func loadTabsContainerForSavedUser()
     {
-        self.navigationController = UINavigationController()
         
         let loginController : UIViewController = PBLoginOptionsVC(nibName:NibNamed.PBLoginOptionsVC.rawValue, bundle:nil)
-        self.navigationController!.pushViewController(loginController, animated: false)
+        self.navigationController = UINavigationController(rootViewController : loginController)
+        
+        //self.navigationController!.pushViewController(loginController, animated: false)
         self.navigationController?.navigationBar.isHidden = true
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+       
         self.window!.rootViewController = navigationController
-        self.window!.makeKeyAndVisible()
         
         let tabsContainer = PBTabsContainerVC()
         self.navigationController?.popToRootViewController(animated: false)

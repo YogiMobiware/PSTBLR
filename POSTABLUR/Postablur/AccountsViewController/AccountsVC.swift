@@ -22,19 +22,16 @@ class AccountsVC: UIViewController
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var userDescTextView: UITextView!
     @IBOutlet var connectsView: UIView!
+    @IBOutlet var connectsPHLabel: UILabel!
     @IBOutlet var connectsLabel: UILabel!
-    @IBOutlet var sponcersView: UIView!
-    @IBOutlet var sponcersLabel: UILabel!
-    @IBOutlet var donorsView: UIView!
-    @IBOutlet var donorsLabel: UILabel!
+    @IBOutlet var thisWeekConnectionsLabel: UILabel!
     
     @IBOutlet var videoView: UIView!
     
     @IBOutlet var buttonsView: UIView!
     
     @IBOutlet var photoBtn: UIButton!
-    @IBOutlet var audioBtn: UIButton!
-    @IBOutlet var videoBtn: UIButton!
+   
     
     
     @IBOutlet var dataView: UIView!
@@ -227,21 +224,17 @@ class AccountsVC: UIViewController
     
     func fontSet()
     {
-        /*let allLabelsfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 12
-        let fontSize = floor(allLabelsfontSize)*/
-        
         let screenWidth = UIScreen.main.bounds.size.width
         if screenWidth == 320
         {
-            let fontSize = 9
-            self.connectBtn.titleLabel?.font = self.connectBtn.titleLabel?.font.withSize(CGFloat(fontSize))
-            self.usernameLabel.font = self.usernameLabel.font.withSize(11)
+            let fontSize = 12
+            self.connectBtn.titleLabel?.font = self.connectBtn.titleLabel?.font.withSize(CGFloat(10))
+            self.usernameLabel.font = self.usernameLabel.font.withSize(CGFloat(fontSize))
             self.userDescTextView.font = self.userDescTextView.font?.withSize(CGFloat(fontSize))
+            self.connectsPHLabel.font = self.connectsPHLabel.font.withSize(CGFloat(fontSize))
             self.connectsLabel.font = self.connectsLabel.font.withSize(CGFloat(fontSize))
-            self.sponcersLabel.font = self.sponcersLabel.font.withSize(CGFloat(fontSize))
-            self.donorsLabel.font = self.donorsLabel.font.withSize(CGFloat(fontSize))
+            self.thisWeekConnectionsLabel.font = self.thisWeekConnectionsLabel?.font.withSize(CGFloat(10))
         }
-        
     }
     
    
@@ -256,8 +249,8 @@ class AccountsVC: UIViewController
     
     @IBAction func connectBtnAction(_ sender: UIButton)
     {
-        self.view.makeToast("coming soon...", duration: 3.0, position: .center, style: style)
-        //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
+        //self.view.makeToast("coming soon...", duration: 3.0, position: .center, style: style)
+        
     }
     
     @IBAction func photoBtnAction(_ sender: UIButton)
@@ -265,7 +258,7 @@ class AccountsVC: UIViewController
         
     }
     
-    @IBAction func audioBtnAction(_ sender: UIButton)
+    /*@IBAction func audioBtnAction(_ sender: UIButton)
     {
         self.view.makeToast("Audio coming soon...", duration: 3.0, position: .center, style: style)
         //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
@@ -275,7 +268,7 @@ class AccountsVC: UIViewController
     {
         self.view.makeToast("Video coming soon...", duration: 3.0, position: .center, style: style)
         //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
-    }
+    }*/
     
     
 }
@@ -297,6 +290,7 @@ extension AccountsVC : UICollectionViewDelegate, UICollectionViewDataSource
         
         let feedItem = self.feeds[indexPath.row]
         let likeCount = feedItem.CurrentLikesCount!
+        
         let mediaList = feedItem.mediaList
         if mediaList.count > 0
         {

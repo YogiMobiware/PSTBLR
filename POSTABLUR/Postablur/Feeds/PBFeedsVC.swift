@@ -13,10 +13,13 @@ import Toast_Swift
 class PBFeedsVC : UIViewController
 {
     var tabContainerVC : PBTabsContainerVC!
+    
+    
+    @IBOutlet var refreshBtn: UIButton!
     @IBOutlet var feedsCollectionView : UICollectionView!
     @IBOutlet var photoFilterButton : UIButton!
-    @IBOutlet var audioFilterButton : UIButton!
-    @IBOutlet var videoFilterButton : UIButton!
+    //@IBOutlet var audioFilterButton : UIButton!
+    //@IBOutlet var videoFilterButton : UIButton!
 
     @IBOutlet var activity : UIActivityIndicatorView!
     @IBOutlet var noFeedsLbl : UILabel!
@@ -64,28 +67,32 @@ class PBFeedsVC : UIViewController
         let nib = UINib(nibName: NibNamed.PBFeedsCollectionCell.rawValue, bundle: nil)
         self.feedsCollectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         
-//        blurOperationsQueue.maxConcurrentOperationCount = 3
+        //blurOperationsQueue.maxConcurrentOperationCount = 3
         self.view.layoutIfNeeded()
         
         loadFeedsFromStart()
 
     }
     
-    deinit {
+    deinit
+    {
         
         blurOperationsQueue.cancelAllOperations()
         blurOperations.removeAll()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
         
         super.viewWillAppear(animated)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool)
+    {
         super.viewDidAppear(animated)
         
-        if let flowLayout = feedsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+        if let flowLayout = feedsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        {
             let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
             let cellWidth = (view.frame.width - max(0, numberOfCellsPerRow - 1)*horizontalSpacing)/numberOfCellsPerRow
             flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
@@ -101,6 +108,7 @@ class PBFeedsVC : UIViewController
             appDelegate.needToJustRefreshView = false
             self.feedsCollectionView.reloadData()
         }
+       
     }
     
     
@@ -111,7 +119,7 @@ class PBFeedsVC : UIViewController
         case self.photoFilterButton :
             break
             
-        case self.audioFilterButton :
+        /*case self.audioFilterButton :
             
             self.view.makeToast("Audio coming soon...", duration: 3.0, position: .center, style: style)
             //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
@@ -121,7 +129,7 @@ class PBFeedsVC : UIViewController
             
             self.view.makeToast("Video coming soon...", duration: 3.0, position: .center, style: style)
             //self.appDelegate.alert(vc: self, message: "Stats coming soon...", title: "Error")
-            break
+            break*/
             
         default:
             break
@@ -364,15 +372,19 @@ class PBFeedsVC : UIViewController
     {
         let fileManager = FileManager.default
         let imagePAth = self.getDocumentsDirectory().appendingPathComponent("\(name).jpg")
-        if fileManager.fileExists(atPath: imagePAth.path){
+        if fileManager.fileExists(atPath: imagePAth.path)
+        {
             let image =  UIImage(contentsOfFile: imagePAth.path)
             return image
-        }else{
+        }
+        else
+        {
             return nil
         }
     }
     
-    func getDocumentsDirectory() -> URL {
+    func getDocumentsDirectory() -> URL
+    {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
         return documentsDirectory
@@ -400,20 +412,27 @@ class PBFeedsVC : UIViewController
         }
     }
     
+    @IBAction func refreshBtnAction(_ sender: UIButton)
+    {
+        self.loadFeedsFromStart()
+    }
+
 }
 
 extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
 {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
         
         return feeds.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! PBFeedsCollectionCell
-//        cell.feedImageView.alpha = 0
-//        cell.feedImageView.kf.setImage(with : nil)
+        //cell.feedImageView.alpha = 0
+        //cell.feedImageView.kf.setImage(with : nil)
         
         
         let feedItem = self.feeds[indexPath.row]
@@ -526,7 +545,8 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
         
         let selectedFeed = self.feeds[indexPath.row]
         
@@ -540,7 +560,8 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
         self.navigationController?.pushViewController(interactionVC, animated: true)
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
+    {
         
         self.activity.stopAnimating()
 
@@ -558,7 +579,8 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
+    {
         
         guard let cell = cell as? PBFeedsCollectionCell else
         {
@@ -594,8 +616,8 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
 
 extension PBFeedsVC : UISearchBarDelegate
 {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    {
         searchBar.resignFirstResponder()
     }
 }
