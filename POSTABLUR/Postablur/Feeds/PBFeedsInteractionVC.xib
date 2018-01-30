@@ -11,9 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="ArialBold.ttf">
-            <string>Arial-BoldMT</string>
-        </array>
         <array key="Avenir.ttc">
             <string>Avenir-Black</string>
         </array>
@@ -23,8 +20,6 @@
             <connections>
                 <outlet property="activity" destination="14E-J7-WkM" id="UlB-Uq-OWw"/>
                 <outlet property="feedsTableView" destination="esd-Kz-fEa" id="BFv-wp-ZYJ"/>
-                <outlet property="userImageView" destination="5X7-nH-CFm" id="KBC-c9-cSg"/>
-                <outlet property="userNameLbl" destination="Hfv-EF-8Cr" id="lxU-ai-aLq"/>
                 <outlet property="view" destination="iN0-l3-epB" id="MML-kK-CNi"/>
             </connections>
         </placeholder>
@@ -37,7 +32,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
                     <subviews>
                         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97P-bx-Ufg" userLabel="BackButton">
-                            <rect key="frame" x="16" y="35.333333333333329" width="42" height="41.999999999999986"/>
+                            <rect key="frame" x="16" y="58" width="42" height="42"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="Zn6-cF-yU1"/>
@@ -49,37 +44,16 @@
                                 <action selector="backTapped:" destination="-1" eventType="touchUpInside" id="oyb-ef-C58"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5X7-nH-CFm">
-                            <rect key="frame" x="66" y="29" width="55" height="55"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPF-eO-dvz" userLabel="PhotoFilterButton">
+                            <rect key="frame" x="127" y="58.333333333333329" width="160" height="40.999999999999986"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="55" id="2Zt-z5-VNQ"/>
-                                <constraint firstAttribute="width" constant="55" id="VBb-ds-hNH"/>
+                                <constraint firstAttribute="width" constant="160" id="bg8-hX-pjG"/>
                             </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@chalynbrazi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfv-EF-8Cr" userLabel="usernameLbl">
-                            <rect key="frame" x="129" y="29" width="165" height="21"/>
-                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PHOTO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrq-ia-M6W">
-                            <rect key="frame" x="137" y="56" width="36.333333333333343" height="13.666666666666671"/>
-                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="10"/>
-                            <color key="textColor" red="0.4788064957" green="0.98234850169999999" blue="0.5322213173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3p-R3-WYc" userLabel="postabluric">
-                            <rect key="frame" x="302" y="35.333333333333329" width="42" height="41.999999999999986"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="42" id="9Ca-Y5-DT6"/>
-                                <constraint firstAttribute="width" constant="42" id="gIy-sZ-v8N"/>
-                            </constraints>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <state key="normal" image="iconWhitePostablurApp"/>
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="30"/>
+                            <state key="normal" title=" PHOTO" image="photoMediaTypeIcon"/>
                         </button>
                         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDk-8Y-AGw" userLabel="refreshButton">
-                            <rect key="frame" x="352" y="35.333333333333329" width="42" height="41.999999999999986"/>
+                            <rect key="frame" x="352" y="58" width="42" height="42"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="a0y-gM-ra1"/>
@@ -95,18 +69,11 @@
                     <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="jDk-8Y-AGw" firstAttribute="centerY" secondItem="97P-bx-Ufg" secondAttribute="centerY" id="0MM-SB-CoG"/>
-                        <constraint firstItem="lrq-ia-M6W" firstAttribute="leading" secondItem="Hfv-EF-8Cr" secondAttribute="leading" constant="8" id="2nR-La-KbP"/>
-                        <constraint firstItem="Hfv-EF-8Cr" firstAttribute="top" secondItem="5X7-nH-CFm" secondAttribute="top" id="43q-GO-i0i"/>
                         <constraint firstAttribute="trailing" secondItem="jDk-8Y-AGw" secondAttribute="trailing" constant="20" id="4ur-XP-9wX"/>
-                        <constraint firstItem="5X7-nH-CFm" firstAttribute="leading" secondItem="97P-bx-Ufg" secondAttribute="trailing" constant="8" id="7dv-qA-Dhl"/>
-                        <constraint firstItem="jDk-8Y-AGw" firstAttribute="leading" secondItem="D3p-R3-WYc" secondAttribute="trailing" constant="8" id="I0e-he-fLL"/>
-                        <constraint firstItem="D3p-R3-WYc" firstAttribute="leading" secondItem="Hfv-EF-8Cr" secondAttribute="trailing" constant="8" id="Ify-oo-dCo"/>
-                        <constraint firstItem="97P-bx-Ufg" firstAttribute="centerY" secondItem="3jb-nb-T7D" secondAttribute="centerY" id="JxP-W2-udT"/>
-                        <constraint firstItem="lrq-ia-M6W" firstAttribute="top" secondItem="Hfv-EF-8Cr" secondAttribute="bottom" constant="6" id="cXc-Mp-hoY"/>
-                        <constraint firstItem="D3p-R3-WYc" firstAttribute="centerY" secondItem="jDk-8Y-AGw" secondAttribute="centerY" id="f6B-XH-YNS"/>
-                        <constraint firstItem="Hfv-EF-8Cr" firstAttribute="leading" secondItem="5X7-nH-CFm" secondAttribute="trailing" constant="8" id="gDx-jW-VHq"/>
+                        <constraint firstItem="97P-bx-Ufg" firstAttribute="centerY" secondItem="3jb-nb-T7D" secondAttribute="centerY" multiplier="1.4" id="JxP-W2-udT"/>
+                        <constraint firstItem="mPF-eO-dvz" firstAttribute="centerY" secondItem="97P-bx-Ufg" secondAttribute="centerY" id="XYA-75-KKB"/>
                         <constraint firstItem="97P-bx-Ufg" firstAttribute="leading" secondItem="3jb-nb-T7D" secondAttribute="leading" constant="16" id="grN-L1-bjc"/>
-                        <constraint firstItem="5X7-nH-CFm" firstAttribute="centerY" secondItem="97P-bx-Ufg" secondAttribute="centerY" id="hJq-Ag-H9e"/>
+                        <constraint firstItem="mPF-eO-dvz" firstAttribute="centerX" secondItem="3jb-nb-T7D" secondAttribute="centerX" id="suc-IK-xAm"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="esd-Kz-fEa" userLabel="feedsTableView">
@@ -135,8 +102,8 @@
         </view>
     </objects>
     <resources>
-        <image name="iconWhitePostablurApp" width="36" height="35"/>
         <image name="keyboardBackspace" width="24" height="24"/>
+        <image name="photoMediaTypeIcon" width="29" height="24"/>
         <image name="refresh-ic" width="30" height="30"/>
     </resources>
 </document>

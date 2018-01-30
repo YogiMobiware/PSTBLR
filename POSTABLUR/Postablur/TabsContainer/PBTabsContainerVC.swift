@@ -21,6 +21,13 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var statsButton: UIButton!
     @IBOutlet weak var profileButton: UIButton!
     
+    
+    @IBOutlet weak var feedButtonLbl: UILabel!
+    @IBOutlet weak var newPostButtonLbl: UILabel!
+    @IBOutlet weak var statsButtonLbl: UILabel!
+    @IBOutlet weak var profileButtonLbl: UILabel!
+    
+    
     var selectedButton : UIButton!
     
     var style = ToastStyle()
@@ -63,12 +70,26 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
             }
         }
         
-        ////////////////
         
-        self.disableButtons([self.feedButton])
-        self.selectedButton = self.feedButton
+        if let image = feedButton.imageView?.image
+        {
+            let templateImage = image.withRenderingMode(.alwaysTemplate)
+            feedButton.setImage(templateImage, for: .normal)
+        }
         
-        ////////////////
+        if let image = newPostButton.imageView?.image
+        {
+            let templateImage = image.withRenderingMode(.alwaysTemplate)
+            newPostButton.setImage(templateImage, for: .normal)
+        }
+        
+        if let image = statsButton.imageView?.image
+        {
+            let templateImage = image.withRenderingMode(.alwaysTemplate)
+            statsButton.setImage(templateImage, for: .normal)
+        }
+
+        
         
         let feedVC = PBFeedsVC()
         self.homeNavigationController = UINavigationController(rootViewController: feedVC)
@@ -154,42 +175,79 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
         
     }
     
+    func selectButtons(_ menuButtons : [UIButton]?)
+    {
+        if let buttons = menuButtons
+        {
+            for menuButton in buttons
+            {
+                menuButton.tintColor = Constants.navBarTintColor
+            }
+        }
+        else
+        {
+            feedButton.tintColor = Constants.navBarTintColor
+            newPostButton.tintColor = Constants.navBarTintColor
+            statsButton.tintColor = Constants.navBarTintColor
+            profileButton.tintColor = Constants.navBarTintColor
+        }
+    }
+    
+    func unselectButtons(_ menuButtons : [UIButton]?)
+    {
+        if let buttons = menuButtons
+        {
+            for menuButton in buttons
+            {
+                menuButton.tintColor = Constants.greyTintColor
+            }
+        }
+        else
+        {
+            feedButton.tintColor = Constants.greyTintColor
+            newPostButton.tintColor = Constants.greyTintColor
+            statsButton.tintColor = Constants.greyTintColor
+            profileButton.tintColor = Constants.greyTintColor
+        }
+        
+    }
 
-//    func setProgressHudHidden(_ hidden : Bool)
-//    {
-//
-//        if hidden == false
-//        {
-//            let storyBoard = UIStoryboard(name: "Main", bundle:Bundle(for: Wardrober.self))
-//            self.faProgressHud = storyBoard.instantiateViewController(withIdentifier: "FAProgressHud") as? FAProgressHud
-//
-//            let childView = self.faProgressHud!.view
-//            childView?.translatesAutoresizingMaskIntoConstraints = false;
-//
-//            self.addChildViewController(faProgressHud)
-//            faProgressHud!.didMove(toParentViewController: self)
-//            self.view.addSubview(childView!)
-//            self.view.clipsToBounds = true
-//
-//            let xConstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: childView, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0.0)
-//
-//            let yConstraint =  NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: childView, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 0.0)
-//
-//            let tConstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: childView, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0.0)
-//
-//            let bConstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: childView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0.0)
-//
-//            self.view.addConstraints([xConstraint, yConstraint, tConstraint, bConstraint])
-//
-//            self.faProgressHud.view.layoutIfNeeded()
-//
-//        }
-//        else
-//        {
-//            //hide
-//            self.faProgressHud.view.removeFromSuperview()
-//        }
-//    }
+    func selectButtonLbls(_ menuButtonLbls : [UILabel]?)
+    {
+        if let labels = menuButtonLbls
+        {
+            for label in labels
+            {
+                label.textColor = Constants.navBarTintColor
+            }
+        }
+        else
+        {
+            feedButtonLbl.textColor = Constants.navBarTintColor
+            newPostButtonLbl.textColor = Constants.navBarTintColor
+            statsButtonLbl.textColor = Constants.navBarTintColor
+            profileButtonLbl.textColor = Constants.navBarTintColor
+        }
+    }
+    
+    func unselectButtonLbls(_ menuButtonLbls : [UILabel]?)
+    {
+        if let labels = menuButtonLbls
+        {
+            for label in labels
+            {
+                label.textColor = Constants.greyTintColor
+            }
+        }
+        else
+        {
+            feedButtonLbl.textColor = Constants.greyTintColor
+            newPostButtonLbl.textColor = Constants.greyTintColor
+            statsButtonLbl.textColor = Constants.greyTintColor
+            profileButtonLbl.textColor = Constants.greyTintColor
+        }
+        
+    }
     
     
     // MARK: - IBActions
@@ -273,31 +331,46 @@ class PBTabsContainerVC: UIViewController, UINavigationControllerDelegate
         
         
         self.enableButtons(nil)
+        self.unselectButtons(nil)
+        self.unselectButtonLbls(nil)
         if viewController.isKind(of: PBFeedsVC.self)
         {
             self.disableButtons([self.feedButton])
             self.selectedButton = self.feedButton
+            
+            self.selectButtons([self.feedButton])
+            self.selectButtonLbls([self.feedButtonLbl])
         }
         else if viewController.isKind(of: PBCaptureMediaVC.self)
         {
             self.disableButtons([self.newPostButton])
             self.selectedButton = self.newPostButton
+            
+            self.selectButtons([self.newPostButton])
+            self.selectButtonLbls([self.newPostButtonLbl])
+
         }
         else if viewController.isKind(of: QRCodeScannerVC.self)
         {
             self.disableButtons([self.qrButton])
             self.selectedButton = self.qrButton
-            
         }
         else if viewController.isKind(of: AccountsVC.self)
         {
             self.disableButtons([self.profileButton])
             self.selectedButton = self.profileButton
+            
+            self.selectButtonLbls([self.profileButtonLbl])
+
         }
         else if viewController.isKind(of: PBFeedsVC.self)
         {
-            self.disableButtons([self.profileButton])
-            self.selectedButton = self.profileButton
+            self.disableButtons([self.feedButton])
+            self.selectedButton = self.feedButton
+            
+            self.selectButtons([self.feedButton])
+            self.selectButtonLbls([self.feedButtonLbl])
+
         }
     }
     

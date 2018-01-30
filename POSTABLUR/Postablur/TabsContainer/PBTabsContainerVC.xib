@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,10 +20,14 @@
             <connections>
                 <outlet property="childContentView" destination="RdZ-wm-y0G" id="qak-yx-dUU"/>
                 <outlet property="feedButton" destination="zbb-Fm-UXQ" id="PwG-XV-fGx"/>
+                <outlet property="feedButtonLbl" destination="Cm4-xu-7xi" id="63i-jK-ddf"/>
                 <outlet property="newPostButton" destination="38G-qD-j0u" id="5GD-2r-HNr"/>
+                <outlet property="newPostButtonLbl" destination="2k6-OB-mUy" id="NjI-jY-QMa"/>
                 <outlet property="profileButton" destination="5Rt-b1-tX0" id="dv0-Lm-dMy"/>
+                <outlet property="profileButtonLbl" destination="Q2f-UB-XkU" id="e8V-mp-5I4"/>
                 <outlet property="qrButton" destination="vCl-GO-2gd" id="aqs-BY-6E0"/>
                 <outlet property="statsButton" destination="dgb-nh-xgh" id="o9u-IL-9wE"/>
+                <outlet property="statsButtonLbl" destination="OKS-XM-UL8" id="UKc-Sd-3jq"/>
                 <outlet property="view" destination="R0q-1g-tuK" id="CB0-7b-zBc"/>
             </connections>
         </placeholder>
@@ -70,10 +74,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLf-jk-K6Y" userLabel="newPostBtnContainer">
-                            <rect key="frame" x="82.666666666666671" y="0.0" width="83.000000000000014" height="63"/>
+                            <rect key="frame" x="82.666666666666657" y="0.0" width="82.999999999999972" height="63"/>
                             <subviews>
                                 <button opaque="NO" tag="2" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38G-qD-j0u" userLabel="CreateButton">
-                                    <rect key="frame" x="21.666666666666657" y="3.6666666666666288" width="40" height="40"/>
+                                    <rect key="frame" x="21.666666666666657" y="3.6666666666666288" width="40.000000000000014" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="Bdk-aq-P0C"/>
                                         <constraint firstAttribute="width" constant="40" id="C5N-f6-xXP"/>
@@ -85,7 +89,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREATE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2k6-OB-mUy">
-                                    <rect key="frame" x="18.999999999999996" y="43.666666666666629" width="44.666666666666657" height="13"/>
+                                    <rect key="frame" x="19" y="43.666666666666629" width="44.666666666666671" height="13"/>
                                     <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="11"/>
                                     <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -100,7 +104,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmn-of-M2f" userLabel="QRBtnContainer">
-                            <rect key="frame" x="165.66666666666666" y="0.0" width="82.666666666666657" height="63"/>
+                            <rect key="frame" x="165.66666666666666" y="0.0" width="82.666666666666686" height="63"/>
                             <subviews>
                                 <button opaque="NO" tag="3" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCl-GO-2gd" userLabel="QRButton">
                                     <rect key="frame" x="22" y="3.6666666666666288" width="40" height="40"/>
@@ -115,7 +119,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6b5-iY-7a5">
-                                    <rect key="frame" x="25.666666666666682" y="43.666666666666629" width="32.666666666666657" height="13"/>
+                                    <rect key="frame" x="25.666666666666686" y="43.666666666666629" width="32.666666666666657" height="13"/>
                                     <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="11"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -130,7 +134,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpp-tB-Qf0" userLabel="statsBtnContainer">
-                            <rect key="frame" x="248.33333333333337" y="0.0" width="83" height="63"/>
+                            <rect key="frame" x="248.33333333333331" y="0.0" width="82.999999999999943" height="63"/>
                             <subviews>
                                 <button opaque="NO" tag="4" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgb-nh-xgh" userLabel="StatsButton">
                                     <rect key="frame" x="21.999999999999972" y="3.6666666666666288" width="40" height="40"/>
@@ -160,7 +164,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MMz-99-it9" userLabel="profileBtnContainer">
-                            <rect key="frame" x="331.33333333333331" y="0.0" width="82.666666666666686" height="63"/>
+                            <rect key="frame" x="331.33333333333326" y="0.0" width="82.666666666666686" height="63"/>
                             <subviews>
                                 <button opaque="NO" tag="5" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Rt-b1-tX0" userLabel="ProfileButton">
                                     <rect key="frame" x="21.666666666666686" y="3.6666666666666288" width="40" height="40"/>
@@ -174,7 +178,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2f-UB-XkU">
-                                    <rect key="frame" x="24.333333333333368" y="43.666666666666629" width="33.666666666666657" height="13"/>
+                                    <rect key="frame" x="24.333333333333371" y="43.666666666666629" width="33.666666666666629" height="13"/>
                                     <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="11"/>
                                     <color key="textColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>

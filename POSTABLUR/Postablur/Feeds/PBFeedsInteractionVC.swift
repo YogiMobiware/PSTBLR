@@ -50,26 +50,26 @@ class PBFeedsInteractionVC : UIViewController
         super.viewDidLoad()
 
         
-        if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl") as? String
-        {
-            if let userProfileUrl = URL(string: userProfileUrlStr)
-            {
-                self.userImageView.kf.setImage(with: userProfileUrl)
-            }
-            else
-            {
-                self.userImageView.image = UIImage.init(named: "default_avatar")
-            }
-        }
-        
-        if let userProfileName = UserDefaults.standard.object(forKey: "UserName")
-        {
-            userNameLbl.text = "@\(userProfileName as! String)"
-        }
-        else
-        {
-            userNameLbl.text = ""
-        }
+//        if let userProfileUrlStr = UserDefaults.standard.object(forKey: "Profileurl") as? String
+//        {
+//            if let userProfileUrl = URL(string: userProfileUrlStr)
+//            {
+//                self.userImageView.kf.setImage(with: userProfileUrl)
+//            }
+//            else
+//            {
+//                self.userImageView.image = UIImage.init(named: "default_avatar")
+//            }
+//        }
+//
+//        if let userProfileName = UserDefaults.standard.object(forKey: "UserName")
+//        {
+//            userNameLbl.text = "@\(userProfileName as! String)"
+//        }
+//        else
+//        {
+//            userNameLbl.text = ""
+//        }
         
         
         self.moveSelectedFeedToFirstPosition()
@@ -790,7 +790,7 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 515
+        return 499
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
