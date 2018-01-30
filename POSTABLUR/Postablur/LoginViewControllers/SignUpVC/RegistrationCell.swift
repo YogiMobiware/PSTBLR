@@ -44,7 +44,7 @@ class RegistrationCell: UITableViewCell
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
         
-        let str = "signing up you agree to our Terms of Use and Privacy Policy."
+        let str = "signing up you agree to our Terms of Use"
         
         var attributedString = NSMutableAttributedString(string: str)
         
@@ -57,8 +57,8 @@ class RegistrationCell: UITableViewCell
         let termsRange = attributedString.mutableString.range(of: "Terms of Use")
         attributedString.addAttribute(NSAttributedStringKey.link, value: Constants.termsAndConditionsURL, range: termsRange)
         
-        let privacyRange = attributedString.mutableString.range(of: "Privacy Policy.")
-        attributedString.addAttribute(NSAttributedStringKey.link, value: Constants.privacyURL, range: privacyRange)
+       /* let privacyRange = attributedString.mutableString.range(of: "Privacy Policy.")
+        attributedString.addAttribute(NSAttributedStringKey.link, value: Constants.privacyURL, range: privacyRange)*/
         
         termsAndPrivacyTextView.attributedText = attributedString
         termsAndPrivacyTextView.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue :Constants.cell_HighlightedColor]

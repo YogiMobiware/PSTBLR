@@ -14,9 +14,9 @@ class PBWebVC: UIViewController,UIWebViewDelegate
     @IBOutlet var navBarView: UIView!
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var closeBtn: UIButton!
-    @IBOutlet var termsWebView: UIWebView!
+    @IBOutlet var infoTextView : UITextView!
     
-    var urlValue = ""
+    var info: String!
     var titleString = ""
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -25,29 +25,12 @@ class PBWebVC: UIViewController,UIWebViewDelegate
     {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
-        termsWebView.delegate = self
-        if let url = URL(string: urlValue)
-        {
-            let request = URLRequest(url: url)
-            termsWebView.loadRequest(request)
-        }
-        
         mainLabel.text = titleString
+        
+        self.infoTextView.text = info
     }
 
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error)
-    {
-        if (error as NSError).code == NSURLErrorCancelled
-        {
-            return
-        }
-        
-        //IF NO INTERNET AVAILABLE NEED TO DISPLAY ALERT
-        self.appDelegate.alert(vc: self, message: "Problem occurred while loading information. Please try later. \(String(describing: error.localizedDescription))", title: "Error")
-    }
-    
+   
     
     @IBAction func closeBtnAction(_ sender: UIButton)
     {

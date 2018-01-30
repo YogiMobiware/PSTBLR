@@ -125,6 +125,12 @@
                                 <action selector="actionChoosePicFromLibrary:" destination="-1" eventType="touchUpInside" id="4VS-Qh-H2g"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP ANYWHERE ON SCREEN TO CAPTURE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMz-fG-cxt">
+                            <rect key="frame" x="80.666666666666671" y="566" width="253.66666666666663" height="14"/>
+                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thq-gk-jeB" userLabel="BtnHolder">
                             <rect key="frame" x="0.0" y="581" width="414.33333333333331" height="52"/>
                             <subviews>
@@ -158,25 +164,19 @@
                                 <constraint firstAttribute="bottom" secondItem="Evv-FX-zdX" secondAttribute="bottom" id="q2N-ec-NYJ"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP ANYWHERE ON SCREEN TO CAPTURE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lky-GT-lWe">
-                            <rect key="frame" x="101.66666666666667" y="7.9999999999999991" width="211.33333333333331" height="11.666666666666664"/>
-                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="10"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Q8h-R6-all" firstAttribute="width" secondItem="Zzs-l9-9eM" secondAttribute="width" id="1Cq-kF-Fuc"/>
                         <constraint firstItem="uaa-Ae-7EV" firstAttribute="centerY" secondItem="HjO-ne-ubB" secondAttribute="centerY" id="3g1-fc-EGn"/>
                         <constraint firstItem="thq-gk-jeB" firstAttribute="leading" secondItem="Zzs-l9-9eM" secondAttribute="leading" id="6Xd-dn-0SM"/>
+                        <constraint firstItem="EMz-fG-cxt" firstAttribute="centerX" secondItem="Zzs-l9-9eM" secondAttribute="centerX" id="BRX-ou-j44"/>
                         <constraint firstItem="HjO-ne-ubB" firstAttribute="trailing" secondItem="Zzs-l9-9eM" secondAttribute="trailing" multiplier="374/414" id="C56-OR-KdT"/>
                         <constraint firstAttribute="trailing" secondItem="thq-gk-jeB" secondAttribute="trailing" id="Fg7-8f-qRj"/>
+                        <constraint firstAttribute="bottom" secondItem="EMz-fG-cxt" secondAttribute="bottom" constant="53" id="HD4-L0-hfj"/>
                         <constraint firstItem="Q8h-R6-all" firstAttribute="centerX" secondItem="Zzs-l9-9eM" secondAttribute="centerX" id="IVJ-Y0-v6S"/>
                         <constraint firstItem="Q8h-R6-all" firstAttribute="centerY" secondItem="Zzs-l9-9eM" secondAttribute="centerY" id="Jbb-GY-UdV"/>
-                        <constraint firstItem="lky-GT-lWe" firstAttribute="top" secondItem="Zzs-l9-9eM" secondAttribute="top" constant="8" id="NSL-YI-jxl"/>
                         <constraint firstItem="lLT-0Z-UgW" firstAttribute="centerX" secondItem="Zzs-l9-9eM" secondAttribute="centerX" id="Ppg-5e-XfX"/>
-                        <constraint firstItem="lky-GT-lWe" firstAttribute="centerX" secondItem="Zzs-l9-9eM" secondAttribute="centerX" id="Rvb-4q-LHa"/>
                         <constraint firstItem="xUQ-Lb-96M" firstAttribute="leading" secondItem="Zzs-l9-9eM" secondAttribute="leading" constant="16" id="UIC-sY-Mut"/>
                         <constraint firstItem="xUQ-Lb-96M" firstAttribute="top" secondItem="Zzs-l9-9eM" secondAttribute="top" constant="20" id="auf-aU-XEO"/>
                         <constraint firstItem="Q8h-R6-all" firstAttribute="height" secondItem="Zzs-l9-9eM" secondAttribute="height" id="cmP-eX-utS"/>

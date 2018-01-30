@@ -71,7 +71,7 @@ extension AccountSettingsVC : UITableViewDataSource, UITableViewDelegate
         let label = UILabel()
         label.frame = headerView.frame
         label.text = headersInfoArray[section]
-        label.textColor = UIColor.lightGray
+        label.textColor = UIColor.black
         headerView.addSubview(label)
         return headerView
     }
@@ -133,7 +133,7 @@ extension AccountSettingsVC : UITableViewDataSource, UITableViewDelegate
             if indexPath.row == 0
             {
                 let pb_webVC = PBWebVC(nibName: "PBWebVC", bundle: nil)
-                pb_webVC.urlValue = Constants.privacyURL
+                pb_webVC.info = Constants.privacyText
                 pb_webVC.titleString = "PRIVACY POLICY"
                 self.present(pb_webVC, animated: true, completion: nil)
 
@@ -142,7 +142,7 @@ extension AccountSettingsVC : UITableViewDataSource, UITableViewDelegate
             else if indexPath.row == 1
             {
                 let pb_webVC = PBWebVC(nibName: "PBWebVC", bundle: nil)
-                pb_webVC.urlValue = Constants.termsAndConditionsURL
+                pb_webVC.info = Constants.termsText
                 pb_webVC.titleString = "TERMS OF USE"
                 self.present(pb_webVC, animated: true, completion: nil)
             }

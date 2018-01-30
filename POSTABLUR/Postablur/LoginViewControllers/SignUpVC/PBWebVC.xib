@@ -19,9 +19,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PBWebVC" customModule="Postablur" customModuleProvider="target">
             <connections>
                 <outlet property="closeBtn" destination="Z1O-BP-jEK" id="T2x-HN-kWk"/>
-                <outlet property="mainLabel" destination="OQE-ya-lOU" id="ed0-JS-W9L"/>
+                <outlet property="infoTextView" destination="ucU-bY-NTo" id="3Tg-SQ-Jzm"/>
+                <outlet property="mainLabel" destination="OQE-ya-lOU" id="BgZ-qb-yY5"/>
                 <outlet property="navBarView" destination="AvN-sr-jl2" id="R3C-VL-Yaa"/>
-                <outlet property="termsWebView" destination="L4M-Kn-hue" id="KJS-Oj-bms"/>
                 <outlet property="view" destination="chM-Pt-0tG" id="yaR-Na-ddf"/>
             </connections>
         </placeholder>
@@ -64,27 +64,39 @@
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="OAP-Mx-2hr"/>
                 </view>
-                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L4M-Kn-hue">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUq-fm-Uw5">
                     <rect key="frame" x="0.0" y="102" width="414" height="634"/>
-                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="OYf-kl-n6h"/>
-                    </connections>
-                </webView>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ucU-bY-NTo">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="634"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <mutableString key="text">"OVERVIEW This website is operated by KAVALEO, Inc.. Throughout the site, the terms “we”, “us” and “our” refer to KAVALEO, Inc.. KAVALEO, Inc. offers this website, including all information, tools and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here. By visiting our site and/ or purchasing something from us, you engage in our “Service” and agree to be bound by the following terms and conditions (“Terms of Service”, “Terms”), including those additional terms and conditions and policies referenced herein and/or available by hyperlink. These Terms of Service apply to all users of the site, including without limitation users who are browsers, vendors, customers, merchants, and/ or contributors of content. Please read these Terms of Service carefully before accessing or using our website. By accessing or using any part of the site, you agree to be bound by these Terms of Service. If you do not agree to all the terms and conditions of this agreement, then you may not access the website or use any services. If these Terms of Service are considered an offer, acceptance is expressly limited to these Terms of Service. Any new features or tools which are added to the current store shall also be subject to the Terms of Service."</mutableString>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="iyO-Zb-fN3"/>
+                            </connections>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="ucU-bY-NTo" secondAttribute="trailing" id="O5t-Zv-gmj"/>
+                        <constraint firstItem="ucU-bY-NTo" firstAttribute="leading" secondItem="fUq-fm-Uw5" secondAttribute="leading" id="Rim-Rp-K8D"/>
+                        <constraint firstAttribute="bottom" secondItem="ucU-bY-NTo" secondAttribute="bottom" id="nHi-CP-yCB"/>
+                        <constraint firstItem="ucU-bY-NTo" firstAttribute="top" secondItem="fUq-fm-Uw5" secondAttribute="top" id="z6g-Q0-OFj"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.17254901959999999" green="0.17254901959999999" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="84s-93-06t" firstAttribute="trailing" secondItem="L4M-Kn-hue" secondAttribute="trailing" id="1sn-hD-Bru"/>
                 <constraint firstItem="AvN-sr-jl2" firstAttribute="height" secondItem="chM-Pt-0tG" secondAttribute="height" multiplier="102:736" id="4xB-HO-CQe"/>
                 <constraint firstItem="84s-93-06t" firstAttribute="top" secondItem="AvN-sr-jl2" secondAttribute="top" constant="20" id="DQA-NM-X4Q"/>
                 <constraint firstItem="AvN-sr-jl2" firstAttribute="leading" secondItem="84s-93-06t" secondAttribute="leading" id="EmE-Yu-Ept"/>
-                <constraint firstItem="L4M-Kn-hue" firstAttribute="top" secondItem="AvN-sr-jl2" secondAttribute="bottom" id="FRa-kY-ZaF"/>
-                <constraint firstAttribute="bottom" secondItem="L4M-Kn-hue" secondAttribute="bottom" id="IbO-T8-IGO"/>
-                <constraint firstAttribute="trailing" secondItem="L4M-Kn-hue" secondAttribute="trailing" id="Ku0-yN-Zkc"/>
-                <constraint firstItem="L4M-Kn-hue" firstAttribute="leading" secondItem="84s-93-06t" secondAttribute="leading" id="Sxh-vX-fdA"/>
-                <constraint firstItem="84s-93-06t" firstAttribute="bottom" secondItem="L4M-Kn-hue" secondAttribute="bottom" id="bdQ-KL-VDE"/>
+                <constraint firstAttribute="bottom" secondItem="fUq-fm-Uw5" secondAttribute="bottom" id="Zcd-Gi-Sjp"/>
                 <constraint firstItem="84s-93-06t" firstAttribute="trailing" secondItem="AvN-sr-jl2" secondAttribute="trailing" id="fl6-VA-1Ya"/>
-                <constraint firstItem="L4M-Kn-hue" firstAttribute="leading" secondItem="chM-Pt-0tG" secondAttribute="leading" id="zuk-YF-IFt"/>
+                <constraint firstItem="fUq-fm-Uw5" firstAttribute="top" secondItem="AvN-sr-jl2" secondAttribute="bottom" id="pE2-jJ-fU2"/>
+                <constraint firstAttribute="trailing" secondItem="fUq-fm-Uw5" secondAttribute="trailing" id="pvf-vI-9cW"/>
+                <constraint firstItem="fUq-fm-Uw5" firstAttribute="leading" secondItem="chM-Pt-0tG" secondAttribute="leading" id="yES-lj-rmU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="84s-93-06t"/>
             <point key="canvasLocation" x="33" y="68"/>
