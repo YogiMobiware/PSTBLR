@@ -161,10 +161,7 @@ class PBSignUPVC: UIViewController,UIImagePickerControllerDelegate,UINavigationC
 }
 extension PBSignUPVC : UITextViewDelegate
 {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        
-        
-    }
+    
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
     {
@@ -173,14 +170,14 @@ extension PBSignUPVC : UITextViewDelegate
         {
             let pb_webVC = PBWebVC(nibName: "PBWebVC", bundle: nil)
             pb_webVC.urlValue = Constants.termsAndConditionsURL
-            pb_webVC.titleString = "Terms of use"
+            pb_webVC.titleString = "TERMS OF USE"
             self.present(pb_webVC, animated: true, completion: nil)
         }
-        else if (URL.absoluteString == Constants.privacyURL)
+        else 
         {
             let pb_webVC = PBWebVC(nibName: "PBWebVC", bundle: nil)
             pb_webVC.urlValue = Constants.privacyURL
-            pb_webVC.titleString = "privacy policy"
+            pb_webVC.titleString = "PRIVACY POLICY"
             self.present(pb_webVC, animated: true, completion: nil)
         }
         
@@ -252,12 +249,12 @@ extension PBSignUPVC : UITableViewDataSource, UITableViewDelegate
             
         case 2:
             let cell : RegistrationCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.RegistrationCellIdentifier.rawValue, for: indexPath) as! RegistrationCell
-            cell.termsTextView.delegate = self
             cell.registerDelegate = self
             cell.userNameTF.delegate = self
             cell.emailTF.delegate = self
             cell.passwordTF.delegate = self
             cell.reTypePasswordTF.delegate = self
+            cell.termsAndPrivacyTextView.delegate = self
             return cell
             
         default:
@@ -533,10 +530,7 @@ extension PBSignUPVC : RegistrationCellDelegate
 
     }
     
-    /*func moveToPBWebVC(toController : UIViewController)
-    {
-        self.present(toController, animated: true, completion: nil)
-    }*/
+   
     
 }
 
