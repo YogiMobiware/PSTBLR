@@ -197,6 +197,7 @@ class PBFeedsVC : UIViewController
                                     feedItem.Description = result["Description"] as? String
                                     feedItem.CurrentLikesCount = result["CurrentLikesCount"] as? Int
                                     feedItem.CurrentDisLikesCount = result["CurrentDisLikesCount"] as? Int
+                                    feedItem.likesGoal = result["LikeLimit"] as? Int
                                     feedItem.Profileurl = result["Profileurl"] as? String
                                     
                                     let mediaArray = result["PostMediaData"] as! [NSDictionary]!
@@ -309,6 +310,7 @@ class PBFeedsVC : UIViewController
                                     feedItem.Description = result["Description"] as? String
                                     feedItem.CurrentLikesCount = result["CurrentLikesCount"] as? Int
                                     feedItem.CurrentDisLikesCount = result["CurrentDisLikesCount"] as? Int
+                                    feedItem.likesGoal = result["LikeLimit"] as? Int
                                     feedItem.Profileurl = result["Profileurl"] as? String
                                     
                                     let mediaArray = result["PostMediaData"] as! [NSDictionary]!
@@ -493,14 +495,15 @@ extension PBFeedsVC : UICollectionViewDelegate, UICollectionViewDataSource
                             {
                                 return
                             }
-                            let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
-                            
                             guard let feedItem = weakFeedItem else
                             {
                                 return
                             }
+                            let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / feedItem.likesGoal!))
                             
-                             self.saveImage(image: im, withName : "sfi\(feedItem.PostId!)_\(feedItem.CurrentLikesCount!)")
+                            
+                            
+                            weakSelf?.saveImage(image: im, withName : "sfi\(feedItem.PostId!)_\(feedItem.CurrentLikesCount!)")
                             
                             OperationQueue.main.addOperation {
                                 

@@ -194,6 +194,7 @@ class PBFeedsInteractionVC : UIViewController
                                     feedItem.Description = result["Description"] as? String
                                     feedItem.CurrentLikesCount = result["CurrentLikesCount"] as? Int
                                     feedItem.CurrentDisLikesCount = result["CurrentDisLikesCount"] as? Int
+                                    feedItem.likesGoal = result["LikeLimit"] as? Int
                                     feedItem.Profileurl = result["Profileurl"] as? String
                                     
                                     let mediaArray = result["PostMediaData"] as! [NSDictionary]!
@@ -315,6 +316,7 @@ class PBFeedsInteractionVC : UIViewController
                                     feedItem.Description = result["Description"] as? String
                                     feedItem.CurrentLikesCount = result["CurrentLikesCount"] as? Int
                                     feedItem.CurrentDisLikesCount = result["CurrentDisLikesCount"] as? Int
+                                    feedItem.likesGoal = result["LikeLimit"] as? Int
                                     feedItem.Profileurl = result["Profileurl"] as? String
                                     
                                     let mediaArray = result["PostMediaData"] as! [NSDictionary]!
@@ -712,11 +714,23 @@ class PBFeedsInteractionVC : UIViewController
                         let blurOperation = BlockOperation()
                         weak var weakOperation = blurOperation
                         weak var weakSelf = self
+                        weak var weakCell = cell
+                        weak var weakImg = img
+                        weak var weakFeedItem = feedItem
+                        
                         blurOperation.addExecutionBlock {
                             
-                            let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
+                            guard let img = weakImg else
+                            {
+                                return
+                            }
+                            guard let feedItem = weakFeedItem else
+                            {
+                                return
+                            }
+                            let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / feedItem.likesGoal!))
                             
-                            self.saveImage(image: im, withName : "bfi\(feedItem.PostId!)_\(feedItem.CurrentLikesCount!)")
+                            weakSelf?.saveImage(image: im, withName : "bfi\(feedItem.PostId!)_\(feedItem.CurrentLikesCount!)")
                             
                             
                             OperationQueue.main.addOperation {
@@ -734,8 +748,8 @@ class PBFeedsInteractionVC : UIViewController
                                     }
                                     weakSelf?.activity.stopAnimating()
 
-                                    cell.feedImageView.image = im
-                                    cell.feedImageView.alpha = 1
+                                    weakCell?.feedImageView.image = im
+                                    weakCell?.feedImageView.alpha = 1
                                     weakSelf?.blurOperations.removeValue(forKey: indexPath)
                                     
                                 }
@@ -812,8 +826,8 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
         cell.postLikesCountLbl.text = "\(likeCount) likes"
         cell.postDislikesCountLbl.text = "\(dislikeCount) dislikes"
         cell.postDescriptionLbl.text = description
-        cell.postTitleLbl.text = title
-        cell.postLocationLbl.text = location
+        cell.postTitleLbl.text = title.uppercased()
+        cell.postLocationLbl.text = location.uppercased()
         cell.postUsernameLbl.text = "@\(username)"
         
         if hasUserLiked == true
@@ -897,11 +911,23 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
                         let blurOperation = BlockOperation()
                         weak var weakOperation = blurOperation
                         weak var weakSelf = self
+                        weak var weakCell = cell
+                        weak var weakImg = img
+                        weak var weakFeedItem = feedItem
                         blurOperation.addExecutionBlock {
                             
-                            let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / 10))
+                            guard let img = weakImg else
+                            {
+                                return
+                            }
+                            guard let feedItem = weakFeedItem else
+                            {
+                                return
+                            }
                             
-                            self.saveImage(image: im, withName : "bfi\(feedItem.PostId!)_\(feedItem.CurrentLikesCount!)")
+                            let im = PBUtility.blurEffect(image: img, blurRadius : Constants.maxBlurRadius - likeCount * (Constants.maxBlurRadius / feedItem.likesGoal!))
+                            
+                            weakSelf?.saveImage(image: im, withName : "bfi\(feedItem.PostId!)_\(feedItem.CurrentLikesCount!)")
                             
                             
                             OperationQueue.main.addOperation {
@@ -919,8 +945,8 @@ extension PBFeedsInteractionVC : UITableViewDelegate, UITableViewDataSource
                                     }
                                     weakSelf?.activity.stopAnimating()
 
-                                    cell.feedImageView.image = im
-                                    cell.feedImageView.alpha = 1
+                                    weakCell?.feedImageView.image = im
+                                    weakCell?.feedImageView.alpha = 1
                                     weakSelf?.blurOperations.removeValue(forKey: indexPath)
                                     
                                 }
@@ -1043,7 +1069,7 @@ extension PBFeedsInteractionVC : PBFeedTableCellDelegate
                 
                 cell.postLikeBtn.isEnabled = false
                 
-                if let userLikedPost = feed.UserLikeStatus as? Bool, userLikedPost == true
+                if let userLikedPost = feed.UserLikeStatus, userLikedPost == true
                 {
                     /// need to unlike post
                     self.callLikeApi(like: false, forFeedItem: feed)
@@ -1061,7 +1087,7 @@ extension PBFeedsInteractionVC : PBFeedTableCellDelegate
                 
                 cell.postDislikeBtn.isEnabled = false
                 
-                if let userDisLikedPost = feed.UserDisLikeStatus as? Bool, userDisLikedPost == true
+                if let userDisLikedPost = feed.UserDisLikeStatus, userDisLikedPost == true
                 {
                     /// need to undislike post
                     self.callDislikeApi(dislike: false, forFeedItem: feed)

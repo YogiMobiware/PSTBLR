@@ -21,7 +21,10 @@ class CreateNewPostVC: UIViewController
     var donateToCharity : String? = nil
     var whoGetsToReveal : String? = nil
     var appdelegate : AppDelegate!
+    var selectedLikeLimitCount : String? = nil
 
+    var cell = DescriptionCell()
+    
     override func viewDidLoad()
     {
         
@@ -45,6 +48,7 @@ class CreateNewPostVC: UIViewController
         let shareLabelfontSize = ((UIScreen.main.bounds.size.width) / CGFloat(414.0)) * 24
         let roundedBoldfontSize = floor(shareLabelfontSize)
         self.postTitleLabel.font = self.postTitleLabel.font.withSize(roundedBoldfontSize)
+
 
         self.appdelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -81,7 +85,7 @@ class CreateNewPostVC: UIViewController
             let urlString = String(format: "%@/AddUserPost", arguments: [Urls.mainUrl]);
             if let userID = UserDefaults.standard.string(forKey: "UserId") {
                 
-                let requestDict = ["PostTitle": self.titleLabelText!,"Location": self.locationText!,"Description": self.descriptionTextView!,"DonatetoCharity":"1","ShareYourPost":"10","WhoRevealsPostThisPost": "Public","LikeLimit":"10","ShareLimit":"10","DonationLimit":"2147","UserId":userID] as [String : Any]
+                let requestDict = ["PostTitle": self.titleLabelText!,"Location": self.locationText!,"Description": self.descriptionTextView!,"DonatetoCharity":"1","ShareYourPost":"10","WhoRevealsPostThisPost": "Public","LikeLimit":selectedLikeLimitCount!,"ShareLimit":"10","DonationLimit":"2147","UserId":userID] as [String : Any]
                 
                 self.appdelegate.showActivityIndictor(titleString: "Postablur", subTitleString: "Posting...")
                 
@@ -263,7 +267,7 @@ extension CreateNewPostVC : UITableViewDataSource, UITableViewDelegate
             return cell
             
         case 2:
-            let cell : DescriptionCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.DescriptionCellIdentifier.rawValue, for: indexPath) as! DescriptionCell
+            cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.DescriptionCellIdentifier.rawValue, for: indexPath) as! DescriptionCell
             cell.descriptionTV.delegate = self
             cell.descriptionDelegate = self
             return cell
@@ -273,6 +277,8 @@ extension CreateNewPostVC : UITableViewDataSource, UITableViewDelegate
             return cell
         case 4:
             let cell : BlurImageCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.BlurImageCellIdentifier.rawValue, for: indexPath) as! BlurImageCell
+            let likesStr = "\(selectedLikeLimitCount!) - Likes"
+            cell.likesToReveal.text = likesStr
             return cell
             
         default:
@@ -289,8 +295,22 @@ extension CreateNewPostVC : UITextFieldDelegate
         textField.resignFirstResponder()
         return true
     }
+    
+    /*func textFieldDidBeginEditing(_ textField: UITextField)
+    {
+        if textField.placeholder == "Title"
+        {
+            textField.placeholder = ""
+        }
+        else
+        {
+            textField.placeholder = ""
+        }
+        
+    }*/
     func textFieldDidEndEditing(_ textField: UITextField)
     {
+        
         if textField.placeholder == "Title"
         {
             self.titleLabelText = textField.text
@@ -301,6 +321,20 @@ extension CreateNewPostVC : UITextFieldDelegate
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        
+       /*if textField.text?.count == 0
+       {
+        
+       }*/
+       let maxLength = 30
+       let currentString: NSString = textField.text! as NSString
+       let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+       return newString.length <= maxLength
+        
+    }
+    
 }
 extension CreateNewPostVC : UITextViewDelegate
 {
@@ -308,9 +342,22 @@ extension CreateNewPostVC : UITextViewDelegate
     {
         
         self.descriptionTextView = textView.text
-        
+    }
+    
+    func textViewDidChange(_ textView: UITextView)
+    {
+       cell.placeholderLabel.isHidden = !cell.descriptionTV.text.isEmpty
     }
    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+    {
+        
+        let maxLength = 120
+        let currentString: NSString = textView.text! as NSString
+        let newString: NSString = currentString.replacingCharacters(in: range, with: text) as NSString
+        return newString.length <= maxLength
+
+    }
 }
 extension CreateNewPostVC : ShareYourPostDelegate
 {

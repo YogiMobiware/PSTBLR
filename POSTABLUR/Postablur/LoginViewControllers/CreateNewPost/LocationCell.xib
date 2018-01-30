@@ -28,22 +28,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bDe-uS-ZX4">
-                                <rect key="frame" x="40" y="3" width="334" height="34"/>
+                                <rect key="frame" x="47" y="5" width="322" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="-1" id="nPt-dP-IRO"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type where you are." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVS-dV-n7m">
-                                <rect key="frame" x="279" y="26" width="95" height="11"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type where you are." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVS-dV-n7m">
+                                <rect key="frame" x="274" y="24" width="95" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="11" id="Ual-6v-TAs"/>
                                     <constraint firstAttribute="width" constant="95" id="ifG-yd-MF7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="10"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="9"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -51,10 +51,10 @@
                         <constraints>
                             <constraint firstItem="xVS-dV-n7m" firstAttribute="trailing" secondItem="bDe-uS-ZX4" secondAttribute="trailing" id="2kd-b6-Ygo"/>
                             <constraint firstItem="xVS-dV-n7m" firstAttribute="bottom" secondItem="bDe-uS-ZX4" secondAttribute="bottom" id="8l1-5O-Vw7"/>
-                            <constraint firstAttribute="bottom" secondItem="bDe-uS-ZX4" secondAttribute="bottom" constant="3" id="AoP-gP-G3g"/>
-                            <constraint firstItem="bDe-uS-ZX4" firstAttribute="top" secondItem="HUN-2W-djT" secondAttribute="top" constant="3" id="QLf-uq-evC"/>
-                            <constraint firstAttribute="trailing" secondItem="bDe-uS-ZX4" secondAttribute="trailing" constant="40" id="ZNJ-Vg-8kT"/>
-                            <constraint firstItem="bDe-uS-ZX4" firstAttribute="leading" secondItem="HUN-2W-djT" secondAttribute="leading" constant="40" id="ZWJ-FR-4Yo"/>
+                            <constraint firstAttribute="bottom" secondItem="bDe-uS-ZX4" secondAttribute="bottom" constant="5" id="AoP-gP-G3g"/>
+                            <constraint firstItem="bDe-uS-ZX4" firstAttribute="top" secondItem="HUN-2W-djT" secondAttribute="top" constant="5" id="QLf-uq-evC"/>
+                            <constraint firstAttribute="trailing" secondItem="bDe-uS-ZX4" secondAttribute="trailing" constant="45" id="ZNJ-Vg-8kT"/>
+                            <constraint firstItem="bDe-uS-ZX4" firstAttribute="leading" secondItem="HUN-2W-djT" secondAttribute="leading" constant="47" id="ZWJ-FR-4Yo"/>
                         </constraints>
                     </view>
                 </subviews>

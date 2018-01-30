@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,38 +22,37 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="39.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="39.666666666666664"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQk-Gz-rO8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="39.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="39.666666666666664"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share your Post:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tv-jc-BW3">
-                                <rect key="frame" x="47" y="9.5" width="156" height="21"/>
+                                <rect key="frame" x="47" y="9.6666666666666643" width="156" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="1yQ-up-Ig1"/>
-                                    <constraint firstAttribute="width" constant="156" id="FPF-c3-IU0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WT2-MJ-QTo">
-                                <rect key="frame" x="223" y="-2" width="44" height="44"/>
+                                <rect key="frame" x="210" y="-2" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="3Hy-mI-WyH"/>
                                     <constraint firstAttribute="height" constant="44" id="7Wa-7R-gaA"/>
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.68627450980392157" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="twitterIconBlack"/>
+                                <state key="normal" image="twitterIcon"/>
                                 <connections>
                                     <action selector="twitterBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UHx-8O-u2v"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzU-Og-L1J">
-                                <rect key="frame" x="287" y="-2" width="44" height="44"/>
+                                <rect key="frame" x="261" y="-2" width="44" height="44"/>
                                 <color key="tintColor" red="0.0" green="0.68627450980000004" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="facebookIconGrey"/>
+                                <state key="normal" image="facebookIcon-1"/>
                                 <connections>
                                     <action selector="faceBookBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6gG-Da-k8q"/>
                                 </connections>
@@ -60,11 +60,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="mzU-Og-L1J" firstAttribute="leading" secondItem="WT2-MJ-QTo" secondAttribute="trailing" constant="20" id="8Cc-Vh-OR6"/>
+                            <constraint firstItem="mzU-Og-L1J" firstAttribute="leading" secondItem="WT2-MJ-QTo" secondAttribute="trailing" constant="7" id="8Cc-Vh-OR6"/>
                             <constraint firstItem="mzU-Og-L1J" firstAttribute="height" secondItem="WT2-MJ-QTo" secondAttribute="height" id="8jf-Lh-C4q"/>
                             <constraint firstItem="WT2-MJ-QTo" firstAttribute="centerY" secondItem="WQk-Gz-rO8" secondAttribute="centerY" id="EAU-8M-aWq"/>
+                            <constraint firstItem="5Tv-jc-BW3" firstAttribute="width" secondItem="WQk-Gz-rO8" secondAttribute="width" multiplier="156:414" id="H4b-wk-WeG"/>
                             <constraint firstItem="mzU-Og-L1J" firstAttribute="centerY" secondItem="WQk-Gz-rO8" secondAttribute="centerY" id="MP1-mw-CPo"/>
-                            <constraint firstItem="WT2-MJ-QTo" firstAttribute="leading" secondItem="5Tv-jc-BW3" secondAttribute="trailing" constant="20" id="NIV-gI-DRJ"/>
+                            <constraint firstItem="WT2-MJ-QTo" firstAttribute="leading" secondItem="5Tv-jc-BW3" secondAttribute="trailing" constant="7" id="NIV-gI-DRJ"/>
                             <constraint firstItem="mzU-Og-L1J" firstAttribute="width" secondItem="WT2-MJ-QTo" secondAttribute="width" id="aTt-dP-xyq"/>
                             <constraint firstItem="5Tv-jc-BW3" firstAttribute="leading" secondItem="WQk-Gz-rO8" secondAttribute="leading" constant="47" id="fLR-sp-h6O"/>
                             <constraint firstItem="5Tv-jc-BW3" firstAttribute="centerY" secondItem="WQk-Gz-rO8" secondAttribute="centerY" id="mMd-oe-IRw"/>
@@ -90,7 +91,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="facebookIconGrey" width="34" height="35"/>
-        <image name="twitterIconBlack" width="34" height="35"/>
+        <image name="facebookIcon-1" width="30" height="30"/>
+        <image name="twitterIcon" width="30" height="30"/>
     </resources>
 </document>
